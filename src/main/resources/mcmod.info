@@ -1,0 +1,12 @@
+[
+  {
+    "modid": "riftfeed",
+    "name": "Renaissnace Core",
+    "description": "a mod simply added rift feeds, which can grow flux rift and explode it",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "authorList": ["keletu"],
+    "logoFile": "logo.png"
+  }
+]

@@ -1,0 +1,68 @@
+{
+  "entries": [
+    {
+      "key": "RIFT_FEED",
+      "name": "ftr.research.rift_feed.title",
+      "category": "ELDRITCH",
+      "icons": [
+        "riftfeed:rift_feed"
+      ],
+      "parents": [
+        "BASEELDRITCH"
+      ],
+      "location": [
+        1,
+        -1
+      ],
+      "stages": [
+        {
+          "text": "ftr.research.rift_feed.text",
+          "required_item": [
+            "thaumcraft:causality_collapser"
+          ],
+          "required_knowledge": [
+            "THEORY;BASICS;1",
+            "THEORY;ELDRITCH;1"
+          ],
+          "warp": 2
+        },
+        {
+          "text": "ftr.research.rift_feed.complete.text",
+          "recipes": [
+            "ftr:rift_feed"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ETHEREAL_BLOOM",
+      "name": "ftr.research.ethereal_bloom.title",
+      "category": "ALCHEMY",
+      "icons": [
+        "riftfeed:ethereal_bloom"
+      ],
+      "parents": [
+        "HEDGEALCHEMY"
+      ],
+      "location": [
+        -6,
+        2
+      ],
+      "stages": [
+        {
+          "text": "ftr.research.ethereal_bloom.text",
+          "required_knowledge": [
+            "THEORY;BASICS;1",
+            "THEORY;ALCHEMY;1"
+          ]
+        },
+        {
+          "text": "ftr.research.ethereal_bloom.complete.text",
+          "recipes": [
+            "ftr:ethereal_bloom"
+          ]
+        }
+      ]
+    }
+  ]
+}
