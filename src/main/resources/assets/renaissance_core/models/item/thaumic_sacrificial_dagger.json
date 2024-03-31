@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "renaissance_core:items/thaumic_sacrificial_dagger"
+  }
+}

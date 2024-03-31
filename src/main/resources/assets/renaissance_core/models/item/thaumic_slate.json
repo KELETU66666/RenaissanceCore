@@ -1,0 +1,6 @@
+{
+   "parent": "item/generated",
+   "textures": {
+       "layer0": "renaissance_core:items/thaumic_slate"
+    }
+}

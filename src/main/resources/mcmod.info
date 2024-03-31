@@ -1,8 +1,8 @@
 [
   {
-    "modid": "riftfeed",
+    "modid": "renaissance_core",
     "name": "Renaissance Core",
-    "description": "a mod simply added rift feeds, which can grow flux rift and explode it",
+    "description": "a mod for TRK modpack",
     "version": "${version}",
     "mcversion": "${mcversion}",
     "url": "",

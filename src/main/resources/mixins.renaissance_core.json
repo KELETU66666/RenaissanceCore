@@ -1,0 +1,11 @@
+{
+  "minVersion": "0.8",
+  "package": "com.keletu.renaissance_core.mixins",
+  "refmap": "mixins.riftfeed.renaissance_core.json",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinEntityFluxRift"
+  ],
+  "client": [],
+  "server": []
+}
