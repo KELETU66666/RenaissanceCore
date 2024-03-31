@@ -29,6 +29,11 @@ public class ModelEvents {
         defaultModel(RFItems.mana_slate);
         defaultModel(RFItems.thaumic_slate);
 
+        defaultModel(RFItems.botany_sacrificial_dagger);
+        defaultModel(RFItems.thaumic_sacrificial_dagger);
+
+        defaultModel(RFItems.botany_dagger_of_sacrifice);
+        defaultModel(RFItems.thaumic_dagger_of_sacrifice);
     }
 
     static void defaultModel(Item item) {

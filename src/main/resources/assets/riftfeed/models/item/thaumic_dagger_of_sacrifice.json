@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "riftfeed:items/thaumic_dagger_of_sacrifice"
+  }
+}

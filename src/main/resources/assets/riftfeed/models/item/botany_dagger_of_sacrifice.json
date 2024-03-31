@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "riftfeed:items/botany_dagger_of_sacrifice"
+  }
+}

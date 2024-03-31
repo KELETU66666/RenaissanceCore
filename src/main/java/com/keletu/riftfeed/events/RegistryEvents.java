@@ -6,7 +6,6 @@ import com.keletu.riftfeed.blocks.tile.TileEtherealBloom;
 import com.keletu.riftfeed.items.RFItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -37,6 +36,12 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RFItems.bloodyIchoriumItem);
         event.getRegistry().registerAll(RFItems.thaumicRuneItem);
         event.getRegistry().registerAll(RFItems.botanyRuneItem);
+
+        event.getRegistry().registerAll(RFItems.thaumic_sacrificial_dagger);
+        event.getRegistry().registerAll(RFItems.botany_sacrificial_dagger);
+
+        event.getRegistry().registerAll(RFItems.thaumic_dagger_of_sacrifice);
+        event.getRegistry().registerAll(RFItems.botany_dagger_of_sacrifice);
 
         event.getRegistry().registerAll(RFItems.mana_slate);
         event.getRegistry().registerAll(RFItems.thaumic_slate);
