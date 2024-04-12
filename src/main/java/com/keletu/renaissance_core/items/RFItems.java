@@ -16,6 +16,7 @@ public class RFItems {
     public static final Item botany_sacrificial_dagger = new ItemBotanySacrificialDagger();
     public static final Item thaumic_dagger_of_sacrifice = new ItemThaumicDaggerOfSacrifice();
     public static final Item botany_dagger_of_sacrifice = new ItemBotanyDaggerOfSacrifice();
+    public static final Item mana_bean = new ItemManaBean().setRegistryName("mana_bean").setTranslationKey("mana_bean");
 
     public static final Item etherealBloomItem = new RFItemBlocks(RFBlocks.ethereal_bloom);
     public static final Item bloodyThaumiumItem = new RFItemBlocks(RFBlocks.bloody_thaumium);

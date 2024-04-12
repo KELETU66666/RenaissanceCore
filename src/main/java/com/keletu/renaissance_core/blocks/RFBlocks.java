@@ -9,5 +9,6 @@ public class RFBlocks {
     public static final Block bloody_ichorium = new RFBasicBlock().setRegistryName("bloody_ichorium").setTranslationKey("bloody_ichorium");
     public static final Block mana_rune = new RFBasicBlock().setRegistryName("mana_rune").setTranslationKey("mana_rune");
     public static final Block thaumic_rune = new RFBasicBlock().setRegistryName("thaumic_rune").setTranslationKey("thaumic_rune");
+    public static final Block mana_pod = new BlockManaPod().setRegistryName("mana_pod").setTranslationKey("mana_pod");
 
 }

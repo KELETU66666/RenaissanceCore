@@ -1,7 +1,9 @@
 package com.keletu.renaissance_core.events;
 
 import com.keletu.renaissance_core.blocks.tile.TileEtherealBloom;
+import com.keletu.renaissance_core.blocks.tile.TileManaPod;
 import com.keletu.renaissance_core.client.TileEtherealBloomRenderer;
+import com.keletu.renaissance_core.client.render.TileManaPodRenderer;
 import com.keletu.renaissance_core.items.RFItems;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -19,6 +21,7 @@ public class ModelEvents {
     public static void regModels(ModelRegistryEvent event) {
         defaultModel(RFItems.rift_feed);
         defaultModel(RFItems.etherealBloomItem);
+        defaultModel(RFItems.mana_bean);
 
         defaultModel(RFItems.bloodyThaumiumItem);
         defaultModel(RFItems.bloodyVoidItem);
@@ -44,5 +47,6 @@ public class ModelEvents {
     @SideOnly(Side.CLIENT)
     public static void modelRegistryEvent(ModelRegistryEvent event) {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEtherealBloom.class, new TileEtherealBloomRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileManaPod.class, new TileManaPodRenderer());
     }
 }

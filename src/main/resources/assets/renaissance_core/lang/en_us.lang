@@ -1,6 +1,7 @@
 item.rift_feed.name=Rift Feed
 item.thaumic_slate.name=Thaumic Slate
 item.mana_slate.name=Mana Slate
+item.mana_bean.name=Mana Bean
 
 item.thaumic_sacrificial_dagger.name=Thaumic Sacrificial Dagger
 item.botany_sacrificial_dagger.name=Botany Sacrificial Dagger
@@ -14,6 +15,10 @@ tile.bloody_void.name=Bloody Void Block
 tile.bloody_ichorium.name=Bloody Ichorium Block
 tile.thaumic_rune.name=Thaumic Rune
 tile.mana_rune.name=Mana Rune
+tile.mana_pod.name=Mana Pod
+
+entity.Villager.wizard=Thaumaturger
+entity.Villager.banker=Banker
 
 ftr.research.rift_feed.title=Feed the Rift
 ftr.research.rift_feed.text=[WIP]

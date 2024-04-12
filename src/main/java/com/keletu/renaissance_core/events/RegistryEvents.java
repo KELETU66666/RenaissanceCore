@@ -3,6 +3,7 @@ package com.keletu.renaissance_core.events;
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.blocks.RFBlocks;
 import com.keletu.renaissance_core.blocks.tile.TileEtherealBloom;
+import com.keletu.renaissance_core.blocks.tile.TileManaPod;
 import com.keletu.renaissance_core.items.RFItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -22,8 +23,10 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RFBlocks.bloody_thaumium);
         event.getRegistry().registerAll(RFBlocks.bloody_void);
         event.getRegistry().registerAll(RFBlocks.bloody_ichorium);
+        event.getRegistry().registerAll(RFBlocks.mana_pod);
 
-        GameRegistry.registerTileEntity(TileEtherealBloom.class, new ResourceLocation(RenaissanceCore.MODID, "ethereal_bloom").toString());
+        GameRegistry.registerTileEntity(TileEtherealBloom.class, new ResourceLocation(RenaissanceCore.MODID, "ethereal_bloom"));
+        GameRegistry.registerTileEntity(TileManaPod.class, new ResourceLocation(RenaissanceCore.MODID, "mana_pod"));
     }
 
     @SubscribeEvent
@@ -45,5 +48,6 @@ public class RegistryEvents {
 
         event.getRegistry().registerAll(RFItems.mana_slate);
         event.getRegistry().registerAll(RFItems.thaumic_slate);
+        event.getRegistry().registerAll(RFItems.mana_bean);
     }
 }
