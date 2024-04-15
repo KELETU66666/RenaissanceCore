@@ -61,7 +61,8 @@ public class RenaissanceCore
         MapGenStructureIO.registerStructureComponent(ComponentBankerHome.class, "TEBank");
         MinecraftForge.EVENT_BUS.register(new LootHandler());
 
-        registerItemColourHandlers();
+        if(event.getSide().isClient())
+            registerItemColourHandlers();
     }
 
     @EventHandler
