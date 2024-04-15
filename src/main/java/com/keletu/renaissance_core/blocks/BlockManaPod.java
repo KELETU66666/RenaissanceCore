@@ -26,6 +26,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.internal.WorldCoordinates;
 
 import java.util.ArrayList;
@@ -163,7 +164,7 @@ public class BlockManaPod extends Block implements IGrowable {
     if (biome != null)
       magicBiome = BiomeDictionary.hasType(biome, BiomeDictionary.Type.MAGICAL);
     Block i1 = par1World.getBlockState(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())).getBlock();
-    return (magicBiome && i1 instanceof BlockLog);
+    return (magicBiome && (i1 instanceof BlockLog || i1 == BlocksTC.logGreatwood || i1 == BlocksTC.logSilverwood));
   }
 
   public boolean canPlaceBlockOnSide(World world, BlockPos pos, EnumFacing side) {
@@ -172,7 +173,7 @@ public class BlockManaPod extends Block implements IGrowable {
     if (biome != null)
       magicBiome = BiomeDictionary.hasType(biome, BiomeDictionary.Type.MAGICAL);
     Block i1 = world.getBlockState(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())).getBlock();
-    boolean b = (i1 instanceof BlockLog);
+    boolean b = (i1 instanceof BlockLog || i1 == BlocksTC.logGreatwood || i1 == BlocksTC.logSilverwood);
     return (side.getIndex() == 0 && b && magicBiome);
   }
   

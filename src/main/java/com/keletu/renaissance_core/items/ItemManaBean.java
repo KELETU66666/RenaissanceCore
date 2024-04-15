@@ -29,6 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IEssentiaContainerItem;
+import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.common.config.ConfigItems;
 
 import java.util.Random;
@@ -133,7 +134,7 @@ public class ItemManaBean extends ItemFood implements IEssentiaContainerItem {
     if (!magicBiome)
       return EnumActionResult.FAIL;
     Block i1 = world.getBlockState(pos).getBlock();
-    if (i1 instanceof BlockLog) {
+    if (i1 instanceof BlockLog || i1 == BlocksTC.logGreatwood || i1 == BlocksTC.logSilverwood) {
       BlockPos pos1 = new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ());
       if (world.isAirBlock(pos1)) {
         IBlockState k1 = RFBlocks.mana_pod.getStateForPlacement(world, pos1, facing, hitX, hitY, hitZ, 0, player);

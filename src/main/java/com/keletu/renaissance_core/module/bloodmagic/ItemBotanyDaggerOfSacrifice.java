@@ -55,7 +55,7 @@ public class ItemBotanyDaggerOfSacrifice extends Item {
         if (lifeEssenceRatio <= 0)
             return false;
 
-        int lifeEssence = (int) (lifeEssenceRatio * target.getHealth() * 5);
+        int lifeEssence = (int) (lifeEssenceRatio * target.getHealth() * 2);
         if (target instanceof EntityAnimal) {
             lifeEssence = (int) (lifeEssence * (2.5 + PurificationHelper.getCurrentPurity((EntityAnimal) target)));
         }
