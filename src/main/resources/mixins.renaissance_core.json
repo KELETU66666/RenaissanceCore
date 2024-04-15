@@ -1,7 +1,7 @@
 {
   "minVersion": "0.8",
   "package": "com.keletu.renaissance_core.mixins",
-  "refmap": "mixins.keletu.renaissance_core.json",
+  "refmap": "mixins.renaissance_core.refmap.json",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "MixinEntityFluxRift"
