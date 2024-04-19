@@ -28,8 +28,6 @@ public class BMRegistry implements IBloodMagicPlugin {
     public void register(IBloodMagicAPI api) {
         BMRegistry.api = api;
 
-        setAltarComponent(RFBlocks.thaumic_rune, "BLOODRUNE");
-        setAltarComponent(RFBlocks.mana_rune, "BLOODRUNE");
         setAltarComponent(RFBlocks.bloody_thaumium, "GLOWSTONE");
         setAltarComponent(RFBlocks.bloody_void, "BLOODSTONE");
 
@@ -60,8 +58,5 @@ public class BMRegistry implements IBloodMagicPlugin {
     public void registerRecipes(IBloodMagicRecipeRegistrar recipeRegistrar) {
         recipeRegistrar.addBloodAltar(new OreIngredient("blockThaumium"), new ItemStack(RFBlocks.bloody_thaumium), AltarTier.TWO.ordinal(), 10000, 50, 25);
         recipeRegistrar.addBloodAltar(new OreIngredient("blockVoid"),  new ItemStack(RFBlocks.bloody_void), AltarTier.THREE.ordinal(), 30000, 150, 100);
-
-        recipeRegistrar.addBloodAltar(Ingredient.fromItem(RFItems.thaumic_slate), ItemSlate.SlateType.REINFORCED.getStack(), AltarTier.TWO.ordinal(), 1500, 20, 20);
-        recipeRegistrar.addBloodAltar(Ingredient.fromItem(RFItems.mana_slate), ItemSlate.SlateType.REINFORCED.getStack(), AltarTier.TWO.ordinal(), 1500, 20, 20);
     }
 }

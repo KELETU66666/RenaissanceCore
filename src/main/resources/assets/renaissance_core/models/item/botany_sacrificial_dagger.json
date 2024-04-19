@@ -1,6 +1,0 @@
-{
-  "parent": "item/handheld",
-  "textures": {
-    "layer0": "renaissance_core:items/botany_sacrificial_dagger"
-  }
-}

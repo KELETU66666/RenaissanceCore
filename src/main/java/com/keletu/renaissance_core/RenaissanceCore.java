@@ -5,6 +5,7 @@ import com.keletu.renaissance_core.blocks.RFBlocks;
 import com.keletu.renaissance_core.events.ChampionEvents;
 import com.keletu.renaissance_core.items.ItemManaBean;
 import com.keletu.renaissance_core.items.RFItems;
+import com.keletu.renaissance_core.module.botania.SubtileRegisterOverride;
 import com.keletu.renaissance_core.village.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -63,6 +64,10 @@ public class RenaissanceCore
 
         if(event.getSide().isClient())
             registerItemColourHandlers();
+
+        SubtileRegisterOverride override = new SubtileRegisterOverride();
+        if (override.successInject)
+            override.reRegisterSubtile();
     }
 
     @EventHandler
@@ -79,25 +84,8 @@ public class RenaissanceCore
                         'W', ThaumcraftApiHelper.makeCrystal(Aspect.FLUX),
                         'C', new ItemStack(ItemsTC.nuggets, 1, 10)));
 
-        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("ftr:thaumic_dagger"),
-                new CrucibleRecipe(/*"DAGGER"*/"", new ItemStack(RFItems.thaumic_sacrificial_dagger), RegistrarBloodMagicItems.SACRIFICIAL_DAGGER, new AspectList().add(Aspect.MAGIC, 20).add(Aspect.EARTH, 20)));
-
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("ftr:thaumic_sacrificial_dagger"),
-                new InfusionRecipe(/*"SACRIFICIAL_DAGGER"*/"", new ItemStack(RFItems.thaumic_dagger_of_sacrifice, 1), 7, (new AspectList()).add(Aspect.MAGIC, 30).add(Aspect.LIFE, 30), new ItemStack(RFItems.thaumic_sacrificial_dagger), "ingotThaumium", "ingotThaumium"));
-
-        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("ftr:thaumic_slate"),
-                new CrucibleRecipe(/*"RUNE"*/"", new ItemStack(RFItems.thaumic_slate), Blocks.STONE, new AspectList().add(Aspect.MAGIC, 5).add(Aspect.EARTH, 5)));
-
         ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("ftr:ethereal_bloom"),
                 new CrucibleRecipe("ETHEREAL_BLOOM", new ItemStack(RFBlocks.ethereal_bloom), BlocksTC.shimmerleaf, new AspectList().add(Aspect.LIGHT, 20).add(Aspect.PLANT, 40).add(Aspect.LIFE, 40).add(Aspect.FLUX, 40)));
-
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("ftr:thaumic_rune"),
-                new InfusionRecipe(/*"RUNE"*/"", new ItemStack(RFBlocks.thaumic_rune, 1), 2, (new AspectList()).add(Aspect.MAGIC, 10).add(Aspect.LIFE, 10).add(Aspect.ORDER, 10), new ItemStack(Blocks.STONE), "ingotThaumium", new ItemStack(RFItems.thaumic_slate), "ingotThaumium", new ItemStack(RFItems.thaumic_slate)));
-
-        BotaniaAPI.registerRuneAltarRecipe(new ItemStack(RFItems.botany_sacrificial_dagger), 2000, "ingotElvenElementium", "ingotElvenElementium", new ItemStack(RegistrarBloodMagicItems.SACRIFICIAL_DAGGER));
-        BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(RFItems.botany_dagger_of_sacrifice), new ItemStack(RFItems.botany_sacrificial_dagger), 6000);
-
-        BotaniaAPI.registerManaInfusionRecipe(new ItemStack(RFItems.mana_slate, 1), new ItemStack(Blocks.STONE), 3000);
     }
 
     @SideOnly(Side.CLIENT)

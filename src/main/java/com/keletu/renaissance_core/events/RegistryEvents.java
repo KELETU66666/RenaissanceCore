@@ -18,8 +18,6 @@ public class RegistryEvents {
     @SubscribeEvent
     public static void regBlocks(RegistryEvent.Register<Block> event) {
         event.getRegistry().registerAll(RFBlocks.ethereal_bloom);
-        event.getRegistry().registerAll(RFBlocks.thaumic_rune);
-        event.getRegistry().registerAll(RFBlocks.mana_rune);
         event.getRegistry().registerAll(RFBlocks.bloody_thaumium);
         event.getRegistry().registerAll(RFBlocks.bloody_void);
         event.getRegistry().registerAll(RFBlocks.bloody_ichorium);
@@ -37,17 +35,7 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RFItems.bloodyThaumiumItem);
         event.getRegistry().registerAll(RFItems.bloodyVoidItem);
         event.getRegistry().registerAll(RFItems.bloodyIchoriumItem);
-        event.getRegistry().registerAll(RFItems.thaumicRuneItem);
-        event.getRegistry().registerAll(RFItems.botanyRuneItem);
 
-        event.getRegistry().registerAll(RFItems.thaumic_sacrificial_dagger);
-        event.getRegistry().registerAll(RFItems.botany_sacrificial_dagger);
-
-        event.getRegistry().registerAll(RFItems.thaumic_dagger_of_sacrifice);
-        event.getRegistry().registerAll(RFItems.botany_dagger_of_sacrifice);
-
-        event.getRegistry().registerAll(RFItems.mana_slate);
-        event.getRegistry().registerAll(RFItems.thaumic_slate);
         event.getRegistry().registerAll(RFItems.mana_bean);
     }
 }

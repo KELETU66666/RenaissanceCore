@@ -14,4 +14,14 @@ public class ConfigsRF
 	@Config.RangeInt(min = 1, max = 100)
 	@Config.RequiresMcRestart
 	public static int championChance = 7;
+
+	@Config.LangKey("Max flowers that endoflame's efficiency begin to reduce")
+	public static int endoFlameMaxFlowers = 5;
+
+	@Config.LangKey("Set how much MANA a TNT can generate for Entropinnyum")
+	public static int ENTROPINNYUM_GENERATING = 8000;
+
+	@Config.LangKey("AutoInfusion")
+	@Config.RequiresMcRestart
+	public static boolean autoInfusion = true;
 }
