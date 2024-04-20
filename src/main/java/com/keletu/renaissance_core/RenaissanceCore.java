@@ -5,6 +5,7 @@ import com.keletu.renaissance_core.blocks.RFBlocks;
 import com.keletu.renaissance_core.events.ChampionEvents;
 import com.keletu.renaissance_core.items.ItemManaBean;
 import com.keletu.renaissance_core.items.RFItems;
+import com.keletu.renaissance_core.module.botania.EntropinnyumTNTHandler;
 import com.keletu.renaissance_core.module.botania.SubtileRegisterOverride;
 import com.keletu.renaissance_core.village.*;
 import net.minecraft.client.Minecraft;
@@ -61,6 +62,7 @@ public class RenaissanceCore
         VillagerRegistry.instance().registerVillageCreationHandler(new VillageBankerManager());
         MapGenStructureIO.registerStructureComponent(ComponentBankerHome.class, "TEBank");
         MinecraftForge.EVENT_BUS.register(new LootHandler());
+        MinecraftForge.EVENT_BUS.register(new EntropinnyumTNTHandler());
 
         if(event.getSide().isClient())
             registerItemColourHandlers();
