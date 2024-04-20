@@ -20,8 +20,4 @@ public class ConfigsRF
 
 	@Config.LangKey("Set how much MANA a TNT can generate for Entropinnyum")
 	public static int ENTROPINNYUM_GENERATING = 8000;
-
-	@Config.LangKey("AutoInfusion")
-	@Config.RequiresMcRestart
-	public static boolean autoInfusion = true;
 }

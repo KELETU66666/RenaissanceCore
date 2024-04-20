@@ -1,7 +1,6 @@
 package com.keletu.renaissance_core.module.botania;
 
 import com.google.common.collect.BiMap;
-import com.keletu.renaissance_core.ConfigsRF;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.lib.LibBlockNames;
@@ -21,9 +20,7 @@ public class SubtileRegisterOverride {
     }
 
     public void reRegisterSubtile() {
-            //重新注册热爆花（产魔8000，阻止刷TNT）
         registerSubTileForce(LibBlockNames.SUBTILE_ENTROPINNYUM, SubTileEntropinnyumModified.class);
-            //重新注册火红莲（禁止堆）
         registerSubTileForce(LibBlockNames.SUBTILE_ENDOFLAME, SubTileEndoflameModified.class);
     }
 
