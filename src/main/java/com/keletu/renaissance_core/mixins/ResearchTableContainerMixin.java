@@ -1,5 +1,6 @@
 package com.keletu.renaissance_core.mixins;
 
+import com.keletu.renaissance_core.util.SF;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
@@ -51,15 +52,15 @@ public abstract class ResearchTableContainerMixin extends Container {
                 List<IItemHandler> invs = new ArrayList<>();
                 try {
                     TheorycraftCard card = (tileEntity.data.cardChoices.get(button - 4)).card;
-                        for (EnumFacing face : EnumFacing.VALUES) {
-                            BlockPos check = tileEntity.getPos().add(face.getDirectionVec());
-                            TileEntity checkInv = tileEntity.getWorld().getTileEntity(check);
-                            if (checkInv != null) {
-                                IItemHandler inv = checkInv.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face.getOpposite());
-                                if (inv != null)
-                                    invs.add(inv);
-                            }
+                    for (EnumFacing face : EnumFacing.VALUES) {
+                        BlockPos check = tileEntity.getPos().add(face.getDirectionVec());
+                        TileEntity checkInv = tileEntity.getWorld().getTileEntity(check);
+                        if (checkInv != null) {
+                            IItemHandler inv = checkInv.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face.getOpposite());
+                            if (inv != null)
+                                invs.add(inv);
                         }
+                    }
                     int[] invContains = new int[card.getRequiredItems() != null ? card.getRequiredItems().length : 0];
                     if (card.getRequiredItems() != null) {
                         ItemStack[] reqItems = card.getRequiredItems();

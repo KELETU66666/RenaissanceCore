@@ -1,4 +1,4 @@
-package com.keletu.renaissance_core.mixins;
+package com.keletu.renaissance_core.util;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
