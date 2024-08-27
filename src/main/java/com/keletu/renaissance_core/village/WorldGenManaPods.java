@@ -2,8 +2,6 @@
 // Class Version: 6
 package com.keletu.renaissance_core.village;
 
-import java.util.Random;
-
 import com.keletu.renaissance_core.blocks.RFBlocks;
 import com.keletu.renaissance_core.blocks.tile.TileManaPod;
 import net.minecraft.tileentity.TileEntity;
@@ -11,6 +9,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+
+import java.util.Random;
 
 public class WorldGenManaPods
 extends WorldGenerator {

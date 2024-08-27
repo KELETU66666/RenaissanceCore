@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "rotation=0": { "model": "renaissance_core:pech_skull_forage" },
+    "rotation=2": { "model": "renaissance_core:pech_skull_forage", "y": 180 },
+    "rotation=3":  { "model": "renaissance_core:pech_skull_forage", "y": 270 },
+    "rotation=1":  { "model": "renaissance_core:pech_skull_forage", "y": 90 }
+  }
+}

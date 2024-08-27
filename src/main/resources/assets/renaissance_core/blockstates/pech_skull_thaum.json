@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "rotation=0": { "model": "renaissance_core:pech_skull_thaum" },
+    "rotation=2": { "model": "renaissance_core:pech_skull_thaum", "y": 180 },
+    "rotation=3":  { "model": "renaissance_core:pech_skull_thaum", "y": 270 },
+    "rotation=1":  { "model": "renaissance_core:pech_skull_thaum", "y": 90 }
+  }
+}

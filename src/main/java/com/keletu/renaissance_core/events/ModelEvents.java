@@ -23,9 +23,9 @@ public class ModelEvents {
         defaultModel(RFItems.etherealBloomItem);
         defaultModel(RFItems.mana_bean);
 
-        defaultModel(RFItems.bloodyThaumiumItem);
-        defaultModel(RFItems.bloodyVoidItem);
-        defaultModel(RFItems.bloodyIchoriumItem);
+        defaultModel(RFItems.pechHeadNormal);
+        defaultModel(RFItems.pechHeadHunter);
+        defaultModel(RFItems.pechHeadThaumaturge);
     }
 
     static void defaultModel(Item item) {

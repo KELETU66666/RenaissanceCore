@@ -9,7 +9,7 @@ public class RFItems {
     public static final Item mana_bean = new ItemManaBean().setRegistryName("mana_bean").setTranslationKey("mana_bean");
 
     public static final Item etherealBloomItem = new RFItemBlocks(RFBlocks.ethereal_bloom);
-    public static final Item bloodyThaumiumItem = new RFItemBlocks(RFBlocks.bloody_thaumium);
-    public static final Item bloodyVoidItem = new RFItemBlocks(RFBlocks.bloody_void);
-    public static final Item bloodyIchoriumItem = new RFItemBlocks(RFBlocks.bloody_ichorium);
+    public static final Item pechHeadNormal = new RFItemBlocks(RFBlocks.pechHead_normal);
+    public static final Item pechHeadHunter = new RFItemBlocks(RFBlocks.pechHead_hunter);
+    public static final Item pechHeadThaumaturge = new RFItemBlocks(RFBlocks.pechHead_thaumaturge);
 }

@@ -3,9 +3,28 @@ item.mana_bean.name=Mana Bean
 
 tile.ethereal_bloom.name=Ethereal Bloom
 
-tile.bloody_thaumium.name=Bloody Thaumium Block
-tile.bloody_void.name=Bloody Void Block
-tile.bloody_ichorium.name=Bloody Ichorium Block
+tile.pech_skull_forage.name=Forage Pech Head
+tile.pech_skull_stalker.name=Stalker Pech Head
+tile.pech_skull_thaum.name=Mage Pech Head
+
+
+golem.head.forage=Pech Forage Head
+golem.head.text.forage=Pech Forage Head
+golem.head.stalker=Pech Stalker Head
+golem.head.text.stalker=Pech Stalker Head
+golem.head.thaumium=Pech Mage Head
+golem.head.text.thaumium=Pech Mage Head
+
+
+golem.addon.bubble_armor=Bubble Wrap
+golem.addon.text.bubble_armor=Prevent golem receives in-wall damage.
+
+golem.trait.greedy=Greedy
+golem.trait.text.greedy=Your golem looks more greedy.
+
+golem.trait.bubble=Bubbly
+golem.trait.text.bubble=Prevent golem receives in-wall damage.
+
 tile.mana_pod.name=Mana Pod
 
 entity.Villager.wizard=Thaumaturger

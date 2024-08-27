@@ -15,12 +15,11 @@ import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.common.entities.monster.boss.EntityThaumcraftBoss;
 import thaumcraft.common.entities.monster.mods.ChampionModTainted;
 import thaumcraft.common.entities.monster.mods.ChampionModifier;
+import static thaumcraft.common.lib.utils.EntityUtils.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-import static thaumcraft.common.lib.utils.EntityUtils.*;
 
 @Mod.EventBusSubscriber(modid = RenaissanceCore.MODID)
 public class ChampionEvents {
