@@ -87,7 +87,7 @@ public class InitBotaniaRecipes {
                 new AspectList().add(Aspect.WATER, 2).add(Aspect.ENTROPY, 2),
                 new ItemStack(ModItems.virus, 1, 0),
                 new Object[]{
-                        new ItemStack(Blocks.SKULL, 1, 2),
+                        new ItemStack(Items.SKULL, 1, 2),
                         ModItems.vineBall,
                         new ItemStack(BlocksTC.crystalTaint),
                         "manaPearl",
@@ -102,7 +102,7 @@ public class InitBotaniaRecipes {
                 new AspectList().add(Aspect.WATER, 2).add(Aspect.ENTROPY, 2),
                 new ItemStack(ModItems.virus, 1, 1),
                 new Object[]{
-                        new ItemStack(Blocks.SKULL, 1, 0),
+                        new ItemStack(Items.SKULL, 1, 0),
                         ModItems.vineBall,
                         new ItemStack(BlocksTC.crystalTaint),
                         "manaPearl",
