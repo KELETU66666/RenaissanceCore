@@ -2,7 +2,6 @@ package com.keletu.renaissance_core.tweaks;
 
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.util.DummyRecipe;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
