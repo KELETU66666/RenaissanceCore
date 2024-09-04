@@ -3,7 +3,7 @@ package com.keletu.renaissance_core;
 import net.minecraftforge.common.config.Config;
 
 @Config(modid = RenaissanceCore.MODID)
-public class ConfigsRF
+public class ConfigsRC
 {
 	@Config.LangKey("Pods Aspect amuont")
 	@Config.RangeInt(min = 1, max = 128)
@@ -20,4 +20,7 @@ public class ConfigsRF
 
 	@Config.LangKey("Set how much MANA a TNT can generate for Entropinnyum")
 	public static int ENTROPINNYUM_GENERATING = 8000;
+
+	@Config.LangKey("Changes Botania Recipes")
+	public static boolean CHANGE_BOTANIA_RECIPE = true;
 }

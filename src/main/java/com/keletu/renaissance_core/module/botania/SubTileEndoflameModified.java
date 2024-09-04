@@ -1,6 +1,6 @@
 package com.keletu.renaissance_core.module.botania;
 
-import com.keletu.renaissance_core.ConfigsRF;
+import com.keletu.renaissance_core.ConfigsRC;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.nbt.NBTTagCompound;
@@ -40,7 +40,7 @@ public class SubTileEndoflameModified extends SubTileEndoflame {
         if (!supertile.getWorld().isRemote && (flowerNum < 0 || ticksExisted % 80 == 0)) {
             flowerNum = Tools.getNearbyFlowers(getWorld(), getPos(), RANGE + 2,
                     ste -> ste instanceof SubTileEndoflame && ((SubTileEndoflame) ste).canGeneratePassively());
-            setEfficiency(Tools.getOutputEfficiency(flowerNum, ConfigsRF.endoFlameMaxFlowers));
+            setEfficiency(Tools.getOutputEfficiency(flowerNum, ConfigsRC.endoFlameMaxFlowers));
         }
     }
 
@@ -58,7 +58,7 @@ public class SubTileEndoflameModified extends SubTileEndoflame {
     @Override
     public void renderHUD(Minecraft mc, ScaledResolution res) {
         super.renderHUD(mc, res);
-        Tools.renderTooManyFlowers(mc, res, flowerNum, ConfigsRF.endoFlameMaxFlowers);
+        Tools.renderTooManyFlowers(mc, res, flowerNum, ConfigsRC.endoFlameMaxFlowers);
     }
 
 

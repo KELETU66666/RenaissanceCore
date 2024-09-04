@@ -5,7 +5,7 @@ import zone.rong.mixinbooter.ILateMixinLoader;
 
 import java.util.List;
 
-public class RFLoader implements ILateMixinLoader {
+public class RCLoader implements ILateMixinLoader {
     @Override
     public List<String> getMixinConfigs() {
         return Lists.newArrayList("mixins.renaissance_core.json");

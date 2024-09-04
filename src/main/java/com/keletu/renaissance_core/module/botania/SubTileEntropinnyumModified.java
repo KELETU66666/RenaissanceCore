@@ -1,6 +1,6 @@
 package com.keletu.renaissance_core.module.botania;
 
-import com.keletu.renaissance_core.ConfigsRF;
+import com.keletu.renaissance_core.ConfigsRC;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.init.SoundEvents;
@@ -82,7 +82,7 @@ public class SubTileEntropinnyumModified extends SubTileGenerating {
 
     @Override
     public int getMaxMana() {
-        return ConfigsRF.ENTROPINNYUM_GENERATING;
+        return ConfigsRC.ENTROPINNYUM_GENERATING;
     }
 
     @Override

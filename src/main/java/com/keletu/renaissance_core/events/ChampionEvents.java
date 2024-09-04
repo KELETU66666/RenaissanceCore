@@ -1,6 +1,6 @@
 package com.keletu.renaissance_core.events;
 
-import com.keletu.renaissance_core.ConfigsRF;
+import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -49,7 +49,7 @@ public class ChampionEvents {
             }
             if (event.getEntity() instanceof EntityMob) {
                 EntityMob mob = (EntityMob)event.getEntity();
-                if(infernalMobs.contains(mob.getName()) && event.getWorld().rand.nextInt(100) <= ConfigsRF.championChance - 1)
+                if(infernalMobs.contains(mob.getName()) && event.getWorld().rand.nextInt(100) <= ConfigsRC.championChance - 1)
                         makeChampion(mob, false);
             }
         }

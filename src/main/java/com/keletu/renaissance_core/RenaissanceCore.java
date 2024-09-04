@@ -6,6 +6,7 @@ import com.keletu.renaissance_core.items.ItemManaBean;
 import com.keletu.renaissance_core.items.RFItems;
 import com.keletu.renaissance_core.module.botania.EntropinnyumTNTHandler;
 import com.keletu.renaissance_core.module.botania.SubtileRegisterOverride;
+import com.keletu.renaissance_core.tweaks.InitBotaniaRecipes;
 import com.keletu.renaissance_core.village.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -37,6 +38,7 @@ import thaumcraft.api.golems.parts.GolemAddon;
 import thaumcraft.api.golems.parts.GolemHead;
 import thaumcraft.api.golems.parts.PartModel;
 import thaumcraft.api.items.ItemsTC;
+import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.common.golems.client.PartModelHauler;
 
 
@@ -57,8 +59,11 @@ public class RenaissanceCore {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
+        if (ConfigsRC.CHANGE_BOTANIA_RECIPE) {
+            ResearchCategories.registerCategory("BOTANY", "HEDGEALCHEMY", null, new ResourceLocation("botania", "textures/items/grassseeds0.png"), new ResourceLocation(RenaissanceCore.MODID, "textures/misc/tab_botany.jpg"));
+            ThaumcraftApi.registerResearchLocation(new ResourceLocation(MODID, "research/botany.json"));
+        }
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(MODID, "research/research.json"));
-
         VillageWizardManager.registerUselessVillager();
         VillagerRegistry.instance().registerVillageCreationHandler(new VillageWizardManager());
         MapGenStructureIO.registerStructureComponent(ComponentWizardTower.class, "TEWizTower");
@@ -79,6 +84,9 @@ public class RenaissanceCore {
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
+        if (ConfigsRC.CHANGE_BOTANIA_RECIPE)
+            InitBotaniaRecipes.replaceWithVanillaRecipes();
+
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("ftr:rift_feed"),
                 new ShapedArcaneRecipe(new ResourceLocation(""), "RIFT_FEED",
                         75,

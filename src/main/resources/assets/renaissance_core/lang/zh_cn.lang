@@ -5,3 +5,75 @@ tile.mana_pod.name=魔豆荚
 
 entity.Villager.wizard=村民神秘使
 entity.Villager.banker=银行掌柜
+
+tc.research_category.BOTANY=植物学
+
+research.basicbotany.title=基础植物学
+research.basicbotany.stage.0=你在故纸堆中翻到了魔法之花的只言片语,但看起来它们在野外已经灭绝.同时你注意到,岩穴中的蘑菇与这些传说中的花有许多类似的特征.
+research.basicbotany.stage.1=你在故纸堆中翻到了魔法之花的只言片语,但看起来它们在野外已经灭绝.同时你注意到,岩穴中的蘑菇与这些传说中的花有许多类似的特征.<BR>随着炼金术的发展,你认为可以先从普通的地表植物中提取出某些源质,再将蘑菇孢子浸泡在其中,就可以得到那些传说中的花了.
+
+research.botanydecay.title=反向进化
+research.botanydecay.stage.0=有时候倒退是件好事.
+research.botanydecay.stage.1=有时候倒退是件好事. <BR>你将制造魔法之花的方法逆转,成功实现了花转化回蘑菇的操作.
+
+research.brewery.title=魔法酿药
+research.brewery.stage.0=你的最新研究领导了药剂酿造学的突破.改进后的处理可以得到更少杂质、产量更高的药剂.
+research.brewery.stage.1=你的最新研究领导了药剂酿造学的突破.改进后的处理可以得到更少杂质、产量更高的药剂.<BR>你甚至可以将酿造好的药剂存放在瓶中,偶尔喝一口,而不会让外界空气破坏药性.
+
+research.virus.title=增生
+research.virus.stage.0=你不小心闯入了肉食植物这一奇怪的边缘学科,而且还创造出了某些疯狂的东西.
+research.virus.stage.1=你不小心闯入了肉食植物这一奇怪的边缘学科,而且还创造出了某些疯狂的东西. <BR>至少动物实验条例似乎并不能在道德上约束你.
+
+research.flowerdupe.title=复制
+research.flowerdupe.stage.0=实践表明,这些花在野外很难繁殖,而且采集十分困难.
+research.flowerdupe.stage.1=实践表明,这些花在野外很难繁殖,而且采集十分困难. <BR>不过好在你在神秘学方面的冒险尝试获得了成功,开发了一系列植物魔法相关的合成表. 现在你可以分离一些花枝,将其浸入调配好的源质中,就可以繁殖出它的根部.
+
+research.flowerexchange.title=花卉栽培
+research.flowerexchange.stage.0=迄今为止,你的所有炼金尝试得到的都是与父本一样的花.
+research.flowerexchange.stage.1=迄今为止,你的所有炼金尝试得到的都是与父本一样的花. <BR>这种新方法可以让你将某些植物的颜色印到花上.
+
+research.alchemycatalyst.title=炼金催化剂
+research.alchemycatalyst.stage.0=用各种材料进行炼金是很棒,但你觉得你还可以做得更好.
+research.alchemycatalyst.stage.1=用各种材料进行炼金是很棒,但你觉得你还可以做得更好.<BR>你设计了一种机器,可以用mana替换一些材料.
+
+research.runealtar.title=符文祭坛
+research.runealtar.stage.0=符文学的最新突破揭示了如何将物品注入其他物品的方法.
+research.runealtar.stage.1=符文学的最新突破揭示了如何将物品注入其他物品的方法.
+research.runealtar.stage.2=符文学的最新突破揭示了如何将物品注入其他物品的方法.
+research.runealtar.stage.3=符文学的最新突破揭示了如何将物品注入其他物品的方法. <BR>有了新的理论支持,你决定采用这种更加"自然"的方法.
+
+research.terraplate.title=泰拉钢制作
+research.terraplate.stage.0=最近的出版物展示了铀的力量.你决定尝试将能量泵回金属,创造出一种新的材料.
+research.terraplate.stage.1=最近的出版物展示了铀的力量.你决定尝试将能量泵回金属,创造出一种新的材料. <BR>在没有经过训练的人眼里,它看起来更具辐射性,但你清楚它仅仅是绿色更明亮的阴影.
+
+research.terrasword.title=泰拉之刃
+research.terrasword.stage.0=泰拉钢是一种比神秘锭更加强大的材料,所以你打算用它将自己的风雷剑升级一下.
+research.terrasword.stage.1=泰拉钢是一种比神秘锭更加强大的材料,所以你打算用它将自己的风雷剑升级一下. <BR>你现在可以制作泰拉之刃。
+
+research.terrapick.title=泰拉粉碎者
+research.terrapick.stage.0=泰拉钢,钢如其名,对大地元素具有很高的亲和性.你那柄老旧的炽心镐看起来是不错的坯子.
+research.terrapick.stage.1=泰拉钢,钢如其名,对大地元素具有很高的亲和性.你那柄老旧的炽心镐看起来是不错的坯子. <BR>你现在可以制作泰拉粉碎者。
+
+research.terraaxe.title=泰拉断裂者
+research.terraaxe.stage.0=在魔法冶金学方面,你的最新发明展现了与自然物质良好的亲和性.再进一步优化后,你创造了一种处理方式,可以将泰拉钢用于奔流斧的升级.
+research.terraaxe.stage.1=在魔法冶金学方面,你的最新发明展现了与自然物质良好的亲和性.再进一步优化后,你创造了一种处理方式,可以将泰拉钢用于奔流斧的升级. <BR>你现在可以制作泰拉断裂者。
+
+research.alfportal.title=精灵传送门
+research.alfportal.stage.0=有传言称,曾有一个比下界还遥远的世界,已消泯于时间的长河中.但现在,你拥有了更强大的能源,或许可以尝试构建一个传送门.
+research.alfportal.stage.1=有传言称,曾有一个比下界还遥远的世界,已消泯于时间的长河中.但现在,你拥有了更强大的能源,或许可以尝试构建一个传送门. <BR>首先,我们需要一个框架以调整此过程中涉及的能量. <BR>而第二部分是控制装置.想要打开一个稳定的跨世界传送门是个艰巨的挑战,需要进一步修整才能将mana源和重定向装置指向准确地点,最终建立稳定的连接.
+
+research.bossfight.title=盖亚水晶
+research.bossfight.stage.0=你在光环聚焦方面的研究已经抵达了神秘学知识的巅峰.其他神秘使都认为你对涉及能量方面的研究太过痴狂,并想让你停止继续实验,更有甚者避之如蛇蝎.
+research.bossfight.stage.1=你在光环聚焦方面的研究已经抵达了神秘学知识的巅峰.其他神秘使都认为你对涉及能量方面的研究太过痴狂,并想让你停止继续实验,更有甚者避之如蛇蝎. <BR>但他们都不了解你.毕竟,在世界壁垒上撕裂出一个足够巨大的空洞恰恰就是你的目的.
+
+research.pylon.title=魔力水晶
+research.pylon.stage.0=用书架来为附魔过程充能已经过时了.
+research.pylon.stage.1=用书架来为附魔过程充能已经过时了.<BR>你发现了一种替代方法,可以通过富mana设备的聚焦光环被动注入附魔. 魔法水晶似乎也可以作为注魔的稳定物.
+
+research.alfpylon.title=泰拉水晶
+research.alfpylon.stage.0=你需要更强大的水晶...
+research.alfpylon.stage.1=你需要更强大的水晶.<BR>它有能力聚焦足够的能量,击穿世界壁垒.不过目前只能击穿一个小洞.
+
+research.largervial.title=精灵玻璃烧瓶
+research.largervial.stage.0=这种异世界玻璃是一种非常优秀的药剂容器.
+research.largervial.stage.1=这种异世界玻璃是一种非常优秀的药剂容器.<BR>由于玻璃本身已高度魔法化,所以烧瓶从药剂吸收的更少,留下的药性更多.

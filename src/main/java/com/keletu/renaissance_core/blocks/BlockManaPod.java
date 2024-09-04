@@ -1,6 +1,6 @@
 package com.keletu.renaissance_core.blocks;
 
-import com.keletu.renaissance_core.ConfigsRF;
+import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.blocks.tile.TileManaPod;
 import com.keletu.renaissance_core.items.ItemManaBean;
 import com.keletu.renaissance_core.items.RFItems;
@@ -215,7 +215,7 @@ public class BlockManaPod extends Block implements IGrowable {
     } 
     for (int k1 = 0; k1 < b0; k1++) {
       ItemStack i = new ItemStack(RFItems.mana_bean);
-      ((ItemManaBean)i.getItem()).setAspects(i, (new AspectList()).add(aspect, ConfigsRF.podAspect));
+      ((ItemManaBean)i.getItem()).setAspects(i, (new AspectList()).add(aspect, ConfigsRC.podAspect));
       dropped.add(i);
     } 
     st.remove(new WorldCoordinates(pos, ((World) world).provider.getDimension()));
