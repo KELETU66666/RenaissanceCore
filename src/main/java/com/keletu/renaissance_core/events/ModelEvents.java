@@ -22,6 +22,7 @@ public class ModelEvents {
         defaultModel(RFItems.rift_feed);
         defaultModel(RFItems.etherealBloomItem);
         defaultModel(RFItems.mana_bean);
+        defaultModel(RFItems.arcane_lime_powder);
 
         defaultModel(RFItems.pechHeadNormal);
         defaultModel(RFItems.pechHeadHunter);

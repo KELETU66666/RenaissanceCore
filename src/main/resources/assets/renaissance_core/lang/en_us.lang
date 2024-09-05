@@ -1,5 +1,6 @@
 item.rift_feed.name=Rift Feed
 item.mana_bean.name=Mana Bean
+item.arcane_lime_powder.name=Powder of Arcane Mixture
 
 tile.ethereal_bloom.name=Ethereal Bloom
 
@@ -7,6 +8,7 @@ tile.pech_skull_forage.name=Forage Pech Head
 tile.pech_skull_stalker.name=Stalker Pech Head
 tile.pech_skull_thaum.name=Mage Pech Head
 
+tile.full_crucible.name=Filled Crucible
 
 golem.head.forage=Pech Forage Head
 golem.head.text.forage=Pech Forage Head
@@ -33,8 +35,12 @@ entity.Villager.banker=Banker
 message.renaissance-core.botaniaaddon.manyflowers=Too many flowers, Efficiency %s%%
 
 ftr.research.rift_feed.title=Feed the Rift
-ftr.research.rift_feed.text=[WIP]
-ftr.research.rift_feed.complete.text=[WIP]
+ftr.research.rift_feed.text=say goodbye to you bad-luck.
+ftr.research.rift_feed.complete.text=throw it to a rift to feed it, when rift too large it will explode and drop primordial dust.
+
+ftr.research.arcane_lime_powder.title=Arcane Lime Mixture
+ftr.research.arcane_lime_powder.text=more useful than quartz sliver.
+ftr.research.arcane_lime_powder.complete.text=throw it to crucible can clear crucible without pollution.
 
 ftr.research.ethereal_bloom.title=Purifies the Taint
 ftr.research.ethereal_bloom.text=There are some scraps that mention a species of bloom. At that time when there were condensed nodes in the aura, there was a kind of malignant node that corrupted everything in the environment around it. When exposed to the sacred radiance of this bloom, it could purify all corrupted things. Let's see if I can recreate it.

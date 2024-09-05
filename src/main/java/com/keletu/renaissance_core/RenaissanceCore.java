@@ -33,6 +33,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
+import thaumcraft.api.crafting.ShapelessArcaneRecipe;
 import thaumcraft.api.golems.EnumGolemTrait;
 import thaumcraft.api.golems.parts.GolemAddon;
 import thaumcraft.api.golems.parts.GolemHead;
@@ -87,7 +88,7 @@ public class RenaissanceCore {
         if (ConfigsRC.CHANGE_BOTANIA_RECIPE)
             InitBotaniaRecipes.replaceWithVanillaRecipes();
 
-        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("ftr:rift_feed"),
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("trk:rift_feed"),
                 new ShapedArcaneRecipe(new ResourceLocation(""), "RIFT_FEED",
                         75,
                         new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1),
@@ -99,8 +100,21 @@ public class RenaissanceCore {
                         'W', ThaumcraftApiHelper.makeCrystal(Aspect.FLUX),
                         'C', new ItemStack(ItemsTC.nuggets, 1, 10)));
 
-        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("ftr:ethereal_bloom"),
-                new CrucibleRecipe("ETHEREAL_BLOOM", new ItemStack(RFBlocks.ethereal_bloom), BlocksTC.shimmerleaf, new AspectList().add(Aspect.LIGHT, 20).add(Aspect.PLANT, 40).add(Aspect.LIFE, 40).add(Aspect.FLUX, 40)));
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("trk:lime_powder"),
+                new ShapelessArcaneRecipe(new ResourceLocation(""), "ARCANE_LIME_POWDER",
+                        20,
+                        new AspectList(),
+                        new ItemStack(RFItems.arcane_lime_powder, 2),
+                        new Object[]{
+                                new ItemStack(Items.QUARTZ),
+                                new ItemStack(Items.QUARTZ),
+                                new ItemStack(Items.CLAY_BALL),
+                                new ItemStack(Items.CLAY_BALL),
+                                new ItemStack(ItemsTC.tallow),
+                                new ItemStack(ItemsTC.tallow),
+                                new ItemStack(ItemsTC.tallow)}));
+
+        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("trk:ethereal_bloom"), new CrucibleRecipe("ETHEREAL_BLOOM", new ItemStack(RFBlocks.ethereal_bloom), BlocksTC.shimmerleaf, new AspectList().add(Aspect.LIGHT, 20).add(Aspect.PLANT, 40).add(Aspect.LIFE, 40).add(Aspect.FLUX, 40)));
 
         GolemHead.register(new GolemHead("FORAGE", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/r_pech.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_forage.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RFItems.pechHeadNormal)}, new EnumGolemTrait[]{RenaissanceCore.GREEDY}));
         GolemHead.register(new GolemHead("STALKER", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/r_pech_stalker.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_stalker.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RFItems.pechHeadHunter)}, new EnumGolemTrait[]{EnumGolemTrait.LIGHT}));

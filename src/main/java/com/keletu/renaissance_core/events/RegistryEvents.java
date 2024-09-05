@@ -38,6 +38,7 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RFBlocks.pechHead_normal);
         event.getRegistry().registerAll(RFBlocks.pechHead_hunter);
         event.getRegistry().registerAll(RFBlocks.pechHead_thaumaturge);
+        event.getRegistry().registerAll(RFBlocks.full_crucible);
 
         GameRegistry.registerTileEntity(TileEtherealBloom.class, new ResourceLocation(RenaissanceCore.MODID, "ethereal_bloom"));
         GameRegistry.registerTileEntity(TileManaPod.class, new ResourceLocation(RenaissanceCore.MODID, "mana_pod"));
@@ -46,6 +47,7 @@ public class RegistryEvents {
     @SubscribeEvent
     public static void regItems(RegistryEvent.Register<Item> event) {
         event.getRegistry().registerAll(RFItems.rift_feed);
+        event.getRegistry().registerAll(RFItems.arcane_lime_powder);
         event.getRegistry().registerAll(RFItems.etherealBloomItem);
 
         event.getRegistry().registerAll(RFItems.pechHeadNormal);

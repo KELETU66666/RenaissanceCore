@@ -29,7 +29,44 @@
         {
           "text": "ftr.research.rift_feed.complete.text",
           "recipes": [
-            "ftr:rift_feed"
+            "trk:rift_feed"
+          ]
+        }
+      ]
+    },
+
+    {
+      "key": "ARCANE_LIME_POWDER",
+      "name": "ftr.research.arcane_lime_powder.title",
+      "category": "BASICS",
+      "icons": [
+        "renaissance_core:arcane_lime_powder"
+      ],
+      "parents": [
+        "UNLOCKALCHEMY"
+      ],
+      "meta": [
+        "HIDDEN",
+        "ROUND"
+      ],
+      "location": [
+        1,
+        1
+      ],
+      "stages": [
+        {
+          "text": "ftr.research.arcane_lime_powder.text",
+          "required_item": [
+            "thaumcraft:nugget;1;9"
+          ],
+          "required_knowledge": [
+            "THEORY;ALCHEMY;1"
+          ]
+        },
+        {
+          "text": "ftr.research.arcane_lime_powder.complete.text",
+          "recipes": [
+            "trk:lime_powder"
           ]
         }
       ]
@@ -59,7 +96,7 @@
         {
           "text": "ftr.research.ethereal_bloom.complete.text",
           "recipes": [
-            "ftr:ethereal_bloom"
+            "trk:ethereal_bloom"
           ]
         }
       ]
