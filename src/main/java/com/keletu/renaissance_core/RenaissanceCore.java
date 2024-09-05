@@ -102,16 +102,13 @@ public class RenaissanceCore {
 
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("trk:lime_powder"),
                 new ShapelessArcaneRecipe(new ResourceLocation(""), "ARCANE_LIME_POWDER",
-                        20,
+                        10,
                         new AspectList(),
-                        new ItemStack(RFItems.arcane_lime_powder, 2),
+                        new ItemStack(RFItems.arcane_lime_powder, 4),
                         new Object[]{
-                                new ItemStack(Items.QUARTZ),
-                                new ItemStack(Items.QUARTZ),
+                                new ItemStack(ItemsTC.quicksilver),
+                                new ItemStack(ItemsTC.salisMundus),
                                 new ItemStack(Items.CLAY_BALL),
-                                new ItemStack(Items.CLAY_BALL),
-                                new ItemStack(ItemsTC.tallow),
-                                new ItemStack(ItemsTC.tallow),
                                 new ItemStack(ItemsTC.tallow)}));
 
         ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("trk:ethereal_bloom"), new CrucibleRecipe("ETHEREAL_BLOOM", new ItemStack(RFBlocks.ethereal_bloom), BlocksTC.shimmerleaf, new AspectList().add(Aspect.LIGHT, 20).add(Aspect.PLANT, 40).add(Aspect.LIFE, 40).add(Aspect.FLUX, 40)));
