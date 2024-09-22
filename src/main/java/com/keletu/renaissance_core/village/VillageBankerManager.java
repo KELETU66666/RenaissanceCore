@@ -26,12 +26,12 @@ public class VillageBankerManager implements VillagerRegistry.IVillageCreationHa
             "renaissance_core:textures/models/entity/banker.png",
             "minecraft:textures/entity/zombie_villager/zombie_villager.png");
 
-    public static void registerUselessVillager() {
+    public static void registerMagicVillager() {
 
 
         GameRegistry.findRegistry(VillagerRegistry.VillagerProfession.class).register(prof);
 
-        new VillagerRegistry.VillagerCareer(prof, "banker").addTrade(1, new ItemForItems());
+        new VillagerRegistry.VillagerCareer(prof, "banker").addTrade(1, new itemForItems1()).addTrade(2, new itemForItems2()).addTrade(3, new itemForItems3()).addTrade(4, new itemForItems4());
 
     }
 
@@ -48,25 +48,35 @@ public class VillageBankerManager implements VillagerRegistry.IVillageCreationHa
         return (StructureVillagePieces.Village) ComponentBankerHome.buildComponent(startPiece, pieces, random, p1, p2, p3, enumFacing, p5);
     }
 
-    public static class ItemForItems implements EntityVillager.ITradeList {
-        public ItemForItems() {
-        }
-
+    public static class itemForItems1 implements EntityVillager.ITradeList {
         public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
-        //    if (merchant.getProfession() == 190) {
             recipeList.add(new MerchantRecipe(new ItemStack(Items.GOLD_NUGGET, 20 + random.nextInt(3)), new ItemStack(Items.EMERALD)));
             recipeList.add(new MerchantRecipe(new ItemStack(Items.GOLD_NUGGET, 2 + random.nextInt(2)), Items.ARROW));
             recipeList.add(new MerchantRecipe(new ItemStack(Items.GOLD_NUGGET, 6 + random.nextInt(3)), Item.getItemFromBlock(Blocks.WOOL)));
+        }
+    }
+
+    public static class itemForItems2 implements EntityVillager.ITradeList {
+        public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
             recipeList.add(new MerchantRecipe(new ItemStack(Items.GOLD_NUGGET, 3 + random.nextInt(2)), Items.PAPER));
             recipeList.add(new MerchantRecipe(new ItemStack(Items.GOLD_NUGGET, 7 + random.nextInt(3)), Items.BOOK));
             recipeList.add(new MerchantRecipe(new ItemStack(Items.GOLD_NUGGET, 16 + random.nextInt(5)), Items.EXPERIENCE_BOTTLE));
+        }
+    }
+
+    public static class itemForItems3 implements EntityVillager.ITradeList {
+        public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
             recipeList.add(new MerchantRecipe(new ItemStack(Items.GOLD_NUGGET, 9 + random.nextInt(4)), Item.getItemFromBlock(Blocks.GLOWSTONE)));
             recipeList.add(new MerchantRecipe(new ItemStack(Items.GOLD_NUGGET, 2 + random.nextInt(2)), Items.COAL));
             recipeList.add(new MerchantRecipe(new ItemStack(Items.GOLD_NUGGET, 22 + random.nextInt(3)), Items.DIAMOND));
+        }
+    }
+
+    public static class itemForItems4 implements EntityVillager.ITradeList {
+        public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
             recipeList.add(new MerchantRecipe(new ItemStack(Items.GOLD_NUGGET, 6 + random.nextInt(3)), Items.IRON_INGOT));
             recipeList.add(new MerchantRecipe(new ItemStack(Items.GOLD_NUGGET, 10 + random.nextInt(3)), new ItemStack(ItemsTC.ingots, 1, 0)));
             recipeList.add(new MerchantRecipe(new ItemStack(Items.GOLD_NUGGET, 25 + random.nextInt(8)), Items.SADDLE));
-            }
-    //    }
+        }
     }
 }

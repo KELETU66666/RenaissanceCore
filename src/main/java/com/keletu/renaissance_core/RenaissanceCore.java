@@ -56,6 +56,14 @@ public class RenaissanceCore {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         ChampionEvents.infernalMobList();
+
+        try {
+            MapGenStructureIO.registerStructureComponent(ComponentWizardTower.class, "RCWizTower");
+            MapGenStructureIO.registerStructureComponent(ComponentBankerHome.class, "RCBank");
+        }catch (Throwable ignored) {
+
+        }
+
     }
 
     @EventHandler
@@ -65,13 +73,12 @@ public class RenaissanceCore {
             ThaumcraftApi.registerResearchLocation(new ResourceLocation(MODID, "research/botany.json"));
         }
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(MODID, "research/research.json"));
-        VillageWizardManager.registerUselessVillager();
-        VillagerRegistry.instance().registerVillageCreationHandler(new VillageWizardManager());
-        MapGenStructureIO.registerStructureComponent(ComponentWizardTower.class, "TEWizTower");
 
-        VillageBankerManager.registerUselessVillager();
+        VillageWizardManager.registerMagicVillager();
+        VillageBankerManager.registerMagicVillager();
+        VillagerRegistry.instance().registerVillageCreationHandler(new VillageWizardManager());
         VillagerRegistry.instance().registerVillageCreationHandler(new VillageBankerManager());
-        MapGenStructureIO.registerStructureComponent(ComponentBankerHome.class, "TEBank");
+
         MinecraftForge.EVENT_BUS.register(new LootHandler());
         MinecraftForge.EVENT_BUS.register(new EntropinnyumTNTHandler());
 

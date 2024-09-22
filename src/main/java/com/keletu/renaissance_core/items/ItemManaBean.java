@@ -68,20 +68,21 @@ public class ItemManaBean extends ItemFood implements IEssentiaContainerItem {
 
     static Aspect[] displayAspects = (Aspect[]) Aspect.aspects.values().toArray((Object[]) new Aspect[0]);
 
+    public static ItemStack makeManaBean(Aspect aspect, int stackSize) {
+        if (aspect == null) {
+            return null;
+        } else {
+            ItemStack is = new ItemStack(RFItems.mana_bean, stackSize, 0);
+            ((IEssentiaContainerItem)RFItems.mana_bean).setAspects(is, (new AspectList()).add(aspect, ConfigsRC.podAspect));
+            return is;
+        }
+    }
+    
     @SideOnly(Side.CLIENT)
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
         if (tab == ConfigItems.TABTC)
             items.add(new ItemStack(this, 1, 0));
     }
-
-    //public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-    //  AspectList aspects = getAspects(stack);
-    //  if (aspects != null && aspects.size() > 0)
-    //    for (Aspect tag : aspects.getAspects()) {
-    //      tooltip.add(tag.getName() + " x" + aspects.getAmount(tag));
-    //    }
-    //  super.addInformation(stack, worldIn, tooltip, flagIn);
-    //}
 
     @SideOnly(Side.CLIENT)
     public int getColor(ItemStack stack, int par2) {
