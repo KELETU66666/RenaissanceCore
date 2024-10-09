@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "thaumicaugmentation:research_notes"
+    },
+    "title": {
+      "translate": "advancement.renaissancecore:notes"
+    },
+    "description": {
+      "translate": "advancement.renaissancecore:notes.desc"
+    },
+    "frame": "challenge"
+  },
+  "parent": "renaissance_core:emptiness",
+  "criteria": {
+    "dirtrod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "thaumicaugmentation:research_notes"
+          }
+        ]
+      }
+    }
+  }
+}

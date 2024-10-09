@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "thaumcraft:caster_basic"
+    },
+    "title": {
+      "translate": "advancement.renaissancecore:caster"
+    },
+    "description": {
+      "translate": "advancement.renaissancecore:caster.desc"
+    }
+  },
+  "parent": "renaissance_core:thaumometer",
+  "criteria": {
+    "dirtrod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "thaumcraft:caster_basic"
+          }
+        ]
+      }
+    }
+  }
+}

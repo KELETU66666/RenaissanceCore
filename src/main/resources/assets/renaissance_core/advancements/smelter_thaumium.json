@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "thaumcraft:smelter_thaumium"
+    },
+    "title": {
+      "translate": "advancement.renaissancecore:furnace1"
+    },
+    "description": {
+      "translate": "advancement.renaissancecore:furnace1.desc"
+    }
+  },
+  "parent": "renaissance_core:alchemical_smelter",
+  "criteria": {
+    "dirtrod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "thaumcraft:smelter_thaumium"
+          }
+        ]
+      }
+    }
+  }
+}

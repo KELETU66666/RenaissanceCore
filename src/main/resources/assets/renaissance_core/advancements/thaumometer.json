@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "thaumcraft:thaumometer"
+    },
+    "title": {
+      "translate": "advancement.renaissancecore:thaumometer"
+    },
+    "description": {
+      "translate": "advancement.renaissancecore:thaumometer.desc"
+    }
+  },
+  "parent": "renaissance_core:salis_mundus",
+  "criteria": {
+    "dirtrod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "thaumcraft:thaumometer"
+          }
+        ]
+      }
+    }
+  }
+}

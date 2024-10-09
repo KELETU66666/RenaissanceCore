@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "thaumcraft:salis_mundus"
+    },
+    "title": {
+      "translate": "advancement.renaissancecore:salis_mundus"
+    },
+    "description": {
+      "translate": "advancement.renaissancecore:salis_mundus.desc"
+    }
+  },
+  "parent": "renaissance_core:root",
+  "criteria": {
+    "dirtrod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "thaumcraft:thaumonomicon"
+          }
+        ]
+      }
+    }
+  }
+}

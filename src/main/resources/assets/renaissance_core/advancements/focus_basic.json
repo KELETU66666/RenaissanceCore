@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "thaumcraft:focus_1"
+    },
+    "title": {
+      "translate": "advancement.renaissancecore:focus1"
+    },
+    "description": {
+      "translate": "advancement.renaissancecore:focus1.desc"
+    }
+  },
+  "parent": "renaissance_core:caster_gauntlet",
+  "criteria": {
+    "dirtrod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "thaumcraft:focus_1"
+          }
+        ]
+      }
+    }
+  }
+}

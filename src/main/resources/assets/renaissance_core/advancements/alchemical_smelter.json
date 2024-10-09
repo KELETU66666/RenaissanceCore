@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "thaumcraft:smelter_basic"
+    },
+    "title": {
+      "translate": "advancement.renaissancecore:furnace"
+    },
+    "description": {
+      "translate": "advancement.renaissancecore:furnace.desc"
+    }
+  },
+  "parent": "renaissance_core:alchemical_brass",
+  "criteria": {
+    "dirtrod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "thaumcraft:smelter_basic"
+          }
+        ]
+      }
+    }
+  }
+}

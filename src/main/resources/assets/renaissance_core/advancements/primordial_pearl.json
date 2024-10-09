@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "thaumcraft:primordial_pearl",
+      "data": 6
+    },
+    "title": {
+      "translate": "advancement.renaissancecore:primordial_pearl"
+    },
+    "description": {
+      "translate": "advancement.renaissancecore:primordial_pearl.desc"
+    }
+  },
+  "parent": "renaissance_core:causality_collapser",
+  "criteria": {
+    "dirtrod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "thaumcraft:primordial_pearl"
+          }
+        ]
+      }
+    }
+  }
+}

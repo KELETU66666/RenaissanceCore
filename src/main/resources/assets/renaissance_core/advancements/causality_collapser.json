@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "thaumcraft:causality_collapser"
+    },
+    "title": {
+      "translate": "advancement.renaissancecore:causality"
+    },
+    "description": {
+      "translate": "advancement.renaissancecore:causality.desc"
+    }
+  },
+  "parent": "renaissance_core:infusion_matrix",
+  "criteria": {
+    "dirtrod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "thaumcraft:causality_collapser"
+          }
+        ]
+      }
+    }
+  }
+}

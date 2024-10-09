@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "thaumcraft:void_seed"
+    },
+    "title": {
+      "translate": "advancement.renaissancecore:void_seed"
+    },
+    "description": {
+      "translate": "advancement.renaissancecore:void_seed.desc"
+    }
+  },
+  "parent": "renaissance_core:causality_collapser",
+  "criteria": {
+    "dirtrod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "thaumcraft:void_seed"
+          }
+        ]
+      }
+    }
+  }
+}

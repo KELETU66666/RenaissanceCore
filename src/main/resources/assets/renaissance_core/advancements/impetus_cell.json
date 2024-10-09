@@ -1,0 +1,28 @@
+{
+    "display": {
+        "icon": {
+            "item": "thaumicaugmentation:material",
+            "data": 3
+        },
+        "title": {
+            "translate": "advancement.renaissancecore:cell"
+        },
+        "description": {
+            "translate": "advancement.renaissancecore:cell.desc"
+        }
+    },
+    "parent": "renaissance_core:primordial_pearl",
+    "criteria": {
+        "dirtrod": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "thaumicaugmentation:material",
+                        "data": 3
+                    }
+                ]
+            }
+        }
+    }
+}

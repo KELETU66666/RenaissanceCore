@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "thaumcraft:ingot",
+      "data": 2
+    },
+    "title": {
+      "translate": "advancement.renaissancecore:brass"
+    },
+    "description": {
+      "translate": "advancement.renaissancecore:brass.desc"
+    }
+  },
+  "parent": "renaissance_core:thaumometer",
+  "criteria": {
+    "dirtrod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "thaumcraft:ingot",
+            "data": 2
+          }
+        ]
+      }
+    }
+  }
+}

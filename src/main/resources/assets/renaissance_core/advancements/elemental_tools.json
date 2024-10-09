@@ -1,0 +1,75 @@
+{
+    "display": {
+        "icon": {
+            "item": "thaumcraft:elemental_pick"
+        },
+        "title": {
+            "translate": "advancement.renaissancecore:elemental_tools"
+        },
+        "description": {
+            "translate": "advancement.renaissancecore:elemental_tools.desc"
+        }
+    },
+    "parent": "renaissance_core:infusion_matrix",
+    "criteria": {
+        "tool_pick": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "thaumcraft:elemental_pick"
+                    }
+                ]
+            }
+        },
+        "tool_sword": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "thaumcraft:elemental_sword"
+                    }
+                ]
+            }
+        },
+        "tool_axe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "thaumcraft:elemental_axe"
+                    }
+                ]
+            }
+        },
+        "tool_hoe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "thaumcraft:elemental_hoe"
+                    }
+                ]
+            }
+        },
+        "tool_shovel": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "thaumcraft:elemental_shovel"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "tool_pick",
+            "tool_sword",
+            "tool_axe",
+            "tool_hoe",
+            "tool_shovel"
+        ]
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "display": {
+        "icon": {
+            "item": "thaumcraft:fortress_chest"
+        },
+        "title": {
+            "translate": "advancement.renaissancecore:thaumium_fortress"
+        },
+        "description": {
+            "translate": "advancement.renaissancecore:thaumium_fortress.desc"
+        }
+    },
+    "parent": "renaissance_core:infusion_matrix",
+    "criteria": {
+        "fortress_helmet": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "thaumcraft:fortress_helm"
+                    }
+                ]
+            }
+        },
+        "fortress_chestplate": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "thaumcraft:fortress_chest"
+                    }
+                ]
+            }
+        },
+        "fortress_leggings": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "thaumcraft:fortress_legs"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "fortress_helmet",
+            "fortress_chestplate",
+            "fortress_leggings"
+        ]
+    ]
+}

@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "thaumcraft:traveller_boots"
+    },
+    "title": {
+      "translate": "advancement.renaissancecore:boots"
+    },
+    "description": {
+      "translate": "advancement.renaissancecore:boots.desc"
+    }
+  },
+  "parent": "renaissance_core:infusion_matrix",
+  "criteria": {
+    "dirtrod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "thaumcraft:traveller_boots"
+          }
+        ]
+      }
+    }
+  }
+}

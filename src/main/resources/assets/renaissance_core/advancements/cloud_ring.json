@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "thaumcraft:cloud_ring"
+    },
+    "title": {
+      "translate": "advancement.renaissancecore:cloud_ring"
+    },
+    "description": {
+      "translate": "advancement.renaissancecore:cloud_ring.desc"
+    }
+  },
+  "parent": "renaissance_core:infusion_matrix",
+  "criteria": {
+    "dirtrod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "thaumcraft:cloud_ring"
+          }
+        ]
+      }
+    }
+  }
+}

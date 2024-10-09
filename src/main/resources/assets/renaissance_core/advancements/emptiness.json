@@ -1,0 +1,23 @@
+{
+    "display": {
+        "icon": {
+            "item": "thaumicaugmentation:stone",
+            "dats": 0
+        },
+        "title": {
+            "translate": "advancement.renaissancecore:emptiness"
+        },
+        "description": {
+            "translate": "advancement.renaissancecore:emptiness.desc"
+        }
+    },
+    "parent": "renaissance_core:impetus_cell",
+    "criteria": {
+        "entered_emptiness": {
+            "trigger": "minecraft:changed_dimension",
+            "conditions": {
+                "to": "emptiness"
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "thaumcraft:thaumonomicon"
+    },
+    "title": {
+      "translate": "advancement.renaissancecore"
+    },
+    "description": {
+      "translate": "renaissancecore.desc"
+    },
+    "background": "thaumcraft:textures/blocks/arcane_brick_stone.png",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "flower": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:log"
+          }
+        ]
+      }
+    }
+  }
+}
