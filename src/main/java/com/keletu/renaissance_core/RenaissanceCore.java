@@ -1,6 +1,7 @@
 package com.keletu.renaissance_core;
 
 import com.keletu.renaissance_core.blocks.RFBlocks;
+import com.keletu.renaissance_core.entity.EntityProtectionField;
 import com.keletu.renaissance_core.events.ChampionEvents;
 import com.keletu.renaissance_core.items.ItemManaBean;
 import com.keletu.renaissance_core.items.RFItems;
@@ -10,6 +11,7 @@ import com.keletu.renaissance_core.tweaks.InitBotaniaRecipes;
 import com.keletu.renaissance_core.village.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.client.renderer.entity.RenderEnderCrystal;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -18,14 +20,19 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
@@ -48,10 +55,11 @@ import thaumcraft.common.golems.client.PartModelHauler;
 public class RenaissanceCore {
     public static final String MODID = "renaissance_core";
     public static final String NAME = "Renaissance Core";
-    public static final String VERSION = "1.0.0";
+    public static final String VERSION = "1.1.0";
     public static final String MC_VERSION = "[1.12.2]";
     public static final EnumGolemTrait GREEDY = EnumHelper.addEnum(EnumGolemTrait.class, "GREEDY", new Class[]{ResourceLocation.class}, new ResourceLocation(MODID, "textures/misc/tag_cash.png"));
     public static final EnumGolemTrait BUBBLE = EnumHelper.addEnum(EnumGolemTrait.class, "BUBBLE", new Class[]{ResourceLocation.class}, new ResourceLocation(MODID, "textures/misc/tag_bubble.png"));
+    public static Logger logger = LogManager.getLogger("RenaissanceCore");
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -60,7 +68,7 @@ public class RenaissanceCore {
         try {
             MapGenStructureIO.registerStructureComponent(ComponentWizardTower.class, "RCWizTower");
             MapGenStructureIO.registerStructureComponent(ComponentBankerHome.class, "RCBank");
-        }catch (Throwable ignored) {
+        } catch (Throwable ignored) {
 
         }
 
@@ -68,9 +76,16 @@ public class RenaissanceCore {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        if (ConfigsRC.CHANGE_BOTANIA_RECIPE) {
-            ResearchCategories.registerCategory("BOTANY", "HEDGEALCHEMY", null, new ResourceLocation("botania", "textures/items/grassseeds0.png"), new ResourceLocation(RenaissanceCore.MODID, "textures/misc/tab_botany.jpg"));
-            ThaumcraftApi.registerResearchLocation(new ResourceLocation(MODID, "research/botany.json"));
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "protection_field"), EntityProtectionField.class, "protection_field", 0, MODID, 80, 3, true);
+
+        if (Loader.isModLoaded("botania")) {
+            SubtileRegisterOverride override = new SubtileRegisterOverride();
+            if (override.successInject)
+                override.reRegisterSubtile();
+            if (ConfigsRC.CHANGE_BOTANIA_RECIPE) {
+                ResearchCategories.registerCategory("BOTANY", "HEDGEALCHEMY", null, new ResourceLocation("botania", "textures/items/grassseeds0.png"), new ResourceLocation(RenaissanceCore.MODID, "textures/misc/tab_botany.jpg"));
+                ThaumcraftApi.registerResearchLocation(new ResourceLocation(MODID, "research/botany.json"));
+            }
         }
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(MODID, "research/research.json"));
 
@@ -82,17 +97,15 @@ public class RenaissanceCore {
         MinecraftForge.EVENT_BUS.register(new LootHandler());
         MinecraftForge.EVENT_BUS.register(new EntropinnyumTNTHandler());
 
-        if (event.getSide().isClient())
+        if (event.getSide().isClient()) {
+            RenderingRegistry.registerEntityRenderingHandler(EntityProtectionField.class, RenderEnderCrystal::new);
             registerItemColourHandlers();
-
-        SubtileRegisterOverride override = new SubtileRegisterOverride();
-        if (override.successInject)
-            override.reRegisterSubtile();
+        }
     }
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-        if (ConfigsRC.CHANGE_BOTANIA_RECIPE)
+        if (ConfigsRC.CHANGE_BOTANIA_RECIPE && Loader.isModLoaded("botania"))
             InitBotaniaRecipes.replaceWithVanillaRecipes();
 
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("trk:rift_feed"),

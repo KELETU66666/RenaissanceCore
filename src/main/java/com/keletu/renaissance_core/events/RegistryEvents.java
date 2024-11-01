@@ -1,11 +1,14 @@
 package com.keletu.renaissance_core.events;
 
+import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.blocks.RFBlocks;
 import com.keletu.renaissance_core.blocks.tile.TileEtherealBloom;
 import com.keletu.renaissance_core.blocks.tile.TileManaPod;
+import com.keletu.renaissance_core.entity.EntityProtectionField;
 import com.keletu.renaissance_core.items.RFItems;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFire;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,22 +18,72 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import thaumcraft.common.entities.monster.EntityPech;
 import thaumcraft.common.golems.EntityThaumcraftGolem;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
 @Mod.EventBusSubscriber
 public class RegistryEvents {
+
+    // ==================================================
+    //                 Break Block Event
+    // ==================================================
+    @SubscribeEvent
+    public static void onBlockBreak(BlockEvent.BreakEvent event) {
+        if (event.getState() == null || event.getWorld() == null || event.isCanceled() || event.getWorld().isRemote) {
+            return;
+        }
+
+        if (event.getPlayer() != null && !event.getPlayer().isCreative()) {
+            List<EntityProtectionField> list = event.getWorld().getEntitiesWithinAABB(EntityProtectionField.class, event.getPlayer().getEntityBoundingBox().grow(ConfigsRC.protectionRange));
+            if (!(event.getState().getBlock() instanceof BlockFire) && list.size() > 0) {
+                event.setCanceled(true);
+                event.setResult(Event.Result.DENY);
+                event.getPlayer().sendStatusMessage(new TextComponentString(I18n.translateToLocal("rc.protection.break")), true);
+            }
+        }
+    }
+
+
+    // ==================================================
+    //                 Block Place Event
+    // ==================================================
+
+    /**
+     * This uses the block place events to update Block Spawn Triggers.
+     **/
+    @SubscribeEvent
+    public static void onBlockPlace(BlockEvent.PlaceEvent event) {
+        if (event.getState() == null || event.getWorld() == null || event.isCanceled()) {
+            return;
+        }
+
+        if (event.getPlayer() != null && !event.getPlayer().isCreative()) {
+            List<EntityProtectionField> list = event.getWorld().getEntitiesWithinAABB(EntityProtectionField.class, event.getPlayer().getEntityBoundingBox().grow(ConfigsRC.protectionRange));
+            if (list.size() > 0) {
+                event.setCanceled(true);
+                event.setResult(Event.Result.DENY);
+                event.getPlayer().sendStatusMessage(new TextComponentString(I18n.translateToLocal("rc.protection.place")), true);
+            }
+        }
+    }
+
+
     @SubscribeEvent
     public static void regBlocks(RegistryEvent.Register<Block> event) {
         event.getRegistry().registerAll(RFBlocks.ethereal_bloom);

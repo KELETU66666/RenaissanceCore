@@ -41,6 +41,9 @@ advancement.renaissancecore:emptiness.desc=进入虚域
 advancement.renaissancecore:notes=周而复始
 advancement.renaissancecore:notes.desc=得到残破卷轴
 
+rc.protection.place=emmm... 也许我不能在这里放置方块
+rc.protection.break=emmm... 也许这个方块不允许被破坏
+
 item.rift_feed.name=裂隙饲料
 item.mana_bean.name=魔豆
 item.arcane_lime_powder.name=奥术石灰粉
