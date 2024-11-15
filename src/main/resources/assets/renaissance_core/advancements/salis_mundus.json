@@ -22,5 +22,11 @@
         ]
       }
     }
+  },
+  "rewards": {
+    "experience": 66,
+    "loot": [
+      "renaissance_core:dice12"
+    ]
   }
 }

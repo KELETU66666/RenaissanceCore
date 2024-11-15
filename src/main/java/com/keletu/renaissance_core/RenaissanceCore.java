@@ -3,8 +3,9 @@ package com.keletu.renaissance_core;
 import com.keletu.renaissance_core.blocks.RFBlocks;
 import com.keletu.renaissance_core.entity.EntityProtectionField;
 import com.keletu.renaissance_core.events.ChampionEvents;
+import com.keletu.renaissance_core.events.KeepDiceEvent;
 import com.keletu.renaissance_core.items.ItemManaBean;
-import com.keletu.renaissance_core.items.RFItems;
+import com.keletu.renaissance_core.items.RCItems;
 import com.keletu.renaissance_core.module.botania.EntropinnyumTNTHandler;
 import com.keletu.renaissance_core.module.botania.SubtileRegisterOverride;
 import com.keletu.renaissance_core.tweaks.InitBotaniaRecipes;
@@ -94,7 +95,7 @@ public class RenaissanceCore {
         VillagerRegistry.instance().registerVillageCreationHandler(new VillageWizardManager());
         VillagerRegistry.instance().registerVillageCreationHandler(new VillageBankerManager());
 
-        MinecraftForge.EVENT_BUS.register(new LootHandler());
+        MinecraftForge.EVENT_BUS.register(new KeepDiceEvent());
         MinecraftForge.EVENT_BUS.register(new EntropinnyumTNTHandler());
 
         if (event.getSide().isClient()) {
@@ -112,7 +113,7 @@ public class RenaissanceCore {
                 new ShapedArcaneRecipe(new ResourceLocation(""), "RIFT_FEED",
                         75,
                         new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1),
-                        new ItemStack(RFItems.rift_feed, 4),
+                        new ItemStack(RCItems.rift_feed, 4),
                         "VWV",
                         "WCW",
                         "VWV",
@@ -124,7 +125,7 @@ public class RenaissanceCore {
                 new ShapelessArcaneRecipe(new ResourceLocation(""), "ARCANE_LIME_POWDER",
                         10,
                         new AspectList(),
-                        new ItemStack(RFItems.arcane_lime_powder, 4),
+                        new ItemStack(RCItems.arcane_lime_powder, 4),
                         new Object[]{
                                 new ItemStack(ItemsTC.quicksilver),
                                 new ItemStack(ItemsTC.salisMundus),
@@ -133,9 +134,9 @@ public class RenaissanceCore {
 
         ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("trk:ethereal_bloom"), new CrucibleRecipe("ETHEREAL_BLOOM", new ItemStack(RFBlocks.ethereal_bloom), BlocksTC.shimmerleaf, new AspectList().add(Aspect.LIGHT, 20).add(Aspect.PLANT, 40).add(Aspect.LIFE, 40).add(Aspect.FLUX, 40)));
 
-        GolemHead.register(new GolemHead("FORAGE", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/r_pech.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_forage.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RFItems.pechHeadNormal)}, new EnumGolemTrait[]{RenaissanceCore.GREEDY}));
-        GolemHead.register(new GolemHead("STALKER", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/r_pech_stalker.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_stalker.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RFItems.pechHeadHunter)}, new EnumGolemTrait[]{EnumGolemTrait.LIGHT}));
-        GolemHead.register(new GolemHead("THAUMIUM", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/r_pech_thaum.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_thaum.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RFItems.pechHeadThaumaturge)}, new EnumGolemTrait[]{EnumGolemTrait.SMART}));
+        GolemHead.register(new GolemHead("FORAGE", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/r_pech.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_forage.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadNormal)}, new EnumGolemTrait[]{RenaissanceCore.GREEDY}));
+        GolemHead.register(new GolemHead("STALKER", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/r_pech_stalker.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_stalker.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadHunter)}, new EnumGolemTrait[]{EnumGolemTrait.LIGHT}));
+        GolemHead.register(new GolemHead("THAUMIUM", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/r_pech_thaum.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_thaum.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadThaumaturge)}, new EnumGolemTrait[]{EnumGolemTrait.SMART}));
 
         GolemAddon.register(new GolemAddon("BUBBLE_ARMOR", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/bubble_wrap_item.png"), new PartModelHauler(new ResourceLocation(MODID, "models/obj/bubble_wrap.obj"), new ResourceLocation(MODID, "textures/models/entity/bubble_wrap.png"), PartModel.EnumAttachPoint.BODY), new Object[]{new ItemStack(Blocks.WOOL), new ItemStack(Items.PAPER, 6)}, new EnumGolemTrait[]{RenaissanceCore.BUBBLE}));
     }
@@ -144,13 +145,13 @@ public class RenaissanceCore {
     private static void registerItemColourHandlers() {
         IItemColor itemCrystalPlanterColourHandler = (stack, tintIndex) -> {
             Item item = stack.getItem();
-            if (item == RFItems.mana_bean) {
+            if (item == RCItems.mana_bean) {
                 return ((ItemManaBean) item).getColor(stack, tintIndex);
             }
             return 16777215;
         };
 
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemCrystalPlanterColourHandler, RFItems.mana_bean);
+        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemCrystalPlanterColourHandler, RCItems.mana_bean);
 
     }
 }

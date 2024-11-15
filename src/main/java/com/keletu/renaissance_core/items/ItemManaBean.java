@@ -72,8 +72,8 @@ public class ItemManaBean extends ItemFood implements IEssentiaContainerItem {
         if (aspect == null) {
             return null;
         } else {
-            ItemStack is = new ItemStack(RFItems.mana_bean, stackSize, 0);
-            ((IEssentiaContainerItem)RFItems.mana_bean).setAspects(is, (new AspectList()).add(aspect, ConfigsRC.podAspect));
+            ItemStack is = new ItemStack(RCItems.mana_bean, stackSize, 0);
+            ((IEssentiaContainerItem) RCItems.mana_bean).setAspects(is, (new AspectList()).add(aspect, ConfigsRC.podAspect));
             return is;
         }
     }

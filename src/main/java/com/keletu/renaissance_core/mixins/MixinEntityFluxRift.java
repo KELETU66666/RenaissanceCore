@@ -5,7 +5,7 @@ package com.keletu.renaissance_core.mixins;
  * From mod HerodotusUtil
  * Under APLv2 License: https://www.apache.org/licenses/LICENSE-2.0.html
  */
-import com.keletu.renaissance_core.items.RFItems;
+import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
@@ -59,7 +59,7 @@ extends Entity {
     public void injectOnUpdate(Entity entity) {
         EntityItem entityItem = (EntityItem)entity;
         ItemStack item = entityItem.getItem();
-        if (item.getItem() == RFItems.rift_feed) {
+        if (item.getItem() == RCItems.rift_feed) {
             int newSize;
             int s = 0;
             for (int i = 0; i < item.getCount(); ++i) {

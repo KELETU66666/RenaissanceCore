@@ -1,7 +1,7 @@
 package com.keletu.renaissance_core.mixins;
 
 import com.keletu.renaissance_core.blocks.RFBlocks;
-import com.keletu.renaissance_core.items.RFItems;
+import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -28,7 +28,7 @@ public abstract class MixinCrucible {
     public void mixinOnEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity, CallbackInfo ci) {
         if (!world.isRemote) {
             TileCrucible tile = (TileCrucible) world.getTileEntity(pos);
-            if (tile != null && entity instanceof EntityItem && ((EntityItem) entity).getItem().getItem() == RFItems.arcane_lime_powder && tile.tank.getFluidAmount() > 0) {
+            if (tile != null && entity instanceof EntityItem && ((EntityItem) entity).getItem().getItem() == RCItems.arcane_lime_powder && tile.tank.getFluidAmount() > 0) {
                 world.removeTileEntity(pos);
                 world.setBlockState(pos, RFBlocks.full_crucible.getDefaultState());
                 ((EntityItem) entity).getItem().shrink(1);
@@ -39,7 +39,7 @@ public abstract class MixinCrucible {
 
     @Inject(method = {"onBlockActivated"}, at = {@At(value = "HEAD")}, cancellable = true)
     public void mixinOnBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ, CallbackInfoReturnable<Boolean> cir) {
-        if (!player.isSneaking() && player.getHeldItem(hand).getItem() == RFItems.arcane_lime_powder && side == EnumFacing.UP) {
+        if (!player.isSneaking() && player.getHeldItem(hand).getItem() == RCItems.arcane_lime_powder && side == EnumFacing.UP) {
             TileEntity te = world.getTileEntity(pos);
             if (te != null && te instanceof TileCrucible) {
                 TileCrucible tile = (TileCrucible) te;

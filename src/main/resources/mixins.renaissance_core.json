@@ -6,8 +6,12 @@
   "mixins": [
     "MixinCrucible",
     "MixinEntityFluxRift",
+    "MixinPacketSyncProgressToServer",
+    "MixinWarpEvents",
     "ResearchTableContainerMixin"
   ],
-  "client": [],
+  "client": [
+    "MixinGuiResearchPage"
+  ],
   "server": []
 }

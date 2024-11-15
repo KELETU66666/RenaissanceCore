@@ -6,7 +6,7 @@ import com.keletu.renaissance_core.blocks.RFBlocks;
 import com.keletu.renaissance_core.blocks.tile.TileEtherealBloom;
 import com.keletu.renaissance_core.blocks.tile.TileManaPod;
 import com.keletu.renaissance_core.entity.EntityProtectionField;
-import com.keletu.renaissance_core.items.RFItems;
+import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFire;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -99,15 +99,16 @@ public class RegistryEvents {
 
     @SubscribeEvent
     public static void regItems(RegistryEvent.Register<Item> event) {
-        event.getRegistry().registerAll(RFItems.rift_feed);
-        event.getRegistry().registerAll(RFItems.arcane_lime_powder);
-        event.getRegistry().registerAll(RFItems.etherealBloomItem);
+        event.getRegistry().registerAll(RCItems.rift_feed);
+        event.getRegistry().registerAll(RCItems.arcane_lime_powder);
+        event.getRegistry().registerAll(RCItems.etherealBloomItem);
+        event.getRegistry().registerAll(RCItems.dice12);
 
-        event.getRegistry().registerAll(RFItems.pechHeadNormal);
-        event.getRegistry().registerAll(RFItems.pechHeadHunter);
-        event.getRegistry().registerAll(RFItems.pechHeadThaumaturge);
+        event.getRegistry().registerAll(RCItems.pechHeadNormal);
+        event.getRegistry().registerAll(RCItems.pechHeadHunter);
+        event.getRegistry().registerAll(RCItems.pechHeadThaumaturge);
 
-        event.getRegistry().registerAll(RFItems.mana_bean);
+        event.getRegistry().registerAll(RCItems.mana_bean);
     }
 
     @SubscribeEvent
@@ -128,11 +129,11 @@ public class RegistryEvents {
                 ItemStack weap = ((EntityPlayer) event.getSource().getTrueSource()).getHeldItem(EnumHand.MAIN_HAND);
                 if (!weap.isEmpty() && weap.getItem() == ForgeRegistries.ITEMS.getValue(new ResourceLocation("forbiddenmagicre", "skull_axe")) && rand.nextInt(26) <= (3 + EnchantmentHelper.getEnchantmentLevel(Enchantments.LOOTING, weap))) {
                     if (((EntityPech) event.getEntityLiving()).getPechType() == 1)
-                        addDrop(event, new ItemStack(RFItems.pechHeadThaumaturge, 1, 0));
+                        addDrop(event, new ItemStack(RCItems.pechHeadThaumaturge, 1, 0));
                     else if (((EntityPech) event.getEntityLiving()).getPechType() == 2)
-                        addDrop(event, new ItemStack(RFItems.pechHeadHunter, 1, 0));
+                        addDrop(event, new ItemStack(RCItems.pechHeadHunter, 1, 0));
                     else
-                        addDrop(event, new ItemStack(RFItems.pechHeadNormal, 1, 0));
+                        addDrop(event, new ItemStack(RCItems.pechHeadNormal, 1, 0));
 
                 }
             }

@@ -4,7 +4,7 @@ import com.keletu.renaissance_core.blocks.tile.TileEtherealBloom;
 import com.keletu.renaissance_core.blocks.tile.TileManaPod;
 import com.keletu.renaissance_core.client.TileEtherealBloomRenderer;
 import com.keletu.renaissance_core.client.render.TileManaPodRenderer;
-import com.keletu.renaissance_core.items.RFItems;
+import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -19,14 +19,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModelEvents {
     @SubscribeEvent
     public static void regModels(ModelRegistryEvent event) {
-        defaultModel(RFItems.rift_feed);
-        defaultModel(RFItems.etherealBloomItem);
-        defaultModel(RFItems.mana_bean);
-        defaultModel(RFItems.arcane_lime_powder);
+        defaultModel(RCItems.rift_feed);
+        defaultModel(RCItems.etherealBloomItem);
+        defaultModel(RCItems.mana_bean);
+        defaultModel(RCItems.arcane_lime_powder);
+        defaultModel(RCItems.dice12);
 
-        defaultModel(RFItems.pechHeadNormal);
-        defaultModel(RFItems.pechHeadHunter);
-        defaultModel(RFItems.pechHeadThaumaturge);
+        defaultModel(RCItems.pechHeadNormal);
+        defaultModel(RCItems.pechHeadHunter);
+        defaultModel(RCItems.pechHeadThaumaturge);
     }
 
     static void defaultModel(Item item) {

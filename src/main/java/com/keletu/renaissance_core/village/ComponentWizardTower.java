@@ -16,6 +16,9 @@ import java.util.Random;
 public class ComponentWizardTower extends StructureVillagePieces.Village {
     private int averageGroundLevel = -1;
 
+    public ComponentWizardTower() {
+    }
+
     public ComponentWizardTower(StructureVillagePieces.Start par1ComponentVillageStartPiece, int par2, Random par3Random, StructureBoundingBox par4StructureBoundingBox, EnumFacing par5) {
         super(par1ComponentVillageStartPiece, par2);
         this.setCoordBaseMode(par5);
@@ -87,8 +90,7 @@ public class ComponentWizardTower extends StructureVillagePieces.Village {
         return true;
     }
 
-    protected VillagerRegistry.VillagerProfession chooseForgeProfession(int count, VillagerRegistry.VillagerProfession prof)
-    {
+    protected VillagerRegistry.VillagerProfession chooseForgeProfession(int count, VillagerRegistry.VillagerProfession prof) {
         return VillageWizardManager.prof;
     }
 }

@@ -44,7 +44,7 @@ advancement.renaissancecore:notes.desc=Get a "Research Notes"
 rc.protection.place=Hmmm... Maybe i can't block at this position
 rc.protection.break=Hmmm... Maybe i can't break this block
 
-item.rift_feed.name=Rift Feed
+item.dice12.name=T12
 item.mana_bean.name=Mana Bean
 item.arcane_lime_powder.name=Powder of Arcane Mixture
 
