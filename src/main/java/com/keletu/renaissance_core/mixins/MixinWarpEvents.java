@@ -1,5 +1,6 @@
 package com.keletu.renaissance_core.mixins;
 
+import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.events.CursedEvents;
 import net.minecraft.entity.player.EntityPlayer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,7 +16,7 @@ public class MixinWarpEvents {
         int w = cir.getReturnValue();
 
         if (CursedEvents.hasThaumiumCursed(player))
-            w *= 2;
+            w *= ConfigsRC.cursedWarpJudgeIncreasePercentage;
 
         cir.setReturnValue(w);
     }

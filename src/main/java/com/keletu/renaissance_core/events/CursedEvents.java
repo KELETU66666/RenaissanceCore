@@ -1,21 +1,22 @@
 package com.keletu.renaissance_core.events;
 
 import baubles.api.BaublesApi;
+import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.passive.EntityBat;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.*;
+import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.*;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.living.LivingHealEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -23,14 +24,18 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.ThaumcraftApiHelper;
 import static thaumcraft.api.ThaumcraftMaterials.*;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aura.AuraHelper;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.capabilities.IPlayerWarp;
 import thaumcraft.api.capabilities.ThaumcraftCapabilities;
+import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.entities.monster.EntityFireBat;
 import thaumcraft.common.items.consumables.ItemSanitySoap;
 import thaumcraft.common.lib.potions.PotionWarpWard;
+import thaumcraft.common.lib.research.ResearchManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -79,15 +84,105 @@ public class CursedEvents {
         return inventories;
     }
 
+    public static void addDrop(LivingDropsEvent event, ItemStack drop) {
+        if (drop == null || drop.getItem() == null)
+            return;
+
+        EntityItem entityitem = new EntityItem(event.getEntityLiving().world, event.getEntityLiving().posX, event.getEntityLiving().posY, event.getEntityLiving().posZ, drop);
+        entityitem.setPickupDelay(10);
+        event.getDrops().add(entityitem);
+    }
+
+    public static void addDropWithChance(LivingDropsEvent event, ItemStack drop, int chance) {
+        if (new Random().nextInt(100) < chance) {
+            addDrop(event, drop);
+        }
+    }
+
+    public static ItemStack getRandomSizeStack(Item item, int minAmount, int maxAmount) {
+        return new ItemStack(item, minAmount + new Random().nextInt(maxAmount - minAmount + 1));
+    }
+
+    public static ItemStack getRandomSizeStack(Item item, int minAmount, int maxAmount, int meta) {
+        return new ItemStack(item, minAmount + new Random().nextInt(maxAmount - minAmount + 1), meta);
+    }
+
+    public static void addOneOf(LivingDropsEvent event, ItemStack... itemStacks) {
+        int chosenStack = new Random().nextInt(itemStacks.length);
+        addDrop(event, itemStacks[chosenStack]);
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onLivingDrops(LivingDropsEvent event) {
+        if (event.isRecentlyHit() && event.getSource() != null && event.getSource().getTrueSource() instanceof EntityPlayer) {
+            EntityLivingBase killed = event.getEntityLiving();
+            EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
+
+            if (hasThaumiumCursed(player)) {
+
+
+                //if (!ELConfigs.enableSpecialDrops)
+                //    return;
+
+                //if (killed instanceof EntityDragon) {
+                //    if (SuperpositionHandler.isTheWorthyOne(player)) {
+                //        int heartsGained = SuperpositionHandler.getPersistentInteger(player, "AbyssalHeartsGained", 0);
+//
+                //        if (heartsGained < 5) { // Only as many as there are unique items from them, +1
+                //            abyssalHeartOwner = player;
+                //        }
+                //    }
+                //}
+
+                if (killed.getClass() == EntityZombie.class || killed.getClass() == EntityHusk.class) {
+                    addDropWithChance(event, getRandomSizeStack(Items.IRON_NUGGET, 1, 18), 35);
+                } else if (killed.getClass() == EntitySkeleton.class || killed.getClass() == EntityStray.class) {
+                    addDropWithChance(event, ThaumcraftApiHelper.makeCrystal(Aspect.ENTROPY, rand.nextInt(10) + 1), 20);
+                } else if (killed.getClass() == EntitySpider.class || killed.getClass() == EntityCaveSpider.class) {
+                    addDropWithChance(event, getRandomSizeStack(ItemsTC.nuggets, 1, 18, 5), 10);
+                } else if (killed.getClass() == EntityCreeper.class) {
+                    addDropWithChance(event, ThaumcraftApiHelper.makeCrystal(Aspect.EARTH, rand.nextInt(10) + 1), 20);
+                } else if (killed.getClass() == EntityWitch.class && ResearchManager.completeResearch(player, "FIRSTSTEPS")) {
+                    addDropWithChance(event, getRandomSizeStack(ItemsTC.salisMundus, 2, 3), 30);
+                } else if (killed.getClass() == EntityPigZombie.class) {
+                    addDropWithChance(event, getRandomSizeStack(ItemsTC.tallow, 1, 5), 50);
+                } else if (killed.getClass() == EntitySilverfish.class) {
+                    addDropWithChance(event, getRandomSizeStack(ItemsTC.amber, 1, 2), 30);
+                } else if (killed.getClass() == EntityEnderman.class) {
+                    addDropWithChance(event, new ItemStack(ItemsTC.voidSeed), 5);
+                } else if (killed.getClass() == EntityBlaze.class || killed.getClass() == EntityMagmaCube.class) {
+                    addDropWithChance(event, ThaumcraftApiHelper.makeCrystal(Aspect.FIRE, rand.nextInt(10) + 1), 20);
+                } else if (killed.getClass() == EntityGhast.class) {
+                    addDropWithChance(event, getRandomSizeStack(ItemsTC.quicksilver, 1, 4), 50);
+                } else if (killed.getClass() == EntitySlime.class) {
+                    addDropWithChance(event, ThaumcraftApiHelper.makeCrystal(Aspect.WATER, rand.nextInt(10) + 1), 20);
+                } else if (killed.getClass() == EntityPig.class) {
+                    addDrop(event, getRandomSizeStack(ItemsTC.chunks, 1, 10, 2));
+                } else if (killed.getClass() == EntityCow.class) {
+                    addDrop(event, getRandomSizeStack(ItemsTC.chunks, 1, 10, 0));
+                } else if (killed.getClass() == EntityChicken.class) {
+                    addDrop(event, getRandomSizeStack(ItemsTC.chunks, 1, 10, 1));
+                } else if (killed.getClass() == EntityRabbit.class) {
+                    addDrop(event, getRandomSizeStack(ItemsTC.chunks, 1, 10, 4));
+                } else if (killed.getClass() == EntitySheep.class) {
+                    addDrop(event, getRandomSizeStack(ItemsTC.chunks, 1, 10, 5));
+                } else if (killed.getClass() == EntityVillager.class) {
+                    addDrop(event, getRandomSizeStack(ItemsTC.chunks, 1, 2));
+                }
+
+            }
+        }
+    }
+
     //Config warp amount and flux amount
     @SubscribeEvent
     public static void onPlayerTick(PlayerWakeUpEvent event) {
         EntityPlayer player = event.getEntityPlayer();
         if (hasThaumiumCursed(player)) {
             if (rand.nextInt(2) == 0)
-                AuraHelper.polluteAura(player.world, player.getPosition(), 23, true);
+                AuraHelper.polluteAura(player.world, player.getPosition(), ConfigsRC.cursedSleepPollution, true);
             else
-                ThaumcraftApi.internalMethods.addWarpToPlayer(player, 23, IPlayerWarp.EnumWarpType.TEMPORARY);
+                ThaumcraftApi.internalMethods.addWarpToPlayer(player, ConfigsRC.cursedSleepWarpPoint, IPlayerWarp.EnumWarpType.TEMPORARY);
         }
     }
 
@@ -109,6 +204,9 @@ public class CursedEvents {
     public static void onEntitySpawn(LivingSpawnEvent event) {
         EntityLivingBase entity = event.getEntityLiving();
         if (event.getWorld().isRemote)
+            return;
+
+        if (!ConfigsRC.cursedPlayerTransformBats)
             return;
 
         if (entity instanceof EntityBat) {
@@ -156,10 +254,10 @@ public class CursedEvents {
             EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 
             if (hasThaumiumCursed(player)) {
-                if (AuraHelper.getVis(player.world, player.getPosition()) / AuraHelper.getAuraBase(player.world, player.getPosition()) < 1) {
+                if (AuraHelper.getVis(player.world, player.getPosition()) / AuraHelper.getAuraBase(player.world, player.getPosition()) <= ConfigsRC.cursedPlayerRegenHealthAura) {
                     event.setAmount(0);
                 } else
-                    AuraHelper.drainVis(player.world, player.getPosition(), event.getAmount() * 10, false);
+                    AuraHelper.drainVis(player.world, player.getPosition(), event.getAmount() * ConfigsRC.cursedPlayerRegenHealthVis, false);
             }
         }
 

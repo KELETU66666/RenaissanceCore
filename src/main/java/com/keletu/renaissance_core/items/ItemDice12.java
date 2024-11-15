@@ -2,6 +2,7 @@ package com.keletu.renaissance_core.items;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
+import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.events.CursedEvents;
 import com.keletu.renaissance_core.util.TCVec3;
 import net.minecraft.block.Block;
@@ -22,7 +23,7 @@ public class ItemDice12 extends Item implements IBauble, IVisDiscountGear {
 
     public int rad;
     public int rad1 = 0;
-    EnumRarity rarityEric = EnumHelper.addRarity("ERIC", TextFormatting.DARK_RED, "Eric");
+    EnumRarity rarityEric = EnumHelper.addRarity("ERIC", TextFormatting.DARK_PURPLE, "Eric");
 
     public ItemDice12() {
         this.maxStackSize = 1;
@@ -50,7 +51,7 @@ public class ItemDice12 extends Item implements IBauble, IVisDiscountGear {
 
     @Override
     public int getVisDiscount(ItemStack itemStack, EntityPlayer entityPlayer) {
-        return -200;
+        return ConfigsRC.cursedVisIncreasePercentage;
     }
 
     @Override
