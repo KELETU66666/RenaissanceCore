@@ -99,7 +99,6 @@ public class RegistryEvents {
 
     @SubscribeEvent
     public static void regItems(RegistryEvent.Register<Item> event) {
-        event.getRegistry().registerAll(RCItems.rift_feed);
         event.getRegistry().registerAll(RCItems.arcane_lime_powder);
         event.getRegistry().registerAll(RCItems.etherealBloomItem);
         event.getRegistry().registerAll(RCItems.dice12);

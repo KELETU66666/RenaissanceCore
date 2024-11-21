@@ -19,7 +19,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModelEvents {
     @SubscribeEvent
     public static void regModels(ModelRegistryEvent event) {
-        defaultModel(RCItems.rift_feed);
         defaultModel(RCItems.etherealBloomItem);
         defaultModel(RCItems.mana_bean);
         defaultModel(RCItems.arcane_lime_powder);

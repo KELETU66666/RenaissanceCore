@@ -1,41 +1,6 @@
 {
   "entries": [
     {
-      "key": "RIFT_FEED",
-      "name": "ftr.research.rift_feed.title",
-      "category": "ELDRITCH",
-      "icons": [
-        "renaissance_core:rift_feed"
-      ],
-      "parents": [
-        "BASEELDRITCH"
-      ],
-      "location": [
-        1,
-        -1
-      ],
-      "stages": [
-        {
-          "text": "ftr.research.rift_feed.text",
-          "required_item": [
-            "thaumcraft:causality_collapser"
-          ],
-          "required_knowledge": [
-            "THEORY;BASICS;1",
-            "THEORY;ELDRITCH;1"
-          ],
-          "warp": 2
-        },
-        {
-          "text": "ftr.research.rift_feed.complete.text",
-          "recipes": [
-            "trk:rift_feed"
-          ]
-        }
-      ]
-    },
-
-    {
       "key": "ARCANE_LIME_POWDER",
       "name": "ftr.research.arcane_lime_powder.title",
       "category": "BASICS",

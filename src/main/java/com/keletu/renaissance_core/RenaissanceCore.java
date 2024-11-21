@@ -19,6 +19,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
+import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -52,11 +53,11 @@ import thaumcraft.common.golems.client.PartModelHauler;
 
 
 @Mod(modid = RenaissanceCore.MODID, name = RenaissanceCore.NAME, version = RenaissanceCore.VERSION, acceptedMinecraftVersions = RenaissanceCore.MC_VERSION,
-        dependencies = "required-after:baubles@[1.5.2, ); required-after:thaumcraft@[6.1.BETA26]; required-after:mixinbooter@[4.2, )")
+        dependencies = "required-after:baubles@[1.5.2, ); required-after:thaumcraft@[6.1.BETA26]; required-after:thaumicaugmentation;required-after:mixinbooter@[4.2, )")
 public class RenaissanceCore {
     public static final String MODID = "renaissance_core";
     public static final String NAME = "Renaissance Core";
-    public static final String VERSION = "1.1.0";
+    public static final String VERSION = "1.2.0";
     public static final String MC_VERSION = "[1.12.2]";
     public static final EnumGolemTrait GREEDY = EnumHelper.addEnum(EnumGolemTrait.class, "GREEDY", new Class[]{ResourceLocation.class}, new ResourceLocation(MODID, "textures/misc/tag_cash.png"));
     public static final EnumGolemTrait BUBBLE = EnumHelper.addEnum(EnumGolemTrait.class, "BUBBLE", new Class[]{ResourceLocation.class}, new ResourceLocation(MODID, "textures/misc/tag_bubble.png"));
@@ -73,6 +74,8 @@ public class RenaissanceCore {
 
         }
 
+        if(event.getSide().isClient())
+            OBJLoader.INSTANCE.addDomain(MODID);
     }
 
     @EventHandler
@@ -108,18 +111,6 @@ public class RenaissanceCore {
     public void postInit(FMLPostInitializationEvent event) {
         if (ConfigsRC.CHANGE_BOTANIA_RECIPE && Loader.isModLoaded("botania"))
             InitBotaniaRecipes.replaceWithVanillaRecipes();
-
-        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("trk:rift_feed"),
-                new ShapedArcaneRecipe(new ResourceLocation(""), "RIFT_FEED",
-                        75,
-                        new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1),
-                        new ItemStack(RCItems.rift_feed, 4),
-                        "VWV",
-                        "WCW",
-                        "VWV",
-                        'V', new ItemStack(ItemsTC.voidSeed),
-                        'W', ThaumcraftApiHelper.makeCrystal(Aspect.FLUX),
-                        'C', new ItemStack(ItemsTC.nuggets, 1, 10)));
 
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("trk:lime_powder"),
                 new ShapelessArcaneRecipe(new ResourceLocation(""), "ARCANE_LIME_POWDER",

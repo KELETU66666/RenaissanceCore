@@ -6,6 +6,8 @@ import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*;
@@ -16,10 +18,12 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -32,10 +36,10 @@ import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.capabilities.IPlayerWarp;
 import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import thaumcraft.api.items.ItemsTC;
-import thaumcraft.common.entities.monster.EntityFireBat;
 import thaumcraft.common.items.consumables.ItemSanitySoap;
 import thaumcraft.common.lib.potions.PotionWarpWard;
 import thaumcraft.common.lib.research.ResearchManager;
+import thecodex6824.thaumicaugmentation.common.entity.EntityItemImportant;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,6 +49,7 @@ import java.util.WeakHashMap;
 @Mod.EventBusSubscriber(modid = RenaissanceCore.MODID)
 public class CursedEvents {
     static Random rand = new Random();
+    private static EntityPlayer cursedPlayer;
     public static final Map<EntityPlayer, AxisAlignedBB> CURSED_AURA = new WeakHashMap<>();
 
     public static boolean hasThaumiumCursed(EntityPlayer player) {
@@ -112,6 +117,24 @@ public class CursedEvents {
         addDrop(event, itemStacks[chosenStack]);
     }
 
+    @SubscribeEvent
+    public static void onEntityTick(LivingEvent.LivingUpdateEvent event) {
+        if (event.getEntity() instanceof EntityDragon && !event.getEntity().world.isRemote) {
+            EntityDragon dragon = (EntityDragon) event.getEntity();
+            // final burst of XP/actual death is at 200 ticks
+            if (dragon.deathTicks == 199 && cursedPlayer != null) {
+
+                Vec3d center = new Vec3d(dragon.posX, dragon.posY, dragon.posZ);
+                EntityItemImportant heart = new EntityItemImportant(event.getEntity().world, center.x, center.y, center.z, new ItemStack(ItemsTC.primordialPearl, 1, 5));
+
+                event.getEntity().world.spawnEntity(heart);
+
+                cursedPlayer = null;
+
+            }
+        }
+    }
+
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onLivingDrops(LivingDropsEvent event) {
         if (event.isRecentlyHit() && event.getSource() != null && event.getSource().getTrueSource() instanceof EntityPlayer) {
@@ -133,6 +156,10 @@ public class CursedEvents {
                 //        }
                 //    }
                 //}
+
+                if (killed instanceof EntityDragon) {
+                    cursedPlayer = player;
+                }
 
                 if (killed.getClass() == EntityZombie.class || killed.getClass() == EntityHusk.class) {
                     addDropWithChance(event, getRandomSizeStack(Items.IRON_NUGGET, 1, 18), 35);
@@ -202,20 +229,17 @@ public class CursedEvents {
 
     @SubscribeEvent
     public static void onEntitySpawn(LivingSpawnEvent event) {
-        EntityLivingBase entity = event.getEntityLiving();
-        if (event.getWorld().isRemote)
-            return;
+        if (event.getEntityLiving().isCreatureType(EnumCreatureType.AMBIENT, false)) {
+            EntityLivingBase entity = event.getEntityLiving();
 
-        if (!ConfigsRC.cursedPlayerTransformBats)
-            return;
+            if (!ConfigsRC.cursedPlayerTransformBats)
+                return;
 
-        if (entity instanceof EntityBat) {
-            if (CURSED_AURA.values().stream().anyMatch(entity.getEntityBoundingBox()::intersects)) {
-                EntityFireBat fb = new EntityFireBat(event.getWorld());
-                fb.setPosition(event.getEntityLiving().posX, event.getEntityLiving().posY, event.getEntityLiving().posZ);
-                event.getWorld().spawnEntity(fb);
-                event.getEntityLiving().setDead();
-
+            if (entity instanceof EntityBat) {
+                if (CURSED_AURA.values().stream().anyMatch(entity.getEntityBoundingBox()::intersects)) {
+                    event.setResult(Event.Result.DENY);
+                    //event.setCanceled(true);
+                }
             }
         }
     }
