@@ -4,6 +4,10 @@ import baubles.api.BaublesApi;
 import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.items.RCItems;
+import com.keletu.renaissance_core.tweaks.GuiThaumonomiconPageButton;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureType;
@@ -13,12 +17,15 @@ import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.*;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
@@ -27,6 +34,9 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftApiHelper;
 import static thaumcraft.api.ThaumcraftMaterials.*;
@@ -115,6 +125,20 @@ public class CursedEvents {
     public static void addOneOf(LivingDropsEvent event, ItemStack... itemStacks) {
         int chosenStack = new Random().nextInt(itemStacks.length);
         addDrop(event, itemStacks[chosenStack]);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public static void guiPostInit(GuiScreenEvent.InitGuiEvent.Post event) {
+        if (Minecraft.getMinecraft().player == null)
+            return;
+
+        if (event.getGui() instanceof GuiInventory) {
+            GuiContainer gui = (GuiContainer) event.getGui();
+
+            if (hasThaumiumCursed(Minecraft.getMinecraft().player))
+                event.getButtonList().add(new GuiThaumonomiconPageButton(56, gui, 150 + ConfigsRC.xiconOffsetThaumonomicon, 61 + ConfigsRC.yiconOffsetThaumonomicon, 20, 18));
+        }
     }
 
     @SubscribeEvent
@@ -286,6 +310,27 @@ public class CursedEvents {
         }
 
     }
+
+
+    @SubscribeEvent
+    public static void onEatFoods(LivingEntityUseItemEvent.Finish event) {
+        if (event.getEntityLiving() instanceof EntityPlayer && !event.getEntity().world.isRemote) {
+            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+            ItemStack food = event.getItem();
+
+            if (hasThaumiumCursed(player)) {
+                if (OreDictionary.containsMatch(false, OreDictionary.getOres("listAllHarmfulFoods"), food)) {
+                    ThaumcraftApi.internalMethods.addWarpToPlayer(player, 3, IPlayerWarp.EnumWarpType.TEMPORARY);
+                    player.addPotionEffect(new PotionEffect(MobEffects.POISON, 300, 0));
+                    player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 200, 0));
+                } else if (OreDictionary.containsMatch(false, OreDictionary.getOres("listAllRawMeats"), food)) {
+                    ThaumcraftApi.internalMethods.addWarpToPlayer(player, 1, IPlayerWarp.EnumWarpType.TEMPORARY);
+                    player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 150, 0));
+                }
+            }
+        }
+    }
+
 
     @SubscribeEvent
     public static void onUseSoap(LivingEntityUseItemEvent.Stop event) {

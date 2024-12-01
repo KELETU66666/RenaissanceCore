@@ -8,8 +8,12 @@ import com.keletu.renaissance_core.items.ItemManaBean;
 import com.keletu.renaissance_core.items.RCItems;
 import com.keletu.renaissance_core.module.botania.EntropinnyumTNTHandler;
 import com.keletu.renaissance_core.module.botania.SubtileRegisterOverride;
+import com.keletu.renaissance_core.packet.PacketThaumonomiconKey;
 import com.keletu.renaissance_core.tweaks.InitBotaniaRecipes;
-import com.keletu.renaissance_core.village.*;
+import com.keletu.renaissance_core.village.ComponentBankerHome;
+import com.keletu.renaissance_core.village.ComponentWizardTower;
+import com.keletu.renaissance_core.village.VillageBankerManager;
+import com.keletu.renaissance_core.village.VillageWizardManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.entity.RenderEnderCrystal;
@@ -29,6 +33,8 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -36,12 +42,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.crafting.CrucibleRecipe;
-import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.crafting.ShapelessArcaneRecipe;
 import thaumcraft.api.golems.EnumGolemTrait;
 import thaumcraft.api.golems.parts.GolemAddon;
@@ -53,7 +57,7 @@ import thaumcraft.common.golems.client.PartModelHauler;
 
 
 @Mod(modid = RenaissanceCore.MODID, name = RenaissanceCore.NAME, version = RenaissanceCore.VERSION, acceptedMinecraftVersions = RenaissanceCore.MC_VERSION,
-        dependencies = "required-after:baubles@[1.5.2, ); required-after:thaumcraft@[6.1.BETA26]; required-after:thaumicaugmentation;required-after:mixinbooter@[4.2, )")
+        dependencies = "required-after:baubles@[1.5.2, ); required-after:thaumcraft@[6.1.BETA26]; required-after:thaumicaugmentation; required-after:mixinbooter@[4.2, )")
 public class RenaissanceCore {
     public static final String MODID = "renaissance_core";
     public static final String NAME = "Renaissance Core";
@@ -62,19 +66,19 @@ public class RenaissanceCore {
     public static final EnumGolemTrait GREEDY = EnumHelper.addEnum(EnumGolemTrait.class, "GREEDY", new Class[]{ResourceLocation.class}, new ResourceLocation(MODID, "textures/misc/tag_cash.png"));
     public static final EnumGolemTrait BUBBLE = EnumHelper.addEnum(EnumGolemTrait.class, "BUBBLE", new Class[]{ResourceLocation.class}, new ResourceLocation(MODID, "textures/misc/tag_bubble.png"));
     public static Logger logger = LogManager.getLogger("RenaissanceCore");
+    public static SimpleNetworkWrapper packetInstance;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         ChampionEvents.infernalMobList();
 
-        try {
-            MapGenStructureIO.registerStructureComponent(ComponentWizardTower.class, "RCWizTower");
-            MapGenStructureIO.registerStructureComponent(ComponentBankerHome.class, "RCBank");
-        } catch (Throwable ignored) {
+        packetInstance = NetworkRegistry.INSTANCE.newSimpleChannel("RenaissanceChannel");
+        packetInstance.registerMessage(PacketThaumonomiconKey.Handler.class, PacketThaumonomiconKey.class, 0, Side.SERVER);
 
-        }
+        MapGenStructureIO.registerStructureComponent(ComponentWizardTower.class, "RCWizTower");
+        MapGenStructureIO.registerStructureComponent(ComponentBankerHome.class, "RCBank");
 
-        if(event.getSide().isClient())
+        if (event.getSide().isClient())
             OBJLoader.INSTANCE.addDomain(MODID);
     }
 

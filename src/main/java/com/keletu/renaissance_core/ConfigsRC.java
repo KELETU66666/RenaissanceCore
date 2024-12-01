@@ -48,4 +48,13 @@ public class ConfigsRC {
 
     @Config.LangKey("Protection Field's Protection Range")
     public static double protectionRange = 256D;
+
+    @Config.LangKey("X Offset for Thaumonomicon tab")
+    @Config.RangeDouble(min = -500, max = 500)
+    public static int xiconOffsetThaumonomicon = 0;
+
+    @Config.LangKey("Y Offset for Thaumonomicon tab")
+    @Config.RangeDouble(min = -500, max = 500)
+    public static int yiconOffsetThaumonomicon = 0;
+
 }

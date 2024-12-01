@@ -9,10 +9,12 @@ import com.keletu.renaissance_core.entity.EntityProtectionField;
 import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFire;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
@@ -30,6 +32,8 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
+import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.entities.monster.EntityPech;
 import thaumcraft.common.golems.EntityThaumcraftGolem;
 
@@ -108,6 +112,21 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RCItems.pechHeadThaumaturge);
 
         event.getRegistry().registerAll(RCItems.mana_bean);
+    }
+
+
+    @SubscribeEvent
+    public static void OreRegister(RegistryEvent.Register<Enchantment> event) {
+        OreDictionary.registerOre("listAllRawMeats", Items.PORKCHOP);
+        OreDictionary.registerOre("listAllRawMeats", Items.BEEF);
+        OreDictionary.registerOre("listAllRawMeats", new ItemStack(Items.FISH, 1, 0));
+        OreDictionary.registerOre("listAllRawMeats", Items.RABBIT);
+        OreDictionary.registerOre("listAllRawMeats", Items.MUTTON);
+        OreDictionary.registerOre("listAllRawMeats", Items.CHICKEN);
+        OreDictionary.registerOre("listAllHarmfulFoods", Items.ROTTEN_FLESH);
+        OreDictionary.registerOre("listAllHarmfulFoods", Items.SPIDER_EYE);
+        OreDictionary.registerOre("listAllHarmfulFoods", ItemsTC.brain);
+
     }
 
     @SubscribeEvent
