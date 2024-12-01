@@ -41,7 +41,7 @@ advancement.renaissancecore:emptiness.desc=Enter the Emptiness
 advancement.renaissancecore:notes=Groundhog Day
 advancement.renaissancecore:notes.desc=Get a "Research Notes"
 
-tooltip.dice12.tip1=§5An unknown item was added to your pack when you were unaware
+tooltip.dice12.tip1=§5An unknown item was added to your pack when you were unaware.
 tooltip.dice12.tip2=§4Perhaps I shouldn't wear it...
 tooltip.dice12.tooltip1=§5- Observations and theories are no longer necessary.
 tooltip.dice12.tooltip2=§5- Mobs will drop more loot.
