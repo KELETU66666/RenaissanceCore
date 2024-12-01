@@ -1,6 +1,7 @@
 package com.keletu.renaissance_core.items;
 
 import baubles.api.BaubleType;
+import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.render.IRenderBauble;
 import com.keletu.renaissance_core.ConfigsRC;
@@ -9,7 +10,10 @@ import com.keletu.renaissance_core.events.CursedEvents;
 import com.keletu.renaissance_core.util.TCVec3;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -21,17 +25,22 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.items.IVisDiscountGear;
 import thaumcraft.client.lib.obj.AdvancedModelLoader;
 import thaumcraft.client.lib.obj.IModelCustom;
 import thaumcraft.common.blocks.world.taint.ITaintBlock;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemDice12 extends Item implements IBauble, IVisDiscountGear, IRenderBauble {
 
     public int rad;
     public int rad1 = 0;
     private IModelCustom model;
-    EnumRarity rarityEric = EnumHelper.addRarity("ERIC", TextFormatting.DARK_PURPLE, "Eric");
+    EnumRarity rarityEric = EnumHelper.addRarity("ERIC", TextFormatting.DARK_RED, "Eric");
 
     public ItemDice12() {
         this.maxStackSize = 1;
@@ -60,6 +69,35 @@ public class ItemDice12 extends Item implements IBauble, IVisDiscountGear, IRend
     @Override
     public int getVisDiscount(ItemStack itemStack, EntityPlayer entityPlayer) {
         return ConfigsRC.cursedVisIncreasePercentage;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> list, ITooltipFlag flagIn) {
+        list.add(I18n.format("tooltip.dice12.tip1"));
+        if (Minecraft.getMinecraft().player != null && BaublesApi.isBaubleEquipped(Minecraft.getMinecraft().player, this) != -1)
+            list.add(I18n.format("tooltip.dice12.tip2"));
+        list.add("");
+        if (GuiScreen.isShiftKeyDown()) {
+            list.add(I18n.format("tooltip.dice12.tooltip1"));
+            list.add(I18n.format("tooltip.dice12.tooltip2"));
+            list.add(I18n.format("tooltip.dice12.tooltip3"));
+            list.add(I18n.format("tooltip.dice12.tooltip4"));
+            list.add(I18n.format("tooltip.dice12.tooltip5"));
+            list.add(I18n.format("tooltip.dice12.tooltip6"));
+            if (Minecraft.getMinecraft().player != null && BaublesApi.isBaubleEquipped(Minecraft.getMinecraft().player, this) != -1) {
+                list.add("");
+                list.add(I18n.format("tooltip.dice12.tooltip7"));
+                list.add(I18n.format("tooltip.dice12.tooltip8"));
+                list.add(I18n.format("tooltip.dice12.tooltip9"));
+                list.add(I18n.format("tooltip.dice12.tooltip10"));
+                list.add(I18n.format("tooltip.dice12.tooltip11"));
+                list.add(I18n.format("tooltip.dice12.tooltip12"));
+            }
+        } else {
+            list.add(I18n.format("tooltip.dice12.holdShift"));
+        }
+        list.add("");
     }
 
     @Override
@@ -109,12 +147,12 @@ public class ItemDice12 extends Item implements IBauble, IVisDiscountGear, IRend
     @Override
     public void onPlayerBaubleRender(ItemStack itemStack, EntityPlayer player, RenderType renderType, float v) {
         float rotateAngleY = (player.ticksExisted + v) / 5.0F;
-        if(renderType == RenderType.BODY) {
+        if (renderType == RenderType.BODY) {
             GlStateManager.pushMatrix();
             model = AdvancedModelLoader.loadModel(new ResourceLocation(RenaissanceCore.MODID, "textures/models/dice/dice12.obj"));
             Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(RenaissanceCore.MODID, "textures/models/dice/1221.png"));
             GlStateManager.scale(0.25, 0.25, 0.25);
-            GlStateManager.translate(0, -4, 0);
+            GlStateManager.translate(0, -4 + (Math.sin(player.ticksExisted / 10F)), 0);
             GlStateManager.rotate(rotateAngleY * (180F / (float) Math.PI), 0, 1, 0);
             model.renderAll();
             GlStateManager.popMatrix();

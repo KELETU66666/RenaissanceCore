@@ -41,6 +41,22 @@ advancement.renaissancecore:emptiness.desc=Enter the Emptiness
 advancement.renaissancecore:notes=Groundhog Day
 advancement.renaissancecore:notes.desc=Get a "Research Notes"
 
+tooltip.dice12.tip1=§5An unknown item was added to your pack when you were unaware
+tooltip.dice12.tip2=§4Perhaps I shouldn't wear it...
+tooltip.dice12.tooltip1=§5- Observations and theories are no longer necessary.
+tooltip.dice12.tooltip2=§5- Mobs will drop more loot.
+tooltip.dice12.tooltip3=§5- You can access your Thaumonomicon conveniently.
+tooltip.dice12.tooltip4=§5- Thaumium tools will be more effective.
+tooltip.dice12.tooltip5=§5- Sanity Soap can remove most warps, including permanent warp.
+tooltip.dice12.tooltip6=§5- You can purify nearby corrupted blocks.
+tooltip.dice12.tooltip7=§5- Omniscience keeps you up at night.
+tooltip.dice12.tooltip8=§5- Eating raw meat can cause nausea.
+tooltip.dice12.tooltip9=§5- Vis cost increased by 300%%.
+tooltip.dice12.tooltip10=§5- Vanilla tools will be crude to use.
+tooltip.dice12.tooltip11=§5- Warp will happen more often.
+tooltip.dice12.tooltip12=§5- When chunk vis lower than 90%%, you can't regenerate your health.
+tooltip.dice12.holdShift=§5The §6Shift §5shall be held.
+
 rc.protection.place=Hmmm... Maybe i can't block at this position
 rc.protection.break=Hmmm... Maybe i can't break this block
 

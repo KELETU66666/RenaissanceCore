@@ -18,9 +18,11 @@ import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
+import net.minecraft.item.ItemTool;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -51,7 +53,6 @@ import thaumcraft.common.lib.potions.PotionWarpWard;
 import thaumcraft.common.lib.research.ResearchManager;
 import thecodex6824.thaumicaugmentation.common.entity.EntityItemImportant;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.WeakHashMap;
@@ -70,6 +71,16 @@ public class CursedEvents {
         return new AxisAlignedBB(entity.posX - radius, entity.posY - radius, entity.posZ - radius, entity.posX + radius, entity.posY + radius, entity.posZ + radius);
     }
 
+    public static boolean isVanillaMaterial(EntityPlayer player) {
+        Item itemTool = player.getHeldItemMainhand().getItem();
+        if (itemTool instanceof ItemTool) {
+            return ((ItemTool) itemTool).toolMaterial.equals(Item.ToolMaterial.DIAMOND) || ((ItemTool) itemTool).toolMaterial.equals(Item.ToolMaterial.IRON) || ((ItemTool) itemTool).toolMaterial.equals(Item.ToolMaterial.STONE) || ((ItemTool) itemTool).toolMaterial.equals(Item.ToolMaterial.GOLD) || ((ItemTool) itemTool).toolMaterial.equals(Item.ToolMaterial.WOOD);
+        } else if (itemTool instanceof ItemSword)
+            return ((ItemSword) itemTool).material.equals(Item.ToolMaterial.DIAMOND) || ((ItemSword) itemTool).material.equals(Item.ToolMaterial.IRON) || ((ItemSword) itemTool).material.equals(Item.ToolMaterial.STONE) || ((ItemSword) itemTool).material.equals(Item.ToolMaterial.GOLD) || ((ItemSword) itemTool).material.equals(Item.ToolMaterial.WOOD);
+        else
+            return false;
+    }
+
     public static boolean isMaterialThaumium(EntityPlayer player) {
         Item itemTool = player.getHeldItemMainhand().getItem();
         if (itemTool instanceof ItemTool) {
@@ -78,25 +89,6 @@ public class CursedEvents {
             return ((ItemSword) itemTool).material.equals(TOOLMAT_ELEMENTAL) || ((ItemSword) itemTool).material.equals(TOOLMAT_VOID) || ((ItemSword) itemTool).material.equals(TOOLMAT_THAUMIUM);
         else
             return false;
-    }
-
-    public static boolean isMaterialThaumium(Item itemTool) {
-        if (itemTool instanceof ItemTool) {
-            return ((ItemTool) itemTool).toolMaterial.equals(TOOLMAT_ELEMENTAL) || ((ItemTool) itemTool).toolMaterial.equals(TOOLMAT_VOID) || ((ItemTool) itemTool).toolMaterial.equals(TOOLMAT_THAUMIUM);
-        } else if (itemTool instanceof ItemSword)
-            return ((ItemSword) itemTool).material.equals(TOOLMAT_ELEMENTAL) || ((ItemSword) itemTool).material.equals(TOOLMAT_VOID) || ((ItemSword) itemTool).material.equals(TOOLMAT_THAUMIUM);
-        else if (itemTool instanceof ItemArmor)
-            return ((ItemArmor) itemTool).getArmorMaterial().equals(ARMORMAT_THAUMIUM) || ((ItemArmor) itemTool).getArmorMaterial().equals(ARMORMAT_VOID) || ((ItemArmor) itemTool).getArmorMaterial().equals(ARMORMAT_FORTRESS) || ((ItemArmor) itemTool).getArmorMaterial().equals(ARMORMAT_VOIDROBE) || ((ItemArmor) itemTool).getArmorMaterial().equals(ARMORMAT_SPECIAL);
-        else
-            return false;
-    }
-
-    private static Map<String, NonNullList<ItemStack>> invMaps(EntityPlayer player) {
-        Map<String, NonNullList<ItemStack>> inventories = new HashMap<>();
-        inventories.put("inv1", player.inventory.armorInventory);
-        inventories.put("inv2", player.inventory.mainInventory);
-        inventories.put("inv3", player.inventory.offHandInventory);
-        return inventories;
     }
 
     public static void addDrop(LivingDropsEvent event, ItemStack drop) {
@@ -272,8 +264,11 @@ public class CursedEvents {
     public static void miningBlocks(PlayerEvent.BreakSpeed event) {
         float correctedSpeed = event.getOriginalSpeed();
         float miningBoost = 1.0F;
-        if (CursedEvents.hasThaumiumCursed(event.getEntityPlayer()) && !isMaterialThaumium(event.getEntityPlayer())) {
-            miningBoost -= 0.5F;
+        if (CursedEvents.hasThaumiumCursed(event.getEntityPlayer())) {
+            if (isVanillaMaterial(event.getEntityPlayer()))
+                miningBoost -= 0.5F;
+            if (isMaterialThaumium(event.getEntityPlayer()))
+                miningBoost += 0.25F;
         }
 
         correctedSpeed = correctedSpeed * miningBoost;
@@ -290,8 +285,11 @@ public class CursedEvents {
         if (event.getSource().getTrueSource() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
 
-            if (!isMaterialThaumium(player) && hasThaumiumCursed(player)) {
-                event.setAmount(event.getAmount() / 2);
+            if (hasThaumiumCursed(player)) {
+                if (isVanillaMaterial(player))
+                    event.setAmount(event.getAmount() / 2);
+                if (isMaterialThaumium(player))
+                    event.setAmount(event.getAmount() * 1.25F);
             }
         }
     }
