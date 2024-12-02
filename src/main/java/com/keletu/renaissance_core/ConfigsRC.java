@@ -32,8 +32,8 @@ public class ConfigsRC {
     @Config.LangKey("bats spawn nearby cursed player will transform to hellfire bat (default: true)")
     public static boolean cursedPlayerTransformBats = true;
 
-    @Config.LangKey("when cursed player use arcane workbench, vis increase (default: -200)")
-    public static int cursedVisIncreasePercentage = -200;
+    @Config.LangKey("when cursed player use arcane workbench, vis increase (default: -150)")
+    public static int cursedVisIncreasePercentage = -150;
 
     @Config.LangKey("cursed player actual warp multiplied (default: 2)")
     public static float cursedWarpJudgeIncreasePercentage = 2;

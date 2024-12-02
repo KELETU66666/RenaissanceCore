@@ -34,12 +34,14 @@ import thaumcraft.common.blocks.world.taint.ITaintBlock;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ItemDice12 extends Item implements IBauble, IVisDiscountGear, IRenderBauble {
 
     public int rad;
     public int rad1 = 0;
-    private IModelCustom model;
+    private final Map<ItemStack, IModelCustom> diceModels = new ConcurrentHashMap<>();
     EnumRarity rarityEric = EnumHelper.addRarity("ERIC", TextFormatting.DARK_RED, "Eric");
 
     public ItemDice12() {
@@ -147,12 +149,12 @@ public class ItemDice12 extends Item implements IBauble, IVisDiscountGear, IRend
     @Override
     public void onPlayerBaubleRender(ItemStack itemStack, EntityPlayer player, RenderType renderType, float v) {
         float rotateAngleY = (player.ticksExisted + v) / 5.0F;
-        if (renderType == RenderType.BODY) {
+        if (renderType == IRenderBauble.RenderType.BODY) {
             GlStateManager.pushMatrix();
-            model = AdvancedModelLoader.loadModel(new ResourceLocation(RenaissanceCore.MODID, "textures/models/dice/dice12.obj"));
+            IModelCustom model = diceModels.computeIfAbsent(itemStack, key -> AdvancedModelLoader.loadModel(new ResourceLocation(RenaissanceCore.MODID, "textures/models/dice/dice12.obj")));
             Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(RenaissanceCore.MODID, "textures/models/dice/1221.png"));
             GlStateManager.scale(0.25, 0.25, 0.25);
-            GlStateManager.translate(0, -4 + (Math.sin(player.ticksExisted / 10F)), 0);
+            GlStateManager.translate(0, -4 + (Math.sin(player.ticksExisted / 10F) / 2), 0);
             GlStateManager.rotate(rotateAngleY * (180F / (float) Math.PI), 0, 1, 0);
             model.renderAll();
             GlStateManager.popMatrix();
