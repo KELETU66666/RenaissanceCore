@@ -75,8 +75,12 @@ public class RenaissanceCore {
         packetInstance = NetworkRegistry.INSTANCE.newSimpleChannel("RenaissanceChannel");
         packetInstance.registerMessage(PacketThaumonomiconKey.Handler.class, PacketThaumonomiconKey.class, 0, Side.SERVER);
 
-        MapGenStructureIO.registerStructureComponent(ComponentWizardTower.class, "RCWizTower");
-        MapGenStructureIO.registerStructureComponent(ComponentBankerHome.class, "RCBank");
+        try {
+            MapGenStructureIO.registerStructureComponent(ComponentWizardTower.class, "RCWizTower");
+            MapGenStructureIO.registerStructureComponent(ComponentBankerHome.class, "RCBank");
+        } catch (Throwable ignored) {
+
+        }
 
         if (event.getSide().isClient())
             OBJLoader.INSTANCE.addDomain(MODID);

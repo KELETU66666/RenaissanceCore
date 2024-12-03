@@ -10,7 +10,6 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.*;
@@ -32,7 +31,6 @@ import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -240,23 +238,6 @@ public class CursedEvents {
             CURSED_AURA.put(player, getBoundingBoxAroundEntity(player, 128));
         } else {
             CURSED_AURA.remove(player);
-        }
-    }
-
-    @SubscribeEvent
-    public static void onEntitySpawn(LivingSpawnEvent event) {
-        if (event.getEntityLiving().isCreatureType(EnumCreatureType.AMBIENT, false)) {
-            EntityLivingBase entity = event.getEntityLiving();
-
-            if (!ConfigsRC.cursedPlayerTransformBats)
-                return;
-
-            if (entity instanceof EntityBat) {
-                if (CURSED_AURA.values().stream().anyMatch(entity.getEntityBoundingBox()::intersects)) {
-                    event.setResult(Event.Result.DENY);
-                    //event.setCanceled(true);
-                }
-            }
         }
     }
 
