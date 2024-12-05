@@ -346,6 +346,7 @@ public class CursedEvents {
                 if (warp.get(IPlayerWarp.EnumWarpType.TEMPORARY) > 0) {
                     ThaumcraftApi.internalMethods.addWarpToPlayer(player, -warp.get(IPlayerWarp.EnumWarpType.TEMPORARY), IPlayerWarp.EnumWarpType.TEMPORARY);
                 }
+                event.getItem().shrink(1);
 
                 event.setCanceled(true);
             }
