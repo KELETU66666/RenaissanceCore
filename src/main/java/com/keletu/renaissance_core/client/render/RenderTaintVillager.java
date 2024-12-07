@@ -1,6 +1,7 @@
 package com.keletu.renaissance_core.client.render;
 
 import com.keletu.renaissance_core.entity.EntityTaintVillager;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelVillager;
 import net.minecraft.client.renderer.GlStateManager;
@@ -14,8 +15,8 @@ import net.minecraft.util.ResourceLocation;
 public class RenderTaintVillager extends RenderLiving {
     private static final ResourceLocation rl = new ResourceLocation("thaumcraft", "textures/models/creature/villager.png");
 
-    public RenderTaintVillager(RenderManager rm) {
-        super(rm, new ModelVillager(0.0F), 0.5F);
+    public RenderTaintVillager() {
+        super(Minecraft.getMinecraft().getRenderManager(), new ModelVillager(0.0F), 0.5F);
         addLayer(new LayerCustomHead(((ModelVillager) super.getMainModel()).villagerHead));
     }
 

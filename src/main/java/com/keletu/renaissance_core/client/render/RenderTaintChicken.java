@@ -1,7 +1,9 @@
 package com.keletu.renaissance_core.client.render;
 
 import com.keletu.renaissance_core.entity.EntityTaintChicken;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelChicken;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
@@ -14,8 +16,8 @@ public class RenderTaintChicken extends RenderLiving
 {
     private static final ResourceLocation rl;
     
-    public RenderTaintChicken(final RenderManager p_i46127_1_, final ModelBase par1ModelBase, final float par2) {
-        super(p_i46127_1_, par1ModelBase, par2);
+    public RenderTaintChicken(final float par2) {
+        super(Minecraft.getMinecraft().getRenderManager(), new ModelChicken(), par2);
     }
     
     protected ResourceLocation getEntityTexture(final Entity entity) {

@@ -1,42 +1,33 @@
 package com.keletu.renaissance_core;
 
 import com.keletu.renaissance_core.blocks.RFBlocks;
-import com.keletu.renaissance_core.client.model.ModelTaintSheep2;
-import com.keletu.renaissance_core.client.render.*;
 import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.events.ChampionEvents;
 import com.keletu.renaissance_core.events.KeepDiceEvent;
 import com.keletu.renaissance_core.events.ZapHandler;
-import com.keletu.renaissance_core.items.ItemManaBean;
 import com.keletu.renaissance_core.items.RCItems;
 import com.keletu.renaissance_core.module.botania.EntropinnyumTNTHandler;
 import com.keletu.renaissance_core.module.botania.SubtileRegisterOverride;
 import com.keletu.renaissance_core.packet.PacketZap;
 import com.keletu.renaissance_core.packet.PacketZapParticle;
+import com.keletu.renaissance_core.proxy.CommonProxy;
 import com.keletu.renaissance_core.tweaks.InitBotaniaRecipes;
 import com.keletu.renaissance_core.village.ComponentBankerHome;
 import com.keletu.renaissance_core.village.ComponentWizardTower;
 import com.keletu.renaissance_core.village.VillageBankerManager;
 import com.keletu.renaissance_core.village.VillageWizardManager;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelChicken;
-import net.minecraft.client.model.ModelCow;
-import net.minecraft.client.model.ModelPig;
-import net.minecraft.client.renderer.color.IItemColor;
-import net.minecraft.client.renderer.entity.RenderEnderCrystal;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -45,9 +36,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -72,7 +60,8 @@ public class RenaissanceCore {
     public static final String MC_VERSION = "[1.12.2]";
     public static final EnumGolemTrait GREEDY = EnumHelper.addEnum(EnumGolemTrait.class, "GREEDY", new Class[]{ResourceLocation.class}, new ResourceLocation(MODID, "textures/misc/tag_cash.png"));
     public static final EnumGolemTrait BUBBLE = EnumHelper.addEnum(EnumGolemTrait.class, "BUBBLE", new Class[]{ResourceLocation.class}, new ResourceLocation(MODID, "textures/misc/tag_bubble.png"));
-    public static Logger logger = LogManager.getLogger("RenaissanceCore");
+    @SidedProxy(clientSide = "com.keletu.renaissance_core.proxy.ClientProxy", serverSide = "com.keletu.renaissance_core.proxy.CommonProxy")
+    public static CommonProxy proxy;
     public static SimpleNetworkWrapper packetInstance;
 
     @EventHandler
@@ -126,17 +115,7 @@ public class RenaissanceCore {
 
         MinecraftForge.EVENT_BUS.register(new KeepDiceEvent());
 
-        if (event.getSide().isClient()) {
-            RenderingRegistry.registerEntityRenderingHandler(EntityProtectionField.class, RenderEnderCrystal::new);
-            RenderingRegistry.registerEntityRenderingHandler(EntityTaintChicken.class, new RenderTaintChicken(Minecraft.getMinecraft().getRenderManager(), new ModelChicken(), 0.3F));
-            RenderingRegistry.registerEntityRenderingHandler(EntityTaintRabbit.class, new RenderTaintRabbit(Minecraft.getMinecraft().getRenderManager()));
-            RenderingRegistry.registerEntityRenderingHandler(EntityTaintCow.class, new RenderTaintCow(Minecraft.getMinecraft().getRenderManager(), new ModelCow(), 0.7F));
-            RenderingRegistry.registerEntityRenderingHandler(EntityTaintCreeper.class, new RenderTaintCreeper(Minecraft.getMinecraft().getRenderManager()));
-            RenderingRegistry.registerEntityRenderingHandler(EntityTaintPig.class, new RenderTaintPig(Minecraft.getMinecraft().getRenderManager(), new ModelPig(), 0.7F));
-            RenderingRegistry.registerEntityRenderingHandler(EntityTaintSheep.class, new RenderTaintSheep(Minecraft.getMinecraft().getRenderManager(), new ModelTaintSheep2(), 0.7F));
-            RenderingRegistry.registerEntityRenderingHandler(EntityTaintVillager.class, new RenderTaintVillager(Minecraft.getMinecraft().getRenderManager()));
-            registerItemColourHandlers();
-        }
+        proxy.regRenderer();
     }
 
     @EventHandler
@@ -164,17 +143,5 @@ public class RenaissanceCore {
         GolemAddon.register(new GolemAddon("BUBBLE_ARMOR", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/bubble_wrap_item.png"), new PartModelHauler(new ResourceLocation(MODID, "models/obj/bubble_wrap.obj"), new ResourceLocation(MODID, "textures/models/entity/bubble_wrap.png"), PartModel.EnumAttachPoint.BODY), new Object[]{new ItemStack(Blocks.WOOL), new ItemStack(Items.PAPER, 6)}, new EnumGolemTrait[]{RenaissanceCore.BUBBLE}));
     }
 
-    @SideOnly(Side.CLIENT)
-    private static void registerItemColourHandlers() {
-        IItemColor itemCrystalPlanterColourHandler = (stack, tintIndex) -> {
-            Item item = stack.getItem();
-            if (item == RCItems.mana_bean) {
-                return ((ItemManaBean) item).getColor(stack, tintIndex);
-            }
-            return 16777215;
-        };
 
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemCrystalPlanterColourHandler, RCItems.mana_bean);
-
-    }
 }

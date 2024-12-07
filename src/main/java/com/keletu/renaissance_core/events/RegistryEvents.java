@@ -5,6 +5,7 @@ import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.blocks.RFBlocks;
 import com.keletu.renaissance_core.blocks.tile.TileEtherealBloom;
 import com.keletu.renaissance_core.blocks.tile.TileManaPod;
+import com.keletu.renaissance_core.client.render.*;
 import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.block.Block;
@@ -33,11 +34,14 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.entities.ITaintedMob;
 import thaumcraft.api.items.ItemsTC;
@@ -173,7 +177,6 @@ public class RegistryEvents {
 
         event.getRegistry().registerAll(RCItems.mana_bean);
     }
-
 
     @SubscribeEvent
     public static void OreRegister(RegistryEvent.Register<Enchantment> event) {

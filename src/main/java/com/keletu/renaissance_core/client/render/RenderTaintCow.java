@@ -1,7 +1,9 @@
 package com.keletu.renaissance_core.client.render;
 
 import com.keletu.renaissance_core.entity.EntityTaintCow;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelCow;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
@@ -9,8 +11,8 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderTaintCow extends RenderLiving {
-  public RenderTaintCow(RenderManager rm, ModelBase par1ModelBase, float par2) {
-    super(rm, par1ModelBase, par2);
+  public RenderTaintCow(float par2) {
+    super(Minecraft.getMinecraft().getRenderManager(), new ModelCow(), par2);
   }
   
   private static final ResourceLocation rl = new ResourceLocation("thaumcraft", "textures/models/creature/cow.png");

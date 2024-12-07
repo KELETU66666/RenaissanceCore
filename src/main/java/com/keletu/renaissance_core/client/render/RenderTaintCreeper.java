@@ -1,6 +1,7 @@
 package com.keletu.renaissance_core.client.render;
 
 import com.keletu.renaissance_core.entity.EntityTaintCreeper;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelCreeper;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -17,8 +18,8 @@ public class RenderTaintCreeper extends RenderLiving
     private static final ResourceLocation rl;
     private static final ResourceLocation armorTexture;
     
-    public RenderTaintCreeper(final RenderManager rm) {
-        super(rm, new ModelCreeper(), 0.5f);
+    public RenderTaintCreeper() {
+        super(Minecraft.getMinecraft().getRenderManager(), new ModelCreeper(), 0.5f);
         this.model = new ModelCreeper(2.0f);
     }
     

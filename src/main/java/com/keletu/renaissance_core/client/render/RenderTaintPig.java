@@ -1,7 +1,9 @@
 package com.keletu.renaissance_core.client.render;
 
 import com.keletu.renaissance_core.entity.EntityTaintPig;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelPig;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
@@ -9,8 +11,8 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderTaintPig extends RenderLiving {
-  public RenderTaintPig(RenderManager rm, ModelBase par1ModelBase, float par3) {
-    super(rm, par1ModelBase, par3);
+  public RenderTaintPig(float par3) {
+    super(Minecraft.getMinecraft().getRenderManager(), new ModelPig(), par3);
   }
   
   private static final ResourceLocation rl = new ResourceLocation("thaumcraft", "textures/models/creature/pig.png");
