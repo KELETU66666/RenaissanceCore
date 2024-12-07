@@ -21,10 +21,8 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.living.LivingHealEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraft.util.math.Vec3d;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -45,9 +43,9 @@ import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.items.consumables.ItemSanitySoap;
 import thaumcraft.common.lib.potions.PotionWarpWard;
 import thaumcraft.common.lib.research.ResearchManager;
+import thecodex6824.thaumicaugmentation.common.entity.EntityItemImportant;
 
 import java.util.Map;
-import java.util.Objects;
 import java.util.Random;
 import java.util.WeakHashMap;
 
@@ -114,12 +112,20 @@ public class CursedEvents {
     }
 
     @SubscribeEvent
-    public void onPlayerHurt(LivingHurtEvent event) {
-        if (event.getEntityLiving().world.isRemote)
-            return;
+    public static void onEntityTick(LivingEvent.LivingUpdateEvent event) {
+        if (event.getEntity() instanceof EntityDragon && !event.getEntity().world.isRemote) {
+            EntityDragon dragon = (EntityDragon) event.getEntity();
+            // final burst of XP/actual death is at 200 ticks
+            if (dragon.deathTicks == 199 && cursedPlayer != null) {
 
-        if (Objects.equals(event.getSource(), DamageSourceThaumcraft.taint)) {
-            event.setAmount(event.getAmount() * 2);
+                Vec3d center = new Vec3d(dragon.posX, dragon.posY, dragon.posZ);
+                EntityItemImportant heart = new EntityItemImportant(event.getEntity().world, center.x, center.y, center.z, new ItemStack(ItemsTC.primordialPearl, 1, 5));
+
+                event.getEntity().world.spawnEntity(heart);
+
+                cursedPlayer = null;
+
+            }
         }
     }
 
@@ -245,6 +251,12 @@ public class CursedEvents {
                     event.setAmount(event.getAmount() / 2);
                 if (isMaterialThaumium(player))
                     event.setAmount(event.getAmount() * 1.25F);
+            }
+        }
+        if(event.getEntityLiving() instanceof EntityPlayer){
+            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+            if (event.getSource() == DamageSourceThaumcraft.taint && hasThaumiumCursed(player)) {
+                event.setAmount(event.getAmount() * 2F);
             }
         }
     }

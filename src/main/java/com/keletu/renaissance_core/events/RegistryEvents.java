@@ -5,12 +5,10 @@ import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.blocks.RFBlocks;
 import com.keletu.renaissance_core.blocks.tile.TileEtherealBloom;
 import com.keletu.renaissance_core.blocks.tile.TileManaPod;
-import com.keletu.renaissance_core.client.render.*;
 import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFire;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -20,7 +18,6 @@ import net.minecraft.entity.monster.EntityGolem;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
@@ -34,17 +31,12 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.entities.ITaintedMob;
-import thaumcraft.api.items.ItemsTC;
 import thaumcraft.api.potions.PotionFluxTaint;
 import thaumcraft.common.entities.construct.EntityOwnedConstruct;
 import thaumcraft.common.entities.monster.EntityPech;
@@ -176,20 +168,6 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RCItems.pechHeadThaumaturge);
 
         event.getRegistry().registerAll(RCItems.mana_bean);
-    }
-
-    @SubscribeEvent
-    public static void OreRegister(RegistryEvent.Register<Enchantment> event) {
-        OreDictionary.registerOre("listAllRawMeats", Items.PORKCHOP);
-        OreDictionary.registerOre("listAllRawMeats", Items.BEEF);
-        OreDictionary.registerOre("listAllRawMeats", new ItemStack(Items.FISH, 1, 0));
-        OreDictionary.registerOre("listAllRawMeats", Items.RABBIT);
-        OreDictionary.registerOre("listAllRawMeats", Items.MUTTON);
-        OreDictionary.registerOre("listAllRawMeats", Items.CHICKEN);
-        OreDictionary.registerOre("listAllHarmfulFoods", Items.ROTTEN_FLESH);
-        OreDictionary.registerOre("listAllHarmfulFoods", Items.SPIDER_EYE);
-        OreDictionary.registerOre("listAllHarmfulFoods", ItemsTC.brain);
-
     }
 
     @SubscribeEvent
