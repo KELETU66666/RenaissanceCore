@@ -102,6 +102,9 @@ entity.TaintedVillager.name=Tainted Villager
 entity.TaintedCreeper.name=Tainted Creeper
 entity.TaintedSheep.name=Tainted Sheep
 
+key.categories.renaissancecore=Renaissance Core
+key.zap=Zap Target
+
 message.renaissance-core.botaniaaddon.manyflowers=Too many flowers, Efficiency %s%%
 
 ftr.research.rift_feed.title=Feed the Rift
