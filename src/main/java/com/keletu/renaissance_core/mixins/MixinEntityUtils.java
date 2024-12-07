@@ -1,6 +1,5 @@
 package com.keletu.renaissance_core.mixins;
 
-import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLivingBase;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
@@ -14,8 +13,6 @@ import thaumcraft.common.lib.utils.EntityUtils;
 public abstract class MixinEntityUtils {
     @Inject(method = {"makeTainted"}, at = {@At(value = "HEAD")}, remap = false, cancellable = true)
     private static void mixinMakeTainted(EntityLivingBase target, CallbackInfo ci) {
-        if(!EntityList.getKey(target).getNamespace().equals("minecraft")){
-            ci.cancel();
-        }
+        ci.cancel();
     }
 }

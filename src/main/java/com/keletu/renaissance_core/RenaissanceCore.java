@@ -1,20 +1,27 @@
 package com.keletu.renaissance_core;
 
 import com.keletu.renaissance_core.blocks.RFBlocks;
-import com.keletu.renaissance_core.entity.EntityProtectionField;
+import com.keletu.renaissance_core.client.model.ModelTaintSheep2;
+import com.keletu.renaissance_core.client.render.*;
+import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.events.ChampionEvents;
 import com.keletu.renaissance_core.events.KeepDiceEvent;
+import com.keletu.renaissance_core.events.ZapHandler;
 import com.keletu.renaissance_core.items.ItemManaBean;
 import com.keletu.renaissance_core.items.RCItems;
 import com.keletu.renaissance_core.module.botania.EntropinnyumTNTHandler;
 import com.keletu.renaissance_core.module.botania.SubtileRegisterOverride;
-import com.keletu.renaissance_core.packet.PacketThaumonomiconKey;
+import com.keletu.renaissance_core.packet.PacketZap;
+import com.keletu.renaissance_core.packet.PacketZapParticle;
 import com.keletu.renaissance_core.tweaks.InitBotaniaRecipes;
 import com.keletu.renaissance_core.village.ComponentBankerHome;
 import com.keletu.renaissance_core.village.ComponentWizardTower;
 import com.keletu.renaissance_core.village.VillageBankerManager;
 import com.keletu.renaissance_core.village.VillageWizardManager;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.ModelChicken;
+import net.minecraft.client.model.ModelCow;
+import net.minecraft.client.model.ModelPig;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.entity.RenderEnderCrystal;
 import net.minecraft.init.Blocks;
@@ -73,7 +80,8 @@ public class RenaissanceCore {
         ChampionEvents.infernalMobList();
 
         packetInstance = NetworkRegistry.INSTANCE.newSimpleChannel("RenaissanceChannel");
-        packetInstance.registerMessage(PacketThaumonomiconKey.Handler.class, PacketThaumonomiconKey.class, 0, Side.SERVER);
+        packetInstance.registerMessage(PacketZap.Handler.class, PacketZap.class, 0, Side.SERVER);
+        packetInstance.registerMessage(PacketZapParticle.Handler.class, PacketZapParticle.class, 1, Side.CLIENT);
 
         try {
             MapGenStructureIO.registerStructureComponent(ComponentWizardTower.class, "RCWizTower");
@@ -82,15 +90,25 @@ public class RenaissanceCore {
 
         }
 
-        if (event.getSide().isClient())
+        if (event.getSide().isClient()) {
             OBJLoader.INSTANCE.addDomain(MODID);
+            ZapHandler.registerKeybinds();
+        }
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "protection_field"), EntityProtectionField.class, "protection_field", 0, MODID, 80, 3, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_chicken"), EntityTaintChicken.class, "TaintedChicken", 1, MODID, 64, 3, true, 10618530, 12632256);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_rabbit"), EntityTaintRabbit.class, "TaintedRabbit", 2, MODID, 64, 3, true, 10618530, 15777984);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_cow"), EntityTaintCow.class, "TaintedCow", 3, MODID, 64, 3, true, 10618530, 8272443);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_creeper"), EntityTaintCreeper.class, "TaintedCreeper", 4, MODID, 64, 3, true, 10618530, 65280);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_pig"), EntityTaintPig.class, "TaintedPig", 5, MODID, 64, 3, true, 10618530, 15702511);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_sheep"), EntityTaintSheep.class, "TaintedSheep", 6, MODID, 64, 3, true, 10618530, 8421504);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_villager"), EntityTaintVillager.class, "TaintedVillager", 7, MODID, 64, 3, true, 10618530, 65535);
 
         if (Loader.isModLoaded("botania")) {
+            MinecraftForge.EVENT_BUS.register(new EntropinnyumTNTHandler());
             SubtileRegisterOverride override = new SubtileRegisterOverride();
             if (override.successInject)
                 override.reRegisterSubtile();
@@ -107,10 +125,16 @@ public class RenaissanceCore {
         VillagerRegistry.instance().registerVillageCreationHandler(new VillageBankerManager());
 
         MinecraftForge.EVENT_BUS.register(new KeepDiceEvent());
-        MinecraftForge.EVENT_BUS.register(new EntropinnyumTNTHandler());
 
         if (event.getSide().isClient()) {
             RenderingRegistry.registerEntityRenderingHandler(EntityProtectionField.class, RenderEnderCrystal::new);
+            RenderingRegistry.registerEntityRenderingHandler(EntityTaintChicken.class, new RenderTaintChicken(Minecraft.getMinecraft().getRenderManager(), new ModelChicken(), 0.3F));
+            RenderingRegistry.registerEntityRenderingHandler(EntityTaintRabbit.class, new RenderTaintRabbit(Minecraft.getMinecraft().getRenderManager()));
+            RenderingRegistry.registerEntityRenderingHandler(EntityTaintCow.class, new RenderTaintCow(Minecraft.getMinecraft().getRenderManager(), new ModelCow(), 0.7F));
+            RenderingRegistry.registerEntityRenderingHandler(EntityTaintCreeper.class, new RenderTaintCreeper(Minecraft.getMinecraft().getRenderManager()));
+            RenderingRegistry.registerEntityRenderingHandler(EntityTaintPig.class, new RenderTaintPig(Minecraft.getMinecraft().getRenderManager(), new ModelPig(), 0.7F));
+            RenderingRegistry.registerEntityRenderingHandler(EntityTaintSheep.class, new RenderTaintSheep(Minecraft.getMinecraft().getRenderManager(), new ModelTaintSheep2(), 0.7F));
+            RenderingRegistry.registerEntityRenderingHandler(EntityTaintVillager.class, new RenderTaintVillager(Minecraft.getMinecraft().getRenderManager()));
             registerItemColourHandlers();
         }
     }

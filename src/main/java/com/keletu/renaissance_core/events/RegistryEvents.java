@@ -5,13 +5,18 @@ import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.blocks.RFBlocks;
 import com.keletu.renaissance_core.blocks.tile.TileEtherealBloom;
 import com.keletu.renaissance_core.blocks.tile.TileManaPod;
-import com.keletu.renaissance_core.entity.EntityProtectionField;
+import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFire;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntityGolem;
+import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
@@ -24,6 +29,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -33,8 +39,13 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+import thaumcraft.api.entities.ITaintedMob;
 import thaumcraft.api.items.ItemsTC;
+import thaumcraft.api.potions.PotionFluxTaint;
+import thaumcraft.common.entities.construct.EntityOwnedConstruct;
 import thaumcraft.common.entities.monster.EntityPech;
+import thaumcraft.common.entities.monster.EntityThaumicSlime;
+import thaumcraft.common.entities.monster.tainted.EntityTaintCrawler;
 import thaumcraft.common.golems.EntityThaumcraftGolem;
 
 import java.util.List;
@@ -63,7 +74,56 @@ public class RegistryEvents {
         }
     }
 
-
+    @SubscribeEvent
+    public static void livingDeath(final LivingDeathEvent event) {
+        if (!event.getEntityLiving().world.isRemote && !(event.getEntityLiving() instanceof EntityOwnedConstruct) && !(event.getEntityLiving() instanceof EntityGolem) && !(event.getEntityLiving() instanceof ITaintedMob) && event.getEntityLiving().isPotionActive(PotionFluxTaint.instance)) {
+            Entity entity = null;
+            if (event.getEntityLiving() instanceof EntityCreeper) {
+                entity = new EntityTaintCreeper(event.getEntityLiving().world);
+            }
+            else if (event.getEntityLiving() instanceof EntitySheep) {
+                entity = new EntityTaintSheep(event.getEntityLiving().world);
+            }
+            else if (event.getEntityLiving() instanceof EntityCow) {
+                entity = new EntityTaintCow(event.getEntityLiving().world);
+            }
+            else if (event.getEntityLiving() instanceof EntityPig) {
+                entity = new EntityTaintPig(event.getEntityLiving().world);
+            }
+            else if (event.getEntityLiving() instanceof EntityChicken) {
+                entity = new EntityTaintChicken(event.getEntityLiving().world);
+            }
+            else if (event.getEntityLiving() instanceof EntityVillager) {
+                entity = new EntityTaintVillager(event.getEntityLiving().world);
+            }
+            else if (event.getEntityLiving().getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD || event.getEntityLiving() instanceof EntityAnimal) {
+                for (int n = (int)Math.max(1.0, Math.sqrt(event.getEntityLiving().getMaxHealth() + 2.0f)), a = 0; a < n; ++a) {
+                    final Entity e = new EntityTaintCrawler(event.getEntityLiving().world);
+                    e.setLocationAndAngles(event.getEntityLiving().posX + (event.getEntityLiving().world.rand.nextFloat() - event.getEntityLiving().world.rand.nextFloat()) * event.getEntityLiving().width, event.getEntityLiving().posY + event.getEntityLiving().world.rand.nextFloat() * event.getEntityLiving().height, event.getEntityLiving().posZ + (event.getEntityLiving().world.rand.nextFloat() - event.getEntityLiving().world.rand.nextFloat()) * event.getEntityLiving().width, (float)event.getEntityLiving().world.rand.nextInt(360), 0.0f);
+                    event.getEntityLiving().world.spawnEntity(e);
+                }
+                event.getEntityLiving().setDead();
+                event.setCanceled(true);
+            }
+            else if (event.getEntityLiving() instanceof EntityRabbit) {
+                entity = new EntityTaintRabbit(event.getEntityLiving().world);
+                ((EntityRabbit)entity).setRabbitType(((EntityRabbit)event.getEntityLiving()).getRabbitType());
+            }
+            else {
+                entity = new EntityThaumicSlime(event.getEntityLiving().world);
+                ((EntityThaumicSlime) entity).setSlimeSize((int) (1.0f + Math.min(event.getEntityLiving().getMaxHealth() / 10.0f, 6.0f)), false);
+            }
+            if (entity != null) {
+                entity.setLocationAndAngles(event.getEntityLiving().posX, event.getEntityLiving().posY, event.getEntityLiving().posZ, event.getEntityLiving().rotationYaw, 0.0f);
+                event.getEntityLiving().world.spawnEntity(entity);
+                if (!(event.getEntityLiving() instanceof EntityPlayer)) {
+                    event.getEntityLiving().setDead();
+                    event.setCanceled(true);
+                }
+            }
+        }
+    }
+    
     // ==================================================
     //                 Block Place Event
     // ==================================================

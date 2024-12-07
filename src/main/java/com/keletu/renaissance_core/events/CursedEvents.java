@@ -4,10 +4,6 @@ import baubles.api.BaublesApi;
 import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.items.RCItems;
-import com.keletu.renaissance_core.tweaks.GuiThaumonomiconPageButton;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
@@ -25,17 +21,16 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
-import net.minecraftforge.client.event.GuiScreenEvent;
-import net.minecraftforge.event.entity.living.*;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import net.minecraftforge.event.entity.living.LivingHealEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftApiHelper;
@@ -45,13 +40,14 @@ import thaumcraft.api.aura.AuraHelper;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.capabilities.IPlayerWarp;
 import thaumcraft.api.capabilities.ThaumcraftCapabilities;
+import thaumcraft.api.damagesource.DamageSourceThaumcraft;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.items.consumables.ItemSanitySoap;
 import thaumcraft.common.lib.potions.PotionWarpWard;
 import thaumcraft.common.lib.research.ResearchManager;
-import thecodex6824.thaumicaugmentation.common.entity.EntityItemImportant;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 import java.util.WeakHashMap;
 
@@ -117,35 +113,13 @@ public class CursedEvents {
         addDrop(event, itemStacks[chosenStack]);
     }
 
-    @SideOnly(Side.CLIENT)
     @SubscribeEvent
-    public static void guiPostInit(GuiScreenEvent.InitGuiEvent.Post event) {
-        if (Minecraft.getMinecraft().player == null)
+    public void onPlayerHurt(LivingHurtEvent event) {
+        if (event.getEntityLiving().world.isRemote)
             return;
 
-        if (event.getGui() instanceof GuiInventory) {
-            GuiContainer gui = (GuiContainer) event.getGui();
-
-            if (hasThaumiumCursed(Minecraft.getMinecraft().player))
-                event.getButtonList().add(new GuiThaumonomiconPageButton(56, gui, 150 + ConfigsRC.xiconOffsetThaumonomicon, 61 + ConfigsRC.yiconOffsetThaumonomicon, 20, 18));
-        }
-    }
-
-    @SubscribeEvent
-    public static void onEntityTick(LivingEvent.LivingUpdateEvent event) {
-        if (event.getEntity() instanceof EntityDragon && !event.getEntity().world.isRemote) {
-            EntityDragon dragon = (EntityDragon) event.getEntity();
-            // final burst of XP/actual death is at 200 ticks
-            if (dragon.deathTicks == 199 && cursedPlayer != null) {
-
-                Vec3d center = new Vec3d(dragon.posX, dragon.posY, dragon.posZ);
-                EntityItemImportant heart = new EntityItemImportant(event.getEntity().world, center.x, center.y, center.z, new ItemStack(ItemsTC.primordialPearl, 1, 5));
-
-                event.getEntity().world.spawnEntity(heart);
-
-                cursedPlayer = null;
-
-            }
+        if (Objects.equals(event.getSource(), DamageSourceThaumcraft.taint)) {
+            event.setAmount(event.getAmount() * 2);
         }
     }
 
