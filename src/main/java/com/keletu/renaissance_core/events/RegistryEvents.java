@@ -7,6 +7,8 @@ import com.keletu.renaissance_core.blocks.tile.TileEtherealBloom;
 import com.keletu.renaissance_core.blocks.tile.TileManaPod;
 import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.items.RCItems;
+import com.keletu.renaissance_core.recipes.VerdantCharmToRing;
+import com.keletu.renaissance_core.recipes.VerdantRingToCharm;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFire;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -20,6 +22,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
@@ -76,36 +79,28 @@ public class RegistryEvents {
             Entity entity = null;
             if (event.getEntityLiving() instanceof EntityCreeper) {
                 entity = new EntityTaintCreeper(event.getEntityLiving().world);
-            }
-            else if (event.getEntityLiving() instanceof EntitySheep) {
+            } else if (event.getEntityLiving() instanceof EntitySheep) {
                 entity = new EntityTaintSheep(event.getEntityLiving().world);
-            }
-            else if (event.getEntityLiving() instanceof EntityCow) {
+            } else if (event.getEntityLiving() instanceof EntityCow) {
                 entity = new EntityTaintCow(event.getEntityLiving().world);
-            }
-            else if (event.getEntityLiving() instanceof EntityPig) {
+            } else if (event.getEntityLiving() instanceof EntityPig) {
                 entity = new EntityTaintPig(event.getEntityLiving().world);
-            }
-            else if (event.getEntityLiving() instanceof EntityChicken) {
+            } else if (event.getEntityLiving() instanceof EntityChicken) {
                 entity = new EntityTaintChicken(event.getEntityLiving().world);
-            }
-            else if (event.getEntityLiving() instanceof EntityVillager) {
+            } else if (event.getEntityLiving() instanceof EntityVillager) {
                 entity = new EntityTaintVillager(event.getEntityLiving().world);
-            }
-            else if (event.getEntityLiving().getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD || event.getEntityLiving() instanceof EntityAnimal) {
-                for (int n = (int)Math.max(1.0, Math.sqrt(event.getEntityLiving().getMaxHealth() + 2.0f)), a = 0; a < n; ++a) {
+            } else if (event.getEntityLiving().getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD || event.getEntityLiving() instanceof EntityAnimal) {
+                for (int n = (int) Math.max(1.0, Math.sqrt(event.getEntityLiving().getMaxHealth() + 2.0f)), a = 0; a < n; ++a) {
                     final Entity e = new EntityTaintCrawler(event.getEntityLiving().world);
-                    e.setLocationAndAngles(event.getEntityLiving().posX + (event.getEntityLiving().world.rand.nextFloat() - event.getEntityLiving().world.rand.nextFloat()) * event.getEntityLiving().width, event.getEntityLiving().posY + event.getEntityLiving().world.rand.nextFloat() * event.getEntityLiving().height, event.getEntityLiving().posZ + (event.getEntityLiving().world.rand.nextFloat() - event.getEntityLiving().world.rand.nextFloat()) * event.getEntityLiving().width, (float)event.getEntityLiving().world.rand.nextInt(360), 0.0f);
+                    e.setLocationAndAngles(event.getEntityLiving().posX + (event.getEntityLiving().world.rand.nextFloat() - event.getEntityLiving().world.rand.nextFloat()) * event.getEntityLiving().width, event.getEntityLiving().posY + event.getEntityLiving().world.rand.nextFloat() * event.getEntityLiving().height, event.getEntityLiving().posZ + (event.getEntityLiving().world.rand.nextFloat() - event.getEntityLiving().world.rand.nextFloat()) * event.getEntityLiving().width, (float) event.getEntityLiving().world.rand.nextInt(360), 0.0f);
                     event.getEntityLiving().world.spawnEntity(e);
                 }
                 event.getEntityLiving().setDead();
                 event.setCanceled(true);
-            }
-            else if (event.getEntityLiving() instanceof EntityRabbit) {
+            } else if (event.getEntityLiving() instanceof EntityRabbit) {
                 entity = new EntityTaintRabbit(event.getEntityLiving().world);
-                ((EntityRabbit)entity).setRabbitType(((EntityRabbit)event.getEntityLiving()).getRabbitType());
-            }
-            else {
+                ((EntityRabbit) entity).setRabbitType(((EntityRabbit) event.getEntityLiving()).getRabbitType());
+            } else {
                 entity = new EntityThaumicSlime(event.getEntityLiving().world);
                 ((EntityThaumicSlime) entity).setSlimeSize((int) (1.0f + Math.min(event.getEntityLiving().getMaxHealth() / 10.0f, 6.0f)), false);
             }
@@ -119,7 +114,7 @@ public class RegistryEvents {
             }
         }
     }
-    
+
     // ==================================================
     //                 Block Place Event
     // ==================================================
@@ -162,12 +157,19 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RCItems.arcane_lime_powder);
         event.getRegistry().registerAll(RCItems.etherealBloomItem);
         event.getRegistry().registerAll(RCItems.dice12);
+        event.getRegistry().registerAll(RCItems.verdantRing);
 
         event.getRegistry().registerAll(RCItems.pechHeadNormal);
         event.getRegistry().registerAll(RCItems.pechHeadHunter);
         event.getRegistry().registerAll(RCItems.pechHeadThaumaturge);
 
         event.getRegistry().registerAll(RCItems.mana_bean);
+    }
+
+    @SubscribeEvent
+    public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        event.getRegistry().register(new VerdantCharmToRing().setRegistryName(RenaissanceCore.MODID, "verdant_charm_to_ring"));
+        event.getRegistry().register(new VerdantRingToCharm().setRegistryName(RenaissanceCore.MODID, "verdant_ring_to_charm"));
     }
 
     @SubscribeEvent

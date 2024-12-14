@@ -2,7 +2,6 @@ package com.keletu.renaissance_core;
 
 import com.keletu.renaissance_core.blocks.RFBlocks;
 import com.keletu.renaissance_core.entity.*;
-import com.keletu.renaissance_core.events.ChampionEvents;
 import com.keletu.renaissance_core.events.KeepDiceEvent;
 import com.keletu.renaissance_core.events.ZapHandler;
 import com.keletu.renaissance_core.items.RCItems;
@@ -66,8 +65,6 @@ public class RenaissanceCore {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        ChampionEvents.infernalMobList();
-
         packetInstance = NetworkRegistry.INSTANCE.newSimpleChannel("RenaissanceChannel");
         packetInstance.registerMessage(PacketZap.Handler.class, PacketZap.class, 0, Side.SERVER);
         packetInstance.registerMessage(PacketZapParticle.Handler.class, PacketZapParticle.class, 1, Side.CLIENT);

@@ -23,6 +23,7 @@ public class ModelEvents {
         defaultModel(RCItems.mana_bean);
         defaultModel(RCItems.arcane_lime_powder);
         defaultModel(RCItems.dice12);
+        defaultModel(RCItems.verdantRing);
 
         defaultModel(RCItems.pechHeadNormal);
         defaultModel(RCItems.pechHeadHunter);

@@ -57,12 +57,13 @@ tooltip.dice12.tooltip11=§5- Warp will happen more often.
 tooltip.dice12.tooltip12=§5- When chunk vis lower than 90%%, you can't regenerate your health.
 tooltip.dice12.holdShift=§5The §6Shift §5shall be held.
 
-rc.protection.place=Hmmm... Maybe i can't block at this position
-rc.protection.break=Hmmm... Maybe i can't break this block
+tooltip.renaissancecore.ctr=Can transform to a Ring on the crafting table.
+tooltip.renaissancecore.rtc=Can transform to charm on the crafting table.
 
 item.dice12.name=T12
 item.mana_bean.name=Mana Bean
 item.arcane_lime_powder.name=Powder of Arcane Mixture
+item.verdant_ring.name=Verdant Heart Band
 
 tile.ethereal_bloom.name=Ethereal Bloom
 

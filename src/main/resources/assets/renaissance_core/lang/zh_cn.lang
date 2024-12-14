@@ -41,28 +41,29 @@ advancement.renaissancecore:emptiness.desc=进入虚域
 advancement.renaissancecore:notes=周而复始
 advancement.renaissancecore:notes.desc=得到残破卷轴
 
-rc.protection.place=emmm... 也许我不能在这里放置方块
-rc.protection.break=emmm... 也许这个方块不允许被破坏
+tooltip.dice12.tip1=§5不知何时，背包中出现了一个奇怪的物品.
+tooltip.dice12.tip2=§4也许戴上它是个错误的决定...
+tooltip.dice12.tooltip1=§5- 不再需要观测理论
+tooltip.dice12.tooltip2=§5- 怪物掉落更多物品
+tooltip.dice12.tooltip3=§5- 自动净化腐化方块
+tooltip.dice12.tooltip4=§5- 增强你的神秘工具
+tooltip.dice12.tooltip5=§5- 驱邪肥皂效率大增
+tooltip.dice12.tooltip6=§5- 按住快捷键发射高能电流电击目标 快捷键：
+tooltip.dice12.tooltip7=§5- 全知使你彻夜难眠
+tooltip.dice12.tooltip8=§5- 腐毒伤害对你翻倍
+tooltip.dice12.tooltip9=§5- 灵气消耗提升250%%
+tooltip.dice12.tooltip10=§5- 原版工具更难使用
+tooltip.dice12.tooltip11=§5- 扭曲发作更加频繁
+tooltip.dice12.tooltip12=§5- 当区块灵气低于80%%，任何治疗手段都会失效
+tooltip.dice12.holdShift=§5按住 §6Shift §5查看详细信息.
 
-tooltip.dice12.tip1=§5An unknown item was added to your pack when you were unaware.
-tooltip.dice12.tip2=§4Perhaps I shouldn't wear it...
-tooltip.dice12.tooltip1=§5- Observations and theories are no longer necessary.
-tooltip.dice12.tooltip2=§5- Mobs will drop more loot.
-tooltip.dice12.tooltip3=§5- You can purify nearby corrupted blocks.
-tooltip.dice12.tooltip4=§5- Thaumium tools will be more effective.
-tooltip.dice12.tooltip5=§5- Sanity Soap can remove most warps, including permanent warp.
-tooltip.dice12.tooltip6=§5- You can zap your facing target by Key
-tooltip.dice12.tooltip7=§5- Omniscience keeps you up at night.
-tooltip.dice12.tooltip8=§5- Taint Flux will inflict double damage.
-tooltip.dice12.tooltip9=§5- Vis cost increased by 250%%.
-tooltip.dice12.tooltip10=§5- Vanilla tools will be crude to use.
-tooltip.dice12.tooltip11=§5- Warp will happen more often.
-tooltip.dice12.tooltip12=§5- When chunk vis lower than 90%%, you can't regenerate your health.
-tooltip.dice12.holdShift=§5The §6Shift §5shall be held.
+tooltip.renaissancecore.ctr=可以在工作台转换为戒指形态
+tooltip.renaissancecore.rtc=可以在工作台转换回坠饰形态
 
 item.dice12.name=T12
 item.mana_bean.name=魔豆
 item.arcane_lime_powder.name=奥术石灰粉
+item.verdant_ring.name=翠心指环
 
 tile.mana_pod.name=魔豆荚
 
