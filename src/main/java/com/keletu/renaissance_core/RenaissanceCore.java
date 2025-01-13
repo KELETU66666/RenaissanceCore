@@ -69,13 +69,6 @@ public class RenaissanceCore {
         packetInstance.registerMessage(PacketZap.Handler.class, PacketZap.class, 0, Side.SERVER);
         packetInstance.registerMessage(PacketZapParticle.Handler.class, PacketZapParticle.class, 1, Side.CLIENT);
 
-        try {
-            MapGenStructureIO.registerStructureComponent(ComponentWizardTower.class, "RCWizTower");
-            MapGenStructureIO.registerStructureComponent(ComponentBankerHome.class, "RCBank");
-        } catch (Throwable ignored) {
-
-        }
-
         if (event.getSide().isClient()) {
             OBJLoader.INSTANCE.addDomain(MODID);
             ZapHandler.registerKeybinds();
@@ -92,6 +85,9 @@ public class RenaissanceCore {
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_pig"), EntityTaintPig.class, "TaintedPig", 5, MODID, 64, 3, true, 10618530, 15702511);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_sheep"), EntityTaintSheep.class, "TaintedSheep", 6, MODID, 64, 3, true, 10618530, 8421504);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_villager"), EntityTaintVillager.class, "TaintedVillager", 7, MODID, 64, 3, true, 10618530, 65535);
+
+        MapGenStructureIO.registerStructureComponent(ComponentWizardTower.class, "RCWizTower");
+        MapGenStructureIO.registerStructureComponent(ComponentBankerHome.class, "RCBank");
 
         if (Loader.isModLoaded("botania")) {
             MinecraftForge.EVENT_BUS.register(new EntropinnyumTNTHandler());

@@ -7,7 +7,6 @@ import baubles.api.render.IRenderBauble;
 import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.events.CursedEvents;
-import com.keletu.renaissance_core.events.ZapHandler;
 import com.keletu.renaissance_core.util.TCVec3;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -28,7 +27,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.input.Keyboard;
 import thaumcraft.api.items.IVisDiscountGear;
 import thaumcraft.client.lib.obj.AdvancedModelLoader;
 import thaumcraft.client.lib.obj.IModelCustom;
@@ -88,7 +86,7 @@ public class ItemDice12 extends Item implements IBauble, IVisDiscountGear, IRend
             list.add(I18n.format("tooltip.dice12.tooltip3"));
             list.add(I18n.format("tooltip.dice12.tooltip4"));
             list.add(I18n.format("tooltip.dice12.tooltip5"));
-            list.add(I18n.format("tooltip.dice12.tooltip6") + " " + Keyboard.getKeyName(ZapHandler.zepKey.getKeyCode()));
+            list.add(I18n.format("tooltip.dice12.tooltip6"));
             if (Minecraft.getMinecraft().player != null && BaublesApi.isBaubleEquipped(Minecraft.getMinecraft().player, this) != -1) {
                 list.add("");
                 list.add(I18n.format("tooltip.dice12.tooltip7"));

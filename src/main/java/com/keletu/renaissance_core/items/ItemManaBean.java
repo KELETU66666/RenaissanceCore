@@ -104,6 +104,7 @@ public class ItemManaBean extends ItemFood implements IEssentiaContainerItem {
             setAspects(par1ItemStack, (new AspectList()).add(displayAspects[this.rand.nextInt(displayAspects.length)], ConfigsRC.podAspect));
     }
 
+    @Override
     public AspectList getAspects(ItemStack itemstack) {
         if (itemstack.hasTagCompound()) {
             AspectList aspects = new AspectList();
@@ -113,6 +114,7 @@ public class ItemManaBean extends ItemFood implements IEssentiaContainerItem {
         return null;
     }
 
+    @Override
     public void setAspects(ItemStack itemstack, AspectList aspects) {
         if (!itemstack.hasTagCompound())
             itemstack.setTagCompound(new NBTTagCompound());

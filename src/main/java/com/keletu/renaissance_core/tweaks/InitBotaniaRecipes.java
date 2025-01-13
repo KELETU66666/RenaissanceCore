@@ -210,7 +210,7 @@ public class InitBotaniaRecipes {
                 "ALFPORTAL",
                 100,
                 new AspectList().add(Aspect.WATER, 5).add(Aspect.EARTH, 5),
-                new ItemStack(ModBlocks.livingwood, 4, 5),
+                new ItemStack(ModBlocks.livingwood, 6, 5),
                 "LPL",
                 "PAP",
                 "LPL",
