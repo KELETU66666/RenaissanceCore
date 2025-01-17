@@ -63,6 +63,8 @@ tooltip.renaissancecore.rtc=Can transform to charm on the crafting table.
 item.dice12.name=T12
 item.mana_bean.name=Mana Bean
 item.arcane_lime_powder.name=Powder of Arcane Mixture
+item.pech_backpack.name=Backpack of the Pech
+
 item.verdant_ring.name=Verdant Heart Band
 
 tile.ethereal_bloom.name=Ethereal Bloom

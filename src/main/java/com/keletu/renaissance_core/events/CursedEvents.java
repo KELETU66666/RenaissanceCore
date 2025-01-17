@@ -45,6 +45,7 @@ import thaumcraft.api.capabilities.IPlayerWarp;
 import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import thaumcraft.api.damagesource.DamageSourceThaumcraft;
 import thaumcraft.api.items.ItemsTC;
+import thaumcraft.common.entities.monster.EntityPech;
 import thaumcraft.common.items.baubles.ItemVerdantCharm;
 import thaumcraft.common.items.consumables.ItemSanitySoap;
 import thaumcraft.common.lib.potions.PotionWarpWard;
@@ -215,6 +216,8 @@ public class CursedEvents {
                     addDrop(event, getRandomSizeStack(ItemsTC.chunks, 1, 10, 5));
                 } else if (killed.getClass() == EntityVillager.class) {
                     addDrop(event, getRandomSizeStack(ItemsTC.chunks, 1, 2));
+                } else if (killed.getClass() == EntityPech.class) {
+                    addDropWithChance(event, new ItemStack(RCItems.pech_backpack), 50);
                 }
 
             }

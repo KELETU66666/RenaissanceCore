@@ -24,6 +24,7 @@ public class ModelEvents {
         defaultModel(RCItems.arcane_lime_powder);
         defaultModel(RCItems.dice12);
         defaultModel(RCItems.verdantRing);
+        defaultModel(RCItems.pech_backpack);
 
         defaultModel(RCItems.pechHeadNormal);
         defaultModel(RCItems.pechHeadHunter);

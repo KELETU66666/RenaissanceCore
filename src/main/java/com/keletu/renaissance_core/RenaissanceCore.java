@@ -1,12 +1,14 @@
 package com.keletu.renaissance_core;
 
 import com.keletu.renaissance_core.blocks.RFBlocks;
+import com.keletu.renaissance_core.container.GUIHandler;
 import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.events.KeepDiceEvent;
 import com.keletu.renaissance_core.events.ZapHandler;
 import com.keletu.renaissance_core.items.RCItems;
 import com.keletu.renaissance_core.module.botania.EntropinnyumTNTHandler;
 import com.keletu.renaissance_core.module.botania.SubtileRegisterOverride;
+import com.keletu.renaissance_core.packet.PacketOpenPackGui;
 import com.keletu.renaissance_core.packet.PacketZap;
 import com.keletu.renaissance_core.packet.PacketZapParticle;
 import com.keletu.renaissance_core.proxy.CommonProxy;
@@ -65,9 +67,12 @@ public class RenaissanceCore {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        NetworkRegistry.INSTANCE.registerGuiHandler(RenaissanceCore.MODID, new GUIHandler());
+
         packetInstance = NetworkRegistry.INSTANCE.newSimpleChannel("RenaissanceChannel");
         packetInstance.registerMessage(PacketZap.Handler.class, PacketZap.class, 0, Side.SERVER);
         packetInstance.registerMessage(PacketZapParticle.Handler.class, PacketZapParticle.class, 1, Side.CLIENT);
+        packetInstance.registerMessage(PacketOpenPackGui.Handler.class, PacketOpenPackGui.class, 2, Side.SERVER);
 
         if (event.getSide().isClient()) {
             OBJLoader.INSTANCE.addDomain(MODID);
@@ -109,6 +114,7 @@ public class RenaissanceCore {
         MinecraftForge.EVENT_BUS.register(new KeepDiceEvent());
 
         proxy.regRenderer();
+        proxy.addRenderLayers();
     }
 
     @EventHandler

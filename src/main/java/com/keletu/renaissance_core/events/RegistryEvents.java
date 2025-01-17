@@ -158,6 +158,7 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RCItems.etherealBloomItem);
         event.getRegistry().registerAll(RCItems.dice12);
         event.getRegistry().registerAll(RCItems.verdantRing);
+        event.getRegistry().registerAll(RCItems.pech_backpack);
 
         event.getRegistry().registerAll(RCItems.pechHeadNormal);
         event.getRegistry().registerAll(RCItems.pechHeadHunter);
@@ -187,6 +188,8 @@ public class RegistryEvents {
         Random rand = new Random();
         if (event.getEntityLiving() instanceof EntityPech && event.isRecentlyHit() && event.getSource().getTrueSource() != null && event.getSource().getTrueSource() instanceof EntityPlayer && !(event.getSource().getTrueSource() instanceof FakePlayer)) {
             if (event.getEntityLiving().getClass() == EntityPech.class && event.isRecentlyHit() && event.getSource().getTrueSource() != null && event.getSource().getTrueSource() instanceof EntityPlayer) {
+                if (!CursedEvents.hasThaumiumCursed((EntityPlayer) event.getSource().getTrueSource()))
+                    addDropWithChance(event, new ItemStack(RCItems.pech_backpack), 3);
                 ItemStack weap = ((EntityPlayer) event.getSource().getTrueSource()).getHeldItem(EnumHand.MAIN_HAND);
                 if (!weap.isEmpty() && weap.getItem() == ForgeRegistries.ITEMS.getValue(new ResourceLocation("forbiddenmagicre", "skull_axe")) && rand.nextInt(26) <= (3 + EnchantmentHelper.getEnchantmentLevel(Enchantments.LOOTING, weap))) {
                     if (((EntityPech) event.getEntityLiving()).getPechType() == 1)
@@ -206,4 +209,9 @@ public class RegistryEvents {
         event.getDrops().add(entityitem);
     }
 
+    public static void addDropWithChance(LivingDropsEvent event, ItemStack drop, int chance) {
+        if (new Random().nextInt(100) < chance) {
+            addDrop(event, drop);
+        }
+    }
 }

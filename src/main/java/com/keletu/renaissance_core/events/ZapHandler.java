@@ -1,10 +1,13 @@
 package com.keletu.renaissance_core.events;
 
 import com.keletu.renaissance_core.RenaissanceCore;
+import com.keletu.renaissance_core.container.GUIHandler;
+import com.keletu.renaissance_core.packet.PacketOpenPackGui;
 import com.keletu.renaissance_core.packet.PacketZap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -17,11 +20,14 @@ import org.lwjgl.input.Keyboard;
 public class ZapHandler {
 
     public static KeyBinding zepKey;
+    public static KeyBinding openCloakGui;
     @SideOnly(Side.CLIENT)
     public static void registerKeybinds() {
         zepKey = new KeyBinding("key.zap", Keyboard.KEY_H, "key.categories.renaissancecore");
+        openCloakGui = new KeyBinding("key.kitchengadgets.open_backpack", Keyboard.KEY_K, "key.categories.renaissancecore");
 
         ClientRegistry.registerKeyBinding(zepKey);
+        ClientRegistry.registerKeyBinding(openCloakGui);
     }
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
@@ -34,6 +40,10 @@ public class ZapHandler {
             if (!Minecraft.getMinecraft().isGamePaused()) {
                 RenaissanceCore.packetInstance.sendToServer(new PacketZap(true));
             }
+        }
+
+        if(openCloakGui.isPressed() && GUIHandler.getBaubleStack(player) != ItemStack.EMPTY) {
+            RenaissanceCore.packetInstance.sendToServer(new PacketOpenPackGui());
         }
     }
 }

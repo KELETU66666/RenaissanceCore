@@ -7,10 +7,13 @@ import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.entity.RenderEnderCrystal;
+import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Map;
 
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy{
@@ -26,6 +29,18 @@ public class ClientProxy extends CommonProxy{
         RenderingRegistry.registerEntityRenderingHandler(EntityTaintSheep.class, new RenderTaintSheep(0.7F));
         RenderingRegistry.registerEntityRenderingHandler(EntityTaintVillager.class, new RenderTaintVillager());
         registerItemColourHandlers();
+    }
+
+    @Override
+    public void addRenderLayers() {
+        Map<String, RenderPlayer> skinMap = Minecraft.getMinecraft().getRenderManager().getSkinMap();
+
+        addLayersToSkin(skinMap.get("default"));
+        addLayersToSkin(skinMap.get("slim"));
+    }
+
+    private static void addLayersToSkin(RenderPlayer renderPlayer) {
+        renderPlayer.addLayer(new LayerBackpack(renderPlayer));
     }
 
     @SideOnly(Side.CLIENT)
