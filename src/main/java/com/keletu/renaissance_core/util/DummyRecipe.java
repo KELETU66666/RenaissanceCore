@@ -16,7 +16,7 @@ import javax.annotation.Nonnull;
  * https://github.com/GregTechCEu/GregTech
  *
  * GregtechCE: Unofficial is Open Source and distributed under the
- * GregtechCE: Unofficial License: https://www.gnu.org/licenses/lgpl-3.0.en.html
+ * GPLv3.0 License: https://www.gnu.org/licenses/lgpl-3.0.en.html
  */
 public class DummyRecipe extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 

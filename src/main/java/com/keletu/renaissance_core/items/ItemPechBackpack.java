@@ -2,11 +2,19 @@ package com.keletu.renaissance_core.items;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemPechBackpack extends Item implements IBauble {
     public ItemPechBackpack() {
@@ -56,5 +64,12 @@ public class ItemPechBackpack extends Item implements IBauble {
     @Override
     public EnumRarity getRarity(ItemStack stack) {
         return EnumRarity.UNCOMMON;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> list, ITooltipFlag flagIn) {
+        list.add(I18n.format("tooltip.pech_backpack.tip"));
+        list.add("");
     }
 }
