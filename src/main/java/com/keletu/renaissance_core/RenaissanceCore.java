@@ -13,15 +13,10 @@ import com.keletu.renaissance_core.packet.PacketZap;
 import com.keletu.renaissance_core.packet.PacketZapParticle;
 import com.keletu.renaissance_core.proxy.CommonProxy;
 import com.keletu.renaissance_core.tweaks.InitBotaniaRecipes;
-import com.keletu.renaissance_core.village.ComponentBankerHome;
-import com.keletu.renaissance_core.village.ComponentWizardTower;
-import com.keletu.renaissance_core.village.VillageBankerManager;
-import com.keletu.renaissance_core.village.VillageWizardManager;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
@@ -35,7 +30,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
-import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
@@ -91,8 +85,6 @@ public class RenaissanceCore {
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_sheep"), EntityTaintSheep.class, "TaintedSheep", 6, MODID, 64, 3, true, 10618530, 8421504);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_villager"), EntityTaintVillager.class, "TaintedVillager", 7, MODID, 64, 3, true, 10618530, 65535);
 
-        MapGenStructureIO.registerStructureComponent(ComponentWizardTower.class, "RCWizTower");
-        MapGenStructureIO.registerStructureComponent(ComponentBankerHome.class, "RCBank");
 
         if (Loader.isModLoaded("botania")) {
             MinecraftForge.EVENT_BUS.register(new EntropinnyumTNTHandler());
@@ -105,11 +97,6 @@ public class RenaissanceCore {
             }
         }
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(MODID, "research/research.json"));
-
-        VillageWizardManager.registerMagicVillager();
-        VillageBankerManager.registerMagicVillager();
-        VillagerRegistry.instance().registerVillageCreationHandler(new VillageWizardManager());
-        VillagerRegistry.instance().registerVillageCreationHandler(new VillageBankerManager());
 
         MinecraftForge.EVENT_BUS.register(new KeepDiceEvent());
 
