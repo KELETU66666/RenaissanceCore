@@ -107,7 +107,7 @@ public class ItemVerdantRing extends Item implements IBauble, IRechargable {
     }
 
     public int getMaxCharge(ItemStack stack, EntityLivingBase player) {
-        return 100;
+        return 200;
     }
 
     public EnumChargeDisplay showInHud(ItemStack stack, EntityLivingBase player) {
