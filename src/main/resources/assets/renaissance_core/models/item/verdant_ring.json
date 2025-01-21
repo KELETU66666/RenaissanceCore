@@ -2,5 +2,15 @@
   "parent": "item/generated",
   "textures": {
     "layer0": "thaumcraft:items/ring_verdant"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": { "type": 1 },
+      "model": "renaissance_core:item/ring_verdant_1"
+    },
+    {
+      "predicate": { "type": 2 },
+      "model": "renaissance_core:item/ring_verdant_2"
+    }
+  ]
 }
