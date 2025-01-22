@@ -27,14 +27,14 @@ public class InitBotaniaRecipes {
         DummyRecipe.removeRecipeByName(new ResourceLocation("botania", "fertilizer_powder"));
         DummyRecipe.removeRecipeByName(new ResourceLocation("botania", "fertilizer_dye"));
 
+        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation(RenaissanceCore.MODID, "fertilizer_bota"), new CrucibleRecipe(
+                "BASICBOTABY",
+                new ItemStack(ModItems.fertilizer, 3),
+                new ItemStack(Items.DYE, 1, 15),
+                new AspectList().add(Aspect.EXCHANGE, 10).add(Aspect.PLANT, 10)));
+
         int[] meta = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
         for (int i : meta) {
-            ThaumcraftApi.addCrucibleRecipe(new ResourceLocation(RenaissanceCore.MODID, "mushroom_to_flower" + i), new CrucibleRecipe(
-                    "BASICBOTABY",
-                    new ItemStack(ModBlocks.flower, 1, i),
-                    new ItemStack(ModBlocks.mushroom, 1, i),
-                    new AspectList().add(Aspect.EXCHANGE, 2).add(Aspect.PLANT, 2)));
-
             ThaumcraftApi.addCrucibleRecipe(new ResourceLocation(RenaissanceCore.MODID, "flower_to_mushroom" + i), new CrucibleRecipe(
                     "BOTANYDECREASE",
                     new ItemStack(ModBlocks.mushroom, 1, i),

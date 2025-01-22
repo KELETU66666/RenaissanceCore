@@ -109,6 +109,7 @@ entity.TaintedSheep.name=Tainted Sheep
 
 key.categories.renaissancecore=Renaissance Core
 key.zap=Zap Target
+key.open_backpack=Open Backpack
 
 message.renaissance-core.botaniaaddon.manyflowers=Too many flowers, Efficiency %s%%
 

@@ -24,7 +24,7 @@ public class ZapHandler {
     @SideOnly(Side.CLIENT)
     public static void registerKeybinds() {
         zepKey = new KeyBinding("key.zap", Keyboard.KEY_H, "key.categories.renaissancecore");
-        openCloakGui = new KeyBinding("key.kitchengadgets.open_backpack", Keyboard.KEY_K, "key.categories.renaissancecore");
+        openCloakGui = new KeyBinding("key.open_backpack", Keyboard.KEY_K, "key.categories.renaissancecore");
 
         ClientRegistry.registerKeyBinding(zepKey);
         ClientRegistry.registerKeyBinding(openCloakGui);
