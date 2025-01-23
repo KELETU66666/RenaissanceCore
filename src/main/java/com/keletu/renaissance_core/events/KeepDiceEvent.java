@@ -21,19 +21,22 @@ import java.util.concurrent.atomic.AtomicReference;
 public class KeepDiceEvent
 {
     private Map<UUID, ItemStack> diceMap = new HashMap<>();
+    private Map<UUID, Integer> slotMap = new HashMap<>();
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void playerDeathHigh(PlayerDropsEvent event)
     {
         EntityPlayer player = event.getEntityPlayer();
         this.diceMap.remove(player.getUniqueID());
+        this.slotMap.remove(player.getUniqueID());
         ItemStack stack = getBackpackStacks(player);
-        if(stack.getItem() instanceof ItemDice12)
+        int slot = getDice12Slot(player);
+        if(stack.getItem() instanceof ItemDice12 && slot != -1)
         {
             IBaublesItemHandler handler = BaublesApi.getBaublesHandler(player);
-            int index = BaubleType.CHARM.getValidSlots()[0];
-            handler.setStackInSlot(index, ItemStack.EMPTY);
+            handler.setStackInSlot(slot, ItemStack.EMPTY);
             this.diceMap.put(player.getUniqueID(), stack);
+            this.slotMap.put(player.getUniqueID(), slot);
         }
     }
 
@@ -41,38 +44,35 @@ public class KeepDiceEvent
     public void playerDeathLow(PlayerDropsEvent event)
     {
         EntityPlayer player = event.getEntityPlayer();
-        if(this.diceMap.containsKey(player.getUniqueID()))
+        if(this.diceMap.containsKey(player.getUniqueID()) && this.slotMap.containsKey(player.getUniqueID()))
         {
             IBaublesItemHandler handler = BaublesApi.getBaublesHandler(player);
-            int index = BaubleType.CHARM.getValidSlots()[0];
-            handler.setStackInSlot(index, this.diceMap.get(player.getUniqueID()));
+            handler.setStackInSlot(this.slotMap.get(player.getUniqueID()), this.diceMap.get(player.getUniqueID()));
             this.diceMap.remove(player.getUniqueID());
+            this.slotMap.remove(player.getUniqueID());
         }
     }
 
-    public static ItemStack getBackpackStack(EntityPlayer player)
-    {
+    public static ItemStack getBackpackStack(EntityPlayer player) {
         IBaublesItemHandler handler = BaublesApi.getBaublesHandler(player);
-        ItemStack stack = handler.getStackInSlot(BaubleType.CHARM.getValidSlots()[0]);
-        if(!stack.isEmpty() && stack.getItem() instanceof ItemDice12)
-        {
-            return stack;
+        for (int x : BaubleType.TRINKET.getValidSlots()) {
+            ItemStack stack = handler.getStackInSlot(BaubleType.TRINKET.getValidSlots()[x]);
+            if (!stack.isEmpty() && stack.getItem() instanceof ItemDice12) {
+                return stack;
+            }
         }
         return ItemStack.EMPTY;
     }
 
-    public static void setBackpackStack(EntityPlayer player, ItemStack stack)
-    {
-        if(stack.getItem() instanceof ItemDice12)
-        {
-            IBaublesItemHandler handler = BaublesApi.getBaublesHandler(player);
-            int index = BaubleType.CHARM.getValidSlots()[0];
-            ItemStack remainder = handler.insertItem(index, stack.copy(), true);
-            if(remainder.getCount() < stack.getCount())
-            {
-                handler.insertItem(index, stack.copy(), false);
+    public static int getDice12Slot(EntityPlayer player) {
+        IBaublesItemHandler handler = BaublesApi.getBaublesHandler(player);
+        for (int x : BaubleType.TRINKET.getValidSlots()) {
+            ItemStack stack = handler.getStackInSlot(BaubleType.TRINKET.getValidSlots()[x]);
+            if (!stack.isEmpty() && stack.getItem() instanceof ItemDice12) {
+                return x;
             }
         }
+        return -1;
     }
 
     public static ItemStack getBackpackStacks(EntityPlayer player)

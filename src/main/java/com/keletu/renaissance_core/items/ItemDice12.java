@@ -65,7 +65,7 @@ public class ItemDice12 extends Item implements IBauble, IVisDiscountGear, IRend
 
     @Override
     public BaubleType getBaubleType(ItemStack itemStack) {
-        return BaubleType.CHARM;
+        return BaubleType.TRINKET;
     }
 
     @Override
