@@ -4,11 +4,8 @@ import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.blocks.RFBlocks;
 import com.keletu.renaissance_core.blocks.tile.TileEtherealBloom;
-import com.keletu.renaissance_core.blocks.tile.TileManaPod;
 import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.items.RCItems;
-import com.keletu.renaissance_core.recipes.VerdantCharmToRing;
-import com.keletu.renaissance_core.recipes.VerdantRingToCharm;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFire;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -22,7 +19,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
@@ -142,14 +138,12 @@ public class RegistryEvents {
     @SubscribeEvent
     public static void regBlocks(RegistryEvent.Register<Block> event) {
         event.getRegistry().registerAll(RFBlocks.ethereal_bloom);
-        event.getRegistry().registerAll(RFBlocks.mana_pod);
         event.getRegistry().registerAll(RFBlocks.pechHead_normal);
         event.getRegistry().registerAll(RFBlocks.pechHead_hunter);
         event.getRegistry().registerAll(RFBlocks.pechHead_thaumaturge);
         event.getRegistry().registerAll(RFBlocks.full_crucible);
 
         GameRegistry.registerTileEntity(TileEtherealBloom.class, new ResourceLocation(RenaissanceCore.MODID, "ethereal_bloom"));
-        GameRegistry.registerTileEntity(TileManaPod.class, new ResourceLocation(RenaissanceCore.MODID, "mana_pod"));
     }
 
     @SubscribeEvent
@@ -157,20 +151,11 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RCItems.arcane_lime_powder);
         event.getRegistry().registerAll(RCItems.etherealBloomItem);
         event.getRegistry().registerAll(RCItems.dice12);
-        event.getRegistry().registerAll(RCItems.verdantRing);
         event.getRegistry().registerAll(RCItems.pech_backpack);
 
         event.getRegistry().registerAll(RCItems.pechHeadNormal);
         event.getRegistry().registerAll(RCItems.pechHeadHunter);
         event.getRegistry().registerAll(RCItems.pechHeadThaumaturge);
-
-        event.getRegistry().registerAll(RCItems.mana_bean);
-    }
-
-    @SubscribeEvent
-    public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        event.getRegistry().register(new VerdantCharmToRing().setRegistryName(RenaissanceCore.MODID, "verdant_charm_to_ring"));
-        event.getRegistry().register(new VerdantRingToCharm().setRegistryName(RenaissanceCore.MODID, "verdant_ring_to_charm"));
     }
 
     @SubscribeEvent

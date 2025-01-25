@@ -3,9 +3,7 @@ package com.keletu.renaissance_core.events;
 import baubles.api.BaublesApi;
 import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
-import com.keletu.renaissance_core.items.ItemVerdantRing;
 import com.keletu.renaissance_core.items.RCItems;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
@@ -25,15 +23,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.event.entity.living.*;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftApiHelper;
@@ -46,7 +41,6 @@ import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import thaumcraft.api.damagesource.DamageSourceThaumcraft;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.entities.monster.EntityPech;
-import thaumcraft.common.items.baubles.ItemVerdantCharm;
 import thaumcraft.common.items.consumables.ItemSanitySoap;
 import thaumcraft.common.lib.potions.PotionWarpWard;
 import thaumcraft.common.lib.research.ResearchManager;
@@ -116,26 +110,6 @@ public class CursedEvents {
     public static void addOneOf(LivingDropsEvent event, ItemStack... itemStacks) {
         int chosenStack = new Random().nextInt(itemStacks.length);
         addDrop(event, itemStacks[chosenStack]);
-    }
-
-    @SideOnly(Side.CLIENT)
-    @SubscribeEvent
-    public static void addEnderTiaraInformation(ItemTooltipEvent event) {
-        if (event.getEntityPlayer() == null)
-            return;
-
-        if (event.getItemStack().getItem() instanceof ItemVerdantCharm) {
-            event.getToolTip().add("");
-
-            event.getToolTip().add(I18n.format("tooltip.renaissancecore.ctr"));
-
-        }
-        if (event.getItemStack().getItem() instanceof ItemVerdantRing) {
-            event.getToolTip().add("");
-
-            event.getToolTip().add(I18n.format("tooltip.renaissancecore.rtc"));
-
-        }
     }
 
     @SubscribeEvent

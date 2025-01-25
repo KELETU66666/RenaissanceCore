@@ -59,15 +59,9 @@ tooltip.dice12.holdShift=§5The §6Shift §5shall be held.
 
 tooltip.pech_backpack.tip=Only opens when equipped as a bauble, default key: K.
 
-tooltip.renaissancecore.ctr=Can transform to a Ring on the crafting table.
-tooltip.renaissancecore.rtc=Can transform to charm on the crafting table.
-
 item.dice12.name=T12
-item.mana_bean.name=Mana Bean
 item.arcane_lime_powder.name=Powder of Arcane Mixture
 item.pech_backpack.name=Backpack of the Pech
-
-item.verdant_ring.name=Verdant Heart Band
 
 tile.ethereal_bloom.name=Ethereal Bloom
 
@@ -93,8 +87,6 @@ golem.trait.text.greedy=Your golem looks more greedy.
 
 golem.trait.bubble=Bubbly
 golem.trait.text.bubble=Prevent golem receives in-wall damage.
-
-tile.mana_pod.name=Mana Pod
 
 entity.Villager.wizard=Thaumaturger
 entity.Villager.banker=Banker

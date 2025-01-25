@@ -57,15 +57,8 @@ tooltip.dice12.tooltip11=§5- 扭曲发作更加频繁
 tooltip.dice12.tooltip12=§5- 当区块灵气低于80%%，任何治疗手段都会失效
 tooltip.dice12.holdShift=§5按住 §6Shift §5查看详细信息.
 
-tooltip.renaissancecore.ctr=可以在工作台转换为戒指形态
-tooltip.renaissancecore.rtc=可以在工作台转换回坠饰形态
-
 item.dice12.name=T12
-item.mana_bean.name=魔豆
 item.arcane_lime_powder.name=奥术石灰粉
-item.verdant_ring.name=翠心指环
-
-tile.mana_pod.name=魔豆荚
 
 entity.Villager.wizard=村民神秘使
 entity.Villager.banker=银行掌柜
