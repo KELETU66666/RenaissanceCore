@@ -1,11 +1,14 @@
 package com.keletu.renaissance_core.proxy;
 
+import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.client.render.*;
 import com.keletu.renaissance_core.entity.*;
+import com.keletu.renaissance_core.module.botania.LexiconRecipeArcaneWorkbench;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderEnderCrystal;
 import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -24,6 +27,10 @@ public class ClientProxy extends CommonProxy{
         RenderingRegistry.registerEntityRenderingHandler(EntityTaintPig.class, new RenderTaintPig(0.7F));
         RenderingRegistry.registerEntityRenderingHandler(EntityTaintSheep.class, new RenderTaintSheep(0.7F));
         RenderingRegistry.registerEntityRenderingHandler(EntityTaintVillager.class, new RenderTaintVillager());
+
+        if (ConfigsRC.CHANGE_BOTANIA_RECIPE && Loader.isModLoaded("botania")) {
+            LexiconRecipeArcaneWorkbench.init();
+        }
     }
 
     @Override
