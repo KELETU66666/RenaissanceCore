@@ -4,6 +4,7 @@ import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.client.render.*;
 import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.module.botania.PageArcaneWorkbenchRecipe;
+import com.keletu.renaissance_core.module.botania.PageCrucibleRecipe;
 import com.keletu.renaissance_core.module.botania.PageInfusionRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderEnderCrystal;
@@ -31,6 +32,7 @@ public class ClientProxy extends CommonProxy{
 
         if (ConfigsRC.CHANGE_BOTANIA_RECIPE && Loader.isModLoaded("botania")) {
             PageArcaneWorkbenchRecipe.init();
+            PageCrucibleRecipe.init();
             PageInfusionRecipe.init();
         }
     }
