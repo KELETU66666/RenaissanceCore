@@ -47,7 +47,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class LexiconRecipeArcaneWorkbench extends PageRecipe {
+public class PageArcaneWorkbenchRecipe extends PageRecipe {
 
     private static final ResourceLocation craftingOverlay = new ResourceLocation(RenaissanceCore.MODID, "textures/gui/arcanecrafting_overlay.png");
     int relativeMouseX;
@@ -61,7 +61,7 @@ public class LexiconRecipeArcaneWorkbench extends PageRecipe {
     boolean oreDictRecipe, shapelessRecipe;
 
 
-    public LexiconRecipeArcaneWorkbench(String unlocalizedName, IArcaneRecipe recipe) {
+    public PageArcaneWorkbenchRecipe(String unlocalizedName, IArcaneRecipe recipe) {
         super(unlocalizedName);
         this.recipe = recipe;
         this.tooltipStack = ItemStack.EMPTY;
@@ -262,7 +262,7 @@ public class LexiconRecipeArcaneWorkbench extends PageRecipe {
 
     public static void init() {
         LexiconData.virus.pages.set(1,
-                new LexiconRecipeArcaneWorkbench("renaissance_core.research", new ShapelessArcaneRecipe(new ResourceLocation(""),
+                new PageArcaneWorkbenchRecipe("renaissance_core.research", new ShapelessArcaneRecipe(new ResourceLocation(""),
                         "HORSEVIRUS",
                         50,
                         new AspectList().add(Aspect.WATER, 2).add(Aspect.ENTROPY, 2),
@@ -279,7 +279,7 @@ public class LexiconRecipeArcaneWorkbench extends PageRecipe {
         );
 
         LexiconData.virus.pages.set(2,
-                new LexiconRecipeArcaneWorkbench("renaissance_core.research", new ShapelessArcaneRecipe(new ResourceLocation(""),
+                new PageArcaneWorkbenchRecipe("renaissance_core.research", new ShapelessArcaneRecipe(new ResourceLocation(""),
                         "HORSEVIRUS",
                         50,
                         new AspectList().add(Aspect.WATER, 2).add(Aspect.ENTROPY, 2),
@@ -296,7 +296,7 @@ public class LexiconRecipeArcaneWorkbench extends PageRecipe {
         );
 
         LexiconData.alchemy.pages.set(1,
-                new LexiconRecipeArcaneWorkbench("renaissance_core.research", new ShapedArcaneRecipe(new ResourceLocation(""),
+                new PageArcaneWorkbenchRecipe("renaissance_core.research", new ShapedArcaneRecipe(new ResourceLocation(""),
                         "ALCHEMYCATALYST",
                         200,
                         new AspectList().add(Aspect.ORDER, 2).add(Aspect.WATER, 1).add(Aspect.EARTH, 1),
@@ -313,7 +313,7 @@ public class LexiconRecipeArcaneWorkbench extends PageRecipe {
         );
 
         LexiconData.flasks.pages.set(2,
-                new LexiconRecipeArcaneWorkbench("renaissance_core.research", new ShapedArcaneRecipe(new ResourceLocation(""),
+                new PageArcaneWorkbenchRecipe("renaissance_core.research", new ShapedArcaneRecipe(new ResourceLocation(""),
                         "LARGERVIAL",
                         75,
                         new AspectList().add(Aspect.WATER, 2),
@@ -327,7 +327,7 @@ public class LexiconRecipeArcaneWorkbench extends PageRecipe {
         );
 
         LexiconData.decorativeBlocks.pages.set(9,
-                new LexiconRecipeArcaneWorkbench("renaissance_core.research", new ShapedArcaneRecipe(new ResourceLocation(""),
+                new PageArcaneWorkbenchRecipe("renaissance_core.research", new ShapedArcaneRecipe(new ResourceLocation(""),
                         "ALFPORTAL",
                         100,
                         new AspectList().add(Aspect.WATER, 5).add(Aspect.EARTH, 5),
@@ -342,7 +342,7 @@ public class LexiconRecipeArcaneWorkbench extends PageRecipe {
         );
 
         LexiconData.pylon.pages.set(1,
-                new LexiconRecipeArcaneWorkbench("renaissance_core.research", new ShapedArcaneRecipe(new ResourceLocation(""),
+                new PageArcaneWorkbenchRecipe("renaissance_core.research", new ShapedArcaneRecipe(new ResourceLocation(""),
                         "MANACRYSTAL",
                         100,
                         new AspectList().add(Aspect.WATER, 2).add(Aspect.ORDER, 2).add(Aspect.AIR, 2),
@@ -358,7 +358,7 @@ public class LexiconRecipeArcaneWorkbench extends PageRecipe {
         );
 
         LexiconData.alfhomancyIntro.pages.set(3,
-                new LexiconRecipeArcaneWorkbench("renaissance_core.research", new ShapedArcaneRecipe(new ResourceLocation(""),
+                new PageArcaneWorkbenchRecipe("renaissance_core.research", new ShapedArcaneRecipe(new ResourceLocation(""),
                         "ALFCRYSTAL",
                         100,
                         new AspectList().add(Aspect.WATER, 5).add(Aspect.ORDER, 10).add(Aspect.AIR, 5),

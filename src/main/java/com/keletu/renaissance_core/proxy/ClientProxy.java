@@ -3,7 +3,8 @@ package com.keletu.renaissance_core.proxy;
 import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.client.render.*;
 import com.keletu.renaissance_core.entity.*;
-import com.keletu.renaissance_core.module.botania.LexiconRecipeArcaneWorkbench;
+import com.keletu.renaissance_core.module.botania.PageArcaneWorkbenchRecipe;
+import com.keletu.renaissance_core.module.botania.PageInfusionRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderEnderCrystal;
 import net.minecraft.client.renderer.entity.RenderPlayer;
@@ -29,7 +30,8 @@ public class ClientProxy extends CommonProxy{
         RenderingRegistry.registerEntityRenderingHandler(EntityTaintVillager.class, new RenderTaintVillager());
 
         if (ConfigsRC.CHANGE_BOTANIA_RECIPE && Loader.isModLoaded("botania")) {
-            LexiconRecipeArcaneWorkbench.init();
+            PageArcaneWorkbenchRecipe.init();
+            PageInfusionRecipe.init();
         }
     }
 
