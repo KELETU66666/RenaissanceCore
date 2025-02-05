@@ -1,6 +1,5 @@
 package com.keletu.renaissance_core;
 
-import com.keletu.renaissance_core.blocks.RFBlocks;
 import com.keletu.renaissance_core.container.GUIHandler;
 import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.events.KeepDiceEvent;
@@ -32,10 +31,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.blocks.BlocksTC;
-import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.crafting.ShapelessArcaneRecipe;
 import thaumcraft.api.golems.EnumGolemTrait;
 import thaumcraft.api.golems.parts.GolemAddon;
@@ -119,8 +115,6 @@ public class RenaissanceCore {
                                 new ItemStack(ItemsTC.salisMundus),
                                 new ItemStack(Items.CLAY_BALL),
                                 new ItemStack(ItemsTC.tallow)}));
-
-        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("trk:ethereal_bloom"), new CrucibleRecipe("ETHEREAL_BLOOM", new ItemStack(RFBlocks.ethereal_bloom), BlocksTC.shimmerleaf, new AspectList().add(Aspect.LIGHT, 20).add(Aspect.PLANT, 40).add(Aspect.LIFE, 40).add(Aspect.FLUX, 40)));
 
         GolemHead.register(new GolemHead("FORAGE", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/r_pech.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_forage.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadNormal)}, new EnumGolemTrait[]{RenaissanceCore.GREEDY}));
         GolemHead.register(new GolemHead("STALKER", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/r_pech_stalker.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_stalker.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadHunter)}, new EnumGolemTrait[]{EnumGolemTrait.LIGHT}));

@@ -9,7 +9,6 @@ public class RCItems {
     public static final Item dice12 = new ItemDice12().setRegistryName("dice12").setTranslationKey("dice12");
     public static final Item pech_backpack = new ItemPechBackpack().setRegistryName("pech_backpack").setTranslationKey("pech_backpack");
 
-    public static final Item etherealBloomItem = new RCItemBlocks(RFBlocks.ethereal_bloom);
     public static final Item pechHeadNormal = new RCItemBlocks(RFBlocks.pechHead_normal);
     public static final Item pechHeadHunter = new RCItemBlocks(RFBlocks.pechHead_hunter);
     public static final Item pechHeadThaumaturge = new RCItemBlocks(RFBlocks.pechHead_thaumaturge);

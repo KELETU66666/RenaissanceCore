@@ -3,7 +3,6 @@ package com.keletu.renaissance_core.events;
 import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.blocks.RFBlocks;
-import com.keletu.renaissance_core.blocks.tile.TileEtherealBloom;
 import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.block.Block;
@@ -34,7 +33,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import thaumcraft.api.entities.ITaintedMob;
 import thaumcraft.api.potions.PotionFluxTaint;
 import thaumcraft.common.entities.construct.EntityOwnedConstruct;
@@ -137,19 +135,15 @@ public class RegistryEvents {
 
     @SubscribeEvent
     public static void regBlocks(RegistryEvent.Register<Block> event) {
-        event.getRegistry().registerAll(RFBlocks.ethereal_bloom);
         event.getRegistry().registerAll(RFBlocks.pechHead_normal);
         event.getRegistry().registerAll(RFBlocks.pechHead_hunter);
         event.getRegistry().registerAll(RFBlocks.pechHead_thaumaturge);
         event.getRegistry().registerAll(RFBlocks.full_crucible);
-
-        GameRegistry.registerTileEntity(TileEtherealBloom.class, new ResourceLocation(RenaissanceCore.MODID, "ethereal_bloom"));
     }
 
     @SubscribeEvent
     public static void regItems(RegistryEvent.Register<Item> event) {
         event.getRegistry().registerAll(RCItems.arcane_lime_powder);
-        event.getRegistry().registerAll(RCItems.etherealBloomItem);
         event.getRegistry().registerAll(RCItems.dice12);
         event.getRegistry().registerAll(RCItems.pech_backpack);
 

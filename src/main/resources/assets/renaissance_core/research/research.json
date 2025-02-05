@@ -35,36 +35,6 @@
           ]
         }
       ]
-    },
-    {
-      "key": "ETHEREAL_BLOOM",
-      "name": "ftr.research.ethereal_bloom.title",
-      "category": "ALCHEMY",
-      "icons": [
-        "renaissance_core:ethereal_bloom"
-      ],
-      "parents": [
-        "HEDGEALCHEMY"
-      ],
-      "location": [
-        -6,
-        2
-      ],
-      "stages": [
-        {
-          "text": "ftr.research.ethereal_bloom.text",
-          "required_knowledge": [
-            "THEORY;BASICS;1",
-            "THEORY;ALCHEMY;1"
-          ]
-        },
-        {
-          "text": "ftr.research.ethereal_bloom.complete.text",
-          "recipes": [
-            "trk:ethereal_bloom"
-          ]
-        }
-      ]
     }
   ]
 }
