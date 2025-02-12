@@ -6,6 +6,7 @@ import baubles.api.IBauble;
 import baubles.api.render.IRenderBauble;
 import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
+import com.keletu.renaissance_core.capability.IT12Capability;
 import com.keletu.renaissance_core.events.CursedEvents;
 import com.keletu.renaissance_core.util.TCVec3;
 import net.minecraft.block.Block;
@@ -60,7 +61,12 @@ public class ItemDice12 extends Item implements IBauble, IVisDiscountGear, IRend
 
     @Override
     public boolean canUnequip(ItemStack stack, EntityLivingBase living) {
-        return living instanceof EntityPlayer && ((EntityPlayer) living).isCreative();
+        return living instanceof EntityPlayer && (((EntityPlayer) living).isCreative() || IT12Capability.get((EntityPlayer) living).getCanTakeOffT12());
+    }
+
+    @Override
+    public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+        IT12Capability.get((EntityPlayer) player).setCanPickOffT12(false);
     }
 
     @Override
@@ -77,7 +83,7 @@ public class ItemDice12 extends Item implements IBauble, IVisDiscountGear, IRend
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> list, ITooltipFlag flagIn) {
         list.add(I18n.format("tooltip.dice12.tip1"));
-        if (Minecraft.getMinecraft().player != null && BaublesApi.isBaubleEquipped(Minecraft.getMinecraft().player, this) != -1)
+        if (Minecraft.getMinecraft().player != null && (BaublesApi.isBaubleEquipped(Minecraft.getMinecraft().player, this) != -1 || !IT12Capability.get(Minecraft.getMinecraft().player).getCanTakeOffT12()))
             list.add(I18n.format("tooltip.dice12.tip2"));
         list.add("");
         if (GuiScreen.isShiftKeyDown()) {
@@ -87,7 +93,7 @@ public class ItemDice12 extends Item implements IBauble, IVisDiscountGear, IRend
             list.add(I18n.format("tooltip.dice12.tooltip4"));
             list.add(I18n.format("tooltip.dice12.tooltip5"));
             list.add(I18n.format("tooltip.dice12.tooltip6"));
-            if (Minecraft.getMinecraft().player != null && BaublesApi.isBaubleEquipped(Minecraft.getMinecraft().player, this) != -1) {
+            if (Minecraft.getMinecraft().player != null && (BaublesApi.isBaubleEquipped(Minecraft.getMinecraft().player, this) != -1 || !IT12Capability.get(Minecraft.getMinecraft().player).getCanTakeOffT12())) {
                 list.add("");
                 list.add(I18n.format("tooltip.dice12.tooltip7"));
                 list.add(I18n.format("tooltip.dice12.tooltip8"));

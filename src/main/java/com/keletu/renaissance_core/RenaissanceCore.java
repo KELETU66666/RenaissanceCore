@@ -1,5 +1,8 @@
 package com.keletu.renaissance_core;
 
+import com.keletu.renaissance_core.capability.IT12Capability;
+import com.keletu.renaissance_core.capability.T12Capability;
+import com.keletu.renaissance_core.capability.RCCapabilities;
 import com.keletu.renaissance_core.container.GUIHandler;
 import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.events.KeepDiceEvent;
@@ -7,6 +10,7 @@ import com.keletu.renaissance_core.events.ZapHandler;
 import com.keletu.renaissance_core.items.RCItems;
 import com.keletu.renaissance_core.module.botania.EntropinnyumTNTHandler;
 import com.keletu.renaissance_core.module.botania.SubtileRegisterOverride;
+import com.keletu.renaissance_core.packet.PacketSyncCapability;
 import com.keletu.renaissance_core.packet.PacketOpenPackGui;
 import com.keletu.renaissance_core.packet.PacketZap;
 import com.keletu.renaissance_core.packet.PacketZapParticle;
@@ -18,6 +22,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -59,10 +64,13 @@ public class RenaissanceCore {
     public void preInit(FMLPreInitializationEvent event) {
         NetworkRegistry.INSTANCE.registerGuiHandler(RenaissanceCore.MODID, new GUIHandler());
 
+        CapabilityManager.INSTANCE.register(IT12Capability.class, new RCCapabilities.CapabilityCanPickoffT12(), () -> new T12Capability(null));
+        
         packetInstance = NetworkRegistry.INSTANCE.newSimpleChannel("RenaissanceChannel");
         packetInstance.registerMessage(PacketZap.Handler.class, PacketZap.class, 0, Side.SERVER);
         packetInstance.registerMessage(PacketZapParticle.Handler.class, PacketZapParticle.class, 1, Side.CLIENT);
         packetInstance.registerMessage(PacketOpenPackGui.Handler.class, PacketOpenPackGui.class, 2, Side.SERVER);
+        packetInstance.registerMessage(PacketSyncCapability.Handler.class, PacketSyncCapability.class, 3, Side.CLIENT);
 
         if (event.getSide().isClient()) {
             OBJLoader.INSTANCE.addDomain(MODID);

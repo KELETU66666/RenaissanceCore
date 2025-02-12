@@ -23,7 +23,7 @@ public class ConfigsRC {
     public static boolean cursedPlayerTransformBats = true;
 
     @Config.LangKey("when cursed player use arcane workbench, vis increase (default: -150)")
-    public static int cursedVisIncreasePercentage = -150;
+    public static int cursedVisIncreasePercentage = -100;
 
     @Config.LangKey("cursed player actual warp multiplied (default: 2)")
     public static float cursedWarpJudgeIncreasePercentage = 2;

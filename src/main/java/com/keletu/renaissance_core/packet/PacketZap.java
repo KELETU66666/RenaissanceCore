@@ -67,7 +67,7 @@ public class PacketZap implements IMessage {
                             continue;
 
                         e.attackEntityFrom(DamageSource.causePlayerDamage(player), 6);
-                        RenaissanceCore.packetInstance.sendToAllAround(new PacketZapParticle(e.posX, e.posY, e.posZ), new NetworkRegistry.TargetPoint(player.world.provider.getDimension(), player.posX, player.posY, player.posZ, 64));
+                        RenaissanceCore.packetInstance.sendToAllAround(new PacketZapParticle(player.posX, player.posY, player.posZ, e.posX, e.posY, e.posZ), new NetworkRegistry.TargetPoint(player.world.provider.getDimension(), player.posX, player.posY, player.posZ, 64));
 
                         player.world.playSound(player.posX, player.posY, player.posZ, SoundsTC.jacobs, SoundCategory.PLAYERS, 1, player.world.rand.nextFloat() * 2, false);
                         player.world.playSound(e.posX, e.posY, e.posZ, SoundsTC.jacobs, SoundCategory.PLAYERS, 1, player.world.rand.nextFloat() * 2, false);

@@ -51,10 +51,10 @@ tooltip.dice12.tooltip5=§5- Sanity Soap can remove most warps, including perman
 tooltip.dice12.tooltip6=§5- You can zap your facing target by shortcut key, default key: H
 tooltip.dice12.tooltip7=§5- Omniscience keeps you up at night.
 tooltip.dice12.tooltip8=§5- Taint Flux will inflict double damage.
-tooltip.dice12.tooltip9=§5- Vis cost increased by 250%%.
+tooltip.dice12.tooltip9=§5- Vis cost increased by 100%%.
 tooltip.dice12.tooltip10=§5- Vanilla tools will be crude to use.
 tooltip.dice12.tooltip11=§5- Warp will happen more often.
-tooltip.dice12.tooltip12=§5- When chunk vis lower than 90%%, you can't regenerate your health.
+tooltip.dice12.tooltip12=§5- When chunk vis lower than 80%%, you can't regenerate your health.
 tooltip.dice12.holdShift=§5The §6Shift §5shall be held.
 
 tooltip.pech_backpack.tip=Only opens when equipped as a bauble, default key: K.
@@ -96,6 +96,9 @@ entity.TaintedPig.name=Tainted Pig
 entity.TaintedVillager.name=Tainted Villager
 entity.TaintedCreeper.name=Tainted Creeper
 entity.TaintedSheep.name=Tainted Sheep
+
+message.t12.try=Seems this wired dice is stuck somewhere
+message.t12.takeoff=This weird die broke when you took it off
 
 key.categories.renaissancecore=Renaissance Core
 key.zap=Zap Target
