@@ -1,0 +1,27 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "item": "thaumcraft:phial",
+      "data": 0
+    },
+    {
+      "item": "thaumcraft:quicksilver"
+    },
+    {
+      "item": "thaumictinkerer:kamiresource",
+      "data": 2
+    },
+    {
+      "item": "thaumcraft:alumentum",
+      "data": 0
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
+    }
+  ],
+  "result": {
+    "item": "renaissance_core:t12_elixir"
+  }
+}

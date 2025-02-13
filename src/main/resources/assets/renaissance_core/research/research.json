@@ -3,20 +3,16 @@
     {
       "key": "ARCANE_LIME_POWDER",
       "name": "ftr.research.arcane_lime_powder.title",
-      "category": "BASICS",
+      "category": "ALCHEMY",
       "icons": [
         "renaissance_core:arcane_lime_powder"
       ],
       "parents": [
-        "UNLOCKALCHEMY"
-      ],
-      "meta": [
-        "HIDDEN",
-        "ROUND"
+        "HEDGEALCHEMY"
       ],
       "location": [
-        1,
-        1
+        -6,
+        2
       ],
       "stages": [
         {

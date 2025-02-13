@@ -59,6 +59,8 @@ tooltip.dice12.holdShift=§5按住 §6Shift §5查看详细信息.
 
 item.dice12.name=T12
 item.arcane_lime_powder.name=奥术石灰粉
+item.pech_backpack.name=岩精背包
+item.t12_elixir.name=忏悔药水
 
 entity.Villager.wizard=村民神秘使
 entity.Villager.banker=银行掌柜

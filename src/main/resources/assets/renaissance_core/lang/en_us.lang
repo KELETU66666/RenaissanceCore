@@ -47,7 +47,7 @@ tooltip.dice12.tooltip1=§5- Observations and theories are no longer necessary.
 tooltip.dice12.tooltip2=§5- Mobs will drop more loot.
 tooltip.dice12.tooltip3=§5- You can purify nearby corrupted blocks.
 tooltip.dice12.tooltip4=§5- Thaumium tools will be more effective.
-tooltip.dice12.tooltip5=§5- Sanity Soap can remove most warps, including permanent warp.
+tooltip.dice12.tooltip5=§5- Sanity Soap can remove more warps.
 tooltip.dice12.tooltip6=§5- You can zap your facing target by shortcut key, default key: H
 tooltip.dice12.tooltip7=§5- Omniscience keeps you up at night.
 tooltip.dice12.tooltip8=§5- Taint Flux will inflict double damage.
@@ -62,6 +62,7 @@ tooltip.pech_backpack.tip=Only opens when equipped as a bauble, default key: K.
 item.dice12.name=T12
 item.arcane_lime_powder.name=Powder of Arcane Mixture
 item.pech_backpack.name=Backpack of the Pech
+item.t12_elixir.name=Elixir of the Confess
 
 tile.pech_skull_forage.name=Forage Pech Head
 tile.pech_skull_stalker.name=Stalker Pech Head

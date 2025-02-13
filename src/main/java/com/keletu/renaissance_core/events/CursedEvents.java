@@ -321,11 +321,12 @@ public class CursedEvents {
                 if (player.world.getBlockState(new BlockPos(i, j, k)).getBlock() == BlocksTC.purifyingFluid) {
                     ++amt;
                 }
-                if (warp.get(IPlayerWarp.EnumWarpType.PERMANENT) > amt) {
-                    ThaumcraftApi.internalMethods.addWarpToPlayer(player, -amt, IPlayerWarp.EnumWarpType.PERMANENT);
-                } else
-                    ThaumcraftApi.internalMethods.addWarpToPlayer(player, -warp.get(IPlayerWarp.EnumWarpType.PERMANENT), IPlayerWarp.EnumWarpType.PERMANENT);
-
+                if (ConfigsRC.canRemovePermanentWarp) {
+                    if (warp.get(IPlayerWarp.EnumWarpType.PERMANENT) > amt) {
+                        ThaumcraftApi.internalMethods.addWarpToPlayer(player, -amt, IPlayerWarp.EnumWarpType.PERMANENT);
+                    } else
+                        ThaumcraftApi.internalMethods.addWarpToPlayer(player, -warp.get(IPlayerWarp.EnumWarpType.PERMANENT), IPlayerWarp.EnumWarpType.PERMANENT);
+                }
                 if (warp.get(IPlayerWarp.EnumWarpType.NORMAL) > amt * 2) {
                     //todo config for "/2"
                     ThaumcraftApi.internalMethods.addWarpToPlayer(player, -amt * 2, IPlayerWarp.EnumWarpType.NORMAL);

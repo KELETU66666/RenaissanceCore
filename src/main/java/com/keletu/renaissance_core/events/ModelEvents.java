@@ -16,6 +16,7 @@ public class ModelEvents {
         defaultModel(RCItems.arcane_lime_powder);
         defaultModel(RCItems.dice12);
         defaultModel(RCItems.pech_backpack);
+        defaultModel(RCItems.elixir);
 
         defaultModel(RCItems.pechHeadNormal);
         defaultModel(RCItems.pechHeadHunter);

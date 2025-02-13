@@ -19,8 +19,8 @@ public class ConfigsRC {
     @Config.LangKey("when cursed player sleep, have 1/2 chance pollute flux, the point is (default: 30)")
     public static float cursedSleepPollution = 30;
 
-    @Config.LangKey("bats spawn nearby cursed player will transform to hellfire bat (default: true)")
-    public static boolean cursedPlayerTransformBats = true;
+    @Config.LangKey("can cursed player can remove permanent warps (default: false)")
+    public static boolean canRemovePermanentWarp = false;
 
     @Config.LangKey("when cursed player use arcane workbench, vis increase (default: -150)")
     public static int cursedVisIncreasePercentage = -100;
@@ -35,7 +35,4 @@ public class ConfigsRC {
     @Config.LangKey("the vis will decrease player health regen multiply (default: 5) point(s)")
     @Config.RangeDouble(min = 0)
     public static float cursedPlayerRegenHealthVis = 5;
-
-    @Config.LangKey("Protection Field's Protection Range")
-    public static double protectionRange = 256D;
 }
