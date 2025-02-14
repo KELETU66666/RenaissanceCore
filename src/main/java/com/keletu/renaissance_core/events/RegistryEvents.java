@@ -95,6 +95,7 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RCItems.dice12);
         event.getRegistry().registerAll(RCItems.pech_backpack);
         event.getRegistry().registerAll(RCItems.elixir);
+        event.getRegistry().registerAll(RCItems.coins);
 
         event.getRegistry().registerAll(RCItems.pechHeadNormal);
         event.getRegistry().registerAll(RCItems.pechHeadHunter);

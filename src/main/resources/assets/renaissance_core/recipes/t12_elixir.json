@@ -17,8 +17,8 @@
       "data": 0
     },
     {
-      "type": "forge:ore_dict",
-      "ore": "dustRedstone"
+      "item": "thaumcraft:primordial_pearl",
+      "data": 7
     }
   ],
   "result": {

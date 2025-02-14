@@ -36,7 +36,10 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.crafting.InfusionRecipe;
+import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.crafting.ShapelessArcaneRecipe;
 import thaumcraft.api.golems.EnumGolemTrait;
 import thaumcraft.api.golems.parts.GolemAddon;
@@ -65,7 +68,7 @@ public class RenaissanceCore {
         NetworkRegistry.INSTANCE.registerGuiHandler(RenaissanceCore.MODID, new GUIHandler());
 
         CapabilityManager.INSTANCE.register(IT12Capability.class, new RCCapabilities.CapabilityCanPickoffT12(), () -> new T12Capability(null));
-        
+
         packetInstance = NetworkRegistry.INSTANCE.newSimpleChannel("RenaissanceChannel");
         packetInstance.registerMessage(PacketZap.Handler.class, PacketZap.class, 0, Side.SERVER);
         packetInstance.registerMessage(PacketZapParticle.Handler.class, PacketZapParticle.class, 1, Side.CLIENT);
@@ -123,6 +126,31 @@ public class RenaissanceCore {
                                 new ItemStack(ItemsTC.salisMundus),
                                 new ItemStack(Items.CLAY_BALL),
                                 new ItemStack(ItemsTC.tallow)}));
+
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("trk:coin_to_stacks"),
+                new ShapedArcaneRecipe(new ResourceLocation(""), "",
+                        5,
+                        new AspectList(),
+                        new ItemStack(RCItems.coins, 1, 1),
+                        "ccc",
+                        "ccc",
+                        "ccc",
+                        'c', new ItemStack(RCItems.coins)));
+
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:stacks_to_enchanted"),
+                new InfusionRecipe("",
+                        new ItemStack(RCItems.coins, 1, 2),
+                        4,
+                        new AspectList().add(Aspect.DESIRE, 6).add(Aspect.EXCHANGE, 6).add(Aspect.MAGIC, 6),
+                        new ItemStack(RCItems.coins, 1, 1),
+                        new ItemStack(RCItems.coins, 1, 1),
+                        new ItemStack(RCItems.coins, 1, 1),
+                        new ItemStack(RCItems.coins, 1, 1),
+                        new ItemStack(RCItems.coins, 1, 1),
+                        new ItemStack(RCItems.coins, 1, 1),
+                        new ItemStack(RCItems.coins, 1, 1),
+                        new ItemStack(RCItems.coins, 1, 1),
+                        new ItemStack(RCItems.coins, 1, 1)));
 
         GolemHead.register(new GolemHead("FORAGE", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/r_pech.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_forage.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadNormal)}, new EnumGolemTrait[]{RenaissanceCore.GREEDY}));
         GolemHead.register(new GolemHead("STALKER", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/r_pech_stalker.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_stalker.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadHunter)}, new EnumGolemTrait[]{EnumGolemTrait.LIGHT}));

@@ -17,6 +17,9 @@ public class ModelEvents {
         defaultModel(RCItems.dice12);
         defaultModel(RCItems.pech_backpack);
         defaultModel(RCItems.elixir);
+        defaultModel(RCItems.coins);
+        defaultModel(RCItems.coins, 1);
+        defaultModel(RCItems.coins, 2);
 
         defaultModel(RCItems.pechHeadNormal);
         defaultModel(RCItems.pechHeadHunter);
@@ -25,5 +28,9 @@ public class ModelEvents {
 
     static void defaultModel(Item item) {
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+    }
+
+    static void defaultModel(Item item, int meta) {
+        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
     }
 }

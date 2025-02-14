@@ -1,6 +1,6 @@
 {
    "parent": "item/generated",
    "textures": {
-       "layer0": "renaissance_core:items/rift_feed"
+       "layer0": "renaissance_core:items/coin_1"
     }
 }

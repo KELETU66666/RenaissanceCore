@@ -130,6 +130,7 @@ public class PageCrucibleRecipe extends PageRecipe {
     }
 
     public static void init() {
+        LexiconData.flowers.pages.remove(7);
         LexiconData.flowers.pages.set(7,
                 new PageCrucibleRecipe("renaissance_core.research", new CrucibleRecipe(
                         "BASICBOTABY",

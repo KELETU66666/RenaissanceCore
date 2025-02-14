@@ -59,10 +59,17 @@ tooltip.dice12.holdShift=§5The §6Shift §5shall be held.
 
 tooltip.pech_backpack.tip=Only opens when equipped as a bauble, default key: K.
 
+tooltip.t12_elixir.tip1=Give you a chance to pick off T12 once again.
+tooltip.t12_elixir.tip2=Why should i drink it ?
+
 item.dice12.name=T12
 item.arcane_lime_powder.name=Powder of Arcane Mixture
 item.pech_backpack.name=Backpack of the Pech
 item.t12_elixir.name=Elixir of the Confess
+
+item.rc_coins.name.0=Coin
+item.rc_coins.name.1=Stack of Coins
+item.rc_coins.name.2=Enchanted Coin
 
 tile.pech_skull_forage.name=Forage Pech Head
 tile.pech_skull_stalker.name=Stalker Pech Head
@@ -77,7 +84,6 @@ golem.head.text.stalker=Pech Stalker Head
 golem.head.thaumium=Pech Mage Head
 golem.head.text.thaumium=Pech Mage Head
 
-
 golem.addon.bubble_armor=Bubble Wrap
 golem.addon.text.bubble_armor=Prevent golem receives in-wall damage.
 
@@ -86,9 +92,6 @@ golem.trait.text.greedy=Your golem looks more greedy.
 
 golem.trait.bubble=Bubbly
 golem.trait.text.bubble=Prevent golem receives in-wall damage.
-
-entity.Villager.wizard=Thaumaturger
-entity.Villager.banker=Banker
 
 entity.TaintedRabbit.name=Tainted Rabbit
 entity.TaintedChicken.name=Tainted Chicken

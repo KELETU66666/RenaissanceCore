@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "renaissance_core:items/coin"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "meta": 1
+      },
+      "model": "renaissance_core:item/coin_1"
+    }
+  ]
+}
