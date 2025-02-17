@@ -23,9 +23,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.items.IVisDiscountGear;
@@ -43,7 +41,6 @@ public class ItemDice12 extends Item implements IBauble, IVisDiscountGear, IRend
     public int rad;
     public int rad1 = 0;
     private final Map<ItemStack, IModelCustom> diceModels = new ConcurrentHashMap<>();
-    EnumRarity rarityEric = EnumHelper.addRarity("ERIC", TextFormatting.DARK_RED, "Eric");
 
     public ItemDice12() {
         this.maxStackSize = 1;
@@ -110,7 +107,7 @@ public class ItemDice12 extends Item implements IBauble, IVisDiscountGear, IRend
 
     @Override
     public EnumRarity getRarity(ItemStack stack) {
-        return rarityEric;
+        return RCItems.rarityEric;
     }
 
     @Override
