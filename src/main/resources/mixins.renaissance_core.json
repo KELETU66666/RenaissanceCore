@@ -10,6 +10,7 @@
     "MixinWarpEvents"
   ],
   "client": [
+    "MixinResearchItem"
   ],
   "server": []
 }

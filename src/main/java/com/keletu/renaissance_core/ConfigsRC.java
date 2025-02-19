@@ -35,4 +35,8 @@ public class ConfigsRC {
     @Config.LangKey("the vis will decrease player health regen multiply (default: 5) point(s)")
     @Config.RangeDouble(min = 0)
     public static float cursedPlayerRegenHealthVis = 5;
+
+
+    @Config.LangKey("Debug Mode for Developers")
+    public static boolean debugMode = true;
 }
