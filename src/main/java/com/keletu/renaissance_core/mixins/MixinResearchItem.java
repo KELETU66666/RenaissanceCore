@@ -23,7 +23,7 @@ public class MixinResearchItem {
     @Inject(method = "genResearchBackgroundFixedPost", at = @At(value = "INVOKE_ASSIGN", target = "Ljava/util/ArrayList;add(Ljava/lang/Object;)Z", ordinal = 0),
             locals = LocalCapture.CAPTURE_FAILSOFT, remap = false)
     public void injectGenResearchBackgroundFixedPost(int mx, int my, float par3, int locX, int locY, CallbackInfo ci, int c, ArrayList<String> text) {
-        if (!getLocalizedText().equals(currentHighlight.getName() + ".text") && !ConfigsRC.debugMode)
+        if (!getLocalizedText().equals(currentHighlight.getName() + ".text") || ConfigsRC.debugMode)
             text.add(getLocalizedText());
     }
 
