@@ -1,0 +1,12 @@
+{
+  "minVersion": "0.8",
+  "package": "com.keletu.renaissance_core.mixins",
+  "refmap": "mixins.renaissance_core.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinReachRings"
+  ],
+  "client": [
+  ],
+  "server": []
+}

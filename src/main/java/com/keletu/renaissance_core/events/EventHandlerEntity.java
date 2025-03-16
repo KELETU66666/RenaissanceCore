@@ -64,19 +64,23 @@ public class EventHandlerEntity {
 
     @SubscribeEvent
     public static void onPlayerClone(PlayerEvent.Clone event) {
-        if (!event.isWasDeath()) return;
-
         EntityPlayer original = event.getOriginal();
         EntityPlayer player = event.getEntityPlayer();
 
         if(player.world.isRemote) return;
 
+        // Handle both death and dimension change cloning
         IT12Capability oldCap = original.getCapability(RCCapabilities.PICK_OFF_T12_CAP, null);
         IT12Capability newCap = player.getCapability(RCCapabilities.PICK_OFF_T12_CAP, null);
 
         if (oldCap != null && newCap != null) {
-            NBTTagCompound data = original.getEntityData().getCompoundTag("CanPickOffT12");
-            newCap.deserializeNBT(data);
+            if (event.isWasDeath()) {
+                NBTTagCompound data = original.getEntityData().getCompoundTag("CanPickOffT12");
+                newCap.deserializeNBT(data);
+            } else {
+                NBTTagCompound data = oldCap.serializeNBT();
+                newCap.deserializeNBT(data);
+            }
             syncToClient(player);
         }
     }
