@@ -80,8 +80,14 @@ public class ItemDice12 extends Item implements IBauble, IVisDiscountGear, IRend
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> list, ITooltipFlag flagIn) {
         list.add(I18n.format("tooltip.dice12.tip1"));
-        if (Minecraft.getMinecraft().player != null && (BaublesApi.isBaubleEquipped(Minecraft.getMinecraft().player, this) != -1 || !IT12Capability.get(Minecraft.getMinecraft().player).getCanTakeOffT12()))
-            list.add(I18n.format("tooltip.dice12.tip2"));
+        if(Minecraft.getMinecraft().player != null) {
+            if (BaublesApi.isBaubleEquipped(Minecraft.getMinecraft().player, this) != -1 || !IT12Capability.get(Minecraft.getMinecraft().player).getCanTakeOffT12())
+                list.add(I18n.format("tooltip.dice12.tip2"));
+            if (BaublesApi.isBaubleEquipped(Minecraft.getMinecraft().player, this) == -1 && !IT12Capability.get(Minecraft.getMinecraft().player).getCanTakeOffT12())
+                list.add(I18n.format("tooltip.dice12.tip3"));
+            if (BaublesApi.isBaubleEquipped(Minecraft.getMinecraft().player, this) != -1 && !IT12Capability.get(Minecraft.getMinecraft().player).getCanTakeOffT12())
+                list.add(I18n.format("tooltip.dice12.tip4"));
+        }
         list.add("");
         if (GuiScreen.isShiftKeyDown()) {
             list.add(I18n.format("tooltip.dice12.tooltip1"));
