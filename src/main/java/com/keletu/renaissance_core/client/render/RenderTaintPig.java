@@ -18,12 +18,8 @@ public class RenderTaintPig extends RenderLiving {
   protected ResourceLocation getEntityTexture(Entity entity) {
     return rl;
   }
-  
-  public void func_40286_a(EntityTaintPig par1EntityPig, double par2, double par4, double par6, float par8, float par9) {
-    super.doRender(par1EntityPig, par2, par4, par6, par8, par9);
-  }
-  
+
   public void doRender(EntityLiving par1Entity, double par2, double par4, double par6, float par8, float par9) {
-    func_40286_a((EntityTaintPig)par1Entity, par2, par4, par6, par8, par9);
+    super.doRender(par1Entity, par2, par4, par6, par8, par9);
   }
 }

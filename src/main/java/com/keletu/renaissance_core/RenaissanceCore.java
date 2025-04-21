@@ -10,16 +10,16 @@ import com.keletu.renaissance_core.events.ZapHandler;
 import com.keletu.renaissance_core.items.RCItems;
 import com.keletu.renaissance_core.module.botania.EntropinnyumTNTHandler;
 import com.keletu.renaissance_core.module.botania.SubtileRegisterOverride;
-import com.keletu.renaissance_core.packet.PacketSyncCapability;
-import com.keletu.renaissance_core.packet.PacketOpenPackGui;
-import com.keletu.renaissance_core.packet.PacketZap;
-import com.keletu.renaissance_core.packet.PacketZapParticle;
+import com.keletu.renaissance_core.packet.*;
 import com.keletu.renaissance_core.proxy.CommonProxy;
 import com.keletu.renaissance_core.tweaks.InitBotaniaRecipes;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeProvider;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -49,6 +49,8 @@ import thaumcraft.api.items.ItemsTC;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.common.golems.client.PartModelHauler;
 
+import java.util.Iterator;
+import java.util.List;
 
 @Mod(modid = RenaissanceCore.MODID, name = RenaissanceCore.NAME, version = RenaissanceCore.VERSION, acceptedMinecraftVersions = RenaissanceCore.MC_VERSION,
         dependencies = "required-after:baubles@[1.5.2, ); required-after:thaumcraft@[6.1.BETA26]; required-after:thaumicaugmentation; required-after:mixinbooter@[4.2, ); after:botania")
@@ -74,6 +76,7 @@ public class RenaissanceCore {
         packetInstance.registerMessage(PacketZapParticle.Handler.class, PacketZapParticle.class, 1, Side.CLIENT);
         packetInstance.registerMessage(PacketOpenPackGui.Handler.class, PacketOpenPackGui.class, 2, Side.SERVER);
         packetInstance.registerMessage(PacketSyncCapability.Handler.class, PacketSyncCapability.class, 3, Side.CLIENT);
+        packetInstance.registerMessage(PacketEnslave.class, PacketEnslave.class, 4, Side.CLIENT);
 
         if (event.getSide().isClient()) {
             OBJLoader.INSTANCE.addDomain(MODID);
@@ -91,7 +94,10 @@ public class RenaissanceCore {
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_pig"), EntityTaintPig.class, "TaintedPig", 5, MODID, 64, 3, true, 10618530, 15702511);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_sheep"), EntityTaintSheep.class, "TaintedSheep", 6, MODID, 64, 3, true, 10618530, 8421504);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_villager"), EntityTaintVillager.class, "TaintedVillager", 7, MODID, 64, 3, true, 10618530, 65535);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "vengeful_golem"), EntityVengefulGolem.class, "VengefulGolem", 8, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
 
+
+        ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".VengefulGolem", new AspectList().add(Aspect.MAN, 4).add(Aspect.CRAFT, 4)/*.add(DarkAspects.PRIDE, 4)*/.add(Aspect.MOTION, 4));
 
         if (Loader.isModLoaded("botania")) {
             MinecraftForge.EVENT_BUS.register(new EntropinnyumTNTHandler());
@@ -115,6 +121,26 @@ public class RenaissanceCore {
     public void postInit(FMLPostInitializationEvent event) {
         if (ConfigsRC.CHANGE_BOTANIA_RECIPE && Loader.isModLoaded("botania"))
             InitBotaniaRecipes.replaceWithVanillaRecipes();
+
+        List<Biome> biomes = BiomeProvider.allowedBiomes;
+        Biome[] allBiomes = biomes.toArray(new Biome[]{null});
+        Iterator i$ = biomes.iterator();
+
+        while(i$.hasNext()) {
+            Biome bgb = (Biome)i$.next();
+            if (!bgb.getSpawnableList(EnumCreatureType.MONSTER).isEmpty() & bgb.getSpawnableList(EnumCreatureType.MONSTER).size() > 0) {
+                //EntityRegistry.addSpawn(Dissolved.class, TCConfig.dissolvedSpawnChance, 1, 2, EnumCreatureType.MONSTER, new Biome[]{bgb});
+                //EntityRegistry.addSpawn(QuicksilverElemental.class, TCConfig.quicksilverElementalSpawnChance, 1, 2, EnumCreatureType.MONSTER, new Biome[]{bgb});
+                //EntityRegistry.addSpawn(Samurai.class, TCConfig.paranoidWarriorSpawnChance, 3, 5, EnumCreatureType.MONSTER, new Biome[]{bgb});
+                EntityRegistry.addSpawn(EntityVengefulGolem.class, ConfigsRC.vengefulGolemSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
+                //EntityRegistry.addSpawn(Overanimated.class, TCConfig.overanimatedSpawnChance, 2, 3, EnumCreatureType.MONSTER, new Biome[]{bgb});
+                //EntityRegistry.addSpawn(MadThaumaturge.class, TCConfig.madThaumaturgeSpawnChance, 2, 3, EnumCreatureType.MONSTER, new Biome[]{bgb});
+            }
+            //if (bgb.getSpawnableList(EnumCreatureType.CREATURE) != null & bgb.getSpawnableList(EnumCreatureType.CREATURE).size() > 0) {
+            //    EntityRegistry.addSpawn(Thaumaturge.class, TCConfig.thaumaturgeSpawnChance, 1, 3, EnumCreatureType.CREATURE, new Biome[]{bgb});
+            //}
+
+        }
 
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("trk:lime_powder"),
                 new ShapelessArcaneRecipe(new ResourceLocation(""), "ARCANE_LIME_POWDER",
@@ -158,6 +184,4 @@ public class RenaissanceCore {
 
         GolemAddon.register(new GolemAddon("BUBBLE_ARMOR", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/bubble_wrap_item.png"), new PartModelHauler(new ResourceLocation(MODID, "models/obj/bubble_wrap.obj"), new ResourceLocation(MODID, "textures/models/entity/bubble_wrap.png"), PartModel.EnumAttachPoint.BODY), new Object[]{new ItemStack(Blocks.WOOL), new ItemStack(Items.PAPER, 6)}, new EnumGolemTrait[]{RenaissanceCore.BUBBLE}));
     }
-
-
 }

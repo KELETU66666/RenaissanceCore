@@ -85,6 +85,12 @@ public class EventHandlerEntity {
         }
     }
 
+    @SubscribeEvent
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        EntityPlayer player = event.player;
+        RenaissanceCore.proxy.sendLocalMovementData(player);
+    }
+
     private static void syncToClient(EntityPlayer player) {
         if(player instanceof EntityPlayerMP) {
             IT12Capability capability = player.getCapability(RCCapabilities.PICK_OFF_T12_CAP, null);

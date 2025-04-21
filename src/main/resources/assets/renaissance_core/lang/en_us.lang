@@ -103,6 +103,8 @@ entity.TaintedVillager.name=Tainted Villager
 entity.TaintedCreeper.name=Tainted Creeper
 entity.TaintedSheep.name=Tainted Sheep
 
+entity.VengefulGolem.name=Vengeful Golem
+
 message.t12.try=Seems this wired dice is stuck somewhere
 message.t12.takeoff=This weird die broke when you took it off
 
@@ -119,6 +121,11 @@ ftr.research.rift_feed.complete.text=throw it to a rift to feed it, when rift to
 ftr.research.arcane_lime_powder.title=Arcane Lime Mixture
 ftr.research.arcane_lime_powder.text=more useful than quartz sliver.
 ftr.research.arcane_lime_powder.complete.text=throw it to crucible can clear crucible without pollution.
+
+tc.golem.taunt.0=A golem chooses; a man obeys!
+tc.golem.taunt.1=Ding-ding!
+tc.golem.taunt.2=I spin you right 'round!
+tc.golem.taunt.3=Now bow down and worship my wandcore!
 
 #Botania
 renaissance_core.research=⚠ Requires Research.

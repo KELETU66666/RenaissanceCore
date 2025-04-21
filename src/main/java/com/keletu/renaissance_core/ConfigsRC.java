@@ -36,6 +36,9 @@ public class ConfigsRC {
     @Config.RangeDouble(min = 0)
     public static float cursedPlayerRegenHealthVis = 5;
 
+    @Config.LangKey("Vengeful Golem spawn chance")
+    @Config.RangeDouble(min = 0)
+    public static int vengefulGolemSpawnChance = 10;
 
     @Config.LangKey("Debug Mode for Developers")
     public static boolean debugMode = true;
