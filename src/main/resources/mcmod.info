@@ -6,6 +6,6 @@
     "version": "${version}",
     "mcversion": "${mcversion}",
     "url": "",
-    "authorList": ["keletu"]
+    "authorList": ["keletu", "Ilya3000"]
   }
 ]
