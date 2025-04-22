@@ -4,6 +4,7 @@ import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.capability.IT12Capability;
 import com.keletu.renaissance_core.capability.RCCapabilities;
 import com.keletu.renaissance_core.capability.T12Capability;
+import com.keletu.renaissance_core.entity.Dissolved;
 import com.keletu.renaissance_core.packet.PacketSyncCapability;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -89,6 +91,30 @@ public class EventHandlerEntity {
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         EntityPlayer player = event.player;
         RenaissanceCore.proxy.sendLocalMovementData(player);
+    }
+
+    @SubscribeEvent
+    public static void onLivingAttack (LivingAttackEvent event) {
+        if (event.getEntityLiving() instanceof Dissolved) {
+            if (!event.getSource().damageType.equals("outOfWorld") && !event.getSource().damageType.equals("inWall")) {
+                event.setCanceled(true);
+            }
+        }
+
+        //if (event.entityLiving instanceof EntityPlayer) {
+        //    EntityPlayer player = (EntityPlayer) event.entityLiving;
+//
+        //    TCPlayerCapabilities capabilities = TCPlayerCapabilities.get(player);
+        //    if (capabilities != null) {
+        //        if (!player.capabilities.isCreativeMode && capabilities.ethereal) {
+        //            if (event.source.isMagicDamage() || event.source.damageType.equals("outOfWorld")) {
+        //                capabilities.fleshAmount++;
+        //                capabilities.sync();
+        //            }
+        //            event.setCanceled(true);
+        //        }
+        //    }
+        //}
     }
 
     private static void syncToClient(EntityPlayer player) {

@@ -31,6 +31,111 @@
           ]
         }
       ]
+    },
+    {
+      "key": "!Thaumaturge",
+      "name": "research.Thaumaturge.title",
+      "icons": [
+        "renaissance_core:textures/research/r_thaumaturge.png"
+      ],
+      "category": "BASICS",
+      "location": [
+        -12,
+        0
+      ],
+      "meta": [
+        "HEX",
+        "HIDDEN"
+      ],
+      "stages": [
+        {
+          "text": "research.Thaumaturge.stage.1"
+        }
+      ]
+    },
+    {
+      "key": "!QuicksilverElemental",
+      "name": "research.QuicksilverElemental.title",
+      "icons": [
+        "renaissance_core:textures/research/r_quicksilver.png"
+      ],
+      "category": "BASICS",
+      "location": [
+        -12,
+        1
+      ],
+      "meta": [
+        "HEX",
+        "HIDDEN"
+      ],
+      "stages": [
+        {
+          "text": "research.QuicksilverElemental.stage.1"
+        }
+      ]
+    },
+    {
+      "key": "!OverAnimated",
+      "name": "research.OverAnimated.title",
+      "icons": [
+        "renaissance_core:textures/research/r_overanimated.png"
+      ],
+      "category": "BASICS",
+      "location": [
+        -12,
+        2
+      ],
+      "meta": [
+        "HEX",
+        "HIDDEN"
+      ],
+      "stages": [
+        {
+          "text": "research.OverAnimated.stage.1"
+        }
+      ]
+    },
+    {
+      "key": "!Dissolved",
+      "name": "research.Dissolved.title",
+      "icons": [
+        "renaissance_core:textures/research/r_dissolved.png"
+      ],
+      "category": "BASICS",
+      "location": [
+        -13,
+        0
+      ],
+      "meta": [
+        "HEX",
+        "HIDDEN"
+      ],
+      "stages": [
+        {
+          "text": "research.Dissolved.stage.1"
+        }
+      ]
+    },
+    {
+      "key": "!VengefulGolem",
+      "name": "research.VengefulGolem.title",
+      "icons": [
+        "renaissance_core:textures/research/r_vengefulgolem.png"
+      ],
+      "category": "BASICS",
+      "location": [
+        -13,
+        1
+      ],
+      "meta": [
+        "HEX",
+        "HIDDEN"
+      ],
+      "stages": [
+        {
+          "text": "research.VengefulGolem.stage.1"
+        }
+      ]
     }
   ]
 }

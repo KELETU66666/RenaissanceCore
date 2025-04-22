@@ -1,4 +1,4 @@
-package com.keletu.renaissance_core.client.render;
+package com.keletu.renaissance_core.client.render.layer;
 
 import com.keletu.renaissance_core.client.model.ModelBackpack;
 import com.keletu.renaissance_core.container.GUIHandler;

@@ -4,42 +4,68 @@ import net.minecraftforge.common.config.Config;
 
 @Config(modid = RenaissanceCore.MODID)
 public class ConfigsRC {
-    @Config.LangKey("Max flowers that endoflame's efficiency begin to reduce")
+    @Config.Comment("Max flowers that endoflame's efficiency begin to reduce")
     public static int endoFlameMaxFlowers = 5;
 
-    @Config.LangKey("Set how much MANA a TNT can generate for Entropinnyum")
+    @Config.Comment("Set how much MANA a TNT can generate for Entropinnyum")
     public static int ENTROPINNYUM_GENERATING = 8000;
 
-    @Config.LangKey("Changes Botania Recipes")
+    @Config.LangKey("changeBotaniaRecipe")
+    @Config.Comment("Changes Botania Recipes")
     public static boolean CHANGE_BOTANIA_RECIPE = false;
 
-    @Config.LangKey("when cursed player sleep, have 1/2 chance give temp warp, the point is (default: 15)")
+    @Config.LangKey("cursedSleepWarpPoint")
+    @Config.Comment("when cursed player sleep, have 1/2 chance give temp warp, the point is (default: 15)")
     public static int cursedSleepWarpPoint = 15;
 
-    @Config.LangKey("when cursed player sleep, have 1/2 chance pollute flux, the point is (default: 30)")
+    @Config.LangKey("cursedSleepPollution")
+    @Config.Comment("when cursed player sleep, have 1/2 chance pollute flux, the point is (default: 30)")
     public static float cursedSleepPollution = 30;
 
-    @Config.LangKey("can cursed player can remove permanent warps (default: false)")
+    @Config.LangKey("canRemovePermanentWarp")
+    @Config.Comment("can cursed player can remove permanent warps (default: false)")
     public static boolean canRemovePermanentWarp = false;
 
-    @Config.LangKey("when cursed player use arcane workbench, vis increase (default: -150)")
+    @Config.LangKey("cursedVisIncreasePercentage")
+    @Config.Comment("when cursed player use arcane workbench, vis increase (default: -150)")
     public static int cursedVisIncreasePercentage = -100;
 
-    @Config.LangKey("cursed player actual warp multiplied (default: 2)")
+    @Config.LangKey("cursedWarpJudgeIncreasePercentage")
+    @Config.Comment("cursed player actual warp multiplied (default: 2)")
     public static float cursedWarpJudgeIncreasePercentage = 2;
 
-    @Config.LangKey("when chunk's aura lower than (default: 1), player can't regen health automatically")
+    @Config.LangKey("cursedPlayerRegenHealthAura")
+    @Config.Comment("when chunk's aura lower than (default: 1), player can't regen health automatically")
     @Config.RangeDouble(min = 0, max = 0.8)
     public static double cursedPlayerRegenHealthAura = 0.8;
 
-    @Config.LangKey("the vis will decrease player health regen multiply (default: 5) point(s)")
+    @Config.LangKey("cursedPlayerRegenHealthVis")
+    @Config.Comment("the vis will decrease player health regen multiply (default: 5) point(s)")
     @Config.RangeDouble(min = 0)
     public static float cursedPlayerRegenHealthVis = 5;
 
-    @Config.LangKey("Vengeful Golem spawn chance")
+    @Config.LangKey("thaumaturgeSpawnChance")
+    @Config.Comment("Thaumaturge Golem spawn chance")
+    @Config.RangeDouble(min = 0)
+    public static int thaumaturgeSpawnChance = 10;
+
+    @Config.LangKey("vengefulGolemSpawnChance")
+    @Config.Comment("Vengeful Golem spawn chance")
     @Config.RangeDouble(min = 0)
     public static int vengefulGolemSpawnChance = 10;
 
-    @Config.LangKey("Debug Mode for Developers")
-    public static boolean debugMode = true;
+    @Config.LangKey("quicksilverImmortality")
+    @Config.Comment("Will quicksilver elemental be immune to non-fire attacks.")
+    public static boolean quicksilverImmortality = true;
+
+    @Config.LangKey("quicksilverElementalSpawnChance")
+    @Config.RangeDouble(min = 0)
+    public static int quicksilverElementalSpawnChance = 10;
+    @Config.LangKey("dissolvedSpawnChance")
+    @Config.RangeDouble(min = 0)
+    public static int dissolvedSpawnChance = 10;
+    @Config.LangKey("overanimatedSpawnChance")
+    @Config.RangeDouble(min = 0)
+    public static int overanimatedSpawnChance = 10;
+
 }

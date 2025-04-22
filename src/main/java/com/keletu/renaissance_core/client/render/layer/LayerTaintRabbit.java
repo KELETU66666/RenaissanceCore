@@ -1,5 +1,6 @@
-package com.keletu.renaissance_core.client.render;
+package com.keletu.renaissance_core.client.render.layer;
 
+import com.keletu.renaissance_core.client.render.RenderTaintRabbit;
 import com.keletu.renaissance_core.entity.EntityTaintRabbit;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;

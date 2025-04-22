@@ -1,6 +1,7 @@
 package com.keletu.renaissance_core.client.render;
 
 import com.keletu.renaissance_core.client.model.ModelTaintSheep2;
+import com.keletu.renaissance_core.client.render.layer.LayerTaintSheepWool;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;

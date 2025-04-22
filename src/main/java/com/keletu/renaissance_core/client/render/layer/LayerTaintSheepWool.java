@@ -1,6 +1,7 @@
-package com.keletu.renaissance_core.client.render;
+package com.keletu.renaissance_core.client.render.layer;
 
 import com.keletu.renaissance_core.client.model.ModelTaintSheep1;
+import com.keletu.renaissance_core.client.render.RenderTaintSheep;
 import com.keletu.renaissance_core.entity.EntityTaintSheep;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;

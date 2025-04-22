@@ -1,6 +1,5 @@
 package com.keletu.renaissance_core.client.render;
 
-import com.keletu.renaissance_core.entity.EntityTaintPig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelPig;
 import net.minecraft.client.renderer.entity.RenderLiving;

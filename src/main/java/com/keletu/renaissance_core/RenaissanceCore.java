@@ -1,8 +1,8 @@
 package com.keletu.renaissance_core;
 
 import com.keletu.renaissance_core.capability.IT12Capability;
-import com.keletu.renaissance_core.capability.T12Capability;
 import com.keletu.renaissance_core.capability.RCCapabilities;
+import com.keletu.renaissance_core.capability.T12Capability;
 import com.keletu.renaissance_core.container.GUIHandler;
 import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.events.KeepDiceEvent;
@@ -47,6 +47,8 @@ import thaumcraft.api.golems.parts.GolemHead;
 import thaumcraft.api.golems.parts.PartModel;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.api.research.ResearchCategories;
+import thaumcraft.api.research.ScanEntity;
+import thaumcraft.api.research.ScanningManager;
 import thaumcraft.common.golems.client.PartModelHauler;
 
 import java.util.Iterator;
@@ -77,6 +79,8 @@ public class RenaissanceCore {
         packetInstance.registerMessage(PacketOpenPackGui.Handler.class, PacketOpenPackGui.class, 2, Side.SERVER);
         packetInstance.registerMessage(PacketSyncCapability.Handler.class, PacketSyncCapability.class, 3, Side.CLIENT);
         packetInstance.registerMessage(PacketEnslave.class, PacketEnslave.class, 4, Side.CLIENT);
+        packetInstance.registerMessage(PacketMakeHole.class, PacketMakeHole.class, 5, Side.CLIENT);
+        packetInstance.registerMessage(PacketFXBloodsplosion.class, PacketFXBloodsplosion.class, 6, Side.CLIENT);
 
         if (event.getSide().isClient()) {
             OBJLoader.INSTANCE.addDomain(MODID);
@@ -86,18 +90,35 @@ public class RenaissanceCore {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "protection_field"), EntityProtectionField.class, "protection_field", 0, MODID, 80, 3, true);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_chicken"), EntityTaintChicken.class, "TaintedChicken", 1, MODID, 64, 3, true, 10618530, 12632256);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_rabbit"), EntityTaintRabbit.class, "TaintedRabbit", 2, MODID, 64, 3, true, 10618530, 15777984);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_cow"), EntityTaintCow.class, "TaintedCow", 3, MODID, 64, 3, true, 10618530, 8272443);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_creeper"), EntityTaintCreeper.class, "TaintedCreeper", 4, MODID, 64, 3, true, 10618530, 65280);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_pig"), EntityTaintPig.class, "TaintedPig", 5, MODID, 64, 3, true, 10618530, 15702511);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_sheep"), EntityTaintSheep.class, "TaintedSheep", 6, MODID, 64, 3, true, 10618530, 8421504);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_villager"), EntityTaintVillager.class, "TaintedVillager", 7, MODID, 64, 3, true, 10618530, 65535);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "vengeful_golem"), EntityVengefulGolem.class, "VengefulGolem", 8, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
+        int id = 0;
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_chicken"), EntityTaintChicken.class, "TaintedChicken", id++, MODID, 64, 3, true, 10618530, 12632256);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_rabbit"), EntityTaintRabbit.class, "TaintedRabbit", id++, MODID, 64, 3, true, 10618530, 15777984);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_cow"), EntityTaintCow.class, "TaintedCow", id++, MODID, 64, 3, true, 10618530, 8272443);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_creeper"), EntityTaintCreeper.class, "TaintedCreeper", id++, MODID, 64, 3, true, 10618530, 65280);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_pig"), EntityTaintPig.class, "TaintedPig", id++, MODID, 64, 3, true, 10618530, 15702511);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_sheep"), EntityTaintSheep.class, "TaintedSheep", id++, MODID, 64, 3, true, 10618530, 8421504);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_villager"), EntityTaintVillager.class, "TaintedVillager", id++, MODID, 64, 3, true, 10618530, 65535);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "vengeful_golem"), EntityVengefulGolem.class, "VengefulGolem", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "dissolved"), Dissolved.class, "Dissolved", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "upcoming_hole"), UpcomingHoleEntity.class, "UpcomingHoleEntity", id++, MODID, 64, 1, false);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "quicksilver_elemental"), QuicksilverElemental.class, "QuicksilverElemental", id++, MODID, 64, 1, true, 0x00FFFF, 0x00008B);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "overanimated"), Overanimated.class, "Overanimated", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "thaum_gib"), ThaumGib.class, "ThaumGib", id++, MODID, 64, 3, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "thaumaturge"), Thaumaturge.class, "Thaumaturge", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
 
 
+        ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID+".Thaumaturge", new AspectList().add(Aspect.MAN, 4).add(Aspect.MAGIC, 4).add(Aspect.AURA, 4).add(Aspect.ORDER, 4));
+        ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".ThaumGib", new AspectList().add(Aspect.MAN, 4).add(Aspect.MAGIC, 4).add(Aspect.LIFE, 4).add(Aspect.ENTROPY, 4));
+        ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".Overanimated", new AspectList().add(Aspect.MAN, 4).add(Aspect.MAGIC, 4).add(Aspect.LIFE, 4).add(Aspect.ELDRITCH, 4));
+        ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".QuicksilverElemental", new AspectList().add(Aspect.MAN, 4).add(Aspect.LIFE, 4).add(Aspect.METAL, 4).add(Aspect.EXCHANGE, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".VengefulGolem", new AspectList().add(Aspect.MAN, 4).add(Aspect.CRAFT, 4)/*.add(DarkAspects.PRIDE, 4)*/.add(Aspect.MOTION, 4));
+        ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".Dissolved", new AspectList().add(Aspect.MAN, 4).add(Aspect.VOID, 4).add(Aspect.ELDRITCH, 4).add(Aspect.ALCHEMY, 4));
+
+        ScanningManager.addScannableThing(new ScanEntity("!Thaumaturge", Thaumaturge.class, true));
+        ScanningManager.addScannableThing(new ScanEntity("!OverAnimated", Overanimated.class, true));
+        ScanningManager.addScannableThing(new ScanEntity("!Dissolved", Dissolved.class, true));
+        ScanningManager.addScannableThing(new ScanEntity("!VengefulGolem", EntityVengefulGolem.class, true));
+        ScanningManager.addScannableThing(new ScanEntity("!QuicksilverElemental", QuicksilverElemental.class, true));
 
         if (Loader.isModLoaded("botania")) {
             MinecraftForge.EVENT_BUS.register(new EntropinnyumTNTHandler());
@@ -123,22 +144,21 @@ public class RenaissanceCore {
             InitBotaniaRecipes.replaceWithVanillaRecipes();
 
         List<Biome> biomes = BiomeProvider.allowedBiomes;
-        Biome[] allBiomes = biomes.toArray(new Biome[]{null});
-        Iterator i$ = biomes.iterator();
+        Iterator<Biome> i$ = biomes.iterator();
 
-        while(i$.hasNext()) {
-            Biome bgb = (Biome)i$.next();
+        while (i$.hasNext()) {
+            Biome bgb = i$.next();
             if (!bgb.getSpawnableList(EnumCreatureType.MONSTER).isEmpty() & bgb.getSpawnableList(EnumCreatureType.MONSTER).size() > 0) {
-                //EntityRegistry.addSpawn(Dissolved.class, TCConfig.dissolvedSpawnChance, 1, 2, EnumCreatureType.MONSTER, new Biome[]{bgb});
-                //EntityRegistry.addSpawn(QuicksilverElemental.class, TCConfig.quicksilverElementalSpawnChance, 1, 2, EnumCreatureType.MONSTER, new Biome[]{bgb});
+                EntityRegistry.addSpawn(Dissolved.class, ConfigsRC.dissolvedSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
+                EntityRegistry.addSpawn(QuicksilverElemental.class, ConfigsRC.quicksilverElementalSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
                 //EntityRegistry.addSpawn(Samurai.class, TCConfig.paranoidWarriorSpawnChance, 3, 5, EnumCreatureType.MONSTER, new Biome[]{bgb});
                 EntityRegistry.addSpawn(EntityVengefulGolem.class, ConfigsRC.vengefulGolemSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
-                //EntityRegistry.addSpawn(Overanimated.class, TCConfig.overanimatedSpawnChance, 2, 3, EnumCreatureType.MONSTER, new Biome[]{bgb});
+                EntityRegistry.addSpawn(Overanimated.class, ConfigsRC.overanimatedSpawnChance, 2, 3, EnumCreatureType.MONSTER, bgb);
                 //EntityRegistry.addSpawn(MadThaumaturge.class, TCConfig.madThaumaturgeSpawnChance, 2, 3, EnumCreatureType.MONSTER, new Biome[]{bgb});
             }
-            //if (bgb.getSpawnableList(EnumCreatureType.CREATURE) != null & bgb.getSpawnableList(EnumCreatureType.CREATURE).size() > 0) {
-            //    EntityRegistry.addSpawn(Thaumaturge.class, TCConfig.thaumaturgeSpawnChance, 1, 3, EnumCreatureType.CREATURE, new Biome[]{bgb});
-            //}
+            if (!bgb.getSpawnableList(EnumCreatureType.CREATURE).isEmpty() & bgb.getSpawnableList(EnumCreatureType.CREATURE).size() > 0) {
+                EntityRegistry.addSpawn(Thaumaturge.class, ConfigsRC.thaumaturgeSpawnChance, 1, 3, EnumCreatureType.CREATURE, bgb);
+            }
 
         }
 
@@ -178,10 +198,10 @@ public class RenaissanceCore {
                         new ItemStack(RCItems.coins, 1, 1),
                         new ItemStack(RCItems.coins, 1, 1)));
 
-        GolemHead.register(new GolemHead("FORAGE", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/r_pech.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_forage.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadNormal)}, new EnumGolemTrait[]{RenaissanceCore.GREEDY}));
-        GolemHead.register(new GolemHead("STALKER", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/r_pech_stalker.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_stalker.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadHunter)}, new EnumGolemTrait[]{EnumGolemTrait.LIGHT}));
-        GolemHead.register(new GolemHead("THAUMIUM", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/r_pech_thaum.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_thaum.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadThaumaturge)}, new EnumGolemTrait[]{EnumGolemTrait.SMART}));
+        GolemHead.register(new GolemHead("FORAGE", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/research/r_pech.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_forage.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadNormal)}, new EnumGolemTrait[]{RenaissanceCore.GREEDY}));
+        GolemHead.register(new GolemHead("STALKER", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/research/r_pech_stalker.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_stalker.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadHunter)}, new EnumGolemTrait[]{EnumGolemTrait.LIGHT}));
+        GolemHead.register(new GolemHead("THAUMIUM", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/research/r_pech_thaum.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_thaum.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadThaumaturge)}, new EnumGolemTrait[]{EnumGolemTrait.SMART}));
 
-        GolemAddon.register(new GolemAddon("BUBBLE_ARMOR", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/models/research/bubble_wrap_item.png"), new PartModelHauler(new ResourceLocation(MODID, "models/obj/bubble_wrap.obj"), new ResourceLocation(MODID, "textures/models/entity/bubble_wrap.png"), PartModel.EnumAttachPoint.BODY), new Object[]{new ItemStack(Blocks.WOOL), new ItemStack(Items.PAPER, 6)}, new EnumGolemTrait[]{RenaissanceCore.BUBBLE}));
+        GolemAddon.register(new GolemAddon("BUBBLE_ARMOR", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/research/bubble_wrap_item.png"), new PartModelHauler(new ResourceLocation(MODID, "models/obj/bubble_wrap.obj"), new ResourceLocation(MODID, "textures/models/entity/bubble_wrap.png"), PartModel.EnumAttachPoint.BODY), new Object[]{new ItemStack(Blocks.WOOL), new ItemStack(Items.PAPER, 6)}, new EnumGolemTrait[]{RenaissanceCore.BUBBLE}));
     }
 }

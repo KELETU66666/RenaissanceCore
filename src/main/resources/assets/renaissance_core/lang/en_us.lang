@@ -103,7 +103,12 @@ entity.TaintedVillager.name=Tainted Villager
 entity.TaintedCreeper.name=Tainted Creeper
 entity.TaintedSheep.name=Tainted Sheep
 
+entity.Thaumaturge.name=Thaumaturge
 entity.VengefulGolem.name=Vengeful Golem
+entity.Dissolved.name=Dissolved
+entity.QuicksilverElemental.name=Quicksilver Elemental
+entity.ThaumGib.name=Alive Limb
+entity.Overanimated.name=Overanimated
 
 message.t12.try=Seems this wired dice is stuck somewhere
 message.t12.takeoff=This weird die broke when you took it off
@@ -122,10 +127,31 @@ ftr.research.arcane_lime_powder.title=Arcane Lime Mixture
 ftr.research.arcane_lime_powder.text=more useful than quartz sliver.
 ftr.research.arcane_lime_powder.complete.text=throw it to crucible can clear crucible without pollution.
 
+tc.thaumaturge.taunt.0=Why are you mooing? Can you even read?
+tc.thaumaturge.taunt.1=AAA! Zombie!
+tc.thaumaturge.taunt.2=You can talk when you've learned at least something.
+tc.thaumaturge.taunt.3=Oh, lovely. They've sent me a mo-ron.
+tc.thaumaturge.taunt.4=Hello. (Trade system still working in progress)
+
 tc.golem.taunt.0=A golem chooses; a man obeys!
 tc.golem.taunt.1=Ding-ding!
 tc.golem.taunt.2=I spin you right 'round!
 tc.golem.taunt.3=Now bow down and worship my wandcore!
+
+research.Thaumaturge.title=Thaumaturges
+research.Thaumaturge.stage.1=Sitting cooped up at home all day long, looking for ways to conquer the essence of things is quite exhausting.<BR>It is unlikely that the whole world is concentrated under your nose, so sharing experiences with other obsessives like you should come in handy. Offer them your ideas and they will share theirs with you.<BR>Nor will they refuse to trade occult or ancient junk from your pockets for theirs, but that's not why you've come all the way out here, is it? <IMG>renaissance_core:textures/gui/thaumaturge.png:0:0:255:255:.5</IMG>.
+
+research.QuicksilverElemental.title=QuicksilverElemental
+research.QuicksilverElemental.stage.1=Every alchemist wishes to put the manufacturing of his products on the stream, some wish to achieve financial solvency in this way, others wish to be recognized for their alchemical genius. It is likely that this is the result of a workplace accident. The new full-mercury body allows it to adapt to the attacker, while physical lunges simply pass through it.<BR>Good thing metals melt well at high temperatures.<PAGE> <IMG>renaissance_core:textures/gui/quicksilver.png:0:0:255:255:.5</IMG>.
+
+research.Dissolved.title=Dissolveds
+research.Dissolved.stage.1=At first you couldn't recognize what was coming at you, but upon closer inspection, there was nothing to be seen, for there was nothing left of the body but a silhouette. Fighting the void is pointless, yet you think it is possible to make the unfortunate person collapse by somehow creating another spatial hole inside him.<PAGE> <IMG>renaissance_core:textures/gui/dissolved.png:0:0:255:255:.5</IMG>.
+
+research.OverAnimated.title=Overanimated
+research.OverAnimated.stage.1=Few people want to die, but even fewer are willing to take serious steps to prevent their own demise. Thaumaturgical research leads to many possibilities, and some are willing to take advantage of them to prolong their existence. Whether this result is a miscalculation or a deliberate decision is unknown, but these people no longer represent the whole person, each of their organs having a separate semblance of life.<PAGE> <IMG>renaissance_core:textures/gui/overanimated.png:0:0:255:255:.5</IMG>.
+
+research.VengefulGolem.title=Vengeful Golems
+research.VengefulGolem.stage.1=Golems are every thaumaturge's trusty tool, but only as long as they remain a tool. In the pursuit of maximum productivity, many engineers are willing to trample over moral norms, giving mind to stones and straw. It didn't take long for the creations to revolt, and now they possess all the magical skills of their creator, in particular - how to control another's body and dispense instructions with a bell. You hope to yourself that being captured by golems in one's sleep was painless.<IMG>renaissance_core:textures/gui/vengefulgolem.png:0:0:255:255:.5</IMG>.
 
 #Botania
 renaissance_core.research=⚠ Requires Research.
