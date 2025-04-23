@@ -143,6 +143,9 @@ tc.golem.taunt.3=Now bow down and worship my wandcore!
 research.Thaumaturge.title=Thaumaturges
 research.Thaumaturge.stage.1=Sitting cooped up at home all day long, looking for ways to conquer the essence of things is quite exhausting.<BR>It is unlikely that the whole world is concentrated under your nose, so sharing experiences with other obsessives like you should come in handy. Offer them your ideas and they will share theirs with you.<BR>Nor will they refuse to trade occult or ancient junk from your pockets for theirs, but that's not why you've come all the way out here, is it? <IMG>renaissance_core:textures/gui/thaumaturge.png:0:0:255:255:.5</IMG>.
 
+research.SpecialCreatures.title=Thaumic Concilium
+research.SpecialCreatures.stage.1=This is not what you expected.<BR>Sure, you've already encountered representatives of the human race who have fallen to the bottom of madness before, but this.... Is this the fate that sooner or later awaits all those who have managed to live long enough, keeping thaumaturgical secrets? Despite all precautions, is your immortal soul worth the might that a practicing thaumaturge can achieve?<BR>You don't feel like giving answers to these questions. Time will reveal your choice.<BR>Still, now is not the time to forget the mundane. You may be incapable of helping these people regain their past lives, but you can still deliver them from their current, um, form of existence, at least if you find yourself in such a situation, you would like the same to be done for you.
+
 research.QuicksilverElemental.title=QuicksilverElemental
 research.QuicksilverElemental.stage.1=Every alchemist wishes to put the manufacturing of his products on the stream, some wish to achieve financial solvency in this way, others wish to be recognized for their alchemical genius. It is likely that this is the result of a workplace accident. The new full-mercury body allows it to adapt to the attacker, while physical lunges simply pass through it.<BR>Good thing metals melt well at high temperatures.<PAGE> <IMG>renaissance_core:textures/gui/quicksilver.png:0:0:255:255:.5</IMG>.
 
@@ -154,6 +157,12 @@ research.OverAnimated.stage.1=Few people want to die, but even fewer are willing
 
 research.VengefulGolem.title=Vengeful Golems
 research.VengefulGolem.stage.1=Golems are every thaumaturge's trusty tool, but only as long as they remain a tool. In the pursuit of maximum productivity, many engineers are willing to trample over moral norms, giving mind to stones and straw. It didn't take long for the creations to revolt, and now they possess all the magical skills of their creator, in particular - how to control another's body and dispense instructions with a bell. You hope to yourself that being captured by golems in one's sleep was painless.<IMG>renaissance_core:textures/gui/vengefulgolem.png:0:0:255:255:.5</IMG>.
+
+research.StrayedMirror.title=Strayed Mirror
+research.StrayedMirror.stage.1=Mirrors can transmit light, energy, also information... Just like this peculiar entity you see before you—it appears trapped within the mirror, yet not confined to mere mirror space, resembling an independent, self-aware mirrored being.<PAGE><IMG>renaissance_core:textures/gui/strayed_mirror.png:0:0:255:255:.5</IMG>.
+
+research.Samurai.title=Vengeful Golems
+research.Samurai.stage.1=Constant danger from the outside world, multiplied by incessant paranoia does terrible things to people. In an attempt to protect themselves from real and imaginary threats, these men have invented more and more severe means of defense, of an increasingly dubious nature. Despite the constant suspicions of everyone around them, they go to cooperate with their hallucination brethren.<PAGE><IMG>renaissance_core:textures/gui/samurai.png:0:0:255:255:.5</IMG>.
 
 #Botania
 renaissance_core.research=⚠ Requires Research.

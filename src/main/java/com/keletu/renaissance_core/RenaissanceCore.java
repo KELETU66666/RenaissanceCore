@@ -13,6 +13,7 @@ import com.keletu.renaissance_core.module.botania.SubtileRegisterOverride;
 import com.keletu.renaissance_core.packet.*;
 import com.keletu.renaissance_core.proxy.CommonProxy;
 import com.keletu.renaissance_core.tweaks.InitBotaniaRecipes;
+import com.keletu.renaissance_core.util.ScanEntities;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -51,11 +52,12 @@ import thaumcraft.api.research.ScanEntity;
 import thaumcraft.api.research.ScanningManager;
 import thaumcraft.common.golems.client.PartModelHauler;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 @Mod(modid = RenaissanceCore.MODID, name = RenaissanceCore.NAME, version = RenaissanceCore.VERSION, acceptedMinecraftVersions = RenaissanceCore.MC_VERSION,
-        dependencies = "required-after:baubles@[1.5.2, ); required-after:thaumcraft@[6.1.BETA26]; required-after:thaumicaugmentation; required-after:mixinbooter@[4.2, ); after:botania")
+        dependencies = "required-after:baubles@[1.5.2, ); required-after:thaumcraft@[6.1.BETA26]; required-after:thaumicaugmentation; required-after:mixinbooter@[4.2, ); after:thaumicwonders after:botania")
 public class RenaissanceCore {
     public static final String MODID = "renaissance_core";
     public static final String NAME = "Renaissance Core";
@@ -117,11 +119,14 @@ public class RenaissanceCore {
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".Dissolved", new AspectList().add(Aspect.MAN, 4).add(Aspect.VOID, 4).add(Aspect.ELDRITCH, 4).add(Aspect.ALCHEMY, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".StrayedMirror", new AspectList().add(Aspect.MAN, 4).add(Aspect.EXCHANGE, 4)/*.add(Aspect.SPATIO, 4)*/.add(Aspect.MOTION, 4));
 
+        ScanningManager.addScannableThing(new ScanEntities("SPECIAL_CREATURES", Arrays.asList(Overanimated.class, Dissolved.class, EntityVengefulGolem.class, QuicksilverElemental.class, StrayedMirror.class, Samurai.class)));
         ScanningManager.addScannableThing(new ScanEntity("!Thaumaturge", Thaumaturge.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!OverAnimated", Overanimated.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!Dissolved", Dissolved.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!VengefulGolem", EntityVengefulGolem.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!QuicksilverElemental", QuicksilverElemental.class, true));
+        ScanningManager.addScannableThing(new ScanEntity("!StrayedMirror", StrayedMirror.class, true));
+        ScanningManager.addScannableThing(new ScanEntity("!Samurai", Samurai.class, true));
 
         if (Loader.isModLoaded("botania")) {
             MinecraftForge.EVENT_BUS.register(new EntropinnyumTNTHandler());

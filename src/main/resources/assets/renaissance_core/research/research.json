@@ -54,31 +54,13 @@
       ]
     },
     {
-      "key": "!QuicksilverElemental",
-      "name": "research.QuicksilverElemental.title",
+      "key": "SPECIAL_CREATURES",
+      "name": "research.SpecialCreatures.title",
       "icons": [
-        "renaissance_core:textures/research/r_quicksilver.png"
+        "renaissance_core:textures/research/r_thaumicconcilium.png"
       ],
-      "category": "BASICS",
-      "location": [
-        -12,
-        1
-      ],
-      "meta": [
-        "HEX",
-        "HIDDEN"
-      ],
-      "stages": [
-        {
-          "text": "research.QuicksilverElemental.stage.1"
-        }
-      ]
-    },
-    {
-      "key": "!OverAnimated",
-      "name": "research.OverAnimated.title",
-      "icons": [
-        "renaissance_core:textures/research/r_overanimated.png"
+      "parents": [
+        "!Thaumaturge"
       ],
       "category": "BASICS",
       "location": [
@@ -86,54 +68,51 @@
         2
       ],
       "meta": [
-        "HEX",
+        "ROUND",
+        "SPIKY",
         "HIDDEN"
       ],
       "stages": [
         {
-          "text": "research.OverAnimated.stage.1"
+          "text": "research.SpecialCreatures.stage.1"
         }
-      ]
-    },
-    {
-      "key": "!Dissolved",
-      "name": "research.Dissolved.title",
-      "icons": [
-        "renaissance_core:textures/research/r_dissolved.png"
       ],
-      "category": "BASICS",
-      "location": [
-        -13,
-        0
-      ],
-      "meta": [
-        "HEX",
-        "HIDDEN"
-      ],
-      "stages": [
+      "addenda": [
         {
-          "text": "research.Dissolved.stage.1"
-        }
-      ]
-    },
-    {
-      "key": "!VengefulGolem",
-      "name": "research.VengefulGolem.title",
-      "icons": [
-        "renaissance_core:textures/research/r_vengefulgolem.png"
-      ],
-      "category": "BASICS",
-      "location": [
-        -13,
-        1
-      ],
-      "meta": [
-        "HEX",
-        "HIDDEN"
-      ],
-      "stages": [
+          "text": "research.QuicksilverElemental.stage.1",
+          "required_research": [
+            "!QuicksilverElemental"
+          ]
+        },
         {
-          "text": "research.VengefulGolem.stage.1"
+          "text": "research.OverAnimated.stage.1",
+          "required_research": [
+            "!OverAnimated"
+          ]
+        },
+        {
+          "text": "research.Dissolved.stage.1",
+          "required_research": [
+            "!Dissolved"
+          ]
+        },
+        {
+          "text": "research.VengefulGolem.stage.1",
+          "required_research": [
+            "!VengefulGolem"
+          ]
+        },
+        {
+          "text": "research.StrayedMirror.stage.1",
+          "required_research": [
+            "!StrayedMirror"
+          ]
+        },
+        {
+          "text": "research.Samurai.stage.1",
+          "required_research": [
+            "!Samurai"
+          ]
         }
       ]
     }

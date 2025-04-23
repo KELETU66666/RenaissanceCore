@@ -1,6 +1,8 @@
 package com.keletu.renaissance_core.client.render;
 
+import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.client.model.FakeModelFortressArmor;
+import com.keletu.renaissance_core.client.model.FakeModelVoidFortressArmor;
 import com.keletu.renaissance_core.client.render.layer.LayerGolemBell;
 import com.keletu.renaissance_core.entity.Samurai;
 import net.minecraft.client.Minecraft;
@@ -12,18 +14,18 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import org.lwjgl.opengl.GL11;
-import thaumcraft.api.items.ItemsTC;
 import thecodex6824.thaumicaugmentation.api.TAItems;
 
 public class SamuraiRenderer extends RenderBiped {
 
     private final ResourceLocation texture;
     private ModelBiped bipedModel;
-    private final ResourceLocation voidFortress = new ResourceLocation("taintedmagic", "textures/models/ModelVoidFortressArmor.png");
-    private final ResourceLocation shadowFortress = new ResourceLocation("taintedmagic", "textures/models/ModelShadowFortressArmor.png");
+    private final ResourceLocation voidFortress = new ResourceLocation("thaumicwonders", "textures/entities/armor/void_fortress_armor.png");
+    private final ResourceLocation shadowFortress = new ResourceLocation(RenaissanceCore.MODID, "textures/models/armor/shadow_fortress_armor.png");
 
-    private final FakeModelFortressArmor armor = new FakeModelFortressArmor(1.0F);
+    private ModelBiped armor;
     private final ResourceLocation thaumTexture = new ResourceLocation("taintedmagic", "textures/models/ModelKatanaThaumium.png");
     private final ResourceLocation voidTexture = new ResourceLocation("taintedmagic", "textures/models/ModelKatanaVoidmetal.png");
     private final ResourceLocation shadowTexture = new ResourceLocation("taintedmagic", "textures/models/ModelKatanaShadowmetal.png");
@@ -31,7 +33,7 @@ public class SamuraiRenderer extends RenderBiped {
 
     private final ModelSaya saya = new ModelSaya();
     private final ModelKatana katana = new ModelKatana();
-    private final ItemStack swordItem = new ItemStack(ItemsTC.thaumiumSword);
+    private final ItemStack swordItem = new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("thaumicwonders", "primal_destroyer")));
     private final ItemStack wand = new ItemStack(TAItems.GAUNTLET, 1, 0);
 
     public SamuraiRenderer(ModelBiped model, ResourceLocation texture, float shadowSize) {
@@ -48,12 +50,15 @@ public class SamuraiRenderer extends RenderBiped {
         switch (type) {
             case 0:
                 Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("thaumcraft","textures/entity/armor/fortress_armor.png"));
+                armor = new FakeModelFortressArmor(1.0F);
                 break;
             case 1:
-                Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("thaumcraft", "textures/entity/armor/fortress_armor.png"));
+                Minecraft.getMinecraft().renderEngine.bindTexture(voidFortress);
+                armor = new FakeModelVoidFortressArmor(1.0F);
                 break;
             case 2:
-                Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("thaumcraft", "textures/entity/armor/fortress_armor.png"));
+                Minecraft.getMinecraft().renderEngine.bindTexture(shadowFortress);
+                armor = new FakeModelFortressArmor(1.0F);
                 break;
         }
         armor.isRiding = mainModel.isRiding;
