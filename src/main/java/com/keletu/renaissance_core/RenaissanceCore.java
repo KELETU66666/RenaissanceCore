@@ -105,14 +105,16 @@ public class RenaissanceCore {
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "overanimated"), Overanimated.class, "Overanimated", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "thaum_gib"), ThaumGib.class, "ThaumGib", id++, MODID, 64, 3, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "thaumaturge"), Thaumaturge.class, "Thaumaturge", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "strayed_mirror"), StrayedMirror.class, "StrayedMirror", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
 
 
-        ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID+".Thaumaturge", new AspectList().add(Aspect.MAN, 4).add(Aspect.MAGIC, 4).add(Aspect.AURA, 4).add(Aspect.ORDER, 4));
+        ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".Thaumaturge", new AspectList().add(Aspect.MAN, 4).add(Aspect.MAGIC, 4).add(Aspect.AURA, 4).add(Aspect.ORDER, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".ThaumGib", new AspectList().add(Aspect.MAN, 4).add(Aspect.MAGIC, 4).add(Aspect.LIFE, 4).add(Aspect.ENTROPY, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".Overanimated", new AspectList().add(Aspect.MAN, 4).add(Aspect.MAGIC, 4).add(Aspect.LIFE, 4).add(Aspect.ELDRITCH, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".QuicksilverElemental", new AspectList().add(Aspect.MAN, 4).add(Aspect.LIFE, 4).add(Aspect.METAL, 4).add(Aspect.EXCHANGE, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".VengefulGolem", new AspectList().add(Aspect.MAN, 4).add(Aspect.CRAFT, 4)/*.add(DarkAspects.PRIDE, 4)*/.add(Aspect.MOTION, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".Dissolved", new AspectList().add(Aspect.MAN, 4).add(Aspect.VOID, 4).add(Aspect.ELDRITCH, 4).add(Aspect.ALCHEMY, 4));
+        ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".StrayedMirror", new AspectList().add(Aspect.MAN, 4).add(Aspect.EXCHANGE, 4)/*.add(Aspect.SPATIO, 4)*/.add(Aspect.MOTION, 4));
 
         ScanningManager.addScannableThing(new ScanEntity("!Thaumaturge", Thaumaturge.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!OverAnimated", Overanimated.class, true));
@@ -154,6 +156,7 @@ public class RenaissanceCore {
                 //EntityRegistry.addSpawn(Samurai.class, TCConfig.paranoidWarriorSpawnChance, 3, 5, EnumCreatureType.MONSTER, new Biome[]{bgb});
                 EntityRegistry.addSpawn(EntityVengefulGolem.class, ConfigsRC.vengefulGolemSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
                 EntityRegistry.addSpawn(Overanimated.class, ConfigsRC.overanimatedSpawnChance, 2, 3, EnumCreatureType.MONSTER, bgb);
+                EntityRegistry.addSpawn(StrayedMirror.class, ConfigsRC.strayedMirrorSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
                 //EntityRegistry.addSpawn(MadThaumaturge.class, TCConfig.madThaumaturgeSpawnChance, 2, 3, EnumCreatureType.MONSTER, new Biome[]{bgb});
             }
             if (!bgb.getSpawnableList(EnumCreatureType.CREATURE).isEmpty() & bgb.getSpawnableList(EnumCreatureType.CREATURE).size() > 0) {

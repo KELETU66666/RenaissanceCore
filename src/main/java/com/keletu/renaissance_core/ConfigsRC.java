@@ -20,7 +20,7 @@ public class ConfigsRC {
 
     @Config.LangKey("cursedSleepPollution")
     @Config.Comment("when cursed player sleep, have 1/2 chance pollute flux, the point is (default: 30)")
-    public static float cursedSleepPollution = 30;
+    public static float cursedSleepPollution = 30F;
 
     @Config.LangKey("canRemovePermanentWarp")
     @Config.Comment("can cursed player can remove permanent warps (default: false)")
@@ -32,17 +32,17 @@ public class ConfigsRC {
 
     @Config.LangKey("cursedWarpJudgeIncreasePercentage")
     @Config.Comment("cursed player actual warp multiplied (default: 2)")
-    public static float cursedWarpJudgeIncreasePercentage = 2;
+    public static float cursedWarpJudgeIncreasePercentage = 2F;
 
     @Config.LangKey("cursedPlayerRegenHealthAura")
     @Config.Comment("when chunk's aura lower than (default: 1), player can't regen health automatically")
     @Config.RangeDouble(min = 0, max = 0.8)
-    public static double cursedPlayerRegenHealthAura = 0.8;
+    public static double cursedPlayerRegenHealthAura = 0.8F;
 
     @Config.LangKey("cursedPlayerRegenHealthVis")
     @Config.Comment("the vis will decrease player health regen multiply (default: 5) point(s)")
     @Config.RangeDouble(min = 0)
-    public static float cursedPlayerRegenHealthVis = 5;
+    public static float cursedPlayerRegenHealthVis = 5F;
 
     @Config.LangKey("thaumaturgeSpawnChance")
     @Config.Comment("Thaumaturge Golem spawn chance")
@@ -67,5 +67,9 @@ public class ConfigsRC {
     @Config.LangKey("overanimatedSpawnChance")
     @Config.RangeDouble(min = 0)
     public static int overanimatedSpawnChance = 10;
+
+    @Config.LangKey("strayedMirrorSpawnChance")
+    @Config.RangeDouble(min = 0)
+    public static int strayedMirrorSpawnChance = 10;
 
 }

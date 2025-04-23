@@ -109,6 +109,7 @@ entity.Dissolved.name=Dissolved
 entity.QuicksilverElemental.name=Quicksilver Elemental
 entity.ThaumGib.name=Alive Limb
 entity.Overanimated.name=Overanimated
+entity.StrayedMirror.name=Strayed Mirror
 
 message.t12.try=Seems this wired dice is stuck somewhere
 message.t12.takeoff=This weird die broke when you took it off
