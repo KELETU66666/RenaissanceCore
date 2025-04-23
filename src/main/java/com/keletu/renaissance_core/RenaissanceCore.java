@@ -81,6 +81,7 @@ public class RenaissanceCore {
         packetInstance.registerMessage(PacketEnslave.class, PacketEnslave.class, 4, Side.CLIENT);
         packetInstance.registerMessage(PacketMakeHole.class, PacketMakeHole.class, 5, Side.CLIENT);
         packetInstance.registerMessage(PacketFXBloodsplosion.class, PacketFXBloodsplosion.class, 6, Side.CLIENT);
+        packetInstance.registerMessage(PacketFXLightning.class, PacketFXLightning.class, 7, Side.CLIENT);
 
         if (event.getSide().isClient()) {
             OBJLoader.INSTANCE.addDomain(MODID);
@@ -106,7 +107,7 @@ public class RenaissanceCore {
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "thaum_gib"), ThaumGib.class, "ThaumGib", id++, MODID, 64, 3, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "thaumaturge"), Thaumaturge.class, "Thaumaturge", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "strayed_mirror"), StrayedMirror.class, "StrayedMirror", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
-
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "samurai"), Samurai.class, "Samurai", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
 
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".Thaumaturge", new AspectList().add(Aspect.MAN, 4).add(Aspect.MAGIC, 4).add(Aspect.AURA, 4).add(Aspect.ORDER, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".ThaumGib", new AspectList().add(Aspect.MAN, 4).add(Aspect.MAGIC, 4).add(Aspect.LIFE, 4).add(Aspect.ENTROPY, 4));
@@ -153,7 +154,7 @@ public class RenaissanceCore {
             if (!bgb.getSpawnableList(EnumCreatureType.MONSTER).isEmpty() & bgb.getSpawnableList(EnumCreatureType.MONSTER).size() > 0) {
                 EntityRegistry.addSpawn(Dissolved.class, ConfigsRC.dissolvedSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
                 EntityRegistry.addSpawn(QuicksilverElemental.class, ConfigsRC.quicksilverElementalSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
-                //EntityRegistry.addSpawn(Samurai.class, TCConfig.paranoidWarriorSpawnChance, 3, 5, EnumCreatureType.MONSTER, new Biome[]{bgb});
+                EntityRegistry.addSpawn(Samurai.class, ConfigsRC.paranoidWarriorSpawnChance, 3, 5, EnumCreatureType.MONSTER, bgb);
                 EntityRegistry.addSpawn(EntityVengefulGolem.class, ConfigsRC.vengefulGolemSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
                 EntityRegistry.addSpawn(Overanimated.class, ConfigsRC.overanimatedSpawnChance, 2, 3, EnumCreatureType.MONSTER, bgb);
                 EntityRegistry.addSpawn(StrayedMirror.class, ConfigsRC.strayedMirrorSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);

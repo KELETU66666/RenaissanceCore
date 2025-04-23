@@ -72,4 +72,8 @@ public class ConfigsRC {
     @Config.RangeDouble(min = 0)
     public static int strayedMirrorSpawnChance = 10;
 
+    @Config.LangKey("paranoidWarriorSpawnChance")
+    @Config.RangeDouble(min = 0)
+    public static int paranoidWarriorSpawnChance = 10;
+
 }

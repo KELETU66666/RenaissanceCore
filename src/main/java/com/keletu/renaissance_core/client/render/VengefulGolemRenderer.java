@@ -5,7 +5,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import thaumcraft.api.items.ItemsTC;
 
 public class VengefulGolemRenderer extends RenderBiped<EntityLiving> {
 
@@ -14,7 +16,7 @@ public class VengefulGolemRenderer extends RenderBiped<EntityLiving> {
     public VengefulGolemRenderer(ModelBiped model, ResourceLocation texture, float shadow) {
         super(Minecraft.getMinecraft().getRenderManager(), model, shadow);
         this.texture = texture;
-        this.addLayer(new LayerGolemBell(this));
+        this.addLayer(new LayerGolemBell(this, new ItemStack(ItemsTC.golemBell)));
     }
 
     /**

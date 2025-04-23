@@ -11,23 +11,24 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHandSide;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import thaumcraft.api.items.ItemsTC;
 
 @SideOnly(Side.CLIENT)
 public class LayerGolemBell implements LayerRenderer<EntityLivingBase>
 {
     protected final RenderLivingBase<?> livingEntityRenderer;
+    private ItemStack stack;
 
-    public LayerGolemBell(RenderLivingBase<?> livingEntityRendererIn)
+    public LayerGolemBell(RenderLivingBase<?> livingEntityRendererIn, ItemStack stack)
     {
         this.livingEntityRenderer = livingEntityRendererIn;
+        this.stack = stack;
     }
 
     public void doRenderLayer(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale)
     {
         boolean flag = entitylivingbaseIn.getPrimaryHand() == EnumHandSide.RIGHT;
-        ItemStack itemstack = flag ? entitylivingbaseIn.getHeldItemOffhand() : new ItemStack(ItemsTC.golemBell);
-        ItemStack itemstack1 = flag ? new ItemStack(ItemsTC.golemBell) : entitylivingbaseIn.getHeldItemOffhand();
+        ItemStack itemstack = flag ? entitylivingbaseIn.getHeldItemOffhand() : stack;
+        ItemStack itemstack1 = flag ? stack : entitylivingbaseIn.getHeldItemOffhand();
 
         if (!itemstack.isEmpty() || !itemstack1.isEmpty())
         {
