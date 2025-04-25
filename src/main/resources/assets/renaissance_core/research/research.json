@@ -65,7 +65,7 @@
       "category": "BASICS",
       "location": [
         -12,
-        2
+        3
       ],
       "meta": [
         "ROUND",
@@ -113,6 +113,25 @@
           "required_research": [
             "!Samurai"
           ]
+        }
+      ]
+    },
+    {
+      "key": "QUICKSILVER_CRUCIBLE",
+      "name": "research.QuickSilverCrucible.title",
+      "icons": [
+        "renaissance_core:quicksilver_crucible"
+      ],
+      "parents": [
+        "!QuicksilverElemental", "SPECIAL_CREATURES", "~BASEALCHEMY"
+      ],
+      "category": "BASICS",
+      "location": [
+        -13, 2
+      ],
+      "stages": [
+        {
+          "text": "research.QuickSilverCrucible.stage.1"
         }
       ]
     }

@@ -78,7 +78,7 @@ tile.pech_skull_stalker.name=Stalker Pech Head
 tile.pech_skull_thaum.name=Mage Pech Head
 
 tile.full_crucible.name=Filled Crucible
-tile.quicksilver_crucible.name=Quicksilver Crucible
+tile.quicksilver_crucible.name=Quicksilver Reactor
 
 golem.head.forage=Pech Forage Head
 golem.head.text.forage=Pech Forage Head
@@ -141,9 +141,11 @@ tc.golem.taunt.2=I spin you right 'round!
 tc.golem.taunt.3=Now bow down and worship my wandcore!
 
 research.Thaumaturge.title=Thaumaturges
+research.Thaumaturge.title.text=We live in a society
 research.Thaumaturge.stage.1=Sitting cooped up at home all day long, looking for ways to conquer the essence of things is quite exhausting.<BR>It is unlikely that the whole world is concentrated under your nose, so sharing experiences with other obsessives like you should come in handy. Offer them your ideas and they will share theirs with you.<BR>Nor will they refuse to trade occult or ancient junk from your pockets for theirs, but that's not why you've come all the way out here, is it? <IMG>renaissance_core:textures/gui/thaumaturge.png:0:0:255:255:.5</IMG>.
 
 research.SpecialCreatures.title=Thaumic Concilium
+research.SpecialCreatures.title.text=The Price of scientific advances
 research.SpecialCreatures.stage.1=This is not what you expected.<BR>Sure, you've already encountered representatives of the human race who have fallen to the bottom of madness before, but this.... Is this the fate that sooner or later awaits all those who have managed to live long enough, keeping thaumaturgical secrets? Despite all precautions, is your immortal soul worth the might that a practicing thaumaturge can achieve?<BR>You don't feel like giving answers to these questions. Time will reveal your choice.<BR>Still, now is not the time to forget the mundane. You may be incapable of helping these people regain their past lives, but you can still deliver them from their current, um, form of existence, at least if you find yourself in such a situation, you would like the same to be done for you.
 
 research.QuicksilverElemental.title=QuicksilverElemental
@@ -163,6 +165,10 @@ research.StrayedMirror.stage.1=Mirrors can transmit light, energy, also informat
 
 research.Samurai.title=Vengeful Golems
 research.Samurai.stage.1=Constant danger from the outside world, multiplied by incessant paranoia does terrible things to people. In an attempt to protect themselves from real and imaginary threats, these men have invented more and more severe means of defense, of an increasingly dubious nature. Despite the constant suspicions of everyone around them, they go to cooperate with their hallucination brethren.<PAGE><IMG>renaissance_core:textures/gui/samurai.png:0:0:255:255:.5</IMG>.
+
+research.QuickSilverCrucible.title=Quicksilver Reactor
+research.QuickSilverCrucible.title.text=Alchemical Miracle
+research.QuickSilverCrucible.stage.1=To this day, no one had ever been able to create a way of merging essences. It seemed that this law of reality would never be broken.<BR>But at last that day has come.<BR>You have always believed that the will of man is boundless, and here it is, another confirmation of that. Having managed to capture one of those losers who in a past life thought they were expert alchemists, you threw him right into the boiling crucible.<BR>The active structure of his body reacted violently, instantly fusing with the walls of the crucible, giving him a new, more useful purpose in life - to assist the more adaptable thaumaturges in their alchemical experiments.<BR>For every fraction of mercury melted in this reactor, in one crucible no more than two blocks away, the first two fractions of the essence would be combined with each other.
 
 #Botania
 renaissance_core.research=⚠ Requires Research.
