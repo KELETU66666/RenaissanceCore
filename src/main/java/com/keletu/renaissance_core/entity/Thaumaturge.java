@@ -22,6 +22,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
+import thaumcraft.api.ThaumcraftApiHelper;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import thaumcraft.api.casters.*;
 import thaumcraft.api.entities.IEldritchMob;
@@ -269,8 +271,7 @@ public class Thaumaturge extends EntityMob implements IRangedAttackMob {
         if (!player.isSneaking() && (player.getHeldItem(hand).isEmpty() || !(player.getHeldItem(hand).getItem() instanceof ItemNameTag))) {
             if (!this.world.isRemote && this.getAnger() == 0 && hand == EnumHand.MAIN_HAND) {
                 if (ThaumcraftCapabilities.knowsResearch(player, "BASEAUROMANCY")) {
-                    // player.openGui(RenaissanceCore.MODID, 1, this.world, this.getEntityId(), 0, 0);
-                    player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tc.thaumaturge.taunt.WIP")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
+                    player.openGui(RenaissanceCore.MODID, 1, this.world, this.getEntityId(), 0, 0);
                 } else {
                     int r = rand.nextInt(4);
                     player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tc.thaumaturge.taunt." + r)).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
@@ -340,8 +341,7 @@ public class Thaumaturge extends EntityMob implements IRangedAttackMob {
         if (item == null) {
             return 0;
         } else {
-            int value = valuedItems.containsKey(Item.getIdFromItem(item.getItem())) ? valuedItems.get(Item.getIdFromItem(item.getItem())) : 0;
-            return value;
+            return valuedItems.getOrDefault(Item.getIdFromItem(item.getItem()), 0);
         }
     }
 
@@ -349,28 +349,47 @@ public class Thaumaturge extends EntityMob implements IRangedAttackMob {
         if (item == null) {
             return false;
         } else {
-            boolean value = valuedItems.containsKey(Item.getIdFromItem(item.getItem()));
-            return value;
+            return valuedItems.containsKey(Item.getIdFromItem(item.getItem()));
         }
     }
 
     static {
         //valuedItems.put(Item.getIdFromItem(ItemsTC.itemManaBean), 1);
         valuedItems.put(Item.getIdFromItem(Items.SKULL), 3);
-        valuedItems.put(Item.getIdFromItem(ItemsTC.casterBasic), 3);
+        valuedItems.put(Item.getIdFromItem(ItemsTC.salisMundus), 3);
         valuedItems.put(Item.getIdFromItem(Items.EXPERIENCE_BOTTLE), 3);
         valuedItems.put(Item.getIdFromItem(Items.ENCHANTED_BOOK), 5);
-        valuedItems.put(Item.getIdFromItem(ItemsTC.curio), -1);
+        valuedItems.put(Item.getIdFromItem(Items.BOOK), 2);
+        valuedItems.put(Item.getIdFromItem(ItemsTC.curio), 5);
 
         //tradeInventory.add(Arrays.asList(9, new ItemStack(ItemsTC.itemManaBean)));
-        for (int a = 0; a < 6; ++a) {
-            tradeInventory.add(Arrays.asList(10, new ItemStack(ItemsTC.curio, 1, a)));
-        }
-        tradeInventory.add(Arrays.asList(7, new ItemStack(ItemsTC.nuggets, 1, 6)));
-        tradeInventory.add(Arrays.asList(7, new ItemStack(ItemsTC.nuggets, 1, 6)));
-        for (int a = 0; a < 7; ++a) {
-            tradeInventory.add(Arrays.asList(2, new ItemStack(ItemsTC.salisMundus, 1, a)));
-        }
+
+
+        for (int a = 0; a < 6; ++a)
+            tradeInventory.add(Arrays.asList(10, ThaumcraftApiHelper.makeCrystal(Aspect.AIR, a)));
+
+        for (int a = 0; a < 6; ++a)
+            tradeInventory.add(Arrays.asList(10, ThaumcraftApiHelper.makeCrystal(Aspect.EARTH, a)));
+
+        for (int a = 0; a < 6; ++a)
+            tradeInventory.add(Arrays.asList(10, ThaumcraftApiHelper.makeCrystal(Aspect.WATER, a)));
+
+        for (int a = 0; a < 6; ++a)
+            tradeInventory.add(Arrays.asList(10, ThaumcraftApiHelper.makeCrystal(Aspect.FIRE, a)));
+
+        for (int a = 0; a < 6; ++a)
+            tradeInventory.add(Arrays.asList(10, ThaumcraftApiHelper.makeCrystal(Aspect.ENTROPY, a)));
+
+        for (int a = 0; a < 6; ++a)
+            tradeInventory.add(Arrays.asList(10, ThaumcraftApiHelper.makeCrystal(Aspect.ORDER, a)));
+
+        for (int a = 0; a < 12; ++a)
+            tradeInventory.add(Arrays.asList(7, new ItemStack(ItemsTC.celestialNotes, 1, a)));
+
+        tradeInventory.add(Arrays.asList(1, new ItemStack(ItemsTC.curio, 1, 2)));
+        tradeInventory.add(Arrays.asList(7, new ItemStack(ItemsTC.ingots, 1, 0)));
+        tradeInventory.add(Arrays.asList(7, new ItemStack(ItemsTC.ingots, 1, 0)));
+        tradeInventory.add(Arrays.asList(2, new ItemStack(ItemsTC.salisMundus, 1)));
         tradeInventory.add(Arrays.asList(1, new ItemStack(ItemsTC.focusPouch)));
         tradeInventory.add(Arrays.asList(1, getFireFocus()));
         tradeInventory.add(Arrays.asList(4, new ItemStack(ItemsTC.amuletVis, 1, 0)));
