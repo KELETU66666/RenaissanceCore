@@ -24,6 +24,7 @@ public class ModelEvents {
         defaultModel(RCItems.pechHeadNormal);
         defaultModel(RCItems.pechHeadHunter);
         defaultModel(RCItems.pechHeadThaumaturge);
+        defaultModel(RCItems.quicksilverCrucible);
     }
 
     static void defaultModel(Item item) {

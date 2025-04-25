@@ -2,6 +2,8 @@ package com.keletu.renaissance_core.entity;
 
 import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
+import com.keletu.renaissance_core.blocks.QuicksilverCrucibleTile;
+import com.keletu.renaissance_core.blocks.RFBlocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
@@ -104,17 +106,14 @@ public class QuicksilverElemental extends EntityMob {
                 MathHelper.floor(posZ));
         TileEntity tile = this.world.getTileEntity(pos);
         if (tile instanceof TileCrucible) {
-            //world.setBlockToAir(pos);
-            //world.removeTileEntity(pos);
-            //QuicksilverCrucibleTile crucible = new QuicksilverCrucibleTile();
-            //world.setBlockState(pos, TCBlockRegistry.QUICKSILVER_CRUCIBLE);
-            //world.setTileEntity(pos, crucible);
-            //QuicksilverCrucibleTile placed = (QuicksilverCrucibleTile) world.getTileEntity(pos);
-            //placed.aspects.add(Aspect.EXCHANGE, 20);
-            //placed.markDirty();
-
-            TileCrucible placed = (TileCrucible) world.getTileEntity(pos);
-            if (placed != null) placed.aspects.add(Aspect.EXCHANGE, 20);
+            world.setBlockToAir(pos);
+            world.removeTileEntity(pos);
+            QuicksilverCrucibleTile crucible = new QuicksilverCrucibleTile();
+            world.setBlockState(pos, RFBlocks.quicksilver_crucible.getDefaultState());
+            world.setTileEntity(pos, crucible);
+            QuicksilverCrucibleTile placed = (QuicksilverCrucibleTile) world.getTileEntity(pos);
+            placed.aspects.add(Aspect.EXCHANGE, 20);
+            placed.markDirty();
             world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
 
             List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, getEntityBoundingBox().expand(16.0, 16.0, 16.0));

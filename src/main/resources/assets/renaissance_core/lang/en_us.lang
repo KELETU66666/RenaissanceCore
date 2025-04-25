@@ -78,6 +78,7 @@ tile.pech_skull_stalker.name=Stalker Pech Head
 tile.pech_skull_thaum.name=Mage Pech Head
 
 tile.full_crucible.name=Filled Crucible
+tile.quicksilver_crucible.name=Quicksilver Crucible
 
 golem.head.forage=Pech Forage Head
 golem.head.text.forage=Pech Forage Head

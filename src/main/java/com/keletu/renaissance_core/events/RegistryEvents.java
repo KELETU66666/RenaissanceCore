@@ -1,6 +1,7 @@
 package com.keletu.renaissance_core.events;
 
 import com.keletu.renaissance_core.RenaissanceCore;
+import com.keletu.renaissance_core.blocks.QuicksilverCrucibleTile;
 import com.keletu.renaissance_core.blocks.RFBlocks;
 import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.items.RCItems;
@@ -27,6 +28,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import thaumcraft.api.entities.ITaintedMob;
 import thaumcraft.api.potions.PotionFluxTaint;
 import thaumcraft.common.entities.construct.EntityOwnedConstruct;
@@ -87,6 +89,9 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RFBlocks.pechHead_hunter);
         event.getRegistry().registerAll(RFBlocks.pechHead_thaumaturge);
         event.getRegistry().registerAll(RFBlocks.full_crucible);
+        event.getRegistry().registerAll(RFBlocks.quicksilver_crucible);
+
+        GameRegistry.registerTileEntity(QuicksilverCrucibleTile.class, new ResourceLocation(RenaissanceCore.MODID, "quicksilver_crucible"));
     }
 
     @SubscribeEvent
@@ -100,6 +105,7 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RCItems.pechHeadNormal);
         event.getRegistry().registerAll(RCItems.pechHeadHunter);
         event.getRegistry().registerAll(RCItems.pechHeadThaumaturge);
+        event.getRegistry().registerAll(RCItems.quicksilverCrucible);
     }
 
     @SubscribeEvent

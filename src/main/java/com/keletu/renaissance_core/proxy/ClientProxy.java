@@ -2,6 +2,7 @@ package com.keletu.renaissance_core.proxy;
 
 import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
+import com.keletu.renaissance_core.blocks.QuicksilverCrucibleTile;
 import com.keletu.renaissance_core.client.model.VengefulGolemModel;
 import com.keletu.renaissance_core.client.render.*;
 import com.keletu.renaissance_core.client.render.layer.LayerBackpack;
@@ -22,10 +23,13 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import thaumcraft.client.fx.ParticleEngine;
+import thaumcraft.client.fx.other.FXEssentiaStream;
 import thaumcraft.client.fx.particles.FXBreakingFade;
 
 import java.util.List;
@@ -33,7 +37,7 @@ import java.util.Map;
 import java.util.Random;
 
 @SideOnly(Side.CLIENT)
-public class ClientProxy extends CommonProxy{
+public class ClientProxy extends CommonProxy {
 
     @Override
     public void regRenderer() {
@@ -53,6 +57,9 @@ public class ClientProxy extends CommonProxy{
         RenderingRegistry.registerEntityRenderingHandler(Thaumaturge.class, new ThaumaturgeRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/thaumaturge.png"), 0.5f));
         RenderingRegistry.registerEntityRenderingHandler(StrayedMirror.class, new StrayedMirrorRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/thaumaturge.png"), 0.5f));
         RenderingRegistry.registerEntityRenderingHandler(Samurai.class, new SamuraiRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/thaumaturge.png"), 0.15f));
+
+        ClientRegistry.bindTileEntitySpecialRenderer(QuicksilverCrucibleTile.class, new QuicksilverCrucibleTileRenderer());
+
         if (ConfigsRC.CHANGE_BOTANIA_RECIPE && Loader.isModLoaded("botania")) {
             PageArcaneWorkbenchRecipe.init();
             PageCrucibleRecipe.init();
@@ -72,8 +79,8 @@ public class ClientProxy extends CommonProxy{
         renderPlayer.addLayer(new LayerBackpack(renderPlayer));
     }
 
-    public void bloodsplosion(World world, double x, double y, double z){
-        FXBreakingFade fx = new FXBreakingFade(world, x, y + (double)(world.rand.nextFloat() * 2), z, Items.SLIME_BALL);
+    public void bloodsplosion(World world, double x, double y, double z) {
+        FXBreakingFade fx = new FXBreakingFade(world, x, y + (double) (world.rand.nextFloat() * 2), z, Items.SLIME_BALL);
         if (world.rand.nextBoolean()) {
             fx.setRBGColorF(0.8F, 0.0F, 0.0F);
             fx.setAlphaF(0.4F);
@@ -82,15 +89,15 @@ public class ClientProxy extends CommonProxy{
             fx.setAlphaF(0.6F);
         }
 
-        fx.motionX = (float)(Math.random() * 2.0 - 1.0);
-        fx.motionY = (float)(Math.random() * 2.0 - 1.0);
-        fx.motionZ = (float)(Math.random() * 2.0 - 1.0);
-        float f = (float)(Math.random() + Math.random() + 1.0) * 0.15F;
+        fx.motionX = (float) (Math.random() * 2.0 - 1.0);
+        fx.motionY = (float) (Math.random() * 2.0 - 1.0);
+        fx.motionZ = (float) (Math.random() * 2.0 - 1.0);
+        float f = (float) (Math.random() + Math.random() + 1.0) * 0.15F;
         float f1 = MathHelper.sqrt(fx.motionX * fx.motionX + fx.motionY * fx.motionY + fx.motionZ * fx.motionZ);
-        fx.motionX = fx.motionX / (double)f1 * (double)f * 0.9640000000596046;
-        fx.motionY = fx.motionY / (double)f1 * (double)f * 0.9640000000596046 + 0.10000000149011612;
-        fx.motionZ = fx.motionZ / (double)f1 * (double)f * 0.9640000000596046;
-        fx.setParticleMaxAge((int)(66.0F / (world.rand.nextFloat() * 0.9F + 0.1F)));
+        fx.motionX = fx.motionX / (double) f1 * (double) f * 0.9640000000596046;
+        fx.motionY = fx.motionY / (double) f1 * (double) f * 0.9640000000596046 + 0.10000000149011612;
+        fx.motionZ = fx.motionZ / (double) f1 * (double) f * 0.9640000000596046;
+        fx.setParticleMaxAge((int) (66.0F / (world.rand.nextFloat() * 0.9F + 0.1F)));
         FMLClientHandler.instance().getClient().effectRenderer.addEffect(fx);
     }
 
@@ -116,10 +123,17 @@ public class ClientProxy extends CommonProxy{
 
                     player.movementInput.jump = false;
                     player.movementInput.sneak = false;
-                    player.connection.sendPacket(new CPacketPlayer.Rotation(player.rotationYaw, MathHelper.cos((float)player.ticksExisted), player.onGround));
+                    player.connection.sendPacket(new CPacketPlayer.Rotation(player.rotationYaw, MathHelper.cos((float) player.ticksExisted), player.onGround));
                     player.connection.sendPacket(new CPacketInput(0.0F, player.moveForward, false, false));
                 }
             }
+        }
+    }
+
+    @Override
+    public void quicksilverFlow(World w, double x, double y, double z, double tx, double ty, double tz) {
+        for (int i = 0; i < 5; i++) {
+            ParticleEngine.addEffect(w, new FXEssentiaStream(w, tx + (new Random().nextDouble()), ty, tz + (new Random().nextDouble()), x + 0.5, y + 0.5, z + 0.5, 3, 0xAAAAAA,  0.1F, 0, 0.2F));
         }
     }
 }

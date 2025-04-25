@@ -17,4 +17,5 @@ public class RCItems {
     public static final Item pechHeadNormal = new RCItemBlocks(RFBlocks.pechHead_normal);
     public static final Item pechHeadHunter = new RCItemBlocks(RFBlocks.pechHead_hunter);
     public static final Item pechHeadThaumaturge = new RCItemBlocks(RFBlocks.pechHead_thaumaturge);
+    public static final Item quicksilverCrucible = new RCItemBlocks(RFBlocks.quicksilver_crucible);
 }
