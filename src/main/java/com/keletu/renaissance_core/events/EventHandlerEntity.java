@@ -6,36 +6,46 @@ import com.keletu.renaissance_core.capability.RCCapabilities;
 import com.keletu.renaissance_core.capability.T12Capability;
 import com.keletu.renaissance_core.entity.Dissolved;
 import com.keletu.renaissance_core.entity.StrayedMirror;
+import com.keletu.renaissance_core.items.PontifexRobe;
 import com.keletu.renaissance_core.packet.PacketSyncCapability;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.init.MobEffects;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import thaumcraft.common.entities.monster.cult.EntityCultist;
 import thaumcraft.common.lib.SoundsTC;
+
+import java.util.List;
 
 @Mod.EventBusSubscriber(modid = RenaissanceCore.MODID)
 public class EventHandlerEntity {
 
     @SubscribeEvent
     public static void tickHandler(TickEvent.PlayerTickEvent event) {
-        if(event.phase == TickEvent.Phase.END || event.player.world.isRemote) return;
+        if (event.phase == TickEvent.Phase.END || event.player.world.isRemote) return;
 
         IT12Capability it12 = IT12Capability.get(event.player);
-        if(it12 != null) {
+        if (it12 != null) {
             it12.setLocationCorrect();
             syncToClient(event.player);
         }
@@ -52,8 +62,39 @@ public class EventHandlerEntity {
     }
 
     @SubscribeEvent
+    public static void onLivingSetAttackTarget(LivingSetAttackTargetEvent event) {
+        if (event.getEntityLiving() instanceof EntityCultist && event.getTarget() instanceof EntityPlayer) {
+            if (PontifexRobe.isFullSet((EntityPlayer) event.getTarget())) {
+                ((EntityLiving) event.getEntityLiving()).setAttackTarget(null);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onAttackEntity(AttackEntityEvent event) {
+        if (!event.getEntityPlayer().world.isRemote && event.getTarget() != null) {
+            if (PontifexRobe.isFullSet(event.getEntityPlayer())) {
+                List<EntityCultist> list = event.getEntityPlayer().world.getEntitiesWithinAABB(EntityCultist.class, event.getEntityPlayer().getEntityBoundingBox().expand(32, 32, 32).expand(-32, -32, -32));
+                if (!list.isEmpty()) {
+                    //int life = Thaumcraft.proxy.playerKnowledge.getAspectPoolFor(event.entityPlayer.getCommandSenderName(), Aspect.HUNGER);
+                    //int heal = Thaumcraft.proxy.playerKnowledge.getAspectPoolFor(event.entityPlayer.getCommandSenderName(), Aspect.HEAL);
+                    int potency = MathHelper.clamp(1, 1, 200);
+                    int regen = MathHelper.clamp(1, 1, 200);
+                    for (EntityCultist cultist : list) {
+                        if (event.getTarget() instanceof EntityLivingBase && cultist.isNonBoss() && !(event.getTarget() instanceof EntityCultist)) {
+                            cultist.setAttackTarget((EntityLivingBase) event.getTarget());
+                            cultist.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 100, potency));
+                            cultist.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, regen));
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
     public static void onPlayerLoggedIn(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent event) {
-        if(!event.player.world.isRemote) {
+        if (!event.player.world.isRemote) {
             syncToClient(event.player);
         }
     }
@@ -63,7 +104,7 @@ public class EventHandlerEntity {
         if (!(event.getEntity() instanceof EntityPlayer)) return;
 
         EntityPlayer player = (EntityPlayer) event.getEntity();
-        if(player.world.isRemote) return;
+        if (player.world.isRemote) return;
 
         IT12Capability capability = player.getCapability(RCCapabilities.PICK_OFF_T12_CAP, null);
         if (capability != null) {
@@ -77,7 +118,7 @@ public class EventHandlerEntity {
         EntityPlayer original = event.getOriginal();
         EntityPlayer player = event.getEntityPlayer();
 
-        if(player.world.isRemote) return;
+        if (player.world.isRemote) return;
 
         // Handle both death and dimension change cloning
         IT12Capability oldCap = original.getCapability(RCCapabilities.PICK_OFF_T12_CAP, null);
@@ -102,7 +143,7 @@ public class EventHandlerEntity {
     }
 
     @SubscribeEvent
-    public static void onLivingAttack (LivingAttackEvent event) {
+    public static void onLivingAttack(LivingAttackEvent event) {
         if (event.getEntityLiving() instanceof Dissolved) {
             if (!event.getSource().damageType.equals("outOfWorld") && !event.getSource().damageType.equals("inWall")) {
                 event.setCanceled(true);
@@ -132,12 +173,11 @@ public class EventHandlerEntity {
     }
 
     /*
-    * Codes from deeper depths mod
-    * https://github.com/SmileycorpMC/Deeper-Depths/blob/main/src/main/java/com/deeperdepths/common/DeeperDepthsEventHandler.java
-    * Those codes under LGPLv2.1 License: https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html
-    * */
-    private static void deflectProjectile(Entity projectile)
-    {
+     * Codes from deeper depths mod
+     * https://github.com/SmileycorpMC/Deeper-Depths/blob/main/src/main/java/com/deeperdepths/common/DeeperDepthsEventHandler.java
+     * Those codes under LGPLv2.1 License: https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html
+     * */
+    private static void deflectProjectile(Entity projectile) {
         double bounceStrength = -1.0D;
         projectile.motionX *= bounceStrength;
         projectile.motionY *= bounceStrength;
@@ -152,17 +192,18 @@ public class EventHandlerEntity {
      * https://github.com/SmileycorpMC/Deeper-Depths/blob/main/src/main/java/com/deeperdepths/common/DeeperDepthsEventHandler.java
      * Those codes under LGPLv2.1 License: https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html
      * */
-    /** Events have to be used for Projectile Reflection, as `attackEntityFrom` is called within onImpact for most projectiles, which breaks this behavior! */
+
+    /**
+     * Events have to be used for Projectile Reflection, as `attackEntityFrom` is called within onImpact for most projectiles, which breaks this behavior!
+     */
     @SubscribeEvent
-    public static void reflectArrowEvent(ProjectileImpactEvent.Arrow event)
-    {
+    public static void reflectArrowEvent(ProjectileImpactEvent.Arrow event) {
         final EntityArrow projectile = event.getArrow();
 
         if (projectile.getEntityWorld().isRemote) return;
         Entity entity = event.getRayTraceResult().entityHit;
 
-        if (event.getEntity() != null && entity instanceof StrayedMirror)
-        {
+        if (event.getEntity() != null && entity instanceof StrayedMirror) {
             deflectProjectile(projectile);
             projectile.shootingEntity = entity;
 
@@ -176,15 +217,13 @@ public class EventHandlerEntity {
      * Those codes under LGPLv2.1 License: https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html
      * */
     @SubscribeEvent
-    public static void reflectFireballEvent(ProjectileImpactEvent.Fireball event)
-    {
+    public static void reflectFireballEvent(ProjectileImpactEvent.Fireball event) {
         final EntityFireball projectile = event.getFireball();
 
         if (projectile.getEntityWorld().isRemote) return;
         Entity entity = event.getRayTraceResult().entityHit;
 
-        if (event.getEntity() != null && entity instanceof StrayedMirror)
-        {
+        if (event.getEntity() != null && entity instanceof StrayedMirror) {
             deflectProjectile(projectile);
             double bounceStrength = -1.0D;
             projectile.accelerationX *= bounceStrength;
@@ -202,15 +241,13 @@ public class EventHandlerEntity {
      * Those codes under LGPLv2.1 License: https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html
      * */
     @SubscribeEvent
-    public static void reflectThrowableEvent(ProjectileImpactEvent.Throwable event)
-    {
+    public static void reflectThrowableEvent(ProjectileImpactEvent.Throwable event) {
         final EntityThrowable projectile = event.getThrowable();
 
         if (projectile.getEntityWorld().isRemote) return;
         Entity entity = event.getRayTraceResult().entityHit;
 
-        if (event.getEntity() != null && entity instanceof StrayedMirror)
-        {
+        if (event.getEntity() != null && entity instanceof StrayedMirror) {
             deflectProjectile(projectile);
             //projectile.thrower = entityBlocking;
             event.setCanceled(true);
@@ -218,11 +255,11 @@ public class EventHandlerEntity {
     }
 
     private static void syncToClient(EntityPlayer player) {
-        if(player instanceof EntityPlayerMP) {
+        if (player instanceof EntityPlayerMP) {
             IT12Capability capability = player.getCapability(RCCapabilities.PICK_OFF_T12_CAP, null);
-            if(capability != null) {
+            if (capability != null) {
                 NBTTagCompound data = capability.serializeNBT();
-                RenaissanceCore.packetInstance.sendTo(new PacketSyncCapability(data), (EntityPlayerMP)player);
+                RenaissanceCore.packetInstance.sendTo(new PacketSyncCapability(data), (EntityPlayerMP) player);
             }
         }
     }

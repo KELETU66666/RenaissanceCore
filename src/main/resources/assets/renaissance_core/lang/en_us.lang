@@ -64,10 +64,15 @@ tooltip.pech_backpack.tip=Only opens when equipped as a bauble, default key: K.
 tooltip.t12_elixir.tip1=Give you a chance to pick off T12 once again.
 tooltip.t12_elixir.tip2=Why should i drink it ?
 
+tooltip.rc_book.0=The book is filled with faded strange symbols.
+tooltip.rc_book.1=Click to study it.
+
 item.dice12.name=T12
 item.arcane_lime_powder.name=Powder of Arcane Mixture
 item.pech_backpack.name=Backpack of the Pech
 item.t12_elixir.name=Elixir of the Confess
+
+item.crimson_annales.name=Crimson Annales
 
 item.pontifex_hood.name=Pontifex Cape
 item.pontifex_robe.name=Pontifex Robes

@@ -87,7 +87,7 @@ public class CrimsonPontifex extends EntityThaumcraftBoss {
     public void generateName() {
         int t = (int) this.getEntityAttribute(ThaumcraftApiHelper.CHAMPION_MOD).getAttributeValue();
         if (t >= 0) {
-            this.setCustomNameTag(String.format(I18n.translateToLocal("entity.ThaumicConcilium.CrimsonPontifex.name"), this.getTitle(), ChampionModifier.mods[t].getModNameLocalized()));
+            this.setCustomNameTag(String.format(I18n.translateToLocal("entity.CrimsonPontifex.name"), this.getTitle(), ChampionModifier.mods[t].getModNameLocalized()));
         }
 
     }

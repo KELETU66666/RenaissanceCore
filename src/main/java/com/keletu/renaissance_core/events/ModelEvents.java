@@ -25,6 +25,7 @@ public class ModelEvents {
         defaultModel(RCItems.pontifex_legs);
         defaultModel(RCItems.pontifex_boots);
         defaultModel(RCItems.molot);
+        defaultModel(RCItems.crimson_annales);
 
         defaultModel(RCItems.pechHeadNormal);
         defaultModel(RCItems.pechHeadHunter);
