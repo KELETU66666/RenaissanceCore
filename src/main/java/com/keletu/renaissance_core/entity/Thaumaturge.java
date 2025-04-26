@@ -201,7 +201,7 @@ public class Thaumaturge extends EntityMob implements IRangedAttackMob {
         } else {
             Entity entity = damSource.getTrueSource();
             if (entity instanceof EntityPlayer) {
-                List list = this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(32.0, 16.0, 32.0));
+                List list = this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(32.0, 16.0, 32.0).expand(-32.0, -16.0, -32.0));
 
                 for (int i = 0; i < list.size(); ++i) {
                     Entity entity1 = (Entity) list.get(i);

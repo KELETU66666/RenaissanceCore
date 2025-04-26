@@ -116,7 +116,7 @@ public class QuicksilverElemental extends EntityMob {
             placed.markDirty();
             world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
 
-            List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, getEntityBoundingBox().expand(16.0, 16.0, 16.0));
+            List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, getEntityBoundingBox().expand(16.0, 16.0, 16.0).expand(-16.0, -16.0, -16.0));
             if (!players.isEmpty()) {
                 for (EntityPlayer player : players) {
                     if (!ThaumcraftCapabilities.knowsResearch(player, "QUICKSILVERCRUCIBLE")) {

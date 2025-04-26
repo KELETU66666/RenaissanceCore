@@ -101,6 +101,11 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RCItems.pech_backpack);
         event.getRegistry().registerAll(RCItems.elixir);
         event.getRegistry().registerAll(RCItems.coins);
+        event.getRegistry().registerAll(RCItems.pontifex_hood);
+        event.getRegistry().registerAll(RCItems.pontifex_robe);
+        event.getRegistry().registerAll(RCItems.pontifex_legs);
+        event.getRegistry().registerAll(RCItems.pontifex_boots);
+        event.getRegistry().registerAll(RCItems.molot);
 
         event.getRegistry().registerAll(RCItems.pechHeadNormal);
         event.getRegistry().registerAll(RCItems.pechHeadHunter);

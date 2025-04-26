@@ -20,6 +20,11 @@ public class ModelEvents {
         defaultModel(RCItems.coins);
         defaultModel(RCItems.coins, 1);
         defaultModel(RCItems.coins, 2);
+        defaultModel(RCItems.pontifex_hood);
+        defaultModel(RCItems.pontifex_robe);
+        defaultModel(RCItems.pontifex_legs);
+        defaultModel(RCItems.pontifex_boots);
+        defaultModel(RCItems.molot);
 
         defaultModel(RCItems.pechHeadNormal);
         defaultModel(RCItems.pechHeadHunter);

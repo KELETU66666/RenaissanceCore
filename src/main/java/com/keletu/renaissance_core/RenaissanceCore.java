@@ -1,8 +1,6 @@
 package com.keletu.renaissance_core;
 
-import com.keletu.renaissance_core.capability.IT12Capability;
-import com.keletu.renaissance_core.capability.RCCapabilities;
-import com.keletu.renaissance_core.capability.T12Capability;
+import com.keletu.renaissance_core.capability.*;
 import com.keletu.renaissance_core.container.GUIHandler;
 import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.events.KeepDiceEvent;
@@ -74,6 +72,7 @@ public class RenaissanceCore {
         NetworkRegistry.INSTANCE.registerGuiHandler(RenaissanceCore.MODID, new GUIHandler());
 
         CapabilityManager.INSTANCE.register(IT12Capability.class, new RCCapabilities.CapabilityCanPickoffT12(), () -> new T12Capability(null));
+        CapabilityManager.INSTANCE.register(ICapConcilium.class, new RCCapabilities.CapThaumicConcilium(), () -> new ThaumicConciliumCap(null));
 
         packetInstance = NetworkRegistry.INSTANCE.newSimpleChannel("RenaissanceChannel");
         packetInstance.registerMessage(PacketZap.Handler.class, PacketZap.class, 0, Side.SERVER);
@@ -110,7 +109,11 @@ public class RenaissanceCore {
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "thaumaturge"), Thaumaturge.class, "Thaumaturge", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "strayed_mirror"), StrayedMirror.class, "StrayedMirror", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "samurai"), Samurai.class, "Samurai", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "crimson_pontifex"), CrimsonPontifex.class, "CrimsonPontifex", id++, MODID, 64, 3, true, 0x00FFFF, 0x111111);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "concentrated_warp_charge"), ConcentratedWarpChargeEntity.class, "ConcentratedWarpChargeEntity", id++, MODID, 64, 1, true);
 
+
+        ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".CrimsonPontifex", new AspectList().add(Aspect.SOUL, 16).add(Aspect.LIFE, 16).add(Aspect.MAGIC, 16));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".Thaumaturge", new AspectList().add(Aspect.MAN, 4).add(Aspect.MAGIC, 4).add(Aspect.AURA, 4).add(Aspect.ORDER, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".ThaumGib", new AspectList().add(Aspect.MAN, 4).add(Aspect.MAGIC, 4).add(Aspect.LIFE, 4).add(Aspect.ENTROPY, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".Overanimated", new AspectList().add(Aspect.MAN, 4).add(Aspect.MAGIC, 4).add(Aspect.LIFE, 4).add(Aspect.ELDRITCH, 4));

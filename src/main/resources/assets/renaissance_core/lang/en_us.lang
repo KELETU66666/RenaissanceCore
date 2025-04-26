@@ -69,6 +69,12 @@ item.arcane_lime_powder.name=Powder of Arcane Mixture
 item.pech_backpack.name=Backpack of the Pech
 item.t12_elixir.name=Elixir of the Confess
 
+item.pontifex_hood.name=Pontifex Cape
+item.pontifex_robe.name=Pontifex Robes
+item.pontifex_legs.name=Pontifex Leggings
+item.pontifex_boots.name=Pontifex Boots
+item.molot.name=Pontifex's Hammer
+
 item.rc_coins.name.0=Coin
 item.rc_coins.name.1=Stack of Coins
 item.rc_coins.name.2=Enchanted Coin
@@ -112,6 +118,8 @@ entity.ThaumGib.name=Alive Limb
 entity.Overanimated.name=Overanimated
 entity.StrayedMirror.name=Strayed Mirror
 entity.Samurai.name=Paranoid Warrior
+entity.CrimsonPontifex.name=Pontifex %s the %d
+entity.ConcentratedWarpChargeEntity.name=Concentrated Warp Charge
 
 message.t12.try=Seems this wired dice is stuck somewhere
 message.t12.takeoff=This weird die broke when you took it off

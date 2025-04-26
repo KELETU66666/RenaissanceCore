@@ -14,7 +14,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderPlayer;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.network.play.client.CPacketInput;
 import net.minecraft.network.play.client.CPacketPlayer;
@@ -57,6 +59,8 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(Thaumaturge.class, new ThaumaturgeRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/thaumaturge.png"), 0.5f));
         RenderingRegistry.registerEntityRenderingHandler(StrayedMirror.class, new StrayedMirrorRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/thaumaturge.png"), 0.5f));
         RenderingRegistry.registerEntityRenderingHandler(Samurai.class, new SamuraiRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/thaumaturge.png"), 0.15f));
+        RenderingRegistry.registerEntityRenderingHandler(CrimsonPontifex.class, new RenderCultistPontifex(Minecraft.getMinecraft().getRenderManager()));
+        RenderingRegistry.registerEntityRenderingHandler(ConcentratedWarpChargeEntity.class, new ConcentratedWarpChargeEntityRenderer());
 
         ClientRegistry.bindTileEntitySpecialRenderer(QuicksilverCrucibleTile.class, new QuicksilverCrucibleTileRenderer());
 
@@ -106,7 +110,7 @@ public class ClientProxy extends CommonProxy {
             if (ent.world.isRemote) {
                 if (EntityVengefulGolem.isEnslaved) {
                     EntityPlayerSP player = (EntityPlayerSP) ent;
-                    AxisAlignedBB aabb = player.getEntityBoundingBox().expand(32.0, 32.0, 32.0);
+                    AxisAlignedBB aabb = player.getEntityBoundingBox().expand(32.0, 32.0, 32.0).expand(-32.0, -32.0, -32.0);
                     List<EntityVengefulGolem> list = player.world.getEntitiesWithinAABB(EntityVengefulGolem.class, aabb);
 
                     if ((list.isEmpty()) && new Random().nextInt(10) > 5) {
@@ -130,6 +134,37 @@ public class ClientProxy extends CommonProxy {
         }
     }
 
+    public void taintsplosion(World world, double x, double y, double z) {
+        FXBreakingFade fx = new FXBreakingFade(world, x, y + (double) (world.rand.nextFloat()), z, Items.SLIME_BALL);
+        if (world.rand.nextBoolean()) {
+            fx.setRBGColorF(0.6F, 0.0F, 0.3F);
+            fx.setAlphaF(0.4F);
+        } else {
+            fx.setRBGColorF(0.3F, 0.0F, 0.3F);
+            fx.setAlphaF(0.6F);
+        }
+
+        fx.motionX = (float) (Math.random() * 2.0 - 1.0);
+        fx.motionY = (float) (Math.random() * 2.0 - 1.0);
+        fx.motionZ = (float) (Math.random() * 2.0 - 1.0);
+        float f = (float) (Math.random() + Math.random() + 1.0) * 0.15F;
+        float f1 = MathHelper.sqrt(fx.motionX * fx.motionX + fx.motionY * fx.motionY + fx.motionZ * fx.motionZ);
+        fx.motionX = fx.motionX / (double) f1 * (double) f * 0.9640000000596046;
+        fx.motionY = fx.motionY / (double) f1 * (double) f * 0.9640000000596046 + 0.10000000149011612;
+        fx.motionZ = fx.motionZ / (double) f1 * (double) f * 0.9640000000596046;
+        fx.setParticleMaxAge((int) (66.0F / (world.rand.nextFloat() * 0.9F + 0.1F)));
+        FMLClientHandler.instance().getClient().effectRenderer.addEffect(fx);
+    }
+
+    @Override
+    public void warpchain(EntityPlayer player, double tx, double ty, double tz) {
+        ParticleEngine.addEffect(player.world, new FXEssentiaStream(player.world, player.posX, player.posY + (new Random().nextDouble() - 1), player.posZ, tx, ty, tz, 1, 0x9929BD, 0.1F, 0, 0.2F));
+    }
+    @Override
+    public void lifedrain(Entity player, double tx, double ty, double tz) {
+        ParticleEngine.addEffect(player.world, new FXEssentiaStream(player.world, tx, ty, tz, player.posX, player.posY + 0.5, player.posZ,1, 0x7A1A1A, 0.1F, 0, 0.2F));
+    }
+    
     @Override
     public void quicksilverFlow(World w, double x, double y, double z, double tx, double ty, double tz) {
         for (int i = 0; i < 5; i++) {

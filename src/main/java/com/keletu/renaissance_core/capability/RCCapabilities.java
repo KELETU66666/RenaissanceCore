@@ -10,6 +10,9 @@ public class RCCapabilities {
     @CapabilityInject(IT12Capability.class)
     public static Capability<IT12Capability> PICK_OFF_T12_CAP;
 
+    @CapabilityInject(ICapConcilium.class)
+    public static Capability<ICapConcilium> CONCILIUM;
+
     public static class CapabilityCanPickoffT12 implements Capability.IStorage<IT12Capability> {
 
         @Override
@@ -23,6 +26,20 @@ public class RCCapabilities {
         public void readNBT(Capability<IT12Capability> capability, IT12Capability instance, EnumFacing side, NBTBase nbt) {
             NBTTagCompound tag = (NBTTagCompound) nbt;
             instance.setCanPickOffT12(tag.getBoolean("canPickOff"));
+        }
+    }
+
+    public static class CapThaumicConcilium implements Capability.IStorage<ICapConcilium> {
+
+        @Override
+        public NBTBase writeNBT(Capability<ICapConcilium> capability, ICapConcilium instance, EnumFacing side) {
+            return instance.serializeNBT();
+        }
+
+        @Override
+        public void readNBT(Capability<ICapConcilium> capability, ICapConcilium instance, EnumFacing side, NBTBase nbt) {
+            NBTTagCompound tag = (NBTTagCompound) nbt;
+            instance.deserializeNBT(tag);
         }
     }
 }
