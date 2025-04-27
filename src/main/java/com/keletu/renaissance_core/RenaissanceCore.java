@@ -12,11 +12,13 @@ import com.keletu.renaissance_core.packet.*;
 import com.keletu.renaissance_core.proxy.CommonProxy;
 import com.keletu.renaissance_core.tweaks.InitBotaniaRecipes;
 import com.keletu.renaissance_core.util.ScanEntities;
+import fr.wind_blade.isorropia.common.IsorropiaAPI;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagByte;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeProvider;
@@ -39,6 +41,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.crafting.ShapelessArcaneRecipe;
@@ -50,13 +53,14 @@ import thaumcraft.api.items.ItemsTC;
 import thaumcraft.api.research.*;
 import thaumcraft.common.golems.client.PartModelHauler;
 import thecodex6824.thaumicaugmentation.api.TABlocks;
+import thecodex6824.thaumicaugmentation.api.TAItems;
 
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 @Mod(modid = RenaissanceCore.MODID, name = RenaissanceCore.NAME, version = RenaissanceCore.VERSION, acceptedMinecraftVersions = RenaissanceCore.MC_VERSION,
-        dependencies = "required-after:baubles@[1.5.2, ); required-after:thaumcraft@[6.1.BETA26]; required-after:thaumicaugmentation; required-after:mixinbooter@[4.2, ); after:thaumicwonders; after:botania")
+        dependencies = "required-after:baubles@[1.5.2, ); required-after:thaumcraft@[6.1.BETA26]; required-after:thaumicaugmentation; required-after:mixinbooter@[4.2, ); after:thaumicwonders; after:isorropia; after:botania")
 public class RenaissanceCore {
     public static final String MODID = "renaissance_core";
     public static final String NAME = "Renaissance Core";
@@ -73,6 +77,7 @@ public class RenaissanceCore {
             return new ItemStack(RCItems.dice12);
         }
     };
+
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         NetworkRegistry.INSTANCE.registerGuiHandler(RenaissanceCore.MODID, new GUIHandler());
@@ -131,7 +136,7 @@ public class RenaissanceCore {
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".ThaumGib", new AspectList().add(Aspect.MAN, 4).add(Aspect.MAGIC, 4).add(Aspect.LIFE, 4).add(Aspect.ENTROPY, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".Overanimated", new AspectList().add(Aspect.MAN, 4).add(Aspect.MAGIC, 4).add(Aspect.LIFE, 4).add(Aspect.ELDRITCH, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".QuicksilverElemental", new AspectList().add(Aspect.MAN, 4).add(Aspect.LIFE, 4).add(Aspect.METAL, 4).add(Aspect.EXCHANGE, 4));
-        ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".VengefulGolem", new AspectList().add(Aspect.MAN, 4).add(Aspect.CRAFT, 4)/*.add(DarkAspects.PRIDE, 4)*/.add(Aspect.MOTION, 4));
+        ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".VengefulGolem", new AspectList().add(Aspect.MAN, 4).add(Aspect.CRAFT, 4).add(IsorropiaAPI.PRIDE, 4).add(Aspect.MOTION, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".Dissolved", new AspectList().add(Aspect.MAN, 4).add(Aspect.VOID, 4).add(Aspect.ELDRITCH, 4).add(Aspect.ALCHEMY, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".StrayedMirror", new AspectList().add(Aspect.MAN, 4).add(Aspect.EXCHANGE, 4)/*.add(Aspect.SPATIO, 4)*/.add(Aspect.MOTION, 4));
 
@@ -201,6 +206,55 @@ public class RenaissanceCore {
                                 new ItemStack(ItemsTC.salisMundus),
                                 new ItemStack(Items.CLAY_BALL),
                                 new ItemStack(ItemsTC.tallow)}));
+
+        ItemStack hood = new ItemStack(RCItems.pontifex_hood);
+        hood.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
+        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("trk:pontifex_hood"),
+                new CrucibleRecipe("CRIMSONPONTIFEX",
+                        hood,
+                        new ItemStack(ItemsTC.crimsonRobeHelm),
+                        new AspectList().add(IsorropiaAPI.FLESH, 400).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 400).add(Aspect.PROTECT, 1000).add(Aspect.VOID, 400).add(Aspect.LIFE, 400)));
+
+        ItemStack hood1 = new ItemStack(RCItems.pontifex_hood);
+        hood1.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
+        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("trk:pontifex_robe"),
+                new CrucibleRecipe("CRIMSONPONTIFEX",
+                        hood1,
+                        new ItemStack(ItemsTC.crimsonRobeChest),
+                        new AspectList().add(IsorropiaAPI.FLESH, 400).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 400).add(Aspect.PROTECT, 1000).add(Aspect.VOID, 400).add(Aspect.LIFE, 400)));
+
+        ItemStack hood2 = new ItemStack(RCItems.pontifex_legs);
+        hood2.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
+        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("trk:pontifex_legs"),
+                new CrucibleRecipe("CRIMSONPONTIFEX",
+                        hood2,
+                        new ItemStack(ItemsTC.crimsonRobeLegs),
+                        new AspectList().add(IsorropiaAPI.FLESH, 400).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 400).add(Aspect.PROTECT, 1000).add(Aspect.VOID, 400).add(Aspect.LIFE, 400)));
+
+        ItemStack hood3 = new ItemStack(RCItems.pontifex_boots);
+        hood3.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
+        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("trk:pontifex_boots"),
+                new CrucibleRecipe("CRIMSONPONTIFEX",
+                        hood3,
+                        new ItemStack(ItemsTC.crimsonBoots),
+                        new AspectList().add(IsorropiaAPI.FLESH, 400).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 400).add(Aspect.PROTECT, 1000).add(Aspect.VOID, 400).add(Aspect.LIFE, 400)));
+
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:crimson_hammer"),
+                new InfusionRecipe("PONTIFEXHAMMER",
+                        new ItemStack(RCItems.molot),
+                        7,
+                        new AspectList().add(IsorropiaAPI.HUNGER, 30).add(Aspect.METAL, 400).add(Aspect.EXCHANGE, 30).add(IsorropiaAPI.PRIDE, 125).add(Aspect.AVERSION, 200).add(Aspect.LIFE, 200),
+                        new ItemStack(ItemsTC.crimsonBlade),
+                        new ItemStack(TAItems.FOCUS_ANCIENT),
+                        "blockGold",
+                        "ingotVoid",
+                        "plateVoid",
+                        new ItemStack(ItemsTC.causalityCollapser),
+                        new ItemStack(ItemsTC.primalCrusher),
+                        new ItemStack(ItemsTC.causalityCollapser),
+                        "plateVoid",
+                        "ingotVoid",
+                        "blockGold"));
 
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("trk:coin_to_stacks"),
                 new ShapedArcaneRecipe(new ResourceLocation(""), "",

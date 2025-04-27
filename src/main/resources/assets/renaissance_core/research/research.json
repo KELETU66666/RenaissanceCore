@@ -206,6 +206,10 @@
         "CRIMSONANNALES",
         "!RiftMonitor"
       ],
+      "siblings": [
+        "CRIMSONINITIATION",
+        "PONTIFEXHAMMER"
+      ],
       "category": "BASICS",
       "location": [
         -16,
@@ -223,7 +227,64 @@
           "warp": 6
         },
         {
-          "text": "research.CRIMSONPONTIFEX.stage.2"
+          "text": "research.CRIMSONPONTIFEX.stage.2",
+          "recipes": [
+            "trk:pontifex_hood",
+            "trk:pontifex_robe",
+            "trk:pontifex_legs",
+            "trk:pontifex_boots"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "CRIMSONINITIATION",
+      "name": "research.CRIMSONINITIATION.title",
+      "icons": [
+        "renaissance_core:textures/research/crimson_initiation.png"
+      ],
+      "parents": [
+        "CRIMSONPONTIFEX"
+      ],
+      "category": "BASICS",
+      "location": [
+        -17,
+        9
+      ],
+      "meta": [
+        "REVERSE",
+        "HIDDEN"
+      ],
+      "stages": [
+        {
+          "text": "research.CRIMSONINITIATION.stage.1"
+        }
+      ]
+    },
+    {
+      "key": "PONTIFEXHAMMER",
+      "name": "research.PONTIFEXHAMMER.title",
+      "icons": [
+        "renaissance_core:molot"
+      ],
+      "parents": [
+        "CRIMSONPONTIFEX"
+      ],
+      "category": "BASICS",
+      "location": [
+        -15,
+        9
+      ],
+      "meta": [
+        "REVERSE",
+        "HIDDEN"
+      ],
+      "stages": [
+        {
+          "text": "research.PONTIFEXHAMMER.stage.1",
+          "recipes": [
+            "trk:crimson_hammer"
+          ]
         }
       ]
     }

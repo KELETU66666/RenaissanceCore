@@ -206,9 +206,17 @@ research.CRIMSONANNALES.stage.1=If it weren't for your knowledge of the Crimson 
 research.CRIMSONPONTIFEX.title=Crimson Pontifex
 research.CRIMSONPONTIFEX.title.text=Family Reunion
 research.CRIMSONPONTIFEX.stage.1=With a track record of successfully summoning a living creature from the other side of the rift, you think you know where the Pontifex of the Crimson Cult has disappeared to...<BR>Of course, deliberately bringing someone clearly hostile out of oblivion is not the best idea, but you still need empirical data for your theory.<BR>Rifts are known to resonate with items, so you need something connected to the missing person. A copy of Crimson Rites would be a good fit.
-research.CRIMSONPONTIFEX.stage.2=Your theory was confirmed, you found out where the leader of the Cult disappeared to, but how did he end up there? Though to tell the truth, you don't care anymore, the mysteries of the universe make your head hurt more and more every day, by the standards of a mortal man you have already achieved unprecedented things, maybe it's worth to... Have a rest? But how is it possible to do this when you are pestered by all sorts of evil, and demons of the mind are ready to jump out from around every corner?<BR>Hmm, if the Pontifex came back from the other side relatively unharmed, maybe you can go there too? Now you know what he's got against you.<PAGE>By placing a piece of Primordial Life back into the rift, you can attune it to interact with your flesh. Once you pass through it, you will become intangible to physical impact. However, using objects, swinging your fists at longtime enemies, or being fired upon by magic is fraught with the potential of unnecessarily dispelling that bit of matter that is still you. This negative effect does not threaten you if you use your wand, it has already become a full-fledged part of you, and remains the last safe emergency bridge to the material world.<BR>Having weighed the pros and cons, you can finally go where you are unlikely to be reached from - deep beneath the bedrock of the earth.<BR>Peace, at last.
+research.CRIMSONPONTIFEX.stage.2=Years spent in a phantom state have affected not only the Pontifex, but also his vestments. You know it will not be very difficult to replicate it.<BR>Wearing the full set allows you to forfeit your material wholeness at any time, at the cost of restricting your active freedom.<BR>Press H to toggle this ability.<BR>Despite the passage of time, fear of the Pontifex's mental power still permeates every member of the Cult. Wearing the full uniform, you feel confident in your ability to command the Crimson Warriors.<PAGE>Your subordinates are empowered as they fight under a Pontifex skilled in the healing arts and insatiable for blood.
 
 research.f_crimsonnotes.text=Defeat the Pontifex
+
+research.CRIMSONINITIATION.title=Crimson Initiation
+research.CRIMSONINITIATION.title.text=Sign here
+research.CRIMSONINITIATION.stage.1=Wearing the Pontifex's robe, you feel his mind control abilities filling you. Though you are not a member of the Cult, it seems the others don't think so, and are waiting for replenishment in the dwindling ranks.<BR>You are quite capable of doing so. Wearing the full vestments of the Pontifex, touch with your Crimson Dagger one of the failed to handle the thaumaturgical knowledge, to give him a new chance at life.
+
+research.PONTIFEXHAMMER.title=Pontifex's Hammer
+research.PONTIFEXHAMMER.title.1=A truly bloody weapon
+research.PONTIFEXHAMMER.stage.1=You were able to recreate the weapon of the legendary Crimson Pontifex. An impressive size, and an equally impressive ability to steal another's life.<BR>Hold down the RMB to utilize this feature.
 
 #Botania
 renaissance_core.research=⚠ Requires Research.

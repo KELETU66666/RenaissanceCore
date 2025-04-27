@@ -20,6 +20,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.event.RenderBlockOverlayEvent;
 import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Mod;
@@ -62,6 +63,15 @@ public class ModelEvents {
 
     static void defaultModel(Item item, int meta) {
         ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+    }
+
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public static void renderBlockOverlay(RenderBlockOverlayEvent event){
+        ICapConcilium capabilities = ICapConcilium.get(event.getPlayer());
+        if (capabilities.isEthereal()){
+            event.setCanceled(true);
+        }
     }
 
     @SideOnly(Side.CLIENT)
