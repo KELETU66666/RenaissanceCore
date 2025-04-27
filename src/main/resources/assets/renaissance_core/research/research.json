@@ -40,7 +40,7 @@
       ],
       "category": "BASICS",
       "location": [
-        -12,
+        -13,
         0
       ],
       "meta": [
@@ -50,6 +50,30 @@
       "stages": [
         {
           "text": "research.Thaumaturge.stage.1"
+        }
+      ]
+    },
+    {
+      "key": "!MadThaumaturge",
+      "name": "research.MadThaumaturge.title",
+      "icons": [
+        "renaissance_core:textures/research/r_madthaumaturge.png"
+      ],
+      "parents": [
+        "!Thaumaturge"
+      ],
+      "category": "BASICS",
+      "location": [
+        -12,
+        3
+      ],
+      "meta": [
+        "HEX",
+        "HIDDEN"
+      ],
+      "stages": [
+        {
+          "text": "research.MadThaumaturge.stage.1"
         }
       ]
     },
@@ -64,7 +88,7 @@
       ],
       "category": "BASICS",
       "location": [
-        -12,
+        -14,
         3
       ],
       "meta": [
@@ -88,6 +112,12 @@
           "text": "research.OverAnimated.stage.1",
           "required_research": [
             "!OverAnimated"
+          ]
+        },
+        {
+          "text": "research.CrimsonPaladin.stage.1",
+          "required_research": [
+            "!CrimsonPaladin"
           ]
         },
         {
@@ -127,7 +157,7 @@
       ],
       "category": "BASICS",
       "location": [
-        -13, 2
+        -15, 2
       ],
       "stages": [
         {

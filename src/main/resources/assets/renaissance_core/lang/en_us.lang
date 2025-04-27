@@ -1,3 +1,5 @@
+itemGroup.tabRenaissanceCore=Renaissance Core
+
 advancement.renaissancecore=Thaumic Renaissance
 renaissancecore.desc=World of Thaumcraft
 advancement.renaissancecore:salis_mundus=Strange Dream
@@ -116,7 +118,9 @@ entity.TaintedCreeper.name=Tainted Creeper
 entity.TaintedSheep.name=Tainted Sheep
 
 entity.Thaumaturge.name=Thaumaturge
+entity.MadThaumaturge.name=Mad Thaumaturge
 entity.VengefulGolem.name=Vengeful Golem
+entity.CrimsonPaladin.name=Crimson Paladin
 entity.Dissolved.name=Dissolved
 entity.QuicksilverElemental.name=Quicksilver Elemental
 entity.ThaumGib.name=Alive Limb
@@ -157,12 +161,19 @@ research.Thaumaturge.title=Thaumaturges
 research.Thaumaturge.title.text=We live in a society
 research.Thaumaturge.stage.1=Sitting cooped up at home all day long, looking for ways to conquer the essence of things is quite exhausting.<BR>It is unlikely that the whole world is concentrated under your nose, so sharing experiences with other obsessives like you should come in handy. Offer them your ideas and they will share theirs with you.<BR>Nor will they refuse to trade occult or ancient junk from your pockets for theirs, but that's not why you've come all the way out here, is it? <IMG>renaissance_core:textures/gui/thaumaturge.png:0:0:255:255:.5</IMG>.
 
+research.MadThaumaturge.title=Mad Thaumaturges
+research.MadThaumaturge.title.text=Poor souls lost
+research.MadThaumaturge.stage.1=These ragamuffin-wearing lunatics must have lost the last link to reality.<BR>It's unlikely that you can help them; apparently the weight of forbidden knowledge has finally squeezed their brains, and they attack you as soon as they see you, probably copying the habits of the living corpses among whom they roam.<BR>That doesn't mean they're useless, however; you've seen notes from some of them that they made when they were still sane.<PAGE>Some of these undoubtedly delusional ideas seem curious to you nevertheless, the main thing is not to run into the tipping point that forced them to leave human society.<IMG>renaissance_core:textures/gui/mad_thaumaturge.png:0:0:255:255:.5</IMG>.
+
 research.SpecialCreatures.title=Thaumic Concilium
 research.SpecialCreatures.title.text=The Price of scientific advances
 research.SpecialCreatures.stage.1=This is not what you expected.<BR>Sure, you've already encountered representatives of the human race who have fallen to the bottom of madness before, but this.... Is this the fate that sooner or later awaits all those who have managed to live long enough, keeping thaumaturgical secrets? Despite all precautions, is your immortal soul worth the might that a practicing thaumaturge can achieve?<BR>You don't feel like giving answers to these questions. Time will reveal your choice.<BR>Still, now is not the time to forget the mundane. You may be incapable of helping these people regain their past lives, but you can still deliver them from their current, um, form of existence, at least if you find yourself in such a situation, you would like the same to be done for you.
 
 research.QuicksilverElemental.title=QuicksilverElemental
 research.QuicksilverElemental.stage.1=Every alchemist wishes to put the manufacturing of his products on the stream, some wish to achieve financial solvency in this way, others wish to be recognized for their alchemical genius. It is likely that this is the result of a workplace accident. The new full-mercury body allows it to adapt to the attacker, while physical lunges simply pass through it.<BR>Good thing metals melt well at high temperatures.<PAGE> <IMG>renaissance_core:textures/gui/quicksilver.png:0:0:255:255:.5</IMG>.
+
+research.CrimsonPaladin.title=CrimsonPaladin
+research.CrimsonPaladin.stage.1=You haven't come across such representatives of the Crimson Cult before. His appearance suggests a fair amount of knowledge of both magic and martial arts. Who knows what he practiced before joining the Cult, but you can expect any kind of treachery from such an adversary.<BR>Perhaps someday you'll be able to find out where the Cult is getting this kind of replenishment from...<PAGE><IMG>renaissance_core:textures/gui/crimson_paladin.png:0:0:255:255:.5</IMG>.
 
 research.Dissolved.title=Dissolveds
 research.Dissolved.stage.1=At first you couldn't recognize what was coming at you, but upon closer inspection, there was nothing to be seen, for there was nothing left of the body but a silhouette. Fighting the void is pointless, yet you think it is possible to make the unfortunate person collapse by somehow creating another spatial hole inside him.<PAGE> <IMG>renaissance_core:textures/gui/dissolved.png:0:0:255:255:.5</IMG>.

@@ -270,7 +270,7 @@ public class Thaumaturge extends EntityMob implements IRangedAttackMob {
     public boolean processInteract(EntityPlayer player, EnumHand hand) {
         if (!player.isSneaking() && (player.getHeldItem(hand).isEmpty() || !(player.getHeldItem(hand).getItem() instanceof ItemNameTag))) {
             if (!this.world.isRemote && this.getAnger() == 0 && hand == EnumHand.MAIN_HAND) {
-                if (ThaumcraftCapabilities.knowsResearch(player, "BASEAUROMANCY")) {
+                    if (ThaumcraftCapabilities.knowsResearch(player, "!Thaumaturge")) {
                     player.openGui(RenaissanceCore.MODID, 1, this.world, this.getEntityId(), 0, 0);
                 } else {
                     int r = rand.nextInt(4);

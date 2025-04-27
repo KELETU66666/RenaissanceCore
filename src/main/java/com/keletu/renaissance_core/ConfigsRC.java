@@ -59,21 +59,34 @@ public class ConfigsRC {
     public static boolean quicksilverImmortality = true;
 
     @Config.LangKey("quicksilverElementalSpawnChance")
-    @Config.RangeDouble(min = 0)
+    @Config.RangeDouble(min = 0, max = 99)
     public static int quicksilverElementalSpawnChance = 10;
     @Config.LangKey("dissolvedSpawnChance")
-    @Config.RangeDouble(min = 0)
+    @Config.RangeDouble(min = 0, max = 99)
     public static int dissolvedSpawnChance = 10;
     @Config.LangKey("overanimatedSpawnChance")
-    @Config.RangeDouble(min = 0)
+    @Config.RangeDouble(min = 0, max = 99)
     public static int overanimatedSpawnChance = 10;
 
     @Config.LangKey("strayedMirrorSpawnChance")
-    @Config.RangeDouble(min = 0)
+    @Config.RangeDouble(min = 0, max = 99)
     public static int strayedMirrorSpawnChance = 10;
 
     @Config.LangKey("paranoidWarriorSpawnChance")
-    @Config.RangeDouble(min = 0)
+    @Config.RangeDouble(min = 0, max = 99)
     public static int paranoidWarriorSpawnChance = 10;
+
+    @Config.LangKey("madThaumaturgeSpawnChance")
+    @Config.RangeDouble(min = 0, max = 99)
+    public static int madThaumaturgeSpawnChance = 10;
+
+    @Config.LangKey("madThaumaturgeSpawnChance")
+    @Config.RangeDouble(min = 0, max = 99)
+    public static int madThaumaturgeReplacesBrainyZombieChance = 80;
+
+
+    @Config.LangKey("madThaumaturgeSpawnChance")
+    @Config.RangeDouble(min = 0, max = 99)
+    public static int crimsonPaladinReplacesCultistWarriorChance = 80;
 
 }

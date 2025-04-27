@@ -3,11 +3,13 @@ package com.keletu.renaissance_core.events;
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.container.GUIHandler;
 import com.keletu.renaissance_core.packet.PacketOpenPackGui;
+import com.keletu.renaissance_core.packet.PacketTogglePontifexRobe;
 import com.keletu.renaissance_core.packet.PacketZap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -21,10 +23,14 @@ public class ZapHandler {
 
     public static KeyBinding zepKey;
     public static KeyBinding openCloakGui;
+    public static KeyBinding toggleRobe;
+    private static boolean keyPressedToggleRobe = false;
+
     @SideOnly(Side.CLIENT)
     public static void registerKeybinds() {
         zepKey = new KeyBinding("key.zap", Keyboard.KEY_H, "key.categories.renaissancecore");
         openCloakGui = new KeyBinding("key.open_backpack", Keyboard.KEY_O, "key.categories.renaissancecore");
+        toggleRobe = new KeyBinding("Toggle Pontifex Robe", Keyboard.KEY_C, "key.categories.misc");
 
         ClientRegistry.registerKeyBinding(zepKey);
         ClientRegistry.registerKeyBinding(openCloakGui);
@@ -44,6 +50,17 @@ public class ZapHandler {
 
         if(openCloakGui.isPressed() && GUIHandler.getBaubleStack(player) != ItemStack.EMPTY) {
             RenaissanceCore.packetInstance.sendToServer(new PacketOpenPackGui());
+        }
+
+        if (toggleRobe.isPressed()) {
+            if (FMLClientHandler.instance().getClient().inGameHasFocus) {
+                if (!keyPressedToggleRobe) {
+                    RenaissanceCore.packetInstance.sendToServer(new PacketTogglePontifexRobe(player));
+                }
+                keyPressedToggleRobe = true;
+            }
+        } else {
+            keyPressedToggleRobe = false;
         }
     }
 }

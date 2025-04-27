@@ -1,6 +1,7 @@
 package com.keletu.renaissance_core.items;
 
 import com.keletu.renaissance_core.RenaissanceCore;
+import com.keletu.renaissance_core.capability.ICapConcilium;
 import com.keletu.renaissance_core.client.model.PontifexRobeModel;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.creativetab.CreativeTabs;
@@ -16,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagByte;
 import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.NonNullList;
+import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -123,16 +125,16 @@ public class PontifexRobe extends ItemArmor implements IGoggles, IRevealer, IVis
         return true;
     }
 
-    //@Override
-    //public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-    //    if (!world.isRemote && player != null && isFullSet(player)) {
-    //        ThaumicConciliumCap capabilities = ThaumicConciliumCap.get(player);
-    //        if (capabilities == null) return;
-    //        if (!capabilities.pontifexRobeToggle) return;
-    //        capabilities.chainedTime = 100;
-    //        capabilities.sync();
-    //    }
-    //}
+    @Override
+    public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
+        if (!world.isRemote && player != null && isFullSet(player)) {
+            ICapConcilium capabilities = ICapConcilium.get(player);
+            if (capabilities == null) return;
+            if (!capabilities.getPontifexRobeToggle()) return;
+            capabilities.setChainedTime(100);
+            capabilities.sync();
+        }
+    }
 
     @Override
     public boolean showNodes(ItemStack itemstack, EntityLivingBase player) {

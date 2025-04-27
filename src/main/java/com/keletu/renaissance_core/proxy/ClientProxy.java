@@ -61,6 +61,9 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(Samurai.class, new SamuraiRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/thaumaturge.png"), 0.15f));
         RenderingRegistry.registerEntityRenderingHandler(CrimsonPontifex.class, new RenderCultistPontifex(Minecraft.getMinecraft().getRenderManager()));
         RenderingRegistry.registerEntityRenderingHandler(ConcentratedWarpChargeEntity.class, new ConcentratedWarpChargeEntityRenderer());
+        RenderingRegistry.registerEntityRenderingHandler(CrimsonPaladin.class, new CrimsonPaladinRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/crimson_paladin.png"), 0.5f));
+        RenderingRegistry.registerEntityRenderingHandler(EtherealShacklesEntity.class, new EtherealShacklesEntityRenderer());
+        RenderingRegistry.registerEntityRenderingHandler(MadThaumaturge.class, new ThaumaturgeRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/mad_thaumaturge.png"), 0.5f));
 
         ClientRegistry.bindTileEntitySpecialRenderer(QuicksilverCrucibleTile.class, new QuicksilverCrucibleTileRenderer());
 
@@ -160,15 +163,21 @@ public class ClientProxy extends CommonProxy {
     public void warpchain(EntityPlayer player, double tx, double ty, double tz) {
         ParticleEngine.addEffect(player.world, new FXEssentiaStream(player.world, player.posX, player.posY + (new Random().nextDouble() - 1), player.posZ, tx, ty, tz, 1, 0x9929BD, 0.1F, 0, 0.2F));
     }
+
     @Override
     public void lifedrain(Entity player, double tx, double ty, double tz) {
-        ParticleEngine.addEffect(player.world, new FXEssentiaStream(player.world, tx, ty, tz, player.posX, player.posY + 0.5, player.posZ,1, 0x7A1A1A, 0.1F, 0, 0.2F));
+        ParticleEngine.addEffect(player.world, new FXEssentiaStream(player.world, tx, ty, tz, player.posX, player.posY + 0.5, player.posZ, 1, 0x7A1A1A, 0.1F, 0, 0.2F));
     }
-    
+
     @Override
     public void quicksilverFlow(World w, double x, double y, double z, double tx, double ty, double tz) {
         for (int i = 0; i < 5; i++) {
-            ParticleEngine.addEffect(w, new FXEssentiaStream(w, tx + (new Random().nextDouble()), ty, tz + (new Random().nextDouble()), x + 0.5, y + 0.5, z + 0.5, 3, 0xAAAAAA,  0.1F, 0, 0.2F));
+            ParticleEngine.addEffect(w, new FXEssentiaStream(w, tx + (new Random().nextDouble()), ty, tz + (new Random().nextDouble()), x + 0.5, y + 0.5, z + 0.5, 3, 0xAAAAAA, 0.1F, 0, 0.2F));
         }
+    }
+
+    @Override
+    public void bloodinitiation(Entity player, Entity madman) {
+        ParticleEngine.addEffect(player.world, new FXEssentiaStream(player.world, player.posX, player.posY + 0.5, player.posZ, madman.posX, madman.posY + 1.8, madman.posZ, 5, 0x7A1A1A, 0.1F, 0, 0.2F));
     }
 }

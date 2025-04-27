@@ -1,10 +1,11 @@
 package com.keletu.renaissance_core.events;
 
+import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
-import com.keletu.renaissance_core.capability.IT12Capability;
-import com.keletu.renaissance_core.capability.RCCapabilities;
-import com.keletu.renaissance_core.capability.T12Capability;
+import com.keletu.renaissance_core.capability.*;
+import com.keletu.renaissance_core.entity.CrimsonPaladin;
 import com.keletu.renaissance_core.entity.Dissolved;
+import com.keletu.renaissance_core.entity.MadThaumaturge;
 import com.keletu.renaissance_core.entity.StrayedMirror;
 import com.keletu.renaissance_core.items.PontifexRobe;
 import com.keletu.renaissance_core.packet.PacketSyncCapability;
@@ -23,31 +24,118 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import thaumcraft.common.entities.monster.EntityBrainyZombie;
+import thaumcraft.common.entities.monster.EntityGiantBrainyZombie;
 import thaumcraft.common.entities.monster.cult.EntityCultist;
+import thaumcraft.common.entities.monster.cult.EntityCultistKnight;
 import thaumcraft.common.lib.SoundsTC;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Mod.EventBusSubscriber(modid = RenaissanceCore.MODID)
 public class EventHandlerEntity {
 
+    public static final HashMap<EntityPlayer, Boolean> etherealsClient = new HashMap<>();
+    public static final HashMap<EntityPlayer, Boolean> etherealsServer = new HashMap<>();
+
     @SubscribeEvent
     public static void tickHandler(TickEvent.PlayerTickEvent event) {
+        EntityPlayer player = event.player;
+        RenaissanceCore.proxy.sendLocalMovementData(player);
+        ICapConcilium capabilities = ICapConcilium.get(event.player);
+        if (capabilities != null) {
+            if (!player.world.isRemote) {
+                if (capabilities.getPontifexRobeToggle() && !PontifexRobe.isFullSet(player)) {
+                    capabilities.setEthereal(false);
+                    capabilities.setPontifexRobeToggle(false);
+                    capabilities.sync();
+                }
+                if (capabilities.getChainedTime() > 0) {
+                    capabilities.setChainedTime(capabilities.getChainedTime() - 1);
+                    capabilities.sync();
+                }
+            }
+
+            HashMap<EntityPlayer, Boolean> ethereals = event.side == Side.SERVER ? etherealsServer : etherealsClient;
+
+            if (capabilities.isEthereal()) {
+                player.noClip = true;
+                if (!player.isSneaking() || (!player.isSneaking() && !player.capabilities.allowFlying)) {
+                    player.motionY = 0;
+                }
+            } else if (ethereals.getOrDefault(player, false)) {
+                player.noClip = false;
+            }
+            ethereals.put(player, capabilities.isEthereal());
+        }
+
         if (event.phase == TickEvent.Phase.END || event.player.world.isRemote) return;
 
         IT12Capability it12 = IT12Capability.get(event.player);
         if (it12 != null) {
             it12.setLocationCorrect();
-            syncToClient(event.player);
+            syncToClientT12(event.player);
+        }
+
+        ICapConcilium iconcilium = ICapConcilium.get(event.player);
+        if (iconcilium != null) {
+            iconcilium.setLocationCorrect();
+            syncToClientConcilium(event.player);
+        }
+
+    }
+
+    @SubscribeEvent
+    public static void onEntityJoin(EntityJoinWorldEvent event) {
+        if (event.getEntity() instanceof EntityBrainyZombie || event.getEntity() instanceof EntityGiantBrainyZombie) {
+            if (event.getWorld().rand.nextInt(100) > ConfigsRC.madThaumaturgeReplacesBrainyZombieChance) {
+                if (!event.getWorld().isRemote) {
+                    MadThaumaturge madThaumaturge = new MadThaumaturge(event.getWorld());
+                    madThaumaturge.setLocationAndAngles(event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ, event.getWorld().rand.nextFloat() * 360.0F, 0.0F);
+                    madThaumaturge.onInitialSpawn(event.getWorld().getDifficultyForLocation(event.getEntity().getPosition()), null);
+                    event.getEntity().setDead();
+                    event.getWorld().spawnEntity(madThaumaturge);
+                }
+            }
+        }
+        if (event.getEntity() instanceof EntityCultistKnight) {
+            if (event.getWorld().rand.nextInt(100) > ConfigsRC.crimsonPaladinReplacesCultistWarriorChance) {
+                if (!event.getWorld().isRemote) {
+                    CrimsonPaladin paladin = new CrimsonPaladin(event.getWorld());
+                    paladin.setLocationAndAngles(event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ, event.getWorld().rand.nextFloat() * 360.0F, 0.0F);
+                    paladin.onInitialSpawn(event.getWorld().getDifficultyForLocation(event.getEntity().getPosition()), null);
+                    event.getEntity().setDead();
+                    event.getWorld().spawnEntity(paladin);
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onRespawn(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent event) {
+        if (!event.player.world.isRemote) {
+            ICapConcilium capabilities = ICapConcilium.get(event.player);
+            //if (capabilities.isEthereal()) {
+            //    if (capabilities.fleshAmount >= event.player.getHealth()) {
+            //        capabilities.fleshAmount = MathHelper.floor_float(event.player.getHealth() - 2);
+            //    }
+            //}
+            capabilities.setPontifexRobeToggle(false);
+            capabilities.setEthereal(false);
+            capabilities.sync();
         }
     }
 
@@ -57,6 +145,10 @@ public class EventHandlerEntity {
             event.addCapability(
                     new ResourceLocation(RenaissanceCore.MODID, "canpickoff_t12"),
                     new T12Capability.Provider((EntityPlayer) event.getObject())
+            );
+            event.addCapability(
+                    new ResourceLocation(RenaissanceCore.MODID, "thaumic_concilium"),
+                    new CapThaumicConcilium.Provider((EntityPlayer) event.getObject())
             );
         }
     }
@@ -72,6 +164,23 @@ public class EventHandlerEntity {
 
     @SubscribeEvent
     public static void onAttackEntity(AttackEntityEvent event) {
+        //CapThaumicConcilium capabilities = CapThaumicConcilium.get(event.getEntityPlayer());
+        //if (capabilities != null) {
+        //    if (capabilities.getChainedTime() != 0) event.setCanceled(true);
+        //    if (!event.getEntityPlayer().world.isRemote) {
+        //        if (!event.getEntityPlayer().capabilities.isCreativeMode && capabilities.isEthereal()) {
+        //            ItemStack stack = event.getEntityPlayer().getHeldItem(EnumHand.MAIN_HAND);
+        //            if (stack.isEmpty()) {
+        //                capabilities.fleshAmount++;
+        //                capabilities.sync();
+        //            } else if (!(stack.getItem() instanceof ICaster)) {
+        //                capabilities.fleshAmount++;
+        //                capabilities.sync();
+        //            }
+        //        }
+        //    }
+        //}
+
         if (!event.getEntityPlayer().world.isRemote && event.getTarget() != null) {
             if (PontifexRobe.isFullSet(event.getEntityPlayer())) {
                 List<EntityCultist> list = event.getEntityPlayer().world.getEntitiesWithinAABB(EntityCultist.class, event.getEntityPlayer().getEntityBoundingBox().expand(32, 32, 32).expand(-32, -32, -32));
@@ -95,7 +204,8 @@ public class EventHandlerEntity {
     @SubscribeEvent
     public static void onPlayerLoggedIn(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent event) {
         if (!event.player.world.isRemote) {
-            syncToClient(event.player);
+            syncToClientT12(event.player);
+            syncToClientConcilium(event.player);
         }
     }
 
@@ -111,7 +221,52 @@ public class EventHandlerEntity {
             NBTTagCompound data = capability.serializeNBT();
             player.getEntityData().setTag("CanPickOffT12", data);
         }
+
+        ICapConcilium capability1 = player.getCapability(RCCapabilities.CONCILIUM, null);
+        if (capability1 != null) {
+            NBTTagCompound data = capability1.serializeNBT();
+            player.getEntityData().setTag("ThaumicConcilium", data);
+        }
     }
+
+    @SubscribeEvent
+    public static void onLivingHeal(LivingHealEvent event) {
+        EntityLivingBase ent = event.getEntityLiving();
+        if (ent instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) ent;
+            ICapConcilium capabilities = ICapConcilium.get(player);
+            if (capabilities != null) {
+                if (capabilities.isEthereal()) {
+                    event.setCanceled(true);
+                }
+            }
+
+        }
+    }
+
+
+    /*@SubscribeEvent
+    public static void onLivingEntityUseItem(LivingEntityUseItemEvent.Start event) {
+        if (event.getEntityLiving() instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+            CapThaumicConcilium capabilities = CapThaumicConcilium.get(player);
+            if (capabilities != null) {
+                if (capabilities.getChainedTime() != 0) event.setCanceled(true);
+                if (!player.world.isRemote) {
+                    if (!player.capabilities.isCreativeMode && capabilities.isEthereal()) {
+                        if (event.getItem().isEmpty()) {
+                            capabilities.fleshAmount++;
+                            capabilities.sync();
+                        } else if (!(event.getItem().getItem() instanceof ICaster)) {
+                            capabilities.fleshAmount++;
+                            capabilities.sync();
+                        }
+                    }
+                }
+            }
+
+        }
+    }*/
 
     @SubscribeEvent
     public static void onPlayerClone(PlayerEvent.Clone event) {
@@ -132,14 +287,22 @@ public class EventHandlerEntity {
                 NBTTagCompound data = oldCap.serializeNBT();
                 newCap.deserializeNBT(data);
             }
-            syncToClient(player);
+            syncToClientT12(player);
         }
-    }
 
-    @SubscribeEvent
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        EntityPlayer player = event.player;
-        RenaissanceCore.proxy.sendLocalMovementData(player);
+        ICapConcilium oldCapc = original.getCapability(RCCapabilities.CONCILIUM, null);
+        ICapConcilium newCapc = player.getCapability(RCCapabilities.CONCILIUM, null);
+
+        if (oldCapc != null && newCapc != null) {
+            if (event.isWasDeath()) {
+                NBTTagCompound data = original.getEntityData().getCompoundTag("ThaumicConcilium");
+                newCapc.deserializeNBT(data);
+            } else {
+                NBTTagCompound data = oldCapc.serializeNBT();
+                newCapc.deserializeNBT(data);
+            }
+            syncToClientConcilium(player);
+        }
     }
 
     @SubscribeEvent
@@ -156,20 +319,20 @@ public class EventHandlerEntity {
             }
         }
 
-        //if (event.entityLiving instanceof EntityPlayer) {
-        //    EntityPlayer player = (EntityPlayer) event.entityLiving;
-//
-        //    TCPlayerCapabilities capabilities = TCPlayerCapabilities.get(player);
-        //    if (capabilities != null) {
-        //        if (!player.capabilities.isCreativeMode && capabilities.ethereal) {
-        //            if (event.source.isMagicDamage() || event.source.damageType.equals("outOfWorld")) {
-        //                capabilities.fleshAmount++;
-        //                capabilities.sync();
-        //            }
-        //            event.setCanceled(true);
-        //        }
-        //    }
-        //}
+        if (event.getEntityLiving() instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+
+            ICapConcilium capabilities = ICapConcilium.get(player);
+            if (capabilities != null) {
+                if (!player.capabilities.isCreativeMode && capabilities.isEthereal()) {
+                    //if (event.getSource().isMagicDamage() || event.getSource().damageType.equals("outOfWorld")) {
+                    //    capabilities.fleshAmount++;
+                    //    capabilities.sync();
+                    //}
+                    event.setCanceled(true);
+                }
+            }
+        }
     }
 
     /*
@@ -254,12 +417,22 @@ public class EventHandlerEntity {
         }
     }
 
-    private static void syncToClient(EntityPlayer player) {
+    private static void syncToClientT12(EntityPlayer player) {
         if (player instanceof EntityPlayerMP) {
             IT12Capability capability = player.getCapability(RCCapabilities.PICK_OFF_T12_CAP, null);
             if (capability != null) {
                 NBTTagCompound data = capability.serializeNBT();
-                RenaissanceCore.packetInstance.sendTo(new PacketSyncCapability(data), (EntityPlayerMP) player);
+                RenaissanceCore.packetInstance.sendTo(new PacketSyncCapability(data, 0), (EntityPlayerMP) player);
+            }
+        }
+    }
+
+    public static void syncToClientConcilium(EntityPlayer player) {
+        if (player instanceof EntityPlayerMP) {
+            ICapConcilium capability = player.getCapability(RCCapabilities.CONCILIUM, null);
+            if (capability != null) {
+                NBTTagCompound data = capability.serializeNBT();
+                RenaissanceCore.packetInstance.sendTo(new PacketSyncCapability(data, 1), (EntityPlayerMP) player);
             }
         }
     }

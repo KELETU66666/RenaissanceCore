@@ -33,13 +33,19 @@ public class RCCapabilities {
 
         @Override
         public NBTBase writeNBT(Capability<ICapConcilium> capability, ICapConcilium instance, EnumFacing side) {
-            return instance.serializeNBT();
+            NBTTagCompound tag = new NBTTagCompound();
+            tag.setInteger("chainedTime", instance.getChainedTime());
+            tag.setBoolean("ethereal", instance.isEthereal());
+            tag.setBoolean("pontifexToggle", instance.getPontifexRobeToggle());
+            return tag;
         }
 
         @Override
         public void readNBT(Capability<ICapConcilium> capability, ICapConcilium instance, EnumFacing side, NBTBase nbt) {
             NBTTagCompound tag = (NBTTagCompound) nbt;
-            instance.deserializeNBT(tag);
+            instance.setChainedTime(tag.getInteger("chainedTime"));
+            instance.setEthereal(tag.getBoolean("ethereal"));
+            instance.setPontifexRobeToggle(tag.getBoolean("pontifexToggle"));
         }
     }
 }

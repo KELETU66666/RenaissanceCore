@@ -8,18 +8,30 @@ import net.minecraftforge.common.util.INBTSerializable;
 
 public interface ICapConcilium extends INBTSerializable<NBTTagCompound> {
 
-	public static ICapConcilium get(EntityPlayer player) {
+	static ICapConcilium get(EntityPlayer player) {
 		return player.getCapability(RCCapabilities.CONCILIUM, null);
 	}
 
-	public void sync();
+	void sync();
 
-	public void init(Entity player, World world);
-
-	@Override
-	public NBTTagCompound serializeNBT();
+	void init(Entity player, World world);
 
 	@Override
-	public void deserializeNBT(NBTTagCompound nbt);
+	NBTTagCompound serializeNBT();
 
+	@Override
+	void deserializeNBT(NBTTagCompound nbt);
+
+	int getChainedTime();
+
+	void setChainedTime(int time);
+
+	boolean isEthereal();
+
+	void setEthereal(boolean ethereal);
+
+	boolean getPontifexRobeToggle();
+
+	void setPontifexRobeToggle(boolean toggle);
+	public void setLocationCorrect();
 }

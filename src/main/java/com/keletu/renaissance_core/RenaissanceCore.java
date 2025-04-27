@@ -12,6 +12,7 @@ import com.keletu.renaissance_core.packet.*;
 import com.keletu.renaissance_core.proxy.CommonProxy;
 import com.keletu.renaissance_core.tweaks.InitBotaniaRecipes;
 import com.keletu.renaissance_core.util.ScanEntities;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -34,6 +35,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -66,13 +68,18 @@ public class RenaissanceCore {
     @SidedProxy(clientSide = "com.keletu.renaissance_core.proxy.ClientProxy", serverSide = "com.keletu.renaissance_core.proxy.CommonProxy")
     public static CommonProxy proxy;
     public static SimpleNetworkWrapper packetInstance;
-
+    public static CreativeTabs tabRenaissanceCore = new CreativeTabs("tabRenaissanceCore") {
+        @SideOnly(Side.CLIENT)
+        public ItemStack createIcon() {
+            return new ItemStack(RCItems.dice12);
+        }
+    };
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         NetworkRegistry.INSTANCE.registerGuiHandler(RenaissanceCore.MODID, new GUIHandler());
 
         CapabilityManager.INSTANCE.register(IT12Capability.class, new RCCapabilities.CapabilityCanPickoffT12(), () -> new T12Capability(null));
-        CapabilityManager.INSTANCE.register(ICapConcilium.class, new RCCapabilities.CapThaumicConcilium(), () -> new ThaumicConciliumCap(null));
+        CapabilityManager.INSTANCE.register(ICapConcilium.class, new RCCapabilities.CapThaumicConcilium(), () -> new CapThaumicConcilium(null));
 
         packetInstance = NetworkRegistry.INSTANCE.newSimpleChannel("RenaissanceChannel");
         packetInstance.registerMessage(PacketZap.Handler.class, PacketZap.class, 0, Side.SERVER);
@@ -83,6 +90,7 @@ public class RenaissanceCore {
         packetInstance.registerMessage(PacketMakeHole.class, PacketMakeHole.class, 5, Side.CLIENT);
         packetInstance.registerMessage(PacketFXBloodsplosion.class, PacketFXBloodsplosion.class, 6, Side.CLIENT);
         packetInstance.registerMessage(PacketFXLightning.class, PacketFXLightning.class, 7, Side.CLIENT);
+        packetInstance.registerMessage(PacketTogglePontifexRobe.class, PacketTogglePontifexRobe.class, 8, Side.SERVER);
 
         if (event.getSide().isClient()) {
             OBJLoader.INSTANCE.addDomain(MODID);
@@ -111,8 +119,12 @@ public class RenaissanceCore {
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "samurai"), Samurai.class, "Samurai", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "crimson_pontifex"), CrimsonPontifex.class, "CrimsonPontifex", id++, MODID, 64, 3, true, 0x00FFFF, 0x111111);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "concentrated_warp_charge"), ConcentratedWarpChargeEntity.class, "ConcentratedWarpChargeEntity", id++, MODID, 64, 1, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "crimson_paladin"), CrimsonPaladin.class, "CrimsonPaladin", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "ethereal_shackles"), EtherealShacklesEntity.class, "EtherealShacklesEntity", id++, MODID, 64, 1, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "mad_thaumaturge"), MadThaumaturge.class, "MadThaumaturge", id++, MODID, 64, 1, true, 0x00FFFF, 0x111111);
 
-
+        ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".MadThaumaturge", new AspectList().add(Aspect.MAN, 4).add(Aspect.MIND, 4).add(Aspect.ELDRITCH, 8));
+        ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".CrimsonPaladin", new AspectList().add(Aspect.MAN, 4).add(Aspect.LIFE, 4).add(Aspect.ELDRITCH, 4).add(Aspect.MAGIC, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".CrimsonPontifex", new AspectList().add(Aspect.SOUL, 16).add(Aspect.LIFE, 16).add(Aspect.MAGIC, 16));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".Thaumaturge", new AspectList().add(Aspect.MAN, 4).add(Aspect.MAGIC, 4).add(Aspect.AURA, 4).add(Aspect.ORDER, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".ThaumGib", new AspectList().add(Aspect.MAN, 4).add(Aspect.MAGIC, 4).add(Aspect.LIFE, 4).add(Aspect.ENTROPY, 4));
@@ -124,7 +136,9 @@ public class RenaissanceCore {
 
         ScanningManager.addScannableThing(new ScanEntities("SPECIAL_CREATURES", Arrays.asList(Overanimated.class, Dissolved.class, EntityVengefulGolem.class, QuicksilverElemental.class, StrayedMirror.class, Samurai.class)));
         ScanningManager.addScannableThing(new ScanEntity("!Thaumaturge", Thaumaturge.class, true));
+        ScanningManager.addScannableThing(new ScanEntity("!MadThaumaturge", MadThaumaturge.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!OverAnimated", Overanimated.class, true));
+        ScanningManager.addScannableThing(new ScanEntity("!CrimsonPaladin", CrimsonPaladin.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!Dissolved", Dissolved.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!VengefulGolem", EntityVengefulGolem.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!QuicksilverElemental", QuicksilverElemental.class, true));
@@ -166,7 +180,7 @@ public class RenaissanceCore {
                 EntityRegistry.addSpawn(EntityVengefulGolem.class, ConfigsRC.vengefulGolemSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
                 EntityRegistry.addSpawn(Overanimated.class, ConfigsRC.overanimatedSpawnChance, 2, 3, EnumCreatureType.MONSTER, bgb);
                 EntityRegistry.addSpawn(StrayedMirror.class, ConfigsRC.strayedMirrorSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
-                //EntityRegistry.addSpawn(MadThaumaturge.class, TCConfig.madThaumaturgeSpawnChance, 2, 3, EnumCreatureType.MONSTER, new Biome[]{bgb});
+                EntityRegistry.addSpawn(MadThaumaturge.class, ConfigsRC.madThaumaturgeSpawnChance, 2, 3, EnumCreatureType.MONSTER, bgb);
             }
             if (!bgb.getSpawnableList(EnumCreatureType.CREATURE).isEmpty() & bgb.getSpawnableList(EnumCreatureType.CREATURE).size() > 0) {
                 EntityRegistry.addSpawn(Thaumaturge.class, ConfigsRC.thaumaturgeSpawnChance, 1, 3, EnumCreatureType.CREATURE, bgb);

@@ -33,7 +33,7 @@ public class Dissolved extends EntityMob {
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
-        //this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, MadThaumaturge.class, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, MadThaumaturge.class, true));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget(this, Thaumaturge.class, true));
         this.targetTasks.addTask(5, new EntityAINearestAttackableTarget(this, EntityCultist.class, true));
     }

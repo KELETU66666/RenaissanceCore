@@ -31,4 +31,7 @@ public class CommonProxy {
     public void lifedrain(Entity player, double tx, double ty, double tz) {
 
     }
+
+    public void bloodinitiation(Entity player, Entity madman) {
+    }
 }
