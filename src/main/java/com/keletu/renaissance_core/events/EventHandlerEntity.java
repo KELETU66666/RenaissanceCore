@@ -42,6 +42,7 @@ import thaumcraft.common.entities.monster.EntityGiantBrainyZombie;
 import thaumcraft.common.entities.monster.cult.EntityCultist;
 import thaumcraft.common.entities.monster.cult.EntityCultistKnight;
 import thaumcraft.common.lib.SoundsTC;
+import thecodex6824.thaumicaugmentation.api.TAConfig;
 import thecodex6824.thaumicaugmentation.common.entity.EntityDimensionalFracture;
 import thecodex6824.thaumicaugmentation.common.network.PacketParticleEffect;
 import thecodex6824.thaumicaugmentation.common.network.TANetwork;
@@ -107,7 +108,7 @@ public class EventHandlerEntity {
         if(event.getWorld().isRemote)
             return;
 
-        if(event.getTarget() instanceof EntityDimensionalFracture && event.getEntityPlayer().getHeldItemMainhand().getItem() == RCItems.crimson_annales && event.getHand() == EnumHand.MAIN_HAND){
+        if(event.getTarget() instanceof EntityDimensionalFracture && !((EntityDimensionalFracture) event.getTarget()).isOpen() && event.getEntityPlayer().getHeldItemMainhand().getItem() == RCItems.crimson_annales && event.getHand() == EnumHand.MAIN_HAND && event.getWorld().provider.getDimension() != TAConfig.emptinessDimID.getValue()){
             event.getEntityPlayer().getHeldItemMainhand().shrink(1);
             CrimsonPontifex pontifex = new CrimsonPontifex(event.getWorld());
             pontifex.setPosition(event.getTarget().posX, event.getTarget().posY, event.getTarget().posZ);

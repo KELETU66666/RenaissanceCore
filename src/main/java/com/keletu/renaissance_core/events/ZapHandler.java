@@ -34,6 +34,7 @@ public class ZapHandler {
 
         ClientRegistry.registerKeyBinding(zepKey);
         ClientRegistry.registerKeyBinding(openCloakGui);
+        ClientRegistry.registerKeyBinding(toggleRobe);
     }
     @SubscribeEvent
     @SideOnly(Side.CLIENT)

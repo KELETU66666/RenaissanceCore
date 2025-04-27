@@ -4,10 +4,7 @@ import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.items.RCItems;
 import com.keletu.renaissance_core.packet.PacketEnslave;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.IEntityLivingData;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -47,7 +44,7 @@ import thaumcraft.common.lib.utils.EntityUtils;
 import java.util.Iterator;
 import java.util.List;
 
-public class CrimsonPontifex extends EntityThaumcraftBoss {
+public class CrimsonPontifex extends EntityThaumcraftBoss implements IRangedAttackMob {
 
     private static final DataParameter<Byte> TITLE = EntityDataManager.createKey(CrimsonPontifex.class, DataSerializers.BYTE);
     String[] titles = new String[]{"Ivius", "Ufarihm", "Ihith", "Pemonar", "Shagron", "Ugimaex", "Qroleus", "Oxon", "Rheforn", "Zubras"};
@@ -103,7 +100,7 @@ public class CrimsonPontifex extends EntityThaumcraftBoss {
     @Override
     public void writeEntityToNBT(NBTTagCompound nbt) {
         super.writeEntityToNBT(nbt);
-        nbt.setByte("title", (byte) getDataManager().get(TITLE));
+        nbt.setByte("title", getDataManager().get(TITLE));
     }
 
     @Override
@@ -220,16 +217,16 @@ public class CrimsonPontifex extends EntityThaumcraftBoss {
         if (!list.isEmpty()) {
             cultists = list.size();
         }
-        Iterator i$ = list.iterator();
+        Iterator<Entity> i$ = list.iterator();
 
         while (i$.hasNext()) {
-            Entity e = (Entity) i$.next();
+            Entity e = i$.next();
 
             try {
                 if (e instanceof EntityCultist && !((EntityCultist) e).isPotionActive(MobEffects.REGENERATION)) {
                     ((EntityCultist) e).addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 1));
                 }
-            } catch (Exception var5) {
+            } catch (Exception ignore) {
             }
         }
         double attackrange = 16.0;
@@ -338,6 +335,25 @@ public class CrimsonPontifex extends EntityThaumcraftBoss {
                 --this.attackCounter;
             }
         }
+
+    }
+
+    @Override
+    public void attackEntityWithRangedAttack(EntityLivingBase target, float distanceFactor) {
+        if (this.canEntityBeSeen(target)) {
+            this.swingArm(this.getActiveHand());
+            EtherealShacklesEntity shackles = new EtherealShacklesEntity(target.world, this);
+            double d0 = target.posX + target.motionX - this.posX;
+            double d1 = target.posY - this.posY;
+            double d2 = target.posZ + target.motionZ - this.posZ;
+            shackles.shoot(d0, d1, d2, 2.0F, 2.0F);
+            shackles.playSound(new SoundEvent(new ResourceLocation(RenaissanceCore.MODID + ":shackles_throw")), 0.5F, 1.0F);
+            this.world.spawnEntity(shackles);
+        }
+    }
+
+    @Override
+    public void setSwingingArms(boolean swingingArms) {
 
     }
 }
