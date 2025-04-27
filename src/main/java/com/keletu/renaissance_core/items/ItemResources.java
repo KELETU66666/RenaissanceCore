@@ -3,10 +3,13 @@ package com.keletu.renaissance_core.items;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -17,8 +20,12 @@ import java.util.List;
 
 public class ItemResources extends Item {
 
-    public ItemResources() {
+    EnumRarity rarity;
+
+    public ItemResources(EnumRarity rarity) {
         this.hasSubtypes = true;
+        this.rarity = rarity;
+
         this.addPropertyOverride(new ResourceLocation("meta"), new IItemPropertyGetter() {
             @Override
             @SideOnly(Side.CLIENT)
@@ -29,6 +36,15 @@ public class ItemResources extends Item {
                 return 0.0F;
             }
         });
+    }
+
+    public ItemResources() {
+        this(EnumRarity.COMMON);
+    }
+
+    @Override
+    public EnumRarity getRarity(ItemStack stack) {
+        return this.rarity;
     }
 
     @Override
@@ -58,7 +74,10 @@ public class ItemResources extends Item {
         if (stack.getItem() == RCItems.crimson_annales) {
             list.add(TextFormatting.DARK_PURPLE + I18n.format("tooltip.rc_book.0"));
             list.add(TextFormatting.DARK_BLUE + I18n.format("tooltip.rc_book.1"));
+        }else if(stack.getItem() == RCItems.research_notes_crimson){
+            list.add(new TextComponentTranslation("thaumicaugmentation.text.research_notes_eldritch").setStyle(new Style().setItalic(true).setColor(TextFormatting.DARK_PURPLE)).getFormattedText());
         }
 
     }
+
 }

@@ -22,7 +22,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -84,7 +84,7 @@ public class CrimsonPontifex extends EntityThaumcraftBoss implements IRangedAtta
     public void generateName() {
         int t = (int) this.getEntityAttribute(ThaumcraftApiHelper.CHAMPION_MOD).getAttributeValue();
         if (t >= 0) {
-            this.setCustomNameTag(String.format(I18n.translateToLocal("entity.CrimsonPontifex.name"), this.getTitle(), ChampionModifier.mods[t].getModNameLocalized()));
+            this.setCustomNameTag(new TextComponentTranslation("text.entity.CrimsonPontifex.name", this.getTitle(), ChampionModifier.mods[t].getModNameLocalized(), new TextComponentTranslation("entity." + EntityList.getEntityString(this) + ".name")).getFormattedText());
         }
 
     }
@@ -125,24 +125,9 @@ public class CrimsonPontifex extends EntityThaumcraftBoss implements IRangedAtta
         return Item.getItemById(0);
     }
 
-    protected void dropFewItems(boolean flag, int i) {
-        this.entityDropItem(new ItemStack(ItemsTC.lootBag, 1, 2), 1.5F);
-        int r = this.rand.nextInt(10);
-        //if (r <= 3) {
-        //    if (Integration.witchery) {
-        //        EntityUtils.entityDropSpecialItem(this, ResearchManager.createNote(new ItemStack(ConfigItems.itemResearchNotes), "CRIMSONSPELLS", this.world), this.height / 2.0F);
-        //    } else {
-        //        EntityUtils.entityDropSpecialItem(this, ResearchManager.createNote(new ItemStack(ConfigItems.itemResearchNotes), "MATERIALPEELER", this.world), this.height / 2.0F);
-        //    }
-        //}else if(r <= 5){
-        //    EntityUtils.entityDropSpecialItem(this, ResearchManager.createNote(new ItemStack(ConfigItems.itemResearchNotes), "PONTIFEXHAMMER", this.world), this.height / 2.0F);
-        //}
-        //else if(r <= 8){
-        //    EntityUtils.entityDropSpecialItem(this, ResearchManager.createNote(new ItemStack(ConfigItems.itemResearchNotes), "MATERIALPEELER", this.world), this.height / 2.0F);
-        //}
-        //else {
-        //    EntityUtils.entityDropSpecialItem(this, ResearchManager.createNote(new ItemStack(ConfigItems.itemResearchNotes), "PONTIFEXROBE", this.world), this.height / 2.0F);
-        //}
+    protected void dropFewItems(boolean flag, int fortune) {
+        EntityUtils.entityDropSpecialItem(this, new ItemStack(RCItems.research_notes_crimson), height / 2.0f);
+        entityDropItem(new ItemStack(ItemsTC.lootBag, 1, 2), 1.5f);
     }
 
     public void setCustomNameTag(String name) {

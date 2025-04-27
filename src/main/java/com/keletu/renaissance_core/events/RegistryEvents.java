@@ -107,6 +107,7 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RCItems.pontifex_boots);
         event.getRegistry().registerAll(RCItems.molot);
         event.getRegistry().registerAll(RCItems.crimson_annales);
+        event.getRegistry().registerAll(RCItems.research_notes_crimson);
 
         event.getRegistry().registerAll(RCItems.pechHeadNormal);
         event.getRegistry().registerAll(RCItems.pechHeadHunter);

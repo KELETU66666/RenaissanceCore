@@ -20,7 +20,8 @@ public class RCItems {
     public static final Item pontifex_legs = new PontifexRobe(1, EntityEquipmentSlot.LEGS).setRegistryName("pontifex_legs").setTranslationKey("pontifex_legs").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
     public static final Item pontifex_boots = new PontifexRobe(0, EntityEquipmentSlot.FEET).setRegistryName("pontifex_boots").setTranslationKey("pontifex_boots").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
     public static final Item molot = new PontifexHammer().setRegistryName("molot").setTranslationKey("molot").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
-    public static final Item crimson_annales = new ItemResources().setRegistryName("crimson_annales").setTranslationKey("crimson_annales").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
+    public static final Item crimson_annales = new ItemResources(rarityEric).setRegistryName("crimson_annales").setTranslationKey("crimson_annales").setMaxStackSize(1).setCreativeTab(RenaissanceCore.tabRenaissanceCore);
+    public static final Item research_notes_crimson = new ItemResources(rarityEric).setRegistryName("research_notes_crimson").setTranslationKey("research_notes_crimson").setMaxStackSize(1).setCreativeTab(RenaissanceCore.tabRenaissanceCore);
 
     public static final Item pechHeadNormal = new RCItemBlocks(RFBlocks.pechHead_normal);
     public static final Item pechHeadHunter = new RCItemBlocks(RFBlocks.pechHead_hunter);

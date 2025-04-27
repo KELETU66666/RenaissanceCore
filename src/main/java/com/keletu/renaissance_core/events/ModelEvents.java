@@ -48,6 +48,7 @@ public class ModelEvents {
         defaultModel(RCItems.pontifex_boots);
         defaultModel(RCItems.molot);
         defaultModel(RCItems.crimson_annales);
+        defaultModel(RCItems.research_notes_crimson);
 
         defaultModel(RCItems.pechHeadNormal);
         defaultModel(RCItems.pechHeadHunter);

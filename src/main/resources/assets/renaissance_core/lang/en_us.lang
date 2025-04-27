@@ -75,6 +75,7 @@ item.pech_backpack.name=Backpack of the Pech
 item.t12_elixir.name=Elixir of the Confess
 
 item.crimson_annales.name=Crimson Annales
+item.research_notes_crimson.name=Crimson Dogma
 
 item.pontifex_hood.name=Pontifex Cape
 item.pontifex_robe.name=Pontifex Robes
@@ -127,8 +128,10 @@ entity.ThaumGib.name=Alive Limb
 entity.Overanimated.name=Overanimated
 entity.StrayedMirror.name=Strayed Mirror
 entity.Samurai.name=Paranoid Warrior
-entity.CrimsonPontifex.name=Pontifex %s the %d
+entity.CrimsonPontifex.name=Crimson Pontifex
 entity.ConcentratedWarpChargeEntity.name=Concentrated Warp Charge
+
+text.entity.CrimsonPontifex.name=%s the %s
 
 message.t12.try=Seems this wired dice is stuck somewhere
 message.t12.takeoff=This weird die broke when you took it off
@@ -164,7 +167,7 @@ research.Thaumaturge.stage.1=Sitting cooped up at home all day long, looking for
 
 research.MadThaumaturge.title=Mad Thaumaturges
 research.MadThaumaturge.title.text=Poor souls lost
-research.MadThaumaturge.stage.1=These ragamuffin-wearing lunatics must have lost the last link to reality.<BR>It's unlikely that you can help them; apparently the weight of forbidden knowledge has finally squeezed their brains, and they attack you as soon as they see you, probably copying the habits of the living corpses among whom they roam.<BR>That doesn't mean they're useless, however; you've seen notes from some of them that they made when they were still sane.<PAGE>Some of these undoubtedly delusional ideas seem curious to you nevertheless, the main thing is not to run into the tipping point that forced them to leave human society.<IMG>renaissance_core:textures/gui/mad_thaumaturge.png:0:0:255:255:.5</IMG>.
+research.MadThaumaturge.stage.1=These ragamuffin-wearing lunatics must have lost the last link to reality.<BR>It's unlikely that you can help them; apparently the weight of forbidden knowledge has finally squeezed their brains, and they attack you as soon as they see you, probably copying the habits of the living corpses among whom they roam.<BR>That doesn't mean they're useless, however; you've seen notes from some of them that they made when they were still sane.<BR>Some of these undoubtedly delusional ideas seem curious to you nevertheless, the main thing is not to run into the tipping point that forced them to leave human society.<IMG>renaissance_core:textures/gui/mad_thaumaturge.png:0:0:255:255:.5</IMG>.
 
 research.SpecialCreatures.title=Thaumic Concilium
 research.SpecialCreatures.title.text=The Price of scientific advances
