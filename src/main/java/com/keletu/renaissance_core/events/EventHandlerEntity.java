@@ -3,11 +3,9 @@ package com.keletu.renaissance_core.events;
 import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.capability.*;
-import com.keletu.renaissance_core.entity.CrimsonPaladin;
-import com.keletu.renaissance_core.entity.Dissolved;
-import com.keletu.renaissance_core.entity.MadThaumaturge;
-import com.keletu.renaissance_core.entity.StrayedMirror;
+import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.items.PontifexRobe;
+import com.keletu.renaissance_core.items.RCItems;
 import com.keletu.renaissance_core.packet.PacketSyncCapability;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -18,8 +16,10 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.MathHelper;
@@ -32,6 +32,7 @@ import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -41,6 +42,9 @@ import thaumcraft.common.entities.monster.EntityGiantBrainyZombie;
 import thaumcraft.common.entities.monster.cult.EntityCultist;
 import thaumcraft.common.entities.monster.cult.EntityCultistKnight;
 import thaumcraft.common.lib.SoundsTC;
+import thecodex6824.thaumicaugmentation.common.entity.EntityDimensionalFracture;
+import thecodex6824.thaumicaugmentation.common.network.PacketParticleEffect;
+import thecodex6824.thaumicaugmentation.common.network.TANetwork;
 
 import java.util.HashMap;
 import java.util.List;
@@ -96,6 +100,23 @@ public class EventHandlerEntity {
             syncToClientConcilium(event.player);
         }
 
+    }
+
+    @SubscribeEvent
+    public static void onPlayerRightClick(PlayerInteractEvent.EntityInteractSpecific event) {
+        if(event.getWorld().isRemote)
+            return;
+
+        if(event.getTarget() instanceof EntityDimensionalFracture && event.getEntityPlayer().getHeldItemMainhand().getItem() == RCItems.crimson_annales && event.getHand() == EnumHand.MAIN_HAND){
+            event.getEntityPlayer().getHeldItemMainhand().shrink(1);
+            CrimsonPontifex pontifex = new CrimsonPontifex(event.getWorld());
+            pontifex.setPosition(event.getTarget().posX, event.getTarget().posY, event.getTarget().posZ);
+            pontifex.onInitialSpawn(event.getWorld().getDifficultyForLocation(event.getTarget().getPosition()), null);
+            event.getWorld().spawnEntity(pontifex);
+            event.getWorld().playSound(null, event.getTarget().getPosition(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            TANetwork.INSTANCE.sendToAllTracking(new PacketParticleEffect(PacketParticleEffect.ParticleEffect.EXPLOSION, event.getTarget().posX + 0.5, event.getTarget().posY, event.getTarget().posZ + 0.5), pontifex);
+            event.getTarget().setDead();
+        }
     }
 
     @SubscribeEvent
