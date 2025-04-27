@@ -101,7 +101,7 @@ public class RenaissanceCore {
             ZapHandler.registerKeybinds();
         }
 
-        proxy.preInit(event);
+        proxy.preInit();
     }
 
     @EventHandler

@@ -4,12 +4,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class CommonProxy {
 
 
-    public void preInit(FMLPreInitializationEvent event) {
+    public void preInit() {
     }
 
     public void regRenderer() {
