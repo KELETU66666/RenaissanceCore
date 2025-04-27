@@ -26,6 +26,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.ARBShaderObjects;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 import org.lwjgl.util.glu.Project;
@@ -182,13 +183,13 @@ public class ModelEvents {
             }
             GL11.glScalef(1.05F + k, 1.05F, 1.05F + k);
             ShaderHelper.useShader(ShaderHelper.etherealShader);
-            //int progLoc = ARBShaderObjects.glGetUniformLocationARB(ShaderHelper.etherealShader, "progress");
-//
-            //if (progLoc != -1) {
-            //    ARBShaderObjects.glUniform1iARB(progLoc, 100 - chainedTime);
-            //} else {
-            //    System.err.println("Uniform variable 'progress' not found in shader!");
-            //}
+            int progLoc = ARBShaderObjects.glGetUniformLocationARB(ShaderHelper.etherealShader, "progress");
+
+            if (progLoc != -1) {
+                ARBShaderObjects.glUniform1iARB(progLoc, 100 - chainedTime);
+            } else {
+                System.err.println("Uniform variable 'progress' not found in shader!");
+            }
             GL11.glEnable(GL11.GL_BLEND);
             GL11.glBlendFunc(GL11.GL_SRC_COLOR, GL11.GL_ONE_MINUS_SRC_ALPHA);
             mc.getTextureManager().bindTexture(shacklesTexture);

@@ -69,10 +69,10 @@ public class ShaderHelper {
         int fragId = 0;
         int program = 0;
         if (vert != null) {
-            vertId = createShader("/assets/thaumicconcilium/shaders/" + vert, 35633);
+            vertId = createShader("/assets/renaissance_core/shaders/" + vert, 35633);
         }
         if (frag != null) {
-            fragId = createShader("/assets/thaumicconcilium/shaders/" + frag, 35632);
+            fragId = createShader("/assets/renaissance_core/shaders/" + frag, 35632);
         }
         program = ARBShaderObjects.glCreateProgramObjectARB();
         if (program == 0) {

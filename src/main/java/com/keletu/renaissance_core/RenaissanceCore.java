@@ -96,6 +96,8 @@ public class RenaissanceCore {
             OBJLoader.INSTANCE.addDomain(MODID);
             ZapHandler.registerKeybinds();
         }
+
+        proxy.preInit(event);
     }
 
     @EventHandler
