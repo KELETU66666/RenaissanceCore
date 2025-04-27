@@ -136,6 +136,7 @@ message.t12.takeoff=This weird die broke when you took it off
 key.categories.renaissancecore=Renaissance Core
 key.zap=Zap Target
 key.open_backpack=Open Backpack
+key.toggle_pontifex=Toggle Pontifex Robe
 
 message.renaissance-core.botaniaaddon.manyflowers=Too many flowers, Efficiency %s%%
 

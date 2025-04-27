@@ -30,7 +30,7 @@ public class ZapHandler {
     public static void registerKeybinds() {
         zepKey = new KeyBinding("key.zap", Keyboard.KEY_H, "key.categories.renaissancecore");
         openCloakGui = new KeyBinding("key.open_backpack", Keyboard.KEY_O, "key.categories.renaissancecore");
-        toggleRobe = new KeyBinding("Toggle Pontifex Robe", Keyboard.KEY_C, "key.categories.misc");
+        toggleRobe = new KeyBinding("key.toggle_pontifex", Keyboard.KEY_C, "key.categories.renaissancecore");
 
         ClientRegistry.registerKeyBinding(zepKey);
         ClientRegistry.registerKeyBinding(openCloakGui);
