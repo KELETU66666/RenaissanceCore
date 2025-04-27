@@ -68,6 +68,7 @@ tooltip.t12_elixir.tip2=Why should i drink it ?
 
 tooltip.rc_book.0=The book is filled with faded strange symbols.
 tooltip.rc_book.1=Click to study it.
+tooltip.rc_book.2=The meaning of this book remains unclear to you.
 
 item.dice12.name=T12
 item.arcane_lime_powder.name=Powder of Arcane Mixture
@@ -197,6 +198,17 @@ research.Samurai.stage.1=Constant danger from the outside world, multiplied by i
 research.QuickSilverCrucible.title=Quicksilver Reactor
 research.QuickSilverCrucible.title.text=Alchemical Miracle
 research.QuickSilverCrucible.stage.1=To this day, no one had ever been able to create a way of merging essences. It seemed that this law of reality would never be broken.<BR>But at last that day has come.<BR>You have always believed that the will of man is boundless, and here it is, another confirmation of that. Having managed to capture one of those losers who in a past life thought they were expert alchemists, you threw him right into the boiling crucible.<BR>The active structure of his body reacted violently, instantly fusing with the walls of the crucible, giving him a new, more useful purpose in life - to assist the more adaptable thaumaturges in their alchemical experiments.<BR>For every fraction of mercury melted in this reactor, in one crucible no more than two blocks away, the first two fractions of the essence would be combined with each other.
+
+research.CRIMSONANNALES.title=Crimson Annales
+research.CRIMSONANNALES.title.text=Mysterious Disappearance
+research.CRIMSONANNALES.stage.1=If it weren't for your knowledge of the Crimson Cult, you wouldn't be wasting your time deciphering this rags.<BR>It seems that many, many years ago, the Cult had not one leader, but rather two, with the second being far more versed in the art of thaumaturgy. Some of the dates closer to the present are blotted out, after which references to the Crimson Pontifex are completely absent.<PAGE>You believe that it was the disappearance (or exile?) of the Cult's theoretical associate that led to its technological decline, and its inability to achieve the results of its rituals.<BR>In any case, this fact is of undoubted interest.<BR>You will take up the unraveling of this phenomenon in your spare time....
+
+research.CRIMSONPONTIFEX.title=Crimson Pontifex
+research.CRIMSONPONTIFEX.title.text=Family Reunion
+research.CRIMSONPONTIFEX.stage.1=With a track record of successfully summoning a living creature from the other side of the rift, you think you know where the Pontifex of the Crimson Cult has disappeared to...<BR>Of course, deliberately bringing someone clearly hostile out of oblivion is not the best idea, but you still need empirical data for your theory.<BR>Rifts are known to resonate with items, so you need something connected to the missing person. A copy of Crimson Rites would be a good fit.
+research.CRIMSONPONTIFEX.stage.2=Your theory was confirmed, you found out where the leader of the Cult disappeared to, but how did he end up there? Though to tell the truth, you don't care anymore, the mysteries of the universe make your head hurt more and more every day, by the standards of a mortal man you have already achieved unprecedented things, maybe it's worth to... Have a rest? But how is it possible to do this when you are pestered by all sorts of evil, and demons of the mind are ready to jump out from around every corner?<BR>Hmm, if the Pontifex came back from the other side relatively unharmed, maybe you can go there too? Now you know what he's got against you.<PAGE>By placing a piece of Primordial Life back into the rift, you can attune it to interact with your flesh. Once you pass through it, you will become intangible to physical impact. However, using objects, swinging your fists at longtime enemies, or being fired upon by magic is fraught with the potential of unnecessarily dispelling that bit of matter that is still you. This negative effect does not threaten you if you use your wand, it has already become a full-fledged part of you, and remains the last safe emergency bridge to the material world.<BR>Having weighed the pros and cons, you can finally go where you are unlikely to be reached from - deep beneath the bedrock of the earth.<BR>Peace, at last.
+
+research.f_crimsonnotes.text=Defeat the Pontifex
 
 #Botania
 renaissance_core.research=⚠ Requires Research.

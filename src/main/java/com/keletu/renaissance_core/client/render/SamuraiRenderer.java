@@ -16,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import org.lwjgl.opengl.GL11;
+import thaumcraft.client.renderers.models.gear.ModelCustomArmor;
 import thecodex6824.thaumicaugmentation.api.TAItems;
 
 public class SamuraiRenderer extends RenderBiped {
@@ -29,6 +30,9 @@ public class SamuraiRenderer extends RenderBiped {
     private final ResourceLocation thaumTexture = new ResourceLocation("taintedmagic", "textures/models/ModelKatanaThaumium.png");
     private final ResourceLocation voidTexture = new ResourceLocation("taintedmagic", "textures/models/ModelKatanaVoidmetal.png");
     private final ResourceLocation shadowTexture = new ResourceLocation("taintedmagic", "textures/models/ModelKatanaShadowmetal.png");
+    private FakeModelFortressArmor armorFortress;
+    private FakeModelVoidFortressArmor armorVoid;
+    private FakeModelFortressArmor armorShadow;
 
 
     private final ModelSaya saya = new ModelSaya();
@@ -40,48 +44,60 @@ public class SamuraiRenderer extends RenderBiped {
         super(Minecraft.getMinecraft().getRenderManager(), model, shadowSize);
         this.bipedModel = model;
         this.texture = texture;
+        armorFortress = new FakeModelFortressArmor(1.0F);
+        armorVoid = new FakeModelVoidFortressArmor(1.0F);
+        armorShadow = new FakeModelFortressArmor(1.0F);
         this.addLayer(new LayerGolemBell(this, swordItem));
     }
 
-    @Override
     protected void renderModel(EntityLivingBase entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor) {
         super.renderModel(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor);
-        byte type = ((Samurai) entity).getType();
+        Samurai samurai = (Samurai) entity;
+        byte type = samurai.getType();
+        ModelCustomArmor armor = null;
+        ResourceLocation texture = null;
+
         switch (type) {
             case 0:
-                Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("thaumcraft","textures/entity/armor/fortress_armor.png"));
-                armor = new FakeModelFortressArmor(1.0F);
+                texture = new ResourceLocation("thaumcraft","textures/entity/armor/fortress_armor.png");
+                armor = armorFortress;
                 break;
             case 1:
-                Minecraft.getMinecraft().renderEngine.bindTexture(voidFortress);
-                armor = new FakeModelVoidFortressArmor(1.0F);
+                texture = voidFortress;
+                armor = armorVoid;
                 break;
             case 2:
-                Minecraft.getMinecraft().renderEngine.bindTexture(shadowFortress);
-                armor = new FakeModelFortressArmor(1.0F);
+                texture = shadowFortress;
+                armor = armorShadow;
                 break;
         }
-        armor.isRiding = mainModel.isRiding;
-        armor.isSneak = bipedModel.isSneak;
-        armor.swingProgress = mainModel.swingProgress;
-        armor.isChild = bipedModel.isChild;
-        if (!entity.isInvisible()) {
-            armor.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor);
-        } else if (!entity.isInvisibleToPlayer(Minecraft.getMinecraft().player)) {
-            GL11.glPushMatrix();
-            GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.15F);
-            GL11.glDepthMask(false);
-            GL11.glEnable(GL11.GL_BLEND);
-            GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-            GL11.glAlphaFunc(GL11.GL_GREATER, 0.003921569F);
-            armor.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor);
-            GL11.glDisable(GL11.GL_BLEND);
-            GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);
-            GL11.glPopMatrix();
-            GL11.glDepthMask(true);
-        } else {
-            armor.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
+
+        if (armor != null && texture != null) {
+            Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+            armor.isRiding = mainModel.isRiding;
+            armor.isSneak = bipedModel.isSneak;
+            armor.swingProgress = mainModel.swingProgress;
+            armor.isChild = bipedModel.isChild;
+
+            if (!entity.isInvisible()) {
+                armor.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor);
+            } else if (!entity.isInvisibleToPlayer(Minecraft.getMinecraft().player)) {
+                GL11.glPushMatrix();
+                GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.15F);
+                GL11.glDepthMask(false);
+                GL11.glEnable(GL11.GL_BLEND);
+                GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+                GL11.glAlphaFunc(GL11.GL_GREATER, 0.003921569F);
+                armor.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor);
+                GL11.glDisable(GL11.GL_BLEND);
+                GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);
+                GL11.glPopMatrix();
+                GL11.glDepthMask(true);
+            } else {
+                armor.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
+            }
         }
+    }
 
         /*GL11.glPushMatrix();
 
@@ -130,8 +146,6 @@ public class SamuraiRenderer extends RenderBiped {
             GL11.glPopMatrix();
         }
         GL11.glPopMatrix();*/
-
-    }
 
     @Override
     protected ResourceLocation getEntityTexture(EntityLiving entity) {

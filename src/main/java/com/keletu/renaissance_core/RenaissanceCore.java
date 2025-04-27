@@ -47,10 +47,9 @@ import thaumcraft.api.golems.parts.GolemAddon;
 import thaumcraft.api.golems.parts.GolemHead;
 import thaumcraft.api.golems.parts.PartModel;
 import thaumcraft.api.items.ItemsTC;
-import thaumcraft.api.research.ResearchCategories;
-import thaumcraft.api.research.ScanEntity;
-import thaumcraft.api.research.ScanningManager;
+import thaumcraft.api.research.*;
 import thaumcraft.common.golems.client.PartModelHauler;
+import thecodex6824.thaumicaugmentation.api.TABlocks;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -146,6 +145,8 @@ public class RenaissanceCore {
         ScanningManager.addScannableThing(new ScanEntity("!QuicksilverElemental", QuicksilverElemental.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!StrayedMirror", StrayedMirror.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!Samurai", Samurai.class, true));
+        ScanningManager.addScannableThing(new ScanBlock("!RiftMonitor", TABlocks.RIFT_MONITOR));
+        ScanningManager.addScannableThing(new ScanItem("f_crimsonnotes", new ItemStack(RCItems.research_notes_crimson)));
 
         if (Loader.isModLoaded("botania")) {
             MinecraftForge.EVENT_BUS.register(new EntropinnyumTNTHandler());

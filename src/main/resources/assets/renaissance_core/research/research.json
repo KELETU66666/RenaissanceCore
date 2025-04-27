@@ -78,7 +78,7 @@
       ]
     },
     {
-      "key": "SPECIAL_CREATURES",
+      "key": "THAUMIC_CONCILIUM",
       "name": "research.SpecialCreatures.title",
       "icons": [
         "renaissance_core:textures/research/r_thaumicconcilium.png"
@@ -153,15 +153,77 @@
         "renaissance_core:quicksilver_crucible"
       ],
       "parents": [
-        "!QuicksilverElemental", "SPECIAL_CREATURES", "~BASEALCHEMY"
+        "!QuicksilverElemental",
+        "THAUMIC_CONCILIUM",
+        "~BASEALCHEMY"
       ],
       "category": "BASICS",
       "location": [
-        -15, 2
+        -15,
+        2
       ],
       "stages": [
         {
           "text": "research.QuickSilverCrucible.stage.1"
+        }
+      ]
+    },
+    {
+      "key": "CRIMSONANNALES",
+      "name": "research.CRIMSONANNALES.title",
+      "icons": [
+        "renaissance_core:crimson_annales"
+      ],
+      "parents": [
+        "!CrimsonAnnales",
+        "ELDRITCH_SPIRE",
+        "THAUMIC_CONCILIUM"
+      ],
+      "category": "BASICS",
+      "location": [
+        -15,
+        5
+      ],
+      "meta": [
+        "ROUND",
+        "HIDDEN",
+        "REVERSE"
+      ],
+      "stages": [
+        {
+          "text": "research.CRIMSONANNALES.stage.1",
+          "warp": 3
+        }
+      ]
+    },
+    {
+      "key": "CRIMSONPONTIFEX",
+      "name": "research.CRIMSONPONTIFEX.title",
+      "icons": [
+        "renaissance_core:textures/research/r_pontifex.png"
+      ],
+      "parents": [
+        "CRIMSONANNALES",
+        "!RiftMonitor"
+      ],
+      "category": "BASICS",
+      "location": [
+        -16,
+        7
+      ],
+      "meta": [
+        "REVERSE"
+      ],
+      "stages": [
+        {
+          "text": "research.CRIMSONPONTIFEX.stage.1",
+          "required_research": [
+            "f_crimsonnotes"
+          ],
+          "warp": 6
+        },
+        {
+          "text": "research.CRIMSONPONTIFEX.stage.2"
         }
       ]
     }
