@@ -2,7 +2,7 @@ package com.keletu.renaissance_core.client.render;
 
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.client.model.GibbedBipedModel;
-import com.keletu.renaissance_core.entity.ThaumGib;
+import com.keletu.renaissance_core.entity.EntityThaumGib;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
@@ -25,7 +25,7 @@ public class ThaumGibRenderer extends Render
     @Override
     public void doRender(Entity e, double par2, double par4, double par6, float par8, float par9)
     {
-        ThaumGib gib = (ThaumGib) e;
+        EntityThaumGib gib = (EntityThaumGib) e;
         byte type = gib.getType();
         GL11.glDisable(GL11.GL_CULL_FACE);
         GL11.glPushMatrix();

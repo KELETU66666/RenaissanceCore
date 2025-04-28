@@ -14,16 +14,16 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-public class EtherealShacklesEntity extends EntityThrowable {
-    public EtherealShacklesEntity(World world) {
+public class EntityEtherealShackles extends EntityThrowable {
+    public EntityEtherealShackles(World world) {
         super(world);
     }
 
-    public EtherealShacklesEntity(World world, EntityLivingBase entity) {
+    public EntityEtherealShackles(World world, EntityLivingBase entity) {
         super(world, entity);
     }
 
-    public EtherealShacklesEntity(World world, double x, double y, double z) {
+    public EntityEtherealShackles(World world, double x, double y, double z) {
         super(world, x, y, z);
     }
 

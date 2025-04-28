@@ -4,7 +4,7 @@ import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.capability.*;
 import com.keletu.renaissance_core.entity.*;
-import com.keletu.renaissance_core.items.PontifexRobe;
+import com.keletu.renaissance_core.items.ItemPontifexRobe;
 import com.keletu.renaissance_core.items.RCItems;
 import com.keletu.renaissance_core.packet.PacketSyncCapability;
 import net.minecraft.entity.Entity;
@@ -68,7 +68,7 @@ public class EventHandlerEntity {
         ICapConcilium capabilities = ICapConcilium.get(event.player);
         if (capabilities != null) {
             if (!player.world.isRemote) {
-                if (capabilities.getPontifexRobeToggle() && !PontifexRobe.isFullSet(player)) {
+                if (capabilities.getPontifexRobeToggle() && !ItemPontifexRobe.isFullSet(player)) {
                     capabilities.setEthereal(false);
                     capabilities.setPontifexRobeToggle(false);
                     capabilities.sync();
@@ -113,11 +113,10 @@ public class EventHandlerEntity {
         if(event.getWorld().isRemote)
             return;
 
-
         if(event.getTarget() instanceof EntityDimensionalFracture && !((EntityDimensionalFracture) event.getTarget()).isOpen() && event.getEntityPlayer().getHeldItemMainhand().getItem() == RCItems.crimson_annales && event.getHand() == EnumHand.MAIN_HAND && event.getWorld().provider.getDimension() != TAConfig.emptinessDimID.getValue()){
             if(ThaumcraftCapabilities.knowsResearch(event.getEntityPlayer(), "CRIMSONPONTIFEX@0")) {
                 event.getEntityPlayer().getHeldItemMainhand().shrink(1);
-                CrimsonPontifex pontifex = new CrimsonPontifex(event.getWorld());
+                EntityCrimsonPontifex pontifex = new EntityCrimsonPontifex(event.getWorld());
                 pontifex.setPosition(event.getTarget().posX, event.getTarget().posY, event.getTarget().posZ);
                 pontifex.onInitialSpawn(event.getWorld().getDifficultyForLocation(event.getTarget().getPosition()), null);
                 event.getWorld().spawnEntity(pontifex);
@@ -135,7 +134,7 @@ public class EventHandlerEntity {
         if (event.getEntity() instanceof EntityBrainyZombie || event.getEntity() instanceof EntityGiantBrainyZombie) {
             if (event.getWorld().rand.nextInt(100) > ConfigsRC.madThaumaturgeReplacesBrainyZombieChance) {
                 if (!event.getWorld().isRemote) {
-                    MadThaumaturge madThaumaturge = new MadThaumaturge(event.getWorld());
+                    EntityMadThaumaturge madThaumaturge = new EntityMadThaumaturge(event.getWorld());
                     madThaumaturge.setLocationAndAngles(event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ, event.getWorld().rand.nextFloat() * 360.0F, 0.0F);
                     madThaumaturge.onInitialSpawn(event.getWorld().getDifficultyForLocation(event.getEntity().getPosition()), null);
                     event.getEntity().setDead();
@@ -146,7 +145,7 @@ public class EventHandlerEntity {
         if (event.getEntity() instanceof EntityCultistKnight) {
             if (event.getWorld().rand.nextInt(100) > ConfigsRC.crimsonPaladinReplacesCultistWarriorChance) {
                 if (!event.getWorld().isRemote) {
-                    CrimsonPaladin paladin = new CrimsonPaladin(event.getWorld());
+                    EntityCrimsonPaladin paladin = new EntityCrimsonPaladin(event.getWorld());
                     paladin.setLocationAndAngles(event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ, event.getWorld().rand.nextFloat() * 360.0F, 0.0F);
                     paladin.onInitialSpawn(event.getWorld().getDifficultyForLocation(event.getEntity().getPosition()), null);
                     event.getEntity().setDead();
@@ -188,7 +187,7 @@ public class EventHandlerEntity {
     @SubscribeEvent
     public static void onLivingSetAttackTarget(LivingSetAttackTargetEvent event) {
         if (event.getEntityLiving() instanceof EntityCultist && event.getTarget() instanceof EntityPlayer) {
-            if (PontifexRobe.isFullSet((EntityPlayer) event.getTarget())) {
+            if (ItemPontifexRobe.isFullSet((EntityPlayer) event.getTarget())) {
                 ((EntityLiving) event.getEntityLiving()).setAttackTarget(null);
             }
         }
@@ -214,7 +213,7 @@ public class EventHandlerEntity {
         //}
 
         if (!event.getEntityPlayer().world.isRemote && event.getTarget() != null) {
-            if (PontifexRobe.isFullSet(event.getEntityPlayer())) {
+            if (ItemPontifexRobe.isFullSet(event.getEntityPlayer())) {
                 List<EntityCultist> list = event.getEntityPlayer().world.getEntitiesWithinAABB(EntityCultist.class, event.getEntityPlayer().getEntityBoundingBox().expand(32, 32, 32).expand(-32, -32, -32));
                 if (!list.isEmpty()) {
                     //int life = Thaumcraft.proxy.playerKnowledge.getAspectPoolFor(event.entityPlayer.getCommandSenderName(), Aspect.HUNGER);
@@ -339,13 +338,13 @@ public class EventHandlerEntity {
 
     @SubscribeEvent
     public static void onLivingAttack(LivingAttackEvent event) {
-        if (event.getEntityLiving() instanceof Dissolved) {
+        if (event.getEntityLiving() instanceof EntityDissolved) {
             if (!event.getSource().damageType.equals("outOfWorld") && !event.getSource().damageType.equals("inWall")) {
                 event.setCanceled(true);
             }
         }
 
-        if (event.getEntityLiving() instanceof StrayedMirror) {
+        if (event.getEntityLiving() instanceof EntityStrayedMirror) {
             if (event.getSource().damageType.equals("magic")) {
                 event.setCanceled(true);
             }
@@ -398,7 +397,7 @@ public class EventHandlerEntity {
         if (projectile.getEntityWorld().isRemote) return;
         Entity entity = event.getRayTraceResult().entityHit;
 
-        if (event.getEntity() != null && entity instanceof StrayedMirror) {
+        if (event.getEntity() != null && entity instanceof EntityStrayedMirror) {
             deflectProjectile(projectile);
             projectile.shootingEntity = entity;
 
@@ -418,7 +417,7 @@ public class EventHandlerEntity {
         if (projectile.getEntityWorld().isRemote) return;
         Entity entity = event.getRayTraceResult().entityHit;
 
-        if (event.getEntity() != null && entity instanceof StrayedMirror) {
+        if (event.getEntity() != null && entity instanceof EntityStrayedMirror) {
             deflectProjectile(projectile);
             double bounceStrength = -1.0D;
             projectile.accelerationX *= bounceStrength;
@@ -442,7 +441,7 @@ public class EventHandlerEntity {
         if (projectile.getEntityWorld().isRemote) return;
         Entity entity = event.getRayTraceResult().entityHit;
 
-        if (event.getEntity() != null && entity instanceof StrayedMirror) {
+        if (event.getEntity() != null && entity instanceof EntityStrayedMirror) {
             deflectProjectile(projectile);
             //projectile.thrower = entityBlocking;
             event.setCanceled(true);

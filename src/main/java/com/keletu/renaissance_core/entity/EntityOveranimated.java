@@ -21,8 +21,8 @@ import thaumcraft.common.entities.monster.cult.EntityCultist;
 
 import javax.annotation.Nullable;
 
-public class Overanimated extends EntityMob {
-    public Overanimated(World w) {
+public class EntityOveranimated extends EntityMob {
+    public EntityOveranimated(World w) {
         super(w);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAIAttackMelee(this, 0.6D, false));
@@ -32,7 +32,7 @@ public class Overanimated extends EntityMob {
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, Thaumaturge.class, false));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityThaumaturge.class, false));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityCultist.class, false));
     }
 
@@ -57,7 +57,7 @@ public class Overanimated extends EntityMob {
     protected void onDeathUpdate() {
         if (!this.world.isRemote) {
             for (int i = 0; i < 6; i++) {
-                ThaumGib gib = new ThaumGib(this.world, this, i);
+                EntityThaumGib gib = new EntityThaumGib(this.world, this, i);
                 this.world.spawnEntity(gib);
                 gib.setType(i);
             }

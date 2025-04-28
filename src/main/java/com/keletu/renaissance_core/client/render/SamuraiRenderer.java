@@ -4,7 +4,7 @@ import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.client.model.FakeModelFortressArmor;
 import com.keletu.renaissance_core.client.model.FakeModelVoidFortressArmor;
 import com.keletu.renaissance_core.client.render.layer.LayerGolemBell;
-import com.keletu.renaissance_core.entity.Samurai;
+import com.keletu.renaissance_core.entity.EntitySamurai;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBiped;
@@ -52,7 +52,7 @@ public class SamuraiRenderer extends RenderBiped {
 
     protected void renderModel(EntityLivingBase entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor) {
         super.renderModel(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor);
-        Samurai samurai = (Samurai) entity;
+        EntitySamurai samurai = (EntitySamurai) entity;
         byte type = samurai.getType();
         ModelCustomArmor armor = null;
         ResourceLocation texture = null;

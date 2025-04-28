@@ -2,7 +2,7 @@ package com.keletu.renaissance_core.packet;
 
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.capability.ICapConcilium;
-import com.keletu.renaissance_core.items.PontifexRobe;
+import com.keletu.renaissance_core.items.ItemPontifexRobe;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -42,7 +42,7 @@ public class PacketTogglePontifexRobe implements IMessage, IMessageHandler<Packe
         if (world != null && (ctx.getServerHandler().player == null || ctx.getServerHandler().player.getEntityId() == message.playerID)) {
             Entity player = world.getEntityByID(message.playerID);
             if (player instanceof EntityPlayer) {
-                if (!PontifexRobe.isFullSet((EntityPlayer) player)) return null;
+                if (!ItemPontifexRobe.isFullSet((EntityPlayer) player)) return null;
                 ICapConcilium capabilities = ICapConcilium.get((EntityPlayer) player);
                 if (capabilities == null) return null;
                 if (!capabilities.getPontifexRobeToggle() && capabilities.isEthereal()) return null;

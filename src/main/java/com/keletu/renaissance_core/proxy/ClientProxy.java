@@ -56,19 +56,19 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(EntityTaintSheep.class, new RenderTaintSheep(0.7F));
         RenderingRegistry.registerEntityRenderingHandler(EntityTaintVillager.class, new RenderTaintVillager());
         RenderingRegistry.registerEntityRenderingHandler(EntityVengefulGolem.class, new VengefulGolemRenderer(new VengefulGolemModel(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/vengeful_golem.png"), 0.5f));
-        RenderingRegistry.registerEntityRenderingHandler(Dissolved.class, new DissolvedRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/thaumaturge.png"), 0.5f));
-        RenderingRegistry.registerEntityRenderingHandler(UpcomingHoleEntity.class, new UpcomingHoleRender());
-        RenderingRegistry.registerEntityRenderingHandler(QuicksilverElemental.class, new QuicksilverElementalRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/quicksilver_elemental.png"), 0.5f));
-        RenderingRegistry.registerEntityRenderingHandler(Overanimated.class, new ThaumaturgeRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/overanimated.png"), 0.5f));
-        RenderingRegistry.registerEntityRenderingHandler(ThaumGib.class, new ThaumGibRenderer());
-        RenderingRegistry.registerEntityRenderingHandler(Thaumaturge.class, new ThaumaturgeRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/thaumaturge.png"), 0.5f));
-        RenderingRegistry.registerEntityRenderingHandler(StrayedMirror.class, new StrayedMirrorRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/thaumaturge.png"), 0.5f));
-        RenderingRegistry.registerEntityRenderingHandler(Samurai.class, new SamuraiRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/thaumaturge.png"), 0.15f));
-        RenderingRegistry.registerEntityRenderingHandler(CrimsonPontifex.class, new RenderCultistPontifex(Minecraft.getMinecraft().getRenderManager()));
-        RenderingRegistry.registerEntityRenderingHandler(ConcentratedWarpChargeEntity.class, new ConcentratedWarpChargeEntityRenderer());
-        RenderingRegistry.registerEntityRenderingHandler(CrimsonPaladin.class, new CrimsonPaladinRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/crimson_paladin.png"), 0.5f));
-        RenderingRegistry.registerEntityRenderingHandler(EtherealShacklesEntity.class, new EtherealShacklesEntityRenderer());
-        RenderingRegistry.registerEntityRenderingHandler(MadThaumaturge.class, new ThaumaturgeRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/mad_thaumaturge.png"), 0.5f));
+        RenderingRegistry.registerEntityRenderingHandler(EntityDissolved.class, new DissolvedRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/thaumaturge.png"), 0.5f));
+        RenderingRegistry.registerEntityRenderingHandler(EntityUpcomingHole.class, new UpcomingHoleRender());
+        RenderingRegistry.registerEntityRenderingHandler(EntityQuicksilverElemental.class, new QuicksilverElementalRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/quicksilver_elemental.png"), 0.5f));
+        RenderingRegistry.registerEntityRenderingHandler(EntityOveranimated.class, new ThaumaturgeRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/overanimated.png"), 0.5f));
+        RenderingRegistry.registerEntityRenderingHandler(EntityThaumGib.class, new ThaumGibRenderer());
+        RenderingRegistry.registerEntityRenderingHandler(EntityThaumaturge.class, new ThaumaturgeRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/thaumaturge.png"), 0.5f));
+        RenderingRegistry.registerEntityRenderingHandler(EntityStrayedMirror.class, new StrayedMirrorRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/thaumaturge.png"), 0.5f));
+        RenderingRegistry.registerEntityRenderingHandler(EntitySamurai.class, new SamuraiRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/thaumaturge.png"), 0.15f));
+        RenderingRegistry.registerEntityRenderingHandler(EntityCrimsonPontifex.class, new RenderCultistPontifex(Minecraft.getMinecraft().getRenderManager()));
+        RenderingRegistry.registerEntityRenderingHandler(EntityConcentratedWarpCharge.class, new ConcentratedWarpChargeEntityRenderer());
+        RenderingRegistry.registerEntityRenderingHandler(EntityCrimsonPaladin.class, new CrimsonPaladinRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/crimson_paladin.png"), 0.5f));
+        RenderingRegistry.registerEntityRenderingHandler(EntityEtherealShackles.class, new EtherealShacklesEntityRenderer());
+        RenderingRegistry.registerEntityRenderingHandler(EntityMadThaumaturge.class, new ThaumaturgeRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/mad_thaumaturge.png"), 0.5f));
 
         ClientRegistry.bindTileEntitySpecialRenderer(QuicksilverCrucibleTile.class, new QuicksilverCrucibleTileRenderer());
 

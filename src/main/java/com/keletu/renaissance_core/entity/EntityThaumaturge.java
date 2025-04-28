@@ -39,16 +39,16 @@ import thaumcraft.common.items.casters.foci.FocusMediumProjectile;
 
 import java.util.*;
 
-public class Thaumaturge extends EntityMob implements IRangedAttackMob {
+public class EntityThaumaturge extends EntityMob implements IRangedAttackMob {
     public boolean trading = false;
-    private static final DataParameter<Integer> ANGER = EntityDataManager.createKey(Thaumaturge.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> ANGER = EntityDataManager.createKey(EntityThaumaturge.class, DataSerializers.VARINT);
     public boolean updateAINextTick = false;
     private final EntityAIAttackRanged aiBlastAttack = new EntityAIAttackRanged(this, 1.0, 20, 40, 15.0F);
     private final AIAttackOnCollide aiMeleeAttack = new AIAttackOnCollide(this, EntityLivingBase.class, 0.6, false);
     static HashMap<Integer, Integer> valuedItems = new HashMap();
     public static ArrayList<List> tradeInventory = new ArrayList<>();
 
-    public Thaumaturge(World world) {
+    public EntityThaumaturge(World world) {
         super(world);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new AILongRangeAttack(this, 3.0, 1.0, 20, 40, 24.0F));
@@ -62,7 +62,7 @@ public class Thaumaturge extends EntityMob implements IRangedAttackMob {
         this.tasks.addTask(11, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(12, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-        this.targetTasks.addTask(2, new Thaumaturge.AIThaumaturgeTarget<>(this, EntityPlayer.class));
+        this.targetTasks.addTask(2, new EntityThaumaturge.AIThaumaturgeTarget<>(this, EntityPlayer.class));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityCultist.class, true));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityZombie.class, true));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntitySkeleton.class, true));
@@ -90,7 +90,7 @@ public class Thaumaturge extends EntityMob implements IRangedAttackMob {
         }
     }
 
-    public Thaumaturge(World world, double x, double y, double z) {
+    public EntityThaumaturge(World world, double x, double y, double z) {
         this(world);
         setPosition(x, y, z);
         //this.faceEntity();
@@ -205,8 +205,8 @@ public class Thaumaturge extends EntityMob implements IRangedAttackMob {
 
                 for (int i = 0; i < list.size(); ++i) {
                     Entity entity1 = (Entity) list.get(i);
-                    if (entity1 instanceof Thaumaturge) {
-                        Thaumaturge thaumaturge = (Thaumaturge) entity1;
+                    if (entity1 instanceof EntityThaumaturge) {
+                        EntityThaumaturge thaumaturge = (EntityThaumaturge) entity1;
                         thaumaturge.becomeAngryAt(entity);
                     }
                 }
@@ -397,9 +397,9 @@ public class Thaumaturge extends EntityMob implements IRangedAttackMob {
     }
 
     static class AIThaumaturgeTarget<T extends EntityLivingBase> extends EntityAINearestAttackableTarget<T> {
-        Thaumaturge thaumaturge;
+        EntityThaumaturge thaumaturge;
 
-        public AIThaumaturgeTarget(Thaumaturge thaumaturge, Class<T> classTarget) {
+        public AIThaumaturgeTarget(EntityThaumaturge thaumaturge, Class<T> classTarget) {
             super(thaumaturge, classTarget, true);
             this.thaumaturge = thaumaturge;
         }

@@ -115,19 +115,19 @@ public class RenaissanceCore {
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_sheep"), EntityTaintSheep.class, "TaintedSheep", id++, MODID, 64, 3, true, 10618530, 8421504);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "tainted_villager"), EntityTaintVillager.class, "TaintedVillager", id++, MODID, 64, 3, true, 10618530, 65535);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "vengeful_golem"), EntityVengefulGolem.class, "VengefulGolem", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "dissolved"), Dissolved.class, "Dissolved", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "upcoming_hole"), UpcomingHoleEntity.class, "UpcomingHoleEntity", id++, MODID, 64, 1, false);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "quicksilver_elemental"), QuicksilverElemental.class, "QuicksilverElemental", id++, MODID, 64, 1, true, 0x00FFFF, 0x00008B);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "overanimated"), Overanimated.class, "Overanimated", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "thaum_gib"), ThaumGib.class, "ThaumGib", id++, MODID, 64, 3, true);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "thaumaturge"), Thaumaturge.class, "Thaumaturge", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "strayed_mirror"), StrayedMirror.class, "StrayedMirror", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "samurai"), Samurai.class, "Samurai", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "crimson_pontifex"), CrimsonPontifex.class, "CrimsonPontifex", id++, MODID, 64, 3, true, 0x00FFFF, 0x111111);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "concentrated_warp_charge"), ConcentratedWarpChargeEntity.class, "ConcentratedWarpChargeEntity", id++, MODID, 64, 1, true);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "crimson_paladin"), CrimsonPaladin.class, "CrimsonPaladin", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "ethereal_shackles"), EtherealShacklesEntity.class, "EtherealShacklesEntity", id++, MODID, 64, 1, true);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "mad_thaumaturge"), MadThaumaturge.class, "MadThaumaturge", id++, MODID, 64, 1, true, 0x00FFFF, 0x111111);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "dissolved"), EntityDissolved.class, "Dissolved", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "upcoming_hole"), EntityUpcomingHole.class, "UpcomingHoleEntity", id++, MODID, 64, 1, false);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "quicksilver_elemental"), EntityQuicksilverElemental.class, "QuicksilverElemental", id++, MODID, 64, 1, true, 0x00FFFF, 0x00008B);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "overanimated"), EntityOveranimated.class, "Overanimated", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "thaum_gib"), EntityThaumGib.class, "ThaumGib", id++, MODID, 64, 3, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "thaumaturge"), EntityThaumaturge.class, "Thaumaturge", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "strayed_mirror"), EntityStrayedMirror.class, "StrayedMirror", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "samurai"), EntitySamurai.class, "Samurai", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "crimson_pontifex"), EntityCrimsonPontifex.class, "CrimsonPontifex", id++, MODID, 64, 3, true, 0x00FFFF, 0x111111);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "concentrated_warp_charge"), EntityConcentratedWarpCharge.class, "ConcentratedWarpChargeEntity", id++, MODID, 64, 1, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "crimson_paladin"), EntityCrimsonPaladin.class, "CrimsonPaladin", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "ethereal_shackles"), EntityEtherealShackles.class, "EtherealShacklesEntity", id++, MODID, 64, 1, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "mad_thaumaturge"), EntityMadThaumaturge.class, "MadThaumaturge", id++, MODID, 64, 1, true, 0x00FFFF, 0x111111);
 
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".MadThaumaturge", new AspectList().add(Aspect.MAN, 4).add(Aspect.MIND, 4).add(Aspect.ELDRITCH, 8));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".CrimsonPaladin", new AspectList().add(Aspect.MAN, 4).add(Aspect.LIFE, 4).add(Aspect.ELDRITCH, 4).add(Aspect.MAGIC, 4));
@@ -140,16 +140,16 @@ public class RenaissanceCore {
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".Dissolved", new AspectList().add(Aspect.MAN, 4).add(Aspect.VOID, 4).add(Aspect.ELDRITCH, 4).add(Aspect.ALCHEMY, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".StrayedMirror", new AspectList().add(Aspect.MAN, 4).add(Aspect.EXCHANGE, 4)/*.add(Aspect.SPATIO, 4)*/.add(Aspect.MOTION, 4));
 
-        ScanningManager.addScannableThing(new ScanEntities("SPECIAL_CREATURES", Arrays.asList(Overanimated.class, Dissolved.class, EntityVengefulGolem.class, QuicksilverElemental.class, StrayedMirror.class, Samurai.class)));
-        ScanningManager.addScannableThing(new ScanEntity("!Thaumaturge", Thaumaturge.class, true));
-        ScanningManager.addScannableThing(new ScanEntity("!MadThaumaturge", MadThaumaturge.class, true));
-        ScanningManager.addScannableThing(new ScanEntity("!OverAnimated", Overanimated.class, true));
-        ScanningManager.addScannableThing(new ScanEntity("!CrimsonPaladin", CrimsonPaladin.class, true));
-        ScanningManager.addScannableThing(new ScanEntity("!Dissolved", Dissolved.class, true));
+        ScanningManager.addScannableThing(new ScanEntities("SPECIAL_CREATURES", Arrays.asList(EntityOveranimated.class, EntityDissolved.class, EntityVengefulGolem.class, EntityQuicksilverElemental.class, EntityStrayedMirror.class, EntitySamurai.class)));
+        ScanningManager.addScannableThing(new ScanEntity("!Thaumaturge", EntityThaumaturge.class, true));
+        ScanningManager.addScannableThing(new ScanEntity("!MadThaumaturge", EntityMadThaumaturge.class, true));
+        ScanningManager.addScannableThing(new ScanEntity("!OverAnimated", EntityOveranimated.class, true));
+        ScanningManager.addScannableThing(new ScanEntity("!CrimsonPaladin", EntityCrimsonPaladin.class, true));
+        ScanningManager.addScannableThing(new ScanEntity("!Dissolved", EntityDissolved.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!VengefulGolem", EntityVengefulGolem.class, true));
-        ScanningManager.addScannableThing(new ScanEntity("!QuicksilverElemental", QuicksilverElemental.class, true));
-        ScanningManager.addScannableThing(new ScanEntity("!StrayedMirror", StrayedMirror.class, true));
-        ScanningManager.addScannableThing(new ScanEntity("!Samurai", Samurai.class, true));
+        ScanningManager.addScannableThing(new ScanEntity("!QuicksilverElemental", EntityQuicksilverElemental.class, true));
+        ScanningManager.addScannableThing(new ScanEntity("!StrayedMirror", EntityStrayedMirror.class, true));
+        ScanningManager.addScannableThing(new ScanEntity("!Samurai", EntitySamurai.class, true));
         ScanningManager.addScannableThing(new ScanBlock("!RiftMonitor", TABlocks.RIFT_MONITOR));
         ScanningManager.addScannableThing(new ScanItem("f_crimsonnotes", new ItemStack(RCItems.research_notes_crimson)));
 
@@ -182,16 +182,16 @@ public class RenaissanceCore {
         while (i$.hasNext()) {
             Biome bgb = i$.next();
             if (!bgb.getSpawnableList(EnumCreatureType.MONSTER).isEmpty() & bgb.getSpawnableList(EnumCreatureType.MONSTER).size() > 0) {
-                EntityRegistry.addSpawn(Dissolved.class, ConfigsRC.dissolvedSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
-                EntityRegistry.addSpawn(QuicksilverElemental.class, ConfigsRC.quicksilverElementalSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
-                EntityRegistry.addSpawn(Samurai.class, ConfigsRC.paranoidWarriorSpawnChance, 3, 5, EnumCreatureType.MONSTER, bgb);
+                EntityRegistry.addSpawn(EntityDissolved.class, ConfigsRC.dissolvedSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
+                EntityRegistry.addSpawn(EntityQuicksilverElemental.class, ConfigsRC.quicksilverElementalSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
+                EntityRegistry.addSpawn(EntitySamurai.class, ConfigsRC.paranoidWarriorSpawnChance, 3, 5, EnumCreatureType.MONSTER, bgb);
                 EntityRegistry.addSpawn(EntityVengefulGolem.class, ConfigsRC.vengefulGolemSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
-                EntityRegistry.addSpawn(Overanimated.class, ConfigsRC.overanimatedSpawnChance, 2, 3, EnumCreatureType.MONSTER, bgb);
-                EntityRegistry.addSpawn(StrayedMirror.class, ConfigsRC.strayedMirrorSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
-                EntityRegistry.addSpawn(MadThaumaturge.class, ConfigsRC.madThaumaturgeSpawnChance, 2, 3, EnumCreatureType.MONSTER, bgb);
+                EntityRegistry.addSpawn(EntityOveranimated.class, ConfigsRC.overanimatedSpawnChance, 2, 3, EnumCreatureType.MONSTER, bgb);
+                EntityRegistry.addSpawn(EntityStrayedMirror.class, ConfigsRC.strayedMirrorSpawnChance, 1, 2, EnumCreatureType.MONSTER, bgb);
+                EntityRegistry.addSpawn(EntityMadThaumaturge.class, ConfigsRC.madThaumaturgeSpawnChance, 2, 3, EnumCreatureType.MONSTER, bgb);
             }
             if (!bgb.getSpawnableList(EnumCreatureType.CREATURE).isEmpty() & bgb.getSpawnableList(EnumCreatureType.CREATURE).size() > 0) {
-                EntityRegistry.addSpawn(Thaumaturge.class, ConfigsRC.thaumaturgeSpawnChance, 1, 3, EnumCreatureType.CREATURE, bgb);
+                EntityRegistry.addSpawn(EntityThaumaturge.class, ConfigsRC.thaumaturgeSpawnChance, 1, 3, EnumCreatureType.CREATURE, bgb);
             }
 
         }

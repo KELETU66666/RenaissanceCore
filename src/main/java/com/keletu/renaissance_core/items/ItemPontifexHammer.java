@@ -19,10 +19,10 @@ import thaumcraft.api.items.IWarpingGear;
 
 import java.util.List;
 
-public class PontifexHammer extends ItemSword implements IWarpingGear {
+public class ItemPontifexHammer extends ItemSword implements IWarpingGear {
     public static ToolMaterial phammer = EnumHelper.addToolMaterial("PHAMMER", 4, 1000, 8F, 14, 20);
 
-    public PontifexHammer() {
+    public ItemPontifexHammer() {
         super(phammer);
         this.setTranslationKey("PontifexHammer");
     }

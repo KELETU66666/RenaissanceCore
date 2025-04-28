@@ -1,6 +1,6 @@
 package com.keletu.renaissance_core.client.render;
 
-import com.keletu.renaissance_core.entity.CrimsonPontifex;
+import com.keletu.renaissance_core.entity.EntityCrimsonPontifex;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.Tessellator;
@@ -19,7 +19,7 @@ import org.lwjgl.opengl.GL11;
 import java.awt.*;
 
 @SideOnly(Side.CLIENT)
-public class RenderCultistPontifex extends RenderBiped<CrimsonPontifex> {
+public class RenderCultistPontifex extends RenderBiped<EntityCrimsonPontifex> {
     private static final ResourceLocation skin = new ResourceLocation("thaumcraft", "textures/entity/cultist.png");
     private static final ResourceLocation fl = new ResourceLocation("thaumcraft", "textures/misc/wispy.png");
 
@@ -35,11 +35,11 @@ public class RenderCultistPontifex extends RenderBiped<CrimsonPontifex> {
         this.addLayer(layerbipedarmor);
     }
 
-    protected ResourceLocation getEntityTexture(CrimsonPontifex p_110775_1_) {
+    protected ResourceLocation getEntityTexture(EntityCrimsonPontifex p_110775_1_) {
         return skin;
     }
 
-    protected void preRenderCallback(CrimsonPontifex entitylivingbaseIn, float partialTickTime) {
+    protected void preRenderCallback(EntityCrimsonPontifex entitylivingbaseIn, float partialTickTime) {
         super.preRenderCallback(entitylivingbaseIn, partialTickTime);
         GL11.glScalef(1.15F, 1.15F, 1.15F);
     }

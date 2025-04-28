@@ -1,7 +1,7 @@
 package com.keletu.renaissance_core.container;
 
 import com.keletu.renaissance_core.client.gui.InventoryThaumaturge;
-import com.keletu.renaissance_core.entity.Thaumaturge;
+import com.keletu.renaissance_core.entity.EntityThaumaturge;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -20,12 +20,12 @@ import java.util.List;
 
 
 public class ContainerThaumaturge extends Container implements IInventoryChangedListener {
-    private final Thaumaturge thaumaturge;
+    private final EntityThaumaturge thaumaturge;
     private final InventoryThaumaturge inventory;
     private final EntityPlayer player;
     private final World theWorld;
 
-    public ContainerThaumaturge(InventoryPlayer par1InventoryPlayer, World par3World, Thaumaturge par2IMerchant) {
+    public ContainerThaumaturge(InventoryPlayer par1InventoryPlayer, World par3World, EntityThaumaturge par2IMerchant) {
         thaumaturge = par2IMerchant;
         theWorld = par3World;
         player = par1InventoryPlayer.player;
@@ -105,7 +105,7 @@ public class ContainerThaumaturge extends Container implements IInventoryChanged
             }
 
             //Thaumaturge var10000 = this.thaumaturge;
-            ArrayList<List> pos = Thaumaturge.tradeInventory;
+            ArrayList<List> pos = EntityThaumaturge.tradeInventory;
 
             int sum_of_weight = 0;
             for (int i = 0; i < pos.size(); i++) {

@@ -24,23 +24,23 @@ import net.minecraftforge.common.ForgeHooks;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.entities.monster.cult.EntityCultist;
 
-public class Samurai extends EntityMob {
+public class EntitySamurai extends EntityMob {
 
-    private static final DataParameter<Byte> TYPE = EntityDataManager.createKey(Samurai.class, DataSerializers.BYTE);
-    private static final DataParameter<Integer> ANGER = EntityDataManager.createKey(Samurai.class, DataSerializers.VARINT);
+    private static final DataParameter<Byte> TYPE = EntityDataManager.createKey(EntitySamurai.class, DataSerializers.BYTE);
+    private static final DataParameter<Integer> ANGER = EntityDataManager.createKey(EntitySamurai.class, DataSerializers.VARINT);
 
-    public Samurai(World w) {
+    public EntitySamurai(World w) {
         super(w);
         this.tasks.addTask(0, new EntityAISwimming(this));
         //this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityLivingBase.class, 0.6D, false));
-        this.tasks.addTask(2, new SamuraiAttackAI(this, EntityLivingBase.class, 1D, false));
+        this.tasks.addTask(2, new AISamuraiAttack(this, EntityLivingBase.class, 1D, false));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1D));
         this.tasks.addTask(7, new EntityAIWander(this, 1D));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, Thaumaturge.class, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityThaumaturge.class, true));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityCultist.class, true));
 
         this.setSize(1.0F, 2.0F);
@@ -84,7 +84,7 @@ public class Samurai extends EntityMob {
 
     @Override
     public boolean isOnSameTeam(Entity el) {
-        return el instanceof Samurai;
+        return el instanceof EntitySamurai;
     }
 
     @Override

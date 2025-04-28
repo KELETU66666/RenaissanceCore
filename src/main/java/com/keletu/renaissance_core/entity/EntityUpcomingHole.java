@@ -12,8 +12,8 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import thaumcraft.client.fx.FXDispatcher;
 import thaumcraft.common.items.casters.foci.FocusEffectRift;
 
-public class UpcomingHoleEntity extends Entity {
-    public UpcomingHoleEntity(World w) {
+public class EntityUpcomingHole extends Entity {
+    public EntityUpcomingHole(World w) {
         super(w);
         this.setInvisible(true);
         this.motionX = 0;

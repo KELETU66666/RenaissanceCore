@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.List;
 
-public class QuicksilverElemental extends EntityMob {
-    public QuicksilverElemental(World w) {
+public class EntityQuicksilverElemental extends EntityMob {
+    public EntityQuicksilverElemental(World w) {
         super(w);
         this.tasks.addTask(2, new EntityAIAttackMelee(this, 0.6D, false));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 0.6D));
@@ -44,7 +44,7 @@ public class QuicksilverElemental extends EntityMob {
         this.tasks.addTask(9, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, Thaumaturge.class, false));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityThaumaturge.class, false));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityCultist.class, false));
     }
 

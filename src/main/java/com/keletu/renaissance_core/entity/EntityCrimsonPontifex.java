@@ -45,9 +45,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-public class CrimsonPontifex extends EntityThaumcraftBoss implements IRangedAttackMob {
+public class EntityCrimsonPontifex extends EntityThaumcraftBoss implements IRangedAttackMob {
 
-    private static final DataParameter<Byte> TITLE = EntityDataManager.createKey(CrimsonPontifex.class, DataSerializers.BYTE);
+    private static final DataParameter<Byte> TITLE = EntityDataManager.createKey(EntityCrimsonPontifex.class, DataSerializers.BYTE);
     static String[] titles = new String[]{"Ivius", "Ufarihm", "Ihith", "Pemonar", "Shagron", "Ugimaex", "Qroleus", "Oxon", "Rheforn", "Zubras"};
     private int attackCounter = 0;
     private int aggroCooldown = 0;
@@ -56,7 +56,7 @@ public class CrimsonPontifex extends EntityThaumcraftBoss implements IRangedAtta
     public boolean continuousAttack = false;
 
 
-    public CrimsonPontifex(World p_i1738_1_) {
+    public EntityCrimsonPontifex(World p_i1738_1_) {
         super(p_i1738_1_);
         this.setSize(0.75F, 2.25F);
         this.tasks.addTask(0, new EntityAISwimming(this));
@@ -118,7 +118,7 @@ public class CrimsonPontifex extends EntityThaumcraftBoss implements IRangedAtta
     }
 
     public boolean isOnSameTeam(Entity el) {
-        return el instanceof EntityCultist || el instanceof EntityCultistLeader || el instanceof CrimsonPontifex;
+        return el instanceof EntityCultist || el instanceof EntityCultistLeader || el instanceof EntityCrimsonPontifex;
     }
 
     public boolean canPickUpLoot() {
@@ -256,9 +256,9 @@ public class CrimsonPontifex extends EntityThaumcraftBoss implements IRangedAtta
                             switch (rand) {
                                 case 0: {
                                     boolean found = false;
-                                    List<ConcentratedWarpChargeEntity> charges = world.getEntitiesWithinAABB(ConcentratedWarpChargeEntity.class, targetedEntity.getEntityBoundingBox().expand(7.0, 7.0, 7.0).expand(-7.0, -7.0, -7.0));
+                                    List<EntityConcentratedWarpCharge> charges = world.getEntitiesWithinAABB(EntityConcentratedWarpCharge.class, targetedEntity.getEntityBoundingBox().expand(7.0, 7.0, 7.0).expand(-7.0, -7.0, -7.0));
                                     if (!charges.isEmpty()) {
-                                        for (ConcentratedWarpChargeEntity e : charges) {
+                                        for (EntityConcentratedWarpCharge e : charges) {
 
                                             if (e.getOwner().getName().equals(targetedEntity.getName())) {
                                                 found = true;
@@ -267,7 +267,7 @@ public class CrimsonPontifex extends EntityThaumcraftBoss implements IRangedAtta
                                         }
                                     }
                                     if (!found) {
-                                        ConcentratedWarpChargeEntity charge = new ConcentratedWarpChargeEntity(targetedEntity.posX + (-0.5 + world.rand.nextFloat()) * 4.0F, targetedEntity.posY, targetedEntity.posZ + (-0.5 + world.rand.nextFloat()) * 4.0F, (EntityPlayer) targetedEntity);
+                                        EntityConcentratedWarpCharge charge = new EntityConcentratedWarpCharge(targetedEntity.posX + (-0.5 + world.rand.nextFloat()) * 4.0F, targetedEntity.posY, targetedEntity.posZ + (-0.5 + world.rand.nextFloat()) * 4.0F, (EntityPlayer) targetedEntity);
                                         charge.setOwner(targetedEntity.getUniqueID());
                                         world.spawnEntity(charge);
                                     }
@@ -337,7 +337,7 @@ public class CrimsonPontifex extends EntityThaumcraftBoss implements IRangedAtta
     public void attackEntityWithRangedAttack(EntityLivingBase target, float distanceFactor) {
         if (this.canEntityBeSeen(target)) {
             this.swingArm(this.getActiveHand());
-            EtherealShacklesEntity shackles = new EtherealShacklesEntity(target.world, this);
+            EntityEtherealShackles shackles = new EntityEtherealShackles(target.world, this);
             double d0 = target.posX + target.motionX - this.posX;
             double d1 = target.posY - this.posY;
             double d2 = target.posZ + target.motionZ - this.posZ;

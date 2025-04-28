@@ -1,13 +1,13 @@
 package com.keletu.renaissance_core.client.render;
 
-import com.keletu.renaissance_core.entity.CrimsonPontifex;
+import com.keletu.renaissance_core.entity.EntityCrimsonPontifex;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-public class CrimsonPontifexRenderer extends RenderBiped<CrimsonPontifex> {
+public class CrimsonPontifexRenderer extends RenderBiped<EntityCrimsonPontifex> {
 
     private final ResourceLocation texture;
 
@@ -16,13 +16,13 @@ public class CrimsonPontifexRenderer extends RenderBiped<CrimsonPontifex> {
         this.texture = texture;
     }
 
-    protected void preRenderCallback(CrimsonPontifex entitylivingbaseIn, float partialTickTime) {
+    protected void preRenderCallback(EntityCrimsonPontifex entitylivingbaseIn, float partialTickTime) {
         super.preRenderCallback(entitylivingbaseIn, partialTickTime);
         GL11.glScalef(1.15f, 1.15f, 1.15f);
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(CrimsonPontifex entity) {
+    protected ResourceLocation getEntityTexture(EntityCrimsonPontifex entity) {
         return texture;
     }
 }

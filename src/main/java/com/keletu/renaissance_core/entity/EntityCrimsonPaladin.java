@@ -17,10 +17,10 @@ import thaumcraft.common.entities.monster.cult.EntityCultist;
 import thaumcraft.common.entities.projectile.EntityGolemOrb;
 import thecodex6824.thaumicaugmentation.api.TAItems;
 
-public class CrimsonPaladin extends EntityCultist implements IRangedAttackMob {
+public class EntityCrimsonPaladin extends EntityCultist implements IRangedAttackMob {
     public static ItemStack staff = new ItemStack(TAItems.GAUNTLET, 1, 0);
 
-    public CrimsonPaladin(World w) {
+    public EntityCrimsonPaladin(World w) {
         super(w);
 
         this.tasks.addTask(0, new EntityAISwimming(this));
@@ -32,7 +32,7 @@ public class CrimsonPaladin extends EntityCultist implements IRangedAttackMob {
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, Thaumaturge.class, false));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityThaumaturge.class, false));
     }
 
     protected void applyEntityAttributes() {
@@ -89,7 +89,7 @@ public class CrimsonPaladin extends EntityCultist implements IRangedAttackMob {
             int rand = world.rand.nextInt(2);
             if (rand == 0) {
                 if (entitylivingbase instanceof EntityPlayer) {
-                    EtherealShacklesEntity shackles = new EtherealShacklesEntity(entitylivingbase.world, this);
+                    EntityEtherealShackles shackles = new EntityEtherealShackles(entitylivingbase.world, this);
                     double d0 = entitylivingbase.posX + entitylivingbase.motionX - this.posX;
                     double d1 = entitylivingbase.posY - this.posY;
                     double d2 = entitylivingbase.posZ + entitylivingbase.motionZ - this.posZ;

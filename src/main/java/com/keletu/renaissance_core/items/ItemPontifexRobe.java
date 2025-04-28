@@ -26,13 +26,13 @@ import thaumcraft.api.items.IRevealer;
 import thaumcraft.api.items.IVisDiscountGear;
 import thaumcraft.api.items.IWarpingGear;
 
-public class PontifexRobe extends ItemArmor implements IGoggles, IRevealer, IVisDiscountGear, IWarpingGear {
+public class ItemPontifexRobe extends ItemArmor implements IGoggles, IRevealer, IVisDiscountGear, IWarpingGear {
     final static ArmorMaterial MATERIAL = EnumHelper.addArmorMaterial("TCPONTIFEXROBE", "", 30, new int[]{4, 7, 8, 4}, 25, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1);
     static PontifexRobeModel model = null;
 
     public static String chest = RenaissanceCore.MODID + ":textures/models/armor/pontifex_robe.png";
 
-    public PontifexRobe(int j, EntityEquipmentSlot k) {
+    public ItemPontifexRobe(int j, EntityEquipmentSlot k) {
         super(MATERIAL, j, k);
         //this.setCreativeTab(ThaumicConcilium.tabTC);
     }
@@ -40,7 +40,7 @@ public class PontifexRobe extends ItemArmor implements IGoggles, IRevealer, IVis
     @SideOnly(Side.CLIENT)
     @Override
     public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped modelBiped) {
-        if (!itemStack.isEmpty() && itemStack.getItem() instanceof PontifexRobe) {
+        if (!itemStack.isEmpty() && itemStack.getItem() instanceof ItemPontifexRobe) {
             if (model == null) {
                 model = new PontifexRobeModel();
             }
@@ -98,10 +98,10 @@ public class PontifexRobe extends ItemArmor implements IGoggles, IRevealer, IVis
     }
 
     public static boolean isFullSet(EntityPlayer player) {
-        return  !player.inventory.armorInventory.get(0).isEmpty() && player.inventory.armorInventory.get(0).getItem() instanceof PontifexRobe &&
-                !player.inventory.armorInventory.get(1).isEmpty() && player.inventory.armorInventory.get(1).getItem() instanceof PontifexRobe &&
-                !player.inventory.armorInventory.get(2).isEmpty() && player.inventory.armorInventory.get(2).getItem() instanceof PontifexRobe &&
-                !player.inventory.armorInventory.get(3).isEmpty() && player.inventory.armorInventory.get(3).getItem() instanceof PontifexRobe;
+        return  !player.inventory.armorInventory.get(0).isEmpty() && player.inventory.armorInventory.get(0).getItem() instanceof ItemPontifexRobe &&
+                !player.inventory.armorInventory.get(1).isEmpty() && player.inventory.armorInventory.get(1).getItem() instanceof ItemPontifexRobe &&
+                !player.inventory.armorInventory.get(2).isEmpty() && player.inventory.armorInventory.get(2).getItem() instanceof ItemPontifexRobe &&
+                !player.inventory.armorInventory.get(3).isEmpty() && player.inventory.armorInventory.get(3).getItem() instanceof ItemPontifexRobe;
     }
 
 

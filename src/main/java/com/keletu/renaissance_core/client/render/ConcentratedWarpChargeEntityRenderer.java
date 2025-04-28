@@ -2,7 +2,7 @@ package com.keletu.renaissance_core.client.render;
 
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.client.model.ConcentratedWarpChargeModel;
-import com.keletu.renaissance_core.entity.ConcentratedWarpChargeEntity;
+import com.keletu.renaissance_core.entity.EntityConcentratedWarpCharge;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
@@ -22,7 +22,7 @@ public class ConcentratedWarpChargeEntityRenderer extends Render {
 
     @Override
     public void doRender(Entity entity, double x, double y, double z, float yaw, float partialTickTime) {
-        ConcentratedWarpChargeEntity charge = (ConcentratedWarpChargeEntity) entity;
+        EntityConcentratedWarpCharge charge = (EntityConcentratedWarpCharge) entity;
         GL11.glPushMatrix();
         GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
         GL11.glTranslatef((float) x, (float) y + 0.5f, (float) z);

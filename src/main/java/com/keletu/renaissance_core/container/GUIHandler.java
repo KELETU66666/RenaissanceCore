@@ -4,7 +4,7 @@ import baubles.api.BaublesApi;
 import baubles.api.cap.IBaublesItemHandler;
 import com.keletu.renaissance_core.client.gui.GuiPechBackpack;
 import com.keletu.renaissance_core.client.gui.GuiThaumaturge;
-import com.keletu.renaissance_core.entity.Thaumaturge;
+import com.keletu.renaissance_core.entity.EntityThaumaturge;
 import com.keletu.renaissance_core.items.ItemPechBackpack;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -23,7 +23,7 @@ public class GUIHandler implements IGuiHandler {
                 }
                 break;
             case 1:
-                return new ContainerThaumaturge(player.inventory, world, (Thaumaturge) world.getEntityByID(x));
+                return new ContainerThaumaturge(player.inventory, world, (EntityThaumaturge) world.getEntityByID(x));
         }
         return null;
     }
@@ -38,7 +38,7 @@ public class GUIHandler implements IGuiHandler {
                 }
                 break;
             case 1:
-                return new GuiThaumaturge(player.inventory, world, (Thaumaturge) world.getEntityByID(x));
+                return new GuiThaumaturge(player.inventory, world, (EntityThaumaturge) world.getEntityByID(x));
         }
         return null;
     }

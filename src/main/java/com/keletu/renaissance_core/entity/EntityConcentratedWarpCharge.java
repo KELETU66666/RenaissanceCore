@@ -34,15 +34,15 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
-public class ConcentratedWarpChargeEntity extends Entity implements IEntityOwnable, IEntityAdditionalSpawnData {
-    protected static final DataParameter<Optional<UUID>> OWNER_UNIQUE_ID = EntityDataManager.createKey(ConcentratedWarpChargeEntity.class, DataSerializers.OPTIONAL_UNIQUE_ID);
+public class EntityConcentratedWarpCharge extends Entity implements IEntityOwnable, IEntityAdditionalSpawnData {
+    protected static final DataParameter<Optional<UUID>> OWNER_UNIQUE_ID = EntityDataManager.createKey(EntityConcentratedWarpCharge.class, DataSerializers.OPTIONAL_UNIQUE_ID);
     public int power;
     public int range;
     public boolean massHysteria = false;
     public boolean selfFlagellation = false;
     public boolean byForce = false;
 
-    public ConcentratedWarpChargeEntity(World p_i1762_1_) {
+    public EntityConcentratedWarpCharge(World p_i1762_1_) {
         super(p_i1762_1_);
 
         this.setSize(1.0f, 1.0f);
@@ -58,7 +58,7 @@ public class ConcentratedWarpChargeEntity extends Entity implements IEntityOwnab
         return p_70112_1_ < 4096.0D;
     }
 
-    public ConcentratedWarpChargeEntity(double p_i1763_2_, double p_i1763_4_, double p_i1763_6_, EntityPlayer p) {
+    public EntityConcentratedWarpCharge(double p_i1763_2_, double p_i1763_4_, double p_i1763_6_, EntityPlayer p) {
         super(p.world);
         this.setPosition(p_i1763_2_, p_i1763_4_, p_i1763_6_);
         this.power = 5;
@@ -93,7 +93,7 @@ public class ConcentratedWarpChargeEntity extends Entity implements IEntityOwnab
                     this.setPosition(owner.posX, owner.posY, owner.posZ);
                 }
                 if (this.getDistanceSq(owner) > maxDist) {
-                    ThaumGib.setEntityMotionFromVector(this, new Vector3(owner.posX, owner.posY, owner.posZ), 1.0f);
+                    EntityThaumGib.setEntityMotionFromVector(this, new Vector3(owner.posX, owner.posY, owner.posZ), 1.0f);
                 }
                 if (!owner.capabilities.isFlying) {
                     this.motionY -= 0.1;
@@ -156,7 +156,7 @@ public class ConcentratedWarpChargeEntity extends Entity implements IEntityOwnab
                         entities.remove(owner);
                     }
                     for (EntityLivingBase entity : entities) {
-                        if (entity instanceof CrimsonPontifex) continue;
+                        if (entity instanceof EntityCrimsonPontifex) continue;
                         entity.attackEntityFrom(
                                 EntityDamageSourceIndirect.causeIndirectMagicDamage(this, owner), warp / 10.0F * power);
                         if (!byForce) {

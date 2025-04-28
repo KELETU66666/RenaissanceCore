@@ -1,7 +1,7 @@
 package com.keletu.renaissance_core.client.gui;
 
 import com.keletu.renaissance_core.container.ContainerThaumaturge;
-import com.keletu.renaissance_core.entity.Thaumaturge;
+import com.keletu.renaissance_core.entity.EntityThaumaturge;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -16,10 +16,10 @@ import java.io.IOException;
 
 @SideOnly(Side.CLIENT)
 public class GuiThaumaturge extends GuiContainer {
-    Thaumaturge thaumaturge;
+    EntityThaumaturge thaumaturge;
     ResourceLocation tex;
 
-    public GuiThaumaturge(InventoryPlayer par1InventoryPlayer, World world, Thaumaturge thaumaturge) {
+    public GuiThaumaturge(InventoryPlayer par1InventoryPlayer, World world, EntityThaumaturge thaumaturge) {
         super(new ContainerThaumaturge(par1InventoryPlayer, world, thaumaturge));
         tex = new ResourceLocation("thaumcraft", "textures/gui/gui_pech.png");
         xSize = 175;

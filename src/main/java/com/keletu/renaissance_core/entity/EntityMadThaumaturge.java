@@ -1,7 +1,7 @@
 package com.keletu.renaissance_core.entity;
 
 import com.keletu.renaissance_core.RenaissanceCore;
-import com.keletu.renaissance_core.items.PontifexRobe;
+import com.keletu.renaissance_core.items.ItemPontifexRobe;
 import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.IEntityLivingData;
@@ -24,12 +24,12 @@ import thaumcraft.common.entities.monster.cult.EntityCultistCleric;
 import thaumcraft.common.entities.monster.cult.EntityCultistKnight;
 import thaumcraft.common.lib.SoundsTC;
 
-public class MadThaumaturge extends EntityMob {
+public class EntityMadThaumaturge extends EntityMob {
 
-    private static final DataParameter<Byte> RIDING = EntityDataManager.createKey(MadThaumaturge.class, DataSerializers.BYTE);
+    private static final DataParameter<Byte> RIDING = EntityDataManager.createKey(EntityMadThaumaturge.class, DataSerializers.BYTE);
     private int attackTime = 0;
 
-    public MadThaumaturge(World w) {
+    public EntityMadThaumaturge(World w) {
         super(w);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, false));
@@ -40,7 +40,7 @@ public class MadThaumaturge extends EntityMob {
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, Thaumaturge.class, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityThaumaturge.class, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityCultist.class, true));
     }
 
@@ -124,7 +124,7 @@ public class MadThaumaturge extends EntityMob {
     protected boolean processInteract(EntityPlayer player, EnumHand hand) {
         if (hand == EnumHand.MAIN_HAND) {
             if (player.getHeldItemMainhand().isEmpty()) return true;
-            if (PontifexRobe.isFullSet(player) && player.getHeldItemMainhand().getItem() == RCItems.crimson_annales) {
+            if (ItemPontifexRobe.isFullSet(player) && player.getHeldItemMainhand().getItem() == RCItems.crimson_annales) {
                 if (!player.world.isRemote) {
                     this.setDead();
                     EntityCultist cultist = null;
@@ -139,7 +139,7 @@ public class MadThaumaturge extends EntityMob {
                             break;
                         }
                         case 2: {
-                            cultist = new CrimsonPaladin(this.world);
+                            cultist = new EntityCrimsonPaladin(this.world);
                             break;
                         }
                     }

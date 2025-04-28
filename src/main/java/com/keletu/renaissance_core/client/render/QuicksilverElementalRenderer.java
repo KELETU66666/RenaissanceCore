@@ -1,6 +1,6 @@
 package com.keletu.renaissance_core.client.render;
 
-import com.keletu.renaissance_core.entity.QuicksilverElemental;
+import com.keletu.renaissance_core.entity.EntityQuicksilverElemental;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
@@ -46,7 +46,7 @@ public class QuicksilverElementalRenderer extends RenderBiped {
         this.renderManager.renderEngine.bindTexture(SHADOW_TEXTURES);
         World world = this.getWorldFromRenderManager();
         GlStateManager.depthMask(false);
-        float f = ((QuicksilverElemental)entityIn).getHealth() / 30;
+        float f = ((EntityQuicksilverElemental)entityIn).getHealth() / 30;
 
         if (entityIn instanceof EntityLiving)
         {

@@ -22,8 +22,8 @@ import thaumcraft.common.lib.SoundsTC;
 
 import javax.annotation.Nullable;
 
-public class Dissolved extends EntityMob {
-    public Dissolved(World w) {
+public class EntityDissolved extends EntityMob {
+    public EntityDissolved(World w) {
         super(w);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.6D, false));
@@ -33,8 +33,8 @@ public class Dissolved extends EntityMob {
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, MadThaumaturge.class, true));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget(this, Thaumaturge.class, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityMadThaumaturge.class, true));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget(this, EntityThaumaturge.class, true));
         this.targetTasks.addTask(5, new EntityAINearestAttackableTarget(this, EntityCultist.class, true));
     }
 
@@ -114,7 +114,7 @@ public class Dissolved extends EntityMob {
     public void onLivingUpdate() {
         if ((ticksExisted % 200 == 0) && (getAttackTarget() != null)) {
             EntityLivingBase target = getAttackTarget();
-            UpcomingHoleEntity hole = new UpcomingHoleEntity(world);
+            EntityUpcomingHole hole = new EntityUpcomingHole(world);
             hole.setPositionAndRotation(target.posX, target.posY, target.posZ, world.rand.nextFloat(), world.rand.nextFloat());
             world.spawnEntity(hole);
         }

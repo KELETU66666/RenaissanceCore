@@ -21,11 +21,11 @@ import thaumcraft.api.items.ItemsTC;
 import thaumcraft.codechicken.lib.vec.Vector3;
 import thaumcraft.common.entities.monster.cult.EntityCultist;
 
-public class ThaumGib extends EntityMob {
+public class EntityThaumGib extends EntityMob {
 
-    private static final DataParameter<Byte> TYPE = EntityDataManager.createKey(ThaumGib.class, DataSerializers.BYTE);
+    private static final DataParameter<Byte> TYPE = EntityDataManager.createKey(EntityThaumGib.class, DataSerializers.BYTE);
 
-    public ThaumGib(World world) {
+    public EntityThaumGib(World world) {
         super(world);
         this.setSize(0.6F, 0.5F);
         this.tasks.addTask(0, new EntityAISwimming(this));
@@ -34,7 +34,7 @@ public class ThaumGib extends EntityMob {
         this.tasks.addTask(7, new EntityAIWander(this, 0.6D));
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, Thaumaturge.class, false));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityThaumaturge.class, false));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityCultist.class, false));
     }
 
@@ -52,7 +52,7 @@ public class ThaumGib extends EntityMob {
         this.dataManager.register(TYPE, (byte) 0);
     }
 
-    public ThaumGib(World world, EntityLivingBase parent, int gibType) {
+    public EntityThaumGib(World world, EntityLivingBase parent, int gibType) {
         this(world);
         setType(gibType);
         float f = 0.0f;

@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import thaumcraft.common.lib.SoundsTC;
 
-public class SamuraiAttackAI extends EntityAIBase {
+public class AISamuraiAttack extends EntityAIBase {
     World world;
     EntityCreature attacker;
     /**
@@ -47,12 +47,12 @@ public class SamuraiAttackAI extends EntityAIBase {
 
     private int failedPathFindingPenalty;
 
-    public SamuraiAttackAI(EntityCreature p_i1635_1_, Class p_i1635_2_, double p_i1635_3_, boolean p_i1635_5_) {
+    public AISamuraiAttack(EntityCreature p_i1635_1_, Class p_i1635_2_, double p_i1635_3_, boolean p_i1635_5_) {
         this(p_i1635_1_, p_i1635_3_, p_i1635_5_);
         this.classTarget = p_i1635_2_;
     }
 
-    public SamuraiAttackAI(EntityCreature p_i1636_1_, double p_i1636_2_, boolean p_i1636_4_) {
+    public AISamuraiAttack(EntityCreature p_i1636_1_, double p_i1636_2_, boolean p_i1636_4_) {
         this.attacker = p_i1636_1_;
         this.world = p_i1636_1_.world;
         this.speedTowardsTarget = p_i1636_2_;
@@ -77,11 +77,11 @@ public class SamuraiAttackAI extends EntityAIBase {
                 this.entityPathEntity = this.attacker.getNavigator().getPathToEntityLiving(entitylivingbase);
                 this.delayCounter = 4 + this.attacker.getRNG().nextInt(7);
                 if (this.entityPathEntity != null) {
-                    ((Samurai) this.attacker).setAnger(0);
+                    ((EntitySamurai) this.attacker).setAnger(0);
                 }
                 return false;
             } else {
-                ((Samurai) this.attacker).setAnger(0);
+                ((EntitySamurai) this.attacker).setAnger(0);
                 return true;
             }
         }
@@ -99,8 +99,8 @@ public class SamuraiAttackAI extends EntityAIBase {
      * Execute a one shot task or start executing a continuous task
      */
     public void startExecuting() {
-        if (((Samurai) this.attacker).getAnger() <= 200 && this.attacker.getHealth() > this.attacker.getMaxHealth() / 3) {
-            ((Samurai) this.attacker).setAnger(MathHelper.clamp(200 + this.attacker.world.rand.nextInt(200), 0, 1000));
+        if (((EntitySamurai) this.attacker).getAnger() <= 200 && this.attacker.getHealth() > this.attacker.getMaxHealth() / 3) {
+            ((EntitySamurai) this.attacker).setAnger(MathHelper.clamp(200 + this.attacker.world.rand.nextInt(200), 0, 1000));
         }
         this.attacker.getNavigator().setPath(this.entityPathEntity, this.speedTowardsTarget);
         this.delayCounter = 0;
@@ -175,7 +175,7 @@ public class SamuraiAttackAI extends EntityAIBase {
                     if (!world.isRemote) {
                         if (this.attacker.getEntitySenses().canSee(entitylivingbase)) {
                             this.attacker.world.playSound(this.attacker.posX, this.attacker.posY, this.attacker.posZ, SoundsTC.shock, SoundCategory.HOSTILE, 0.25F, 1.0F, true);
-                            entitylivingbase.attackEntityFrom(DamageSource.causeMobDamage(this.attacker), 2 * (((Samurai) this.attacker).getType() + 1));
+                            entitylivingbase.attackEntityFrom(DamageSource.causeMobDamage(this.attacker), 2 * (((EntitySamurai) this.attacker).getType() + 1));
                             RenaissanceCore.packetInstance.sendToAllAround(new PacketFXLightning((float) this.attacker.posX, (float) (this.attacker.posY + this.attacker.height - 0.5), (float) this.attacker.posZ, (float) entitylivingbase.posX, (float) (entitylivingbase.posY + entitylivingbase.height / 2), (float) entitylivingbase.posZ, 0x6666DD, 0.02F), new NetworkRegistry.TargetPoint(world.provider.getDimension(), this.attacker.posX, this.attacker.posY, this.attacker.posZ, 32.0));
                         }
                     }
