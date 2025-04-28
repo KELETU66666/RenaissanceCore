@@ -98,10 +98,10 @@ public class PontifexRobe extends ItemArmor implements IGoggles, IRevealer, IVis
     }
 
     public static boolean isFullSet(EntityPlayer player) {
-        return  !player.inventory.armorItemInSlot(0).isEmpty() && player.inventory.armorItemInSlot(0).getItem() instanceof PontifexRobe &&
-                !player.inventory.armorItemInSlot(1).isEmpty() && player.inventory.armorItemInSlot(1).getItem() instanceof PontifexRobe &&
-                !player.inventory.armorItemInSlot(2).isEmpty() && player.inventory.armorItemInSlot(2).getItem() instanceof PontifexRobe &&
-                !player.inventory.armorItemInSlot(3).isEmpty() && player.inventory.armorItemInSlot(3).getItem() instanceof PontifexRobe;
+        return  !player.inventory.armorInventory.get(0).isEmpty() && player.inventory.armorInventory.get(0).getItem() instanceof PontifexRobe &&
+                !player.inventory.armorInventory.get(1).isEmpty() && player.inventory.armorInventory.get(1).getItem() instanceof PontifexRobe &&
+                !player.inventory.armorInventory.get(2).isEmpty() && player.inventory.armorInventory.get(2).getItem() instanceof PontifexRobe &&
+                !player.inventory.armorInventory.get(3).isEmpty() && player.inventory.armorInventory.get(3).getItem() instanceof PontifexRobe;
     }
 
 
