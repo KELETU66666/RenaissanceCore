@@ -17,7 +17,11 @@ public class RCLoottableInjects {
     public static void onLootTableLoad(LootTableLoadEvent event) {
         if (event.getName().equals(TALootTables.PEDESTAL_RARE)) {
             LootPool main = event.getTable().getPool("pedestal_rare");
-            main.addEntry(new LootEntryItem(RCItems.crimson_annales, 3, 0, new LootFunction[0], new LootCondition[0], "loottable:crimson_annales"));
+            main.addEntry(new LootEntryItem(RCItems.crimson_annales, 5, 0, new LootFunction[0], new LootCondition[0], "loottable:crimson_annales_pedestal"));
+        }
+        if (event.getName().equals(TALootTables.LOOT_RARE)) {
+            LootPool main = event.getTable().getPool("loot_rare");
+            main.addEntry(new LootEntryItem(RCItems.crimson_annales, 5, 0, new LootFunction[0], new LootCondition[0], "loottable:crimson_annales_urn"));
         }
     }
 }

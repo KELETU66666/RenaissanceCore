@@ -64,7 +64,7 @@ public class ItemResources extends Item {
                         ThaumcraftApi.internalMethods.completeResearch(player, "!CrimsonAnnales");
                         world.playSound(null, player.getPosition(), SoundsTC.learn, SoundCategory.PLAYERS, 0.75F, 1.0F);
                     } else {
-                        player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tooltip.rc_book.2")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
+                        player.sendStatusMessage(new TextComponentTranslation(I18n.translateToLocal("tooltip.rc_book.2")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)), true);
                     }
                 }
             }

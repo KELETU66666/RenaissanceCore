@@ -27,7 +27,7 @@ import thaumcraft.api.items.IVisDiscountGear;
 import thaumcraft.api.items.IWarpingGear;
 
 public class PontifexRobe extends ItemArmor implements IGoggles, IRevealer, IVisDiscountGear, IWarpingGear {
-    final static ArmorMaterial MATERIAL = EnumHelper.addArmorMaterial("TCPONTIFEXROBE", "", 30, new int[]{4, 8, 7, 4}, 25, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1);
+    final static ArmorMaterial MATERIAL = EnumHelper.addArmorMaterial("TCPONTIFEXROBE", "", 30, new int[]{4, 7, 8, 4}, 25, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1);
     static PontifexRobeModel model = null;
 
     public static String chest = RenaissanceCore.MODID + ":textures/models/armor/pontifex_robe.png";

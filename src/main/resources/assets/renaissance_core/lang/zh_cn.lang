@@ -79,7 +79,64 @@ entity.TaintedVillager.name=Tainted Villager
 entity.TaintedCreeper.name=Tainted Creeper
 entity.TaintedSheep.name=Tainted Sheep
 
+entity.Thaumaturge.name=神秘使
+entity.MadThaumaturge.name=疯狂神秘使
+entity.VengefulGolem.name=复仇傀儡
+entity.CrimsonPaladin.name=血腥圣骑士
+entity.Dissolved.name=溶解之物
+entity.QuicksilverElemental.name=水银元素
+entity.ThaumGib.name=活性肢体
+entity.Overanimated.name=泛滥活性
+entity.StrayedMirror.name=迷失镜像
+entity.Samurai.name=偏执战士
+entity.CrimsonPontifex.name=血腥教皇
+entity.ConcentratedWarpChargeEntity.name=浓缩腐化飞弹
+
+text.entity.CrimsonPontifex.name=%s %s
+
 tile.full_crucible.name=填满的坩埚
+
+research.Thaumaturge.title=神秘使
+research.Thaumaturge.title.text=我们活在社会里
+research.Thaumaturge.stage.1=整天待在家里,寻找征服事物本质的方法,这让人筋疲力尽.<BR>整个世界不太可能只聚集在你的眼皮底下,所以与其他像你一样的痴迷者分享经验应该会很有用.向他们提供你的想法,他们也会与你分享他们的想法.<BR>他们也不会拒绝用你口袋里的神秘或古代垃圾来交换他们的东西,但这可不是你大老远来这里的原因,不是吗?<IMG>renaissance_core:textures/gui/thaumaturge.png:0:0:255:255:.5</IMG>.
+
+research.MadThaumaturge.title=疯狂神秘使
+research.MadThaumaturge.title.text=可怜的迷失灵魂
+research.MadThaumaturge.stage.1=这些衣衫褴褛的疯子们一定是失去了与现实的联系.<BR>看起来你帮不上他们什么忙了,很明显禁忌知识的重量已经完全地压垮了他们的大脑,而且他们一看见你就发起攻击,很可能是在模仿他们游荡其中的行尸走肉的行为.<BR>然而这并不意味着他们是毫无用处的,你曾见过他们理智尚存时所写下的笔记.<PAGE>不过这些毫无疑问是妄想的主意中对你来说还有一些有趣的部分,而要注意的问题就是不要达到那个把他们逐出人类社会的临界点.<IMG>renaissance_core:textures/gui/mad_thaumaturge.png:0:0:255:255:.5</IMG>.
+
+research.SpecialCreatures.title=神秘议会
+research.SpecialCreatures.title.text=科学进步的代价
+research.SpecialCreatures.stage.1=这可不在你的预料之内.<BR>不错,你以前是遇见过一些疯得无可救药的人类代表,可是这些......难道这就是那些设法存活够久,保守着神秘学秘术的人们迟早要面对的共同命运吗?尽管有着万全的预防措施,可你的不朽灵魂值得换取一名练习神秘使所能成就的力量吗?<BR>你不太想给出这些问题的答案.时间将会揭晓你的选择.<PAGE>不过,现在还不是抛弃凡世的时候.你也许不能帮助这些人们重拾生命,但你仍然可以让他们从现在的这种,呃,存在形式中解脱,至少如果你发现自己处于这种情况,你会希望他们也能为你做同样的事情.
+research.QuicksilverElemental.stage.1=每一名炼金术士都希望把自己的产品投入生产,有的希望以此偿还债务,还有的希望彰显自己在炼金术上的才能.而你眼前的东西很有可能一场工作事故的结果.这具崭新的水银身体让它能够适应敌人的攻击,物理攻击只会穿过它.<BR>幸好金属在高温下能够完全融化.<PAGE><IMG>renaissance_core:textures/gui/quicksilver.png:0:0:255:255:.5</IMG>.
+research.Dissolved.stage.1=起初你尚不能分辨出朝你靠近的是什么东西,但仔细观察后,你不能说自己“看”到了什么,因为那具身体除了轮廓外只有一片虚空.对抗虚空是没有意义的,不过你觉得有可能用什么方法在这个不幸的家伙体内创造另一个空间孔洞,从而让其坍缩.<PAGE><IMG>renaissance_core:textures/gui/dissolved.png:0:0:255:255:.5</IMG>.
+research.Samurai.stage.1=外界时不时出现的危险,加上持续不断的偏执,会给人带来可怕的后果.为了保护自己免受现实和想象的威胁,这些人发明了越来越严格的防御手段,其性质也越来越可疑.尽管周围每个人都不断怀疑他人,但他们还是会去与幻觉同胞合作.<PAGE><IMG>renaissance_core:textures/gui/samurai.png:0:0:255:255:.5</IMG>.
+research.CrimsonPaladin.stage.1=你之前从未遇见过这样的血腥教徒代表.他的外表显示出了他对魔法和武术都有相当的了解.谁知道在加入教派之前他曾修练过什么,不过你可以预见到这样的一个对手会有怎样的卑鄙心肠.<BR>也许有一天你能找到血腥教派是从哪里得到这样的增援的......<PAGE><IMG>renaissance_core:textures/gui/crimson_paladin.png:0:0:255:255:.5</IMG>.
+research.OverAnimated.stage.1=很少有人想死,但愿意采取严肃措施来避免死亡的人更少.神秘学研究带来了许多可能性,而有的人就想利用这些可能性来延续生命.不知道这个结果是计算错误还是刻意决定,但这些人已经不再代表一个完整的人,他们的每一个器官都是单独的生命形式.<PAGE><IMG>renaissance_core:textures/gui/overanimated.png:0:0:255:255:.5</IMG>.
+research.VengefulGolem.stage.1=傀儡是每名神秘使最可靠的工具,但前提是它们只是工具.为了使生产力最大化,许多工程师不惜践踏道德规范,赋予石头和稻草以思想.没过多久这些造物就揭竿而起,而现在它们抢占了自身创造者的所有魔法技能,特别是 - 如何操纵别人的身体和利用铃铛发号施令.你暗自希望在睡梦中被傀儡抓住是不受痛苦的.<PAGE><IMG>renaissance_core:textures/gui/vengefulgolem.png:0:0:255:255:.5</IMG>.
+research.StrayedMirror.stage.1=镜面可以传到光，能量甚至信息... 就像你眼前的这个奇怪的家伙一样，他似乎被困在镜子中，但又不受限于镜中世界，就像是一个有着自我意识的，自我反射的镜像体.<BR>镜像体反射它所看到--也许"它"还没有看到的一切，包括你的所有行动.<BR>不过想要打破一面镜子还是很容易的的.<PAGE><IMG>renaissance_core:textures/gui/strayed_mirror.png:0:0:255:255:.5</IMG>.
+
+research.QuickSilverCrucible.title=水银反应炉
+research.QuickSilverCrucible.title.text=炼金奇迹
+research.QuickSilverCrucible.stage.1=时至今日,从来没有人能够创造出融合源质的方法.似乎这项现实世界的法则是不可打破的.<BR>但是终于这一天到来了.<BR>你一直相信人的意志是无垠的,而现在,这一点再次被证实了.你成功捕获了那些自以为前世是炼金术士的失败者之一,并将他直接扔进了沸腾的坩埚中.<BR>他身体里的活性结构产生了剧烈的反应,立刻融合进了坩埚的内壁,从而给了他一个新的,更有用的人生目标 - 协助那些更有适应能力的神秘使进行炼金实验.<BR>融化在反应炉中的每一份水银都可以使不超过两格外的一炉坩埚中的前两组源质相互合成.
+
+research.CRIMSONANNALES.title=血腥年鉴
+research.CRIMSONANNALES.title.text=神秘的失踪
+research.CRIMSONANNALES.stage.1=如果不是因为你对血腥教派的了解,你就不会浪费时间解读这些破烂东西了.<BR>似乎很多很多年前,该教派的领袖不是一位,而是两位,第二位领袖对神秘学更为精通.一些接近现在的日期被抹去了,而此后对血腥教皇的提及完全消失了.<BR>你相信,正是由于教派的理论伙伴的消失(或流放?)才导致了其技术衰落,并无法实现其仪式的结果.<BR>无论如何,这一事实无疑是令人感兴趣的.<BR>你将在业余时间着手解开这一现象......
+
+research.CRIMSONPONTIFEX.title=血腥教皇
+research.CRIMSONPONTIFEX.title.text=家人重聚
+research.CRIMSONPONTIFEX.stage.1=凭借成功从裂隙另一侧召唤生物的记录,你认为你知道血腥教派的教皇消失到哪里去了......<BR>当然,故意将明显怀有敌意的人从遗忘中带出来并不是最好的主意,但你仍然需要实证数据来支持你的理论.<BR>众所周知,裂隙会与物品产生共鸣,丢弃一瓶封装裂隙可以召唤一只愤怒的元素，而拿着一本血腥年鉴叩击那扇"门"又会唤起什么?
+research.CRIMSONPONTIFEX.stage.2=多年来处于幻象状态的不只是教皇,还有他的法衣.你知道复制它并不困难.<BR>穿上全套服装可以让你随时放弃你的物质完整性,代价是限制你的活动自由.<BR>按下H键切换此功能.<BR>尽管时间流逝,但对教皇精神力量的恐惧仍然渗透到教派的每一位成员身上.穿上全套制服,你对自己指挥血腥战士的能力充满信心.<BR>你的下属在精通治疗术且嗜血成性的教皇的率领下作战,将获得强大的力量.
+
+research.f_crimsonnotes.text=击败血腥教皇
+
+research.CRIMSONINITIATION.title=血腥启蒙
+research.CRIMSONINITIATION.title.text=在这签字
+research.CRIMSONINITIATION.stage.1=身着教皇的法袍,你感觉到他的精神控制能力充斥着你.虽然你不是教派的成员,但其他人似乎并不这么认为,他们正在等待补充不断减少的队伍.<BR>你完全有能力做到这一点.穿上教皇的全套法衣,用你的血腥匕首接触在掌握神秘学之路上失败的人之一,给他一次重生的机会.
+
+research.PONTIFEXHAMMER.title=教皇战锤
+research.PONTIFEXHAMMER.title.text=真正的血腥武器
+research.PONTIFEXHAMMER.stage.1=你能够重现传奇般的血腥教皇的武器.它尺寸惊人,而且同样具有夺取他人生命的能力.<BR>按住鼠标右键即可使用此功能.
 
 tc.research_category.BOTANY=植物学
 

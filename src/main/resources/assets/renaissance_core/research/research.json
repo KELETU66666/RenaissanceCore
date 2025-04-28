@@ -203,6 +203,7 @@
         "renaissance_core:textures/research/r_pontifex.png"
       ],
       "parents": [
+        "PRIMORDIAL_WISP",
         "CRIMSONANNALES",
         "!RiftMonitor"
       ],

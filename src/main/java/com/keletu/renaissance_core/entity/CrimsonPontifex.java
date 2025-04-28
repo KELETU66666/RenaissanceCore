@@ -43,11 +43,12 @@ import thaumcraft.common.lib.utils.EntityUtils;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 public class CrimsonPontifex extends EntityThaumcraftBoss implements IRangedAttackMob {
 
     private static final DataParameter<Byte> TITLE = EntityDataManager.createKey(CrimsonPontifex.class, DataSerializers.BYTE);
-    String[] titles = new String[]{"Ivius", "Ufarihm", "Ihith", "Pemonar", "Shagron", "Ugimaex", "Qroleus", "Oxon", "Rheforn", "Zubras"};
+    static String[] titles = new String[]{"Ivius", "Ufarihm", "Ihith", "Pemonar", "Shagron", "Ugimaex", "Qroleus", "Oxon", "Rheforn", "Zubras"};
     private int attackCounter = 0;
     private int aggroCooldown = 0;
     private int cultists;
@@ -81,12 +82,17 @@ public class CrimsonPontifex extends EntityThaumcraftBoss implements IRangedAtta
         this.getDataManager().register(TITLE, (byte) 0);
     }
 
-    public void generateName() {
-        int t = (int) this.getEntityAttribute(ThaumcraftApiHelper.CHAMPION_MOD).getAttributeValue();
-        if (t >= 0) {
-            this.setCustomNameTag(new TextComponentTranslation("text.entity.CrimsonPontifex.name", this.getTitle(), ChampionModifier.mods[t].getModNameLocalized(), new TextComponentTranslation("entity." + EntityList.getEntityString(this) + ".name")).getFormattedText());
-        }
+    protected static String generateName(Random rng) {
+        return titles[rng.nextInt(titles.length)];
+    }
 
+    @Override
+    public void generateName() {
+        int mod = (int) getEntityAttribute(ThaumcraftApiHelper.CHAMPION_MOD).getAttributeValue();
+        if (mod >= 0) {
+            setCustomNameTag(new TextComponentTranslation("text.entity.CrimsonPontifex.name",
+                    ChampionModifier.mods[mod].getModNameLocalized(), generateName(rand)).getFormattedText());
+        }
     }
 
     private String getTitle() {
@@ -107,6 +113,8 @@ public class CrimsonPontifex extends EntityThaumcraftBoss implements IRangedAtta
     public void readEntityFromNBT(NBTTagCompound nbt) {
         super.readEntityFromNBT(nbt);
         setTitle(nbt.getByte("title"));
+
+        bossInfo.setName(getDisplayName());
     }
 
     public boolean isOnSameTeam(Entity el) {
@@ -130,9 +138,10 @@ public class CrimsonPontifex extends EntityThaumcraftBoss implements IRangedAtta
         entityDropItem(new ItemStack(ItemsTC.lootBag, 1, 2), 1.5f);
     }
 
+    @Override
     public void setCustomNameTag(String name) {
         super.setCustomNameTag(name);
-        this.bossInfo.setName(this.getDisplayName());
+        bossInfo.setName(getDisplayName());
     }
 
     @Override
@@ -176,7 +185,8 @@ public class CrimsonPontifex extends EntityThaumcraftBoss implements IRangedAtta
     public IEntityLivingData onInitialSpawn(DifficultyInstance diff, IEntityLivingData data) {
         setEquipmentBasedOnDifficulty(diff);
         setEnchantmentBasedOnDifficulty(diff);
-        setTitle(rand.nextInt(titles.length));
+        bossInfo.setName(getDisplayName());
+        EntityUtils.makeChampion(this, true);
         return super.onInitialSpawn(diff, data);
     }
 
