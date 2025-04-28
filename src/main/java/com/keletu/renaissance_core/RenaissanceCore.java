@@ -215,7 +215,7 @@ public class RenaissanceCore {
                         new ItemStack(ItemsTC.crimsonRobeHelm),
                         new AspectList().add(IsorropiaAPI.FLESH, 400).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 400).add(Aspect.PROTECT, 1000).add(Aspect.VOID, 400).add(Aspect.LIFE, 400)));
 
-        ItemStack hood1 = new ItemStack(RCItems.pontifex_hood);
+        ItemStack hood1 = new ItemStack(RCItems.pontifex_robe);
         hood1.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
         ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("trk:pontifex_robe"),
                 new CrucibleRecipe("CRIMSONPONTIFEX",
