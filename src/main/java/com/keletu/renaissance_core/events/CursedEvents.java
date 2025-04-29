@@ -120,7 +120,7 @@ public class CursedEvents {
             if (dragon.deathTicks == 199 && cursedPlayer != null) {
 
                 Vec3d center = new Vec3d(dragon.posX, dragon.posY, dragon.posZ);
-                EntityItemImportant heart = new EntityItemImportant(event.getEntity().world, center.x, center.y, center.z, new ItemStack(ItemsTC.primordialPearl, 1, 5));
+                EntityItemImportant heart = new EntityItemImportant(event.getEntity().world, center.x, center.y, center.z, new ItemStack(ItemsTC.primordialPearl, 1, 7));
 
                 event.getEntity().world.spawnEntity(heart);
 

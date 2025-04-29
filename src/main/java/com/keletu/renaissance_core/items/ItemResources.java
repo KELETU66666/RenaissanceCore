@@ -20,12 +20,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.capabilities.ThaumcraftCapabilities;
+import thaumcraft.api.items.IWarpingGear;
 import thaumcraft.common.lib.SoundsTC;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemResources extends Item {
+public class ItemResources extends Item implements IWarpingGear {
 
     EnumRarity rarity;
 
@@ -105,4 +106,8 @@ public class ItemResources extends Item {
 
     }
 
+    @Override
+    public int getWarp(ItemStack itemStack, EntityPlayer entityPlayer) {
+        return itemStack.getItem() == RCItems.research_notes_crimson ? 5 : itemStack.getItem() == RCItems.crimson_annales ? 3 : 0;
+    }
 }

@@ -29,7 +29,9 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.entities.ITaintedMob;
+import thaumcraft.api.items.ItemsTC;
 import thaumcraft.api.potions.PotionFluxTaint;
 import thaumcraft.common.entities.construct.EntityOwnedConstruct;
 import thaumcraft.common.entities.monster.EntityPech;
@@ -113,6 +115,8 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RCItems.pechHeadHunter);
         event.getRegistry().registerAll(RCItems.pechHeadThaumaturge);
         event.getRegistry().registerAll(RCItems.quicksilverCrucible);
+
+        OreDictionary.registerOre("theRedOne", ItemsTC.primordialPearl);
     }
 
     @SubscribeEvent
