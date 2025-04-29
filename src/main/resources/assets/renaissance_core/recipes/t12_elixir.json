@@ -17,8 +17,8 @@
       "data": 0
     },
     {
-      "type": "forge:ore_dict",
-      "ore": "theRedOne"
+      "item": "thaumcraft:primordial_pearl",
+      "data": 32767
     }
   ],
   "result": {

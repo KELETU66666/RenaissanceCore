@@ -124,7 +124,7 @@ public class EntityMadThaumaturge extends EntityMob {
     protected boolean processInteract(EntityPlayer player, EnumHand hand) {
         if (hand == EnumHand.MAIN_HAND) {
             if (player.getHeldItemMainhand().isEmpty()) return true;
-            if (ItemPontifexRobe.isFullSet(player) && player.getHeldItemMainhand().getItem() == RCItems.crimson_annales) {
+            if (ItemPontifexRobe.isFullSet(player) && player.getHeldItemMainhand().getItem() == RCItems.research_notes_crimson) {
                 if (!player.world.isRemote) {
                     this.setDead();
                     EntityCultist cultist = null;
