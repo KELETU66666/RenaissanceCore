@@ -1,6 +1,6 @@
 package com.keletu.renaissance_core.mixins;
 
-import com.keletu.renaissance_core.blocks.RFBlocks;
+import com.keletu.renaissance_core.blocks.RCBlocks;
 import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -30,7 +30,7 @@ public abstract class MixinCrucible {
             TileCrucible tile = (TileCrucible) world.getTileEntity(pos);
             if (tile != null && entity instanceof EntityItem && ((EntityItem) entity).getItem().getItem() == RCItems.arcane_lime_powder && tile.tank.getFluidAmount() > 0) {
                 world.removeTileEntity(pos);
-                world.setBlockState(pos, RFBlocks.full_crucible.getDefaultState());
+                world.setBlockState(pos, RCBlocks.full_crucible.getDefaultState());
                 ((EntityItem) entity).getItem().shrink(1);
                 ci.cancel();
             }
@@ -46,7 +46,7 @@ public abstract class MixinCrucible {
                 if (tile.tank.getFluidAmount() > 0) {
                     player.inventory.decrStackSize(player.inventory.currentItem, 1);
                     world.removeTileEntity(pos);
-                    world.setBlockState(pos, RFBlocks.full_crucible.getDefaultState());
+                    world.setBlockState(pos, RCBlocks.full_crucible.getDefaultState());
                     cir.setReturnValue(true);
                 }
             }

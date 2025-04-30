@@ -1,7 +1,7 @@
 package com.keletu.renaissance_core.items;
 
 import com.keletu.renaissance_core.RenaissanceCore;
-import com.keletu.renaissance_core.blocks.RFBlocks;
+import com.keletu.renaissance_core.blocks.RCBlocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -20,11 +20,11 @@ public class RCItems {
     public static final Item pontifex_legs = new ItemPontifexRobe(1, EntityEquipmentSlot.LEGS).setRegistryName("pontifex_legs").setTranslationKey("pontifex_legs").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
     public static final Item pontifex_boots = new ItemPontifexRobe(0, EntityEquipmentSlot.FEET).setRegistryName("pontifex_boots").setTranslationKey("pontifex_boots").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
     public static final Item molot = new ItemPontifexHammer().setRegistryName("molot").setTranslationKey("molot").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
-    public static final Item crimson_annales = new ItemResources(rarityEric).setRegistryName("crimson_annales").setTranslationKey("crimson_annales").setMaxStackSize(1).setCreativeTab(RenaissanceCore.tabRenaissanceCore);
+    public static final Item crimson_annales = new ItemCrimsonAnnales().setRegistryName("crimson_annales").setTranslationKey("crimson_annales").setMaxStackSize(1).setCreativeTab(RenaissanceCore.tabRenaissanceCore);
     public static final Item research_notes_crimson = new ItemResources(rarityEric).setRegistryName("research_notes_crimson").setTranslationKey("research_notes_crimson").setMaxStackSize(1).setCreativeTab(RenaissanceCore.tabRenaissanceCore);
 
-    public static final Item pechHeadNormal = new RCItemBlocks(RFBlocks.pechHead_normal);
-    public static final Item pechHeadHunter = new RCItemBlocks(RFBlocks.pechHead_hunter);
-    public static final Item pechHeadThaumaturge = new RCItemBlocks(RFBlocks.pechHead_thaumaturge);
-    public static final Item quicksilverCrucible = new RCItemBlocks(RFBlocks.quicksilver_crucible);
+    public static final Item pechHeadNormal = new RCItemBlocks(RCBlocks.pechHead_normal);
+    public static final Item pechHeadHunter = new RCItemBlocks(RCBlocks.pechHead_hunter);
+    public static final Item pechHeadThaumaturge = new RCItemBlocks(RCBlocks.pechHead_thaumaturge);
+    public static final Item quicksilverCrucible = new RCItemBlocks(RCBlocks.quicksilver_crucible);
 }

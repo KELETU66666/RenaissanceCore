@@ -2,8 +2,8 @@ package com.keletu.renaissance_core.entity;
 
 import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
-import com.keletu.renaissance_core.blocks.QuicksilverCrucibleTile;
-import com.keletu.renaissance_core.blocks.RFBlocks;
+import com.keletu.renaissance_core.blocks.RCBlocks;
+import com.keletu.renaissance_core.blocks.TileQuicksilverCrucible;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
@@ -108,10 +108,10 @@ public class EntityQuicksilverElemental extends EntityMob {
         if (tile instanceof TileCrucible) {
             world.setBlockToAir(pos);
             world.removeTileEntity(pos);
-            QuicksilverCrucibleTile crucible = new QuicksilverCrucibleTile();
-            world.setBlockState(pos, RFBlocks.quicksilver_crucible.getDefaultState());
+            TileQuicksilverCrucible crucible = new TileQuicksilverCrucible();
+            world.setBlockState(pos, RCBlocks.quicksilver_crucible.getDefaultState());
             world.setTileEntity(pos, crucible);
-            QuicksilverCrucibleTile placed = (QuicksilverCrucibleTile) world.getTileEntity(pos);
+            TileQuicksilverCrucible placed = (TileQuicksilverCrucible) world.getTileEntity(pos);
             placed.aspects.add(Aspect.EXCHANGE, 20);
             placed.markDirty();
             world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);

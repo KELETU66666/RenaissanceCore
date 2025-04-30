@@ -1,8 +1,8 @@
 package com.keletu.renaissance_core.events;
 
 import com.keletu.renaissance_core.RenaissanceCore;
-import com.keletu.renaissance_core.blocks.QuicksilverCrucibleTile;
-import com.keletu.renaissance_core.blocks.RFBlocks;
+import com.keletu.renaissance_core.blocks.RCBlocks;
+import com.keletu.renaissance_core.blocks.TileQuicksilverCrucible;
 import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.block.Block;
@@ -85,13 +85,13 @@ public class RegistryEvents {
     }
     @SubscribeEvent
     public static void regBlocks(RegistryEvent.Register<Block> event) {
-        event.getRegistry().registerAll(RFBlocks.pechHead_normal);
-        event.getRegistry().registerAll(RFBlocks.pechHead_hunter);
-        event.getRegistry().registerAll(RFBlocks.pechHead_thaumaturge);
-        event.getRegistry().registerAll(RFBlocks.full_crucible);
-        event.getRegistry().registerAll(RFBlocks.quicksilver_crucible);
+        event.getRegistry().registerAll(RCBlocks.pechHead_normal);
+        event.getRegistry().registerAll(RCBlocks.pechHead_hunter);
+        event.getRegistry().registerAll(RCBlocks.pechHead_thaumaturge);
+        event.getRegistry().registerAll(RCBlocks.full_crucible);
+        event.getRegistry().registerAll(RCBlocks.quicksilver_crucible);
 
-        GameRegistry.registerTileEntity(QuicksilverCrucibleTile.class, new ResourceLocation(RenaissanceCore.MODID, "quicksilver_crucible"));
+        GameRegistry.registerTileEntity(TileQuicksilverCrucible.class, new ResourceLocation(RenaissanceCore.MODID, "quicksilver_crucible"));
     }
 
     @SubscribeEvent

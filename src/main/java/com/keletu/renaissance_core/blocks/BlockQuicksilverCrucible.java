@@ -24,7 +24,7 @@ import thaumcraft.common.entities.EntitySpecialItem;
 import java.util.List;
 import java.util.Random;
 
-public class QuicksilverCrucibleBlock extends BlockContainer {
+public class BlockQuicksilverCrucible extends BlockContainer {
 
     protected static final AxisAlignedBB AABB_LEGS = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.3125D, 1.0D);
     protected static final AxisAlignedBB AABB_WALL_NORTH = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 0.125D);
@@ -34,7 +34,7 @@ public class QuicksilverCrucibleBlock extends BlockContainer {
 
     private int delay = 0;
 
-    public QuicksilverCrucibleBlock() {
+    public BlockQuicksilverCrucible() {
         super(Material.IRON);
         this.setHardness(3.0F);
         this.setResistance(17.0F);
@@ -47,7 +47,7 @@ public class QuicksilverCrucibleBlock extends BlockContainer {
     public void randomDisplayTick(IBlockState stateIn, World w, BlockPos pos, Random r) {
         if (r.nextInt(10) == 0) {
             TileEntity te = w.getTileEntity(pos);
-            if (te instanceof QuicksilverCrucibleTile && ((QuicksilverCrucibleTile)te).aspects.getAmount(Aspect.EXCHANGE) > 0) {
+            if (te instanceof TileQuicksilverCrucible && ((TileQuicksilverCrucible)te).aspects.getAmount(Aspect.EXCHANGE) > 0) {
                 w.playSound(pos.getX(), pos.getY(), pos.getZ(), new SoundEvent(new ResourceLocation(RenaissanceCore.MODID + ":melted")), SoundCategory.BLOCKS, 1.1F + r.nextFloat() * 0.1F, 1.2F + r.nextFloat() * 0.2F, false);
             }
         }
@@ -57,7 +57,7 @@ public class QuicksilverCrucibleBlock extends BlockContainer {
     @Override
     public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
         if (!world.isRemote) {
-                QuicksilverCrucibleTile tile = (QuicksilverCrucibleTile)world.getTileEntity(pos);
+                TileQuicksilverCrucible tile = (TileQuicksilverCrucible)world.getTileEntity(pos);
                 if (tile != null && entity instanceof EntityItem && !(entity instanceof EntitySpecialItem)) {
                     tile.attemptSmelt((EntityItem)entity);
                 } else {
@@ -92,11 +92,11 @@ public class QuicksilverCrucibleBlock extends BlockContainer {
 
     public int getComparatorInputOverride(IBlockState state, World world, BlockPos pos) {
         TileEntity te = world.getTileEntity(pos);
-        if (te != null && te instanceof QuicksilverCrucibleTile) {
-            float var10000 = (float)((QuicksilverCrucibleTile)te).aspects.visSize();
-            ((QuicksilverCrucibleTile)te).getClass();
+        if (te != null && te instanceof TileQuicksilverCrucible) {
+            float var10000 = (float)((TileQuicksilverCrucible)te).aspects.visSize();
+            ((TileQuicksilverCrucible)te).getClass();
             float r = var10000 / 100.0F;
-            return MathHelper.floor(r * 14.0F) + (((QuicksilverCrucibleTile)te).aspects.visSize() > 0 ? 1 : 0);
+            return MathHelper.floor(r * 14.0F) + (((TileQuicksilverCrucible)te).aspects.visSize() > 0 ? 1 : 0);
         }
         return 0;
     }
@@ -104,8 +104,8 @@ public class QuicksilverCrucibleBlock extends BlockContainer {
     @Override
     public void onNeighborChange(IBlockAccess world, BlockPos pos, BlockPos neighbor) {
         TileEntity te = world.getTileEntity(pos);
-        if (te != null && te instanceof QuicksilverCrucibleTile) {
-            ((QuicksilverCrucibleTile)te).getBellows();
+        if (te != null && te instanceof TileQuicksilverCrucible) {
+            ((TileQuicksilverCrucible)te).getBellows();
         }
 
         super.onNeighborChange(world, pos, neighbor);
@@ -128,7 +128,7 @@ public class QuicksilverCrucibleBlock extends BlockContainer {
 
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
-        return new QuicksilverCrucibleTile();
+        return new TileQuicksilverCrucible();
     }
 
     @Override

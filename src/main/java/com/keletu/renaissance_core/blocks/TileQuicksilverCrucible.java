@@ -22,16 +22,16 @@ import thaumcraft.common.lib.SoundsTC;
 import thaumcraft.common.lib.research.ResearchManager;
 import thaumcraft.common.tiles.crafting.TileCrucible;
 
-public class QuicksilverCrucibleTile extends TileEntity implements IAspectContainer, ITickable {
+public class TileQuicksilverCrucible extends TileEntity implements IAspectContainer, ITickable {
     public AspectList aspects = new AspectList();
     int bellows = -1;
     int cooldown;
 
-    public QuicksilverCrucibleTile() {
+    public TileQuicksilverCrucible() {
         cooldown = 0;
     }
 
-    public QuicksilverCrucibleTile(boolean created) {
+    public TileQuicksilverCrucible(boolean created) {
         super();
         if (created) {
             aspects.add(Aspect.EXCHANGE, 20);
@@ -142,7 +142,7 @@ public class QuicksilverCrucibleTile extends TileEntity implements IAspectContai
         if (bubble) {
             this.world.playSound(null, entity.getPosition(), SoundsTC.bubble, SoundCategory.BLOCKS, 0.2F, 1.0F + this.world.rand.nextFloat() * 0.4F);
             this.world.notifyBlockUpdate(this.getPos(), world.getBlockState(pos), world.getBlockState(pos), 3);
-            this.world.addBlockEvent(new BlockPos(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()), RFBlocks.quicksilver_crucible, 2, 1);
+            this.world.addBlockEvent(new BlockPos(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()), RCBlocks.quicksilver_crucible, 2, 1);
         }
 
         if (stacksize <= 0) {
@@ -181,7 +181,7 @@ public class QuicksilverCrucibleTile extends TileEntity implements IAspectContai
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
         if (world.isBlockLoaded(pkt.getPos())) {
             TileEntity tile = world.getTileEntity(pkt.getPos());
-            if (tile instanceof QuicksilverCrucibleTile) {
+            if (tile instanceof TileQuicksilverCrucible) {
                 tile.readFromNBT(pkt.getNbtCompound());
             }
         }

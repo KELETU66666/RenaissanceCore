@@ -2,7 +2,7 @@ package com.keletu.renaissance_core.proxy;
 
 import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
-import com.keletu.renaissance_core.blocks.QuicksilverCrucibleTile;
+import com.keletu.renaissance_core.blocks.TileQuicksilverCrucible;
 import com.keletu.renaissance_core.client.model.VengefulGolemModel;
 import com.keletu.renaissance_core.client.render.*;
 import com.keletu.renaissance_core.client.render.layer.LayerBackpack;
@@ -70,7 +70,7 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(EntityEtherealShackles.class, new EtherealShacklesEntityRenderer());
         RenderingRegistry.registerEntityRenderingHandler(EntityMadThaumaturge.class, new ThaumaturgeRenderer(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/mad_thaumaturge.png"), 0.5f));
 
-        ClientRegistry.bindTileEntitySpecialRenderer(QuicksilverCrucibleTile.class, new QuicksilverCrucibleTileRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileQuicksilverCrucible.class, new QuicksilverCrucibleTileRenderer());
 
         if (ConfigsRC.CHANGE_BOTANIA_RECIPE && Loader.isModLoaded("botania")) {
             PageArcaneWorkbenchRecipe.init();

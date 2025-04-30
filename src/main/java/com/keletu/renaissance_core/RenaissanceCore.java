@@ -50,9 +50,11 @@ import thaumcraft.api.golems.parts.GolemAddon;
 import thaumcraft.api.golems.parts.GolemHead;
 import thaumcraft.api.golems.parts.PartModel;
 import thaumcraft.api.items.ItemsTC;
-import thaumcraft.api.research.*;
+import thaumcraft.api.research.ResearchCategories;
+import thaumcraft.api.research.ScanEntity;
+import thaumcraft.api.research.ScanItem;
+import thaumcraft.api.research.ScanningManager;
 import thaumcraft.common.golems.client.PartModelHauler;
-import thecodex6824.thaumicaugmentation.api.TABlocks;
 import thecodex6824.thaumicaugmentation.api.TAItems;
 
 import java.util.Arrays;
@@ -128,6 +130,7 @@ public class RenaissanceCore {
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "crimson_paladin"), EntityCrimsonPaladin.class, "CrimsonPaladin", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "ethereal_shackles"), EntityEtherealShackles.class, "EtherealShacklesEntity", id++, MODID, 64, 1, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "mad_thaumaturge"), EntityMadThaumaturge.class, "MadThaumaturge", id++, MODID, 64, 1, true, 0x00FFFF, 0x111111);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "crimson_annales"), EntityCrimsonAnnales.class, "CrimsonAnnales", id++, MODID, 64, 1, false);
 
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".MadThaumaturge", new AspectList().add(Aspect.MAN, 4).add(Aspect.MIND, 4).add(Aspect.ELDRITCH, 8));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".CrimsonPaladin", new AspectList().add(Aspect.MAN, 4).add(Aspect.LIFE, 4).add(Aspect.ELDRITCH, 4).add(Aspect.MAGIC, 4));
@@ -150,7 +153,6 @@ public class RenaissanceCore {
         ScanningManager.addScannableThing(new ScanEntity("!QuicksilverElemental", EntityQuicksilverElemental.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!StrayedMirror", EntityStrayedMirror.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!Samurai", EntitySamurai.class, true));
-        ScanningManager.addScannableThing(new ScanBlock("!RiftMonitor", TABlocks.RIFT_MONITOR));
         ScanningManager.addScannableThing(new ScanItem("f_crimsonnotes", new ItemStack(RCItems.research_notes_crimson)));
 
         if (Loader.isModLoaded("botania")) {
