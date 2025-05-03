@@ -6,7 +6,6 @@ import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*;
@@ -21,7 +20,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
@@ -43,8 +41,6 @@ import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.entities.monster.EntityPech;
 import thaumcraft.common.items.consumables.ItemSanitySoap;
 import thaumcraft.common.lib.potions.PotionWarpWard;
-import thaumcraft.common.lib.research.ResearchManager;
-import thecodex6824.thaumicaugmentation.common.entity.EntityItemImportant;
 
 import java.util.Map;
 import java.util.Random;
@@ -112,7 +108,7 @@ public class CursedEvents {
         addDrop(event, itemStacks[chosenStack]);
     }
 
-    @SubscribeEvent
+    /*@SubscribeEvent
     public static void onEntityTick(LivingEvent.LivingUpdateEvent event) {
         if (event.getEntity() instanceof EntityDragon && !event.getEntity().world.isRemote) {
             EntityDragon dragon = (EntityDragon) event.getEntity();
@@ -128,7 +124,7 @@ public class CursedEvents {
 
             }
         }
-    }
+    }*/
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onLivingDrops(LivingDropsEvent event) {
@@ -138,23 +134,9 @@ public class CursedEvents {
 
             if (hasThaumiumCursed(player)) {
 
-
-                //if (!ELConfigs.enableSpecialDrops)
-                //    return;
-
                 //if (killed instanceof EntityDragon) {
-                //    if (SuperpositionHandler.isTheWorthyOne(player)) {
-                //        int heartsGained = SuperpositionHandler.getPersistentInteger(player, "AbyssalHeartsGained", 0);
-//
-                //        if (heartsGained < 5) { // Only as many as there are unique items from them, +1
-                //            abyssalHeartOwner = player;
-                //        }
-                //    }
+                //    cursedPlayer = player;
                 //}
-
-                if (killed instanceof EntityDragon) {
-                    cursedPlayer = player;
-                }
 
                 if (killed.getClass() == EntityZombie.class || killed.getClass() == EntityHusk.class) {
                     addDropWithChance(event, getRandomSizeStack(Items.IRON_NUGGET, 1, 18), 35);
@@ -164,13 +146,13 @@ public class CursedEvents {
                     addDropWithChance(event, getRandomSizeStack(ItemsTC.nuggets, 1, 18, 5), 10);
                 } else if (killed.getClass() == EntityCreeper.class) {
                     addDropWithChance(event, ThaumcraftApiHelper.makeCrystal(Aspect.EARTH, rand.nextInt(10) + 1), 20);
-                } else if (killed.getClass() == EntityWitch.class && ResearchManager.completeResearch(player, "FIRSTSTEPS")) {
+                } else if (killed.getClass() == EntityWitch.class && ThaumcraftCapabilities.knowsResearch(player, "FIRSTSTEPS")) {
                     addDropWithChance(event, getRandomSizeStack(ItemsTC.salisMundus, 2, 3), 30);
                 } else if (killed.getClass() == EntityPigZombie.class) {
                     addDropWithChance(event, getRandomSizeStack(ItemsTC.tallow, 1, 5), 50);
                 } else if (killed.getClass() == EntitySilverfish.class) {
                     addDropWithChance(event, getRandomSizeStack(ItemsTC.amber, 1, 2), 30);
-                } else if (killed.getClass() == EntityEnderman.class) {
+                } else if (killed.getClass() == EntityEnderman.class && ThaumcraftCapabilities.knowsResearch(player, "BASEELDRITCH")) {
                     addDropWithChance(event, new ItemStack(ItemsTC.voidSeed), 5);
                 } else if (killed.getClass() == EntityBlaze.class || killed.getClass() == EntityMagmaCube.class) {
                     addDropWithChance(event, ThaumcraftApiHelper.makeCrystal(Aspect.FIRE, rand.nextInt(10) + 1), 20);

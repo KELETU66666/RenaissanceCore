@@ -12,6 +12,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagByte;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -166,10 +167,22 @@ public class EntityCrimsonPontifex extends EntityThaumcraftBoss implements IRang
     @Override
     protected void setEquipmentBasedOnDifficulty(DifficultyInstance diff) {
         this.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(RCItems.molot));
-        this.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(RCItems.pontifex_hood));
-        this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(RCItems.pontifex_robe));
-        this.setItemStackToSlot(EntityEquipmentSlot.LEGS, new ItemStack(RCItems.pontifex_legs));
-        this.setItemStackToSlot(EntityEquipmentSlot.FEET, new ItemStack(RCItems.pontifex_boots));
+        ItemStack hood = new ItemStack(RCItems.pontifex_hood);
+        hood.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
+
+        ItemStack hood1 = new ItemStack(RCItems.pontifex_robe);
+        hood1.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
+
+        ItemStack hood2 = new ItemStack(RCItems.pontifex_legs);
+        hood2.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
+
+        ItemStack hood3 = new ItemStack(RCItems.pontifex_boots);
+        hood3.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
+
+        this.setItemStackToSlot(EntityEquipmentSlot.HEAD, hood);
+        this.setItemStackToSlot(EntityEquipmentSlot.CHEST, hood1);
+        this.setItemStackToSlot(EntityEquipmentSlot.LEGS, hood2);
+        this.setItemStackToSlot(EntityEquipmentSlot.FEET, hood3);
 
     }
 

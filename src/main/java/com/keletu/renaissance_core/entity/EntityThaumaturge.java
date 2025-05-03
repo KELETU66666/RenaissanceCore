@@ -141,7 +141,7 @@ public class EntityThaumaturge extends EntityMob implements IRangedAttackMob {
     protected void dropFewItems(boolean flag, int i) {
         int r = this.rand.nextInt(2);
         r += i;
-        this.entityDropItem(new ItemStack(ItemsTC.nuggets, r, 6), 1.5F);
+        this.entityDropItem(new ItemStack(Items.GOLD_NUGGET, r), 1.5F);
         super.dropFewItems(flag, i);
     }
 

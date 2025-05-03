@@ -7,9 +7,12 @@ import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -117,8 +120,17 @@ public class EntityVengefulGolem extends EntityMob implements IRangedAttackMob {
     @Override
     public void attackEntityWithRangedAttack(EntityLivingBase target, float f) {
         if (target instanceof EntityPlayer) {
+            boolean muffed = false;
+            //if(Integration.witchery){
+            //    ItemStack currentArmor = target.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+            //    if(currentArmor != null && currentArmor.getItem() == Integration.earmuffs){
+            //        muffed = true;
+            //    }
+            //}
             String name = target.getName();
-            if (rand.nextInt(10) >= 2) {
+            if (!muffed && rand.nextInt(10) >= 2) {
+                this.swingArm(EnumHand.MAIN_HAND);
+                target.world.playSound(null, target.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.HOSTILE, 0.7F, 1.0F + target.world.rand.nextFloat() * 0.1F);
                 if (rand.nextInt(10) > 5) {
                     int r = rand.nextInt(4);
                     target.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tc.golem.taunt." + r)).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
