@@ -8,11 +8,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
-public class ThaumaturgeRenderer extends RenderBiped {
+public class RenderThaumaturge extends RenderBiped {
 	
 	private final ResourceLocation texture;
 	
-	public ThaumaturgeRenderer(ModelBiped model, ResourceLocation texture, float shadowSize) {
+	public RenderThaumaturge(ModelBiped model, ResourceLocation texture, float shadowSize) {
 		super(Minecraft.getMinecraft().getRenderManager(), model, shadowSize);
 		this.texture = texture;
 	}

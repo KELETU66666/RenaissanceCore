@@ -100,7 +100,6 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RCItems.dice12);
         event.getRegistry().registerAll(RCItems.pech_backpack);
         event.getRegistry().registerAll(RCItems.elixir);
-        event.getRegistry().registerAll(RCItems.coins);
         event.getRegistry().registerAll(RCItems.pontifex_hood);
         event.getRegistry().registerAll(RCItems.pontifex_robe);
         event.getRegistry().registerAll(RCItems.pontifex_legs);
@@ -108,6 +107,7 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RCItems.molot);
         event.getRegistry().registerAll(RCItems.crimson_annales);
         event.getRegistry().registerAll(RCItems.research_notes_crimson);
+        event.getRegistry().registerAll(RCItems.item_icon);
 
         event.getRegistry().registerAll(RCItems.pechHeadNormal);
         event.getRegistry().registerAll(RCItems.pechHeadHunter);

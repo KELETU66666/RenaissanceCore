@@ -6,8 +6,8 @@ import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
-public class UpcomingHoleRender extends Render {
-    public UpcomingHoleRender() {
+public class RenderUpcomingHole extends Render {
+    public RenderUpcomingHole() {
         super(Minecraft.getMinecraft().getRenderManager());
         this.shadowSize = 0.0F;
     }

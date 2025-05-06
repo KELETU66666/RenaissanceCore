@@ -14,10 +14,13 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
+import thaumcraft.api.casters.FocusPackage;
 import thaumcraft.api.casters.ICaster;
+import thaumcraft.api.casters.IFocusElement;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.client.fx.FXDispatcher;
 import thaumcraft.common.entities.monster.cult.EntityCultist;
+import thaumcraft.common.items.casters.ItemFocus;
 import thaumcraft.common.lib.SoundsTC;
 
 import javax.annotation.Nullable;
@@ -47,6 +50,15 @@ public class EntityDissolved extends EntityMob {
 
     }
 
+    private static boolean focusContainsRift(ItemStack focus) {
+        FocusPackage f = ItemFocus.getPackage(focus);
+        for (IFocusElement element : f.nodes) {
+            if (element.getKey().equals("thaumcraft.RIFT"))
+                return true;
+        }
+
+        return false;
+    }
 
     @Override
     protected boolean processInteract(EntityPlayer player, EnumHand hand) {
@@ -56,7 +68,7 @@ public class EntityDissolved extends EntityMob {
         if (!(stack.getItem() instanceof ICaster)) return false;
         ItemStack focus = ((ICaster) stack.getItem()).getFocusStack(stack);
         if (focus == null) return false;
-        if (focus.hasTagCompound()) {
+        if (focusContainsRift(focus)) {
             this.attackEntityFrom(DamageSource.OUT_OF_WORLD, 9000F);
             return true;
         }

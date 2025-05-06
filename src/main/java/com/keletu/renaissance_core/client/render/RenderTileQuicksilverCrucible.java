@@ -10,8 +10,8 @@ import org.lwjgl.opengl.GL11;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.client.lib.UtilsFX;
 
-public class QuicksilverCrucibleTileRenderer extends TileEntitySpecialRenderer<TileQuicksilverCrucible> {
-    public QuicksilverCrucibleTileRenderer() {
+public class RenderTileQuicksilverCrucible extends TileEntitySpecialRenderer<TileQuicksilverCrucible> {
+    public RenderTileQuicksilverCrucible() {
     }
 
     public void renderEntityAt(TileQuicksilverCrucible cr, double x, double y, double z, float fq) {

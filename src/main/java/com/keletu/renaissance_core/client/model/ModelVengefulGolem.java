@@ -9,11 +9,11 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import org.lwjgl.opengl.GL11;
 
-public class VengefulGolemModel extends ModelBiped {
+public class ModelVengefulGolem extends ModelBiped {
     public ModelRenderer brain;
     public ModelRenderer jar;
 
-    public VengefulGolemModel() {
+    public ModelVengefulGolem() {
         super();
         //this.bipedHead.addBox(-4.0F, -8.0F, -4.0F, 8, 8, 8, p_i1149_1_);
 
@@ -38,7 +38,7 @@ public class VengefulGolemModel extends ModelBiped {
         this.bipedRightLeg.render(p_78088_7_);
         this.bipedLeftLeg.render(p_78088_7_);
         GL11.glPushMatrix();
-        Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(RenaissanceCore.MODID, "textures/models/golem_decoration.png"));
+        Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(RenaissanceCore.MODID, "textures/models/golem_brain.png"));
         GL11.glScalef(1.3F / f6, 1.5F / f6, 1.3F / f6);
         GL11.glTranslatef(0.0F, -0.22F, 0.0F);
         brain.render(p_78088_7_);

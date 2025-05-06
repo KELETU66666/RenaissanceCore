@@ -10,14 +10,14 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-public class StrayedMirrorRenderer extends RenderBiped {
+public class RenderStrayedMirror extends RenderBiped {
 
     private final ResourceLocation texture;
     private ModelBiped bipedModel;
 
     private final ModelBiped armor = new ModelBiped(0.5F);
 
-    public StrayedMirrorRenderer(ModelBiped model, ResourceLocation texture, float shadowSize) {
+    public RenderStrayedMirror(ModelBiped model, ResourceLocation texture, float shadowSize) {
         super(Minecraft.getMinecraft().getRenderManager(), model, shadowSize);
         this.texture = texture;
         this.bipedModel = model;

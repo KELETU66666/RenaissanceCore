@@ -7,11 +7,11 @@ import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-public class CrimsonPontifexRenderer extends RenderBiped<EntityCrimsonPontifex> {
+public class RenderCrimsonPontifex extends RenderBiped<EntityCrimsonPontifex> {
 
     private final ResourceLocation texture;
 
-    public CrimsonPontifexRenderer(ModelBiped model, ResourceLocation texture, float shadowSize) {
+    public RenderCrimsonPontifex(ModelBiped model, ResourceLocation texture, float shadowSize) {
         super(Minecraft.getMinecraft().getRenderManager(), model, shadowSize);
         this.texture = texture;
     }

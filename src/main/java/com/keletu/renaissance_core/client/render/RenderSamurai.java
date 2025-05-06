@@ -19,7 +19,7 @@ import org.lwjgl.opengl.GL11;
 import thaumcraft.client.renderers.models.gear.ModelCustomArmor;
 import thecodex6824.thaumicaugmentation.api.TAItems;
 
-public class SamuraiRenderer extends RenderBiped {
+public class RenderSamurai extends RenderBiped {
 
     private final ResourceLocation texture;
     private ModelBiped bipedModel;
@@ -40,7 +40,7 @@ public class SamuraiRenderer extends RenderBiped {
     private final ItemStack swordItem = new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("thaumicwonders", "primal_destroyer")));
     private final ItemStack wand = new ItemStack(TAItems.GAUNTLET, 1, 0);
 
-    public SamuraiRenderer(ModelBiped model, ResourceLocation texture, float shadowSize) {
+    public RenderSamurai(ModelBiped model, ResourceLocation texture, float shadowSize) {
         super(Minecraft.getMinecraft().getRenderManager(), model, shadowSize);
         this.bipedModel = model;
         this.texture = texture;

@@ -9,11 +9,11 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 
-public class CrimsonPaladinRenderer extends RenderBiped {
+public class RenderCrimsonPaladin extends RenderBiped {
 
     private final ResourceLocation texture;
 
-    public CrimsonPaladinRenderer(ModelBiped model, ResourceLocation texture, float shadowSize) {
+    public RenderCrimsonPaladin(ModelBiped model, ResourceLocation texture, float shadowSize) {
         super(Minecraft.getMinecraft().getRenderManager(), model, shadowSize);
         this.addLayer(new LayerBipedArmor(this));
         this.texture = texture;

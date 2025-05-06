@@ -9,7 +9,7 @@ import org.lwjgl.opengl.GL11;
 import thaumcraft.client.lib.obj.AdvancedModelLoader;
 import thaumcraft.client.lib.obj.IModelCustom;
 
-public class EtherealShacklesEntityRenderer extends Render {
+public class RenderProjectileEtherealShackles extends Render {
     public static IModelCustom shacklesModel;
     public static IModelCustom chainModel;
     final ResourceLocation shackles = new ResourceLocation(RenaissanceCore.MODID+":models/shackles.obj");
@@ -17,7 +17,7 @@ public class EtherealShacklesEntityRenderer extends Render {
     public static ResourceLocation shacklesTexture = new ResourceLocation(RenaissanceCore.MODID+":textures/models/shackles.png");
     public static ResourceLocation chainTexture = new ResourceLocation(RenaissanceCore.MODID+":textures/models/Chain.png");
 
-    public EtherealShacklesEntityRenderer(){
+    public RenderProjectileEtherealShackles(){
         super(Minecraft.getMinecraft().getRenderManager());
         shacklesModel = AdvancedModelLoader.loadModel(shackles);
         chainModel = AdvancedModelLoader.loadModel(chain);

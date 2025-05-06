@@ -19,13 +19,13 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
-public class QuicksilverElementalRenderer extends RenderBiped {
+public class RenderQuicksilverElemental extends RenderBiped {
 
     private static final ResourceLocation SHADOW_TEXTURES = new ResourceLocation("textures/misc/shadow.png");
     private final ResourceLocation texture;
     private final ShaderCallback shaderCallback;
 
-    public QuicksilverElementalRenderer(ModelBiped model, ResourceLocation texture, float shadowSize) {
+    public RenderQuicksilverElemental(ModelBiped model, ResourceLocation texture, float shadowSize) {
         super(Minecraft.getMinecraft().getRenderManager(), model, shadowSize);
         this.texture = texture;
         shaderCallback = new ShaderCallback() {

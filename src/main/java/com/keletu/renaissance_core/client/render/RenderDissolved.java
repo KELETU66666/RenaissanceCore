@@ -13,7 +13,7 @@ import org.lwjgl.opengl.ARBShaderObjects;
 import thaumcraft.client.lib.ender.ShaderCallback;
 import thaumcraft.client.lib.ender.ShaderHelper;
 
-public class DissolvedRenderer extends RenderBiped {
+public class RenderDissolved extends RenderBiped {
 
     private final ResourceLocation texture;
     private final FakeRobeModel armor = new FakeRobeModel(1.0F);
@@ -21,7 +21,7 @@ public class DissolvedRenderer extends RenderBiped {
     private final ShaderCallback shaderCallback;
     private ModelBiped bipedMain;
 
-    public DissolvedRenderer(ModelBiped model, ResourceLocation texture, float shadowSize) {
+    public RenderDissolved(ModelBiped model, ResourceLocation texture, float shadowSize) {
         super(Minecraft.getMinecraft().getRenderManager(), model, shadowSize);
         this.texture = texture;
         this.bipedMain = model;

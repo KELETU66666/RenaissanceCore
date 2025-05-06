@@ -2,7 +2,7 @@ package com.keletu.renaissance_core.items;
 
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.capability.ICapConcilium;
-import com.keletu.renaissance_core.client.model.PontifexRobeModel;
+import com.keletu.renaissance_core.client.model.ModelPontifexRobe;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -28,7 +28,7 @@ import thaumcraft.api.items.IWarpingGear;
 
 public class ItemPontifexRobe extends ItemArmor implements IGoggles, IRevealer, IVisDiscountGear, IWarpingGear {
     final static ArmorMaterial MATERIAL = EnumHelper.addArmorMaterial("TCPONTIFEXROBE", "", 30, new int[]{4, 7, 8, 4}, 25, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1);
-    static PontifexRobeModel model = null;
+    static ModelPontifexRobe model = null;
 
     public static String chest = RenaissanceCore.MODID + ":textures/models/armor/pontifex_robe.png";
 
@@ -42,7 +42,7 @@ public class ItemPontifexRobe extends ItemArmor implements IGoggles, IRevealer, 
     public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped modelBiped) {
         if (!itemStack.isEmpty() && itemStack.getItem() instanceof ItemPontifexRobe) {
             if (model == null) {
-                model = new PontifexRobeModel();
+                model = new ModelPontifexRobe();
             }
             model.bipedHead.showModel = armorSlot == EntityEquipmentSlot.HEAD;
             model.armor.showModel = armorSlot == EntityEquipmentSlot.CHEST;

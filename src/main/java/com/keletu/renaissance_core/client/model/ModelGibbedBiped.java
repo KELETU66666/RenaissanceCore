@@ -3,7 +3,7 @@ package com.keletu.renaissance_core.client.model;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
-public class GibbedBipedModel extends ModelBase {
+public class ModelGibbedBiped extends ModelBase {
     public ModelRenderer bipedHead;
     public ModelRenderer bipedHeadwear;
     public ModelRenderer bipedBody;
@@ -12,15 +12,15 @@ public class GibbedBipedModel extends ModelBase {
     public ModelRenderer bipedRightLeg;
     public ModelRenderer bipedLeftLeg;
 
-    public GibbedBipedModel() {
+    public ModelGibbedBiped() {
         this(0.0F);
     }
 
-    public GibbedBipedModel(float p_i1148_1_) {
+    public ModelGibbedBiped(float p_i1148_1_) {
         this(p_i1148_1_, 0.0F, 64, 32);
     }
 
-    public GibbedBipedModel(float p_i1149_1_, float p_i1149_2_, int p_i1149_3_, int p_i1149_4_) {
+    public ModelGibbedBiped(float p_i1149_1_, float p_i1149_2_, int p_i1149_3_, int p_i1149_4_) {
         this.textureWidth = p_i1149_3_;
         this.textureHeight = p_i1149_4_;
         this.bipedHead = new ModelRenderer(this, 0, 0);

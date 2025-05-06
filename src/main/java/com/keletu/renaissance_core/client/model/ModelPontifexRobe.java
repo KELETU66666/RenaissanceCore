@@ -6,7 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 import org.lwjgl.opengl.GL11;
 
-public class PontifexRobeModel extends ModelBiped {
+public class ModelPontifexRobe extends ModelBiped {
     //fields
     ModelRenderer Shape1H;
     ModelRenderer Shape2H;
@@ -74,7 +74,7 @@ public class PontifexRobeModel extends ModelBiped {
     public ModelRenderer rightBoot;
     public ModelRenderer cloth;
     public ModelRenderer armor;
-    public PontifexRobeModel() {
+    public ModelPontifexRobe() {
         textureWidth = 128;
         textureHeight = 64;
         bipedHead.cubeList.clear();

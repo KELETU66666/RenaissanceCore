@@ -1,7 +1,7 @@
 package com.keletu.renaissance_core.client.render;
 
 import com.keletu.renaissance_core.RenaissanceCore;
-import com.keletu.renaissance_core.client.model.GibbedBipedModel;
+import com.keletu.renaissance_core.client.model.ModelGibbedBiped;
 import com.keletu.renaissance_core.entity.EntityThaumGib;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
@@ -10,12 +10,12 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import thaumcraft.codechicken.lib.math.MathHelper;
 
-public class ThaumGibRenderer extends Render
+public class RenderThaumGib extends Render
 {
-    GibbedBipedModel biped = new GibbedBipedModel();
+    ModelGibbedBiped biped = new ModelGibbedBiped();
 
     ResourceLocation texture = new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/thaumaturge.png");
-    public ThaumGibRenderer()
+    public RenderThaumGib()
     {
         super(Minecraft.getMinecraft().getRenderManager());
     }

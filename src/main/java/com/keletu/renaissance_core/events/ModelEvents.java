@@ -1,7 +1,7 @@
 package com.keletu.renaissance_core.events;
 
 import com.keletu.renaissance_core.capability.ICapConcilium;
-import static com.keletu.renaissance_core.client.render.EtherealShacklesEntityRenderer.*;
+import static com.keletu.renaissance_core.client.render.RenderProjectileEtherealShackles.*;
 import com.keletu.renaissance_core.client.render.ShaderHelper;
 import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.block.material.Material;
@@ -40,9 +40,6 @@ public class ModelEvents {
         defaultModel(RCItems.dice12);
         defaultModel(RCItems.pech_backpack);
         defaultModel(RCItems.elixir);
-        defaultModel(RCItems.coins);
-        defaultModel(RCItems.coins, 1);
-        defaultModel(RCItems.coins, 2);
         defaultModel(RCItems.pontifex_hood);
         defaultModel(RCItems.pontifex_robe);
         defaultModel(RCItems.pontifex_legs);
@@ -50,6 +47,9 @@ public class ModelEvents {
         defaultModel(RCItems.molot);
         defaultModel(RCItems.crimson_annales);
         defaultModel(RCItems.research_notes_crimson);
+        defaultModel(RCItems.item_icon);
+        defaultModel(RCItems.item_icon, 1);
+        defaultModel(RCItems.item_icon, 2);
 
         defaultModel(RCItems.pechHeadNormal);
         defaultModel(RCItems.pechHeadHunter);

@@ -8,11 +8,11 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.MathHelper;
 import org.lwjgl.opengl.GL11;
 
-public class ConcentratedWarpChargeModel extends ModelBase {
+public class ModelConcentratedWarpCharge extends ModelBase {
     ModelRenderer cube;
     ModelRenderer cube2;
 
-    public ConcentratedWarpChargeModel() {
+    public ModelConcentratedWarpCharge() {
         this.textureWidth = 64;
         this.textureHeight = 64;
         this.cube = new ModelRenderer(this, 0, 0);

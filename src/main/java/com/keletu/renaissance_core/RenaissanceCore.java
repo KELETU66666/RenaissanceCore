@@ -13,11 +13,13 @@ import com.keletu.renaissance_core.proxy.CommonProxy;
 import com.keletu.renaissance_core.tweaks.InitBotaniaRecipes;
 import com.keletu.renaissance_core.util.ScanEntities;
 import fr.wind_blade.isorropia.common.IsorropiaAPI;
+import fr.wind_blade.isorropia.common.research.recipes.SpecieCurativeInfusionRecipe;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagByte;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
@@ -38,12 +40,12 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.crafting.InfusionRecipe;
-import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.crafting.ShapelessArcaneRecipe;
 import thaumcraft.api.golems.EnumGolemTrait;
 import thaumcraft.api.golems.parts.GolemAddon;
@@ -131,6 +133,7 @@ public class RenaissanceCore {
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "ethereal_shackles"), EntityEtherealShackles.class, "EtherealShacklesEntity", id++, MODID, 64, 1, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "mad_thaumaturge"), EntityMadThaumaturge.class, "MadThaumaturge", id++, MODID, 64, 1, true, 0x00FFFF, 0x111111);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "crimson_annales"), EntityCrimsonAnnales.class, "CrimsonAnnales", id++, MODID, 64, 1, false);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "golem_bydlo"), EntityGolemBydlo.class, "GolemBydlo", id++, MODID, 64, 3, true, 0x00FFFF, 0x555555);
 
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".MadThaumaturge", new AspectList().add(Aspect.MAN, 4).add(Aspect.MIND, 4).add(Aspect.ELDRITCH, 8));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".CrimsonPaladin", new AspectList().add(Aspect.MAN, 4).add(Aspect.LIFE, 4).add(Aspect.ELDRITCH, 4).add(Aspect.MAGIC, 4));
@@ -258,30 +261,28 @@ public class RenaissanceCore {
                         "ingotVoid",
                         "blockGold"));
 
-        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("trk:coin_to_stacks"),
-                new ShapedArcaneRecipe(new ResourceLocation(""), "",
-                        5,
-                        new AspectList(),
-                        new ItemStack(RCItems.coins, 1, 1),
-                        "ccc",
-                        "ccc",
-                        "ccc",
-                        'c', new ItemStack(RCItems.coins)));
-
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:stacks_to_enchanted"),
-                new InfusionRecipe("",
-                        new ItemStack(RCItems.coins, 1, 2),
-                        4,
-                        new AspectList().add(Aspect.DESIRE, 6).add(Aspect.EXCHANGE, 6).add(Aspect.MAGIC, 6),
-                        new ItemStack(RCItems.coins, 1, 1),
-                        new ItemStack(RCItems.coins, 1, 1),
-                        new ItemStack(RCItems.coins, 1, 1),
-                        new ItemStack(RCItems.coins, 1, 1),
-                        new ItemStack(RCItems.coins, 1, 1),
-                        new ItemStack(RCItems.coins, 1, 1),
-                        new ItemStack(RCItems.coins, 1, 1),
-                        new ItemStack(RCItems.coins, 1, 1),
-                        new ItemStack(RCItems.coins, 1, 1)));
+        IsorropiaAPI.registerCreatureInfusionRecipe(new ResourceLocation("renaissance_core", "golem_bydlo"),
+                ((SpecieCurativeInfusionRecipe.Builder) new SpecieCurativeInfusionRecipe.Builder()
+                        .withAspects(new AspectList().add(Aspect.METAL, 100).add(Aspect.ENTROPY, 100).add(Aspect.ENERGY, 50).add(IsorropiaAPI.PRIDE, 50))
+                        .withComponents(
+                                Ingredient.fromStacks(new ItemStack(ItemsTC.mind, 1, 0)),
+                                Ingredient.fromItem(ItemsTC.salisMundus),
+                                Ingredient.fromStacks(OreDictionary.getOres("blockThaumium").get(0)),
+                                Ingredient.fromItem(ItemsTC.tallow),
+                                Ingredient.fromStacks(OreDictionary.getOres("blockThaumium").get(0)),
+                                Ingredient.fromStacks(new ItemStack(ItemsTC.mind, 1, 0)),
+                                Ingredient.fromItem(ItemsTC.mechanismComplex),
+                                Ingredient.fromStacks(new ItemStack(ItemsTC.mind, 1, 0)),
+                                Ingredient.fromStacks(OreDictionary.getOres("blockThaumium").get(0)),
+                                Ingredient.fromItem(ItemsTC.tallow),
+                                Ingredient.fromStacks(OreDictionary.getOres("blockThaumium").get(0)),
+                                Ingredient.fromItem(ItemsTC.salisMundus))
+                        .withInstability(8)
+                        .withKnowledgeRequirement("GOLEMBYDLO"))
+                        .withResult(EntityGolemBydlo.class)
+                        .withPredicate(entity -> entity.getClass() == EntityMadThaumaturge.class)
+                        .withFakeIngredients(Ingredient.fromStacks(new ItemStack(RCItems.item_icon, 1, 1)), new ItemStack(RCItems.item_icon, 1, 2))
+                        .build());
 
         GolemHead.register(new GolemHead("FORAGE", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/research/r_pech.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_forage.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadNormal)}, new EnumGolemTrait[]{RenaissanceCore.GREEDY}));
         GolemHead.register(new GolemHead("STALKER", new String[]{"FIRSTSTEPS"}, new ResourceLocation(MODID, "textures/research/r_pech_stalker.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_stalker.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadHunter)}, new EnumGolemTrait[]{EnumGolemTrait.LIGHT}));

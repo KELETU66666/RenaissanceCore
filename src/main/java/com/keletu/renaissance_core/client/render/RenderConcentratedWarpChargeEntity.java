@@ -1,7 +1,7 @@
 package com.keletu.renaissance_core.client.render;
 
 import com.keletu.renaissance_core.RenaissanceCore;
-import com.keletu.renaissance_core.client.model.ConcentratedWarpChargeModel;
+import com.keletu.renaissance_core.client.model.ModelConcentratedWarpCharge;
 import com.keletu.renaissance_core.entity.EntityConcentratedWarpCharge;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
@@ -10,12 +10,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import org.lwjgl.opengl.GL11;
 
-public class ConcentratedWarpChargeEntityRenderer extends Render {
+public class RenderConcentratedWarpChargeEntity extends Render {
 
-    ConcentratedWarpChargeModel model = new ConcentratedWarpChargeModel();
+    ModelConcentratedWarpCharge model = new ModelConcentratedWarpCharge();
     private static final ResourceLocation rl = new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/warp_cube.png");
 
-    public ConcentratedWarpChargeEntityRenderer() {
+    public RenderConcentratedWarpChargeEntity() {
         super(Minecraft.getMinecraft().getRenderManager());
         this.shadowSize = 0.0F;
     }
