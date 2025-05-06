@@ -287,6 +287,47 @@
           ]
         }
       ]
+    },
+    {
+      "key": "GOLEMBYDLO",
+      "name": "research.GOLEMBYDLO.title",
+      "icons": [
+        "renaissance_core:textures/research/r_golembydlo.png"
+      ],
+      "category": "ISORROPIA",
+      "parents": [
+        "SPECIEINFUSIONS",
+        "!MadThaumaturge",
+        "MINDBIOTHAUMIC",
+        "BASEELDRITCH"
+      ],
+      "meta": [
+        "HIDDEN"
+      ],
+      "location": [
+        11,
+        -2
+      ],
+      "stages": [
+        {
+          "text": "research.GOLEMBYDLO.stage.0",
+          "required_knowledge": [
+            "THEORY;INFUSION;2",
+            "THEORY;GOLEMANCY;2",
+            "THEORY;ELDRITCH;2"
+          ],
+          "required_item": [
+            "thaumcraft:mind;1;1"
+          ],
+          "warp": 3
+        },
+        {
+          "text": "research.GOLEMBYDLO.stage.1",
+          "recipes": [
+            "renaissance_core:golem_bydlo"
+          ]
+        }
+      ]
     }
   ]
 }
