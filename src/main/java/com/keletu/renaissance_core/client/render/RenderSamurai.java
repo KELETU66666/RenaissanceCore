@@ -9,6 +9,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -16,8 +17,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import org.lwjgl.opengl.GL11;
+import thaumcraft.client.lib.obj.AdvancedModelLoader;
+import thaumcraft.client.lib.obj.IModelCustom;
 import thaumcraft.client.renderers.models.gear.ModelCustomArmor;
-import thecodex6824.thaumicaugmentation.api.TAItems;
 
 public class RenderSamurai extends RenderBiped {
 
@@ -33,12 +35,10 @@ public class RenderSamurai extends RenderBiped {
     private FakeModelFortressArmor armorFortress;
     private FakeModelVoidFortressArmor armorVoid;
     private FakeModelFortressArmor armorShadow;
+    private static IModelCustom diceModel;
+    private static ResourceLocation diceTexture = new ResourceLocation(RenaissanceCore.MODID, "textures/models/dice/1221.png");
 
-
-    private final ModelSaya saya = new ModelSaya();
-    private final ModelKatana katana = new ModelKatana();
     private final ItemStack swordItem = new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("thaumicwonders", "primal_destroyer")));
-    private final ItemStack wand = new ItemStack(TAItems.GAUNTLET, 1, 0);
 
     public RenderSamurai(ModelBiped model, ResourceLocation texture, float shadowSize) {
         super(Minecraft.getMinecraft().getRenderManager(), model, shadowSize);
@@ -59,7 +59,7 @@ public class RenderSamurai extends RenderBiped {
 
         switch (type) {
             case 0:
-                texture = new ResourceLocation("thaumcraft","textures/entity/armor/fortress_armor.png");
+                texture = new ResourceLocation("thaumcraft", "textures/entity/armor/fortress_armor.png");
                 armor = armorFortress;
                 break;
             case 1:
@@ -96,6 +96,23 @@ public class RenderSamurai extends RenderBiped {
             } else {
                 armor.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
             }
+        }
+
+        boolean low = entity.getHealth() < entity.getMaxHealth() / 3;
+
+        if (diceModel == null) {
+            diceModel = AdvancedModelLoader.loadModel(new ResourceLocation(RenaissanceCore.MODID, "textures/models/dice/dice12.obj"));
+        }
+
+        if (low) {
+            float rotateAngleY = entity.ticksExisted / 5.0F;
+            GlStateManager.pushMatrix();
+            Minecraft.getMinecraft().getTextureManager().bindTexture(diceTexture);
+            GlStateManager.scale(0.25, 0.25, 0.25);
+            GlStateManager.translate(0, -4 + (Math.sin(entity.ticksExisted / 10F) / 2), 0);
+            GlStateManager.rotate(rotateAngleY * (180F / (float) Math.PI), 0, 1, 0);
+            diceModel.renderAll();
+            GlStateManager.popMatrix();
         }
     }
 
@@ -206,5 +223,4 @@ public class RenderSamurai extends RenderBiped {
             grip1.render(size);
         }
     }
-
 }
