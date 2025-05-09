@@ -6,6 +6,7 @@
   "mixins": [
     "MixinCrucible",
     "MixinEntityUtils",
+    "MixinItemCurio",
     "MixinPacketSyncProgressToServer",
     "MixinWarpEvents"
   ],

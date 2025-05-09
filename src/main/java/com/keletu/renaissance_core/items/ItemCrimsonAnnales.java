@@ -1,9 +1,6 @@
 package com.keletu.renaissance_core.items;
 
-import com.keletu.renaissance_core.entity.EntityCrimsonAnnales;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -23,7 +20,6 @@ import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import thaumcraft.api.items.IWarpingGear;
 import thaumcraft.common.lib.SoundsTC;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemCrimsonAnnales extends Item implements IWarpingGear {
@@ -46,28 +42,6 @@ public class ItemCrimsonAnnales extends Item implements IWarpingGear {
             }
         }
         return super.onItemRightClick(world, player, hand);
-    }
-
-    @Override
-    public boolean hasCustomEntity(ItemStack stack) {
-        return true;
-    }
-
-    @Override
-    @Nullable
-    public Entity createEntity(World world, Entity location, ItemStack stack) {
-        EntityCrimsonAnnales item = new EntityCrimsonAnnales(world, location.posX, location.posY, location.posZ, stack);
-        item.setDefaultPickupDelay();
-        item.setNoDespawn();
-        item.motionX = location.motionX;
-        item.motionY = location.motionY;
-        item.motionZ = location.motionZ;
-        if ((location) instanceof EntityItem) {
-            item.setThrower(((EntityItem) location).getThrower());
-            item.setOwner(((EntityItem) location).getOwner());
-        }
-
-        return item;
     }
 
     @Override

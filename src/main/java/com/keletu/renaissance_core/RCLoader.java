@@ -13,8 +13,6 @@ public class RCLoader implements ILateMixinLoader {
         list.add("mixins.renaissance_core.json");
         if (!Loader.isModLoaded("oldresearch"))
             list.add("mixins.rc_research_change.json");
-        if(Loader.isModLoaded("botania"))
-            list.add("mixins.rc_botania.json");
         return list;
     }
 }

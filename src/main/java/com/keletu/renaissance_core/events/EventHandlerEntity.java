@@ -26,16 +26,12 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingHealEvent;
-import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import net.minecraftforge.fml.relauncher.Side;
 import thaumcraft.common.entities.monster.EntityBrainyZombie;
 import thaumcraft.common.entities.monster.EntityGiantBrainyZombie;
 import thaumcraft.common.entities.monster.cult.EntityCultist;
@@ -50,6 +46,26 @@ public class EventHandlerEntity {
 
     public static final HashMap<EntityPlayer, Boolean> etherealsClient = new HashMap<>();
     public static final HashMap<EntityPlayer, Boolean> etherealsServer = new HashMap<>();
+
+    @SubscribeEvent
+    public static void playerUpdateEvent(LivingEvent.LivingUpdateEvent event) {
+        if(event.getEntityLiving() instanceof EntityPlayer){
+            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+            ICapConcilium capabilities = ICapConcilium.get(player);
+
+            HashMap<EntityPlayer, Boolean> ethereals = !player.world.isRemote ? etherealsServer : etherealsClient;
+
+            if (capabilities.isEthereal()) {
+                player.noClip = true;
+                if (!player.isSneaking() || (!player.isSneaking() && !player.capabilities.allowFlying)) {
+                    player.motionY = 0;
+                }
+            } else if (ethereals.getOrDefault(player, false)) {
+                player.noClip = false;
+            }
+            ethereals.put(player, capabilities.isEthereal());
+        }
+    }
 
     @SubscribeEvent
     public static void tickHandler(TickEvent.PlayerTickEvent event) {
@@ -68,18 +84,6 @@ public class EventHandlerEntity {
                     capabilities.sync();
                 }
             }
-
-            HashMap<EntityPlayer, Boolean> ethereals = event.side == Side.SERVER ? etherealsServer : etherealsClient;
-
-            if (capabilities.isEthereal()) {
-                player.noClip = true;
-                if (!player.isSneaking() || (!player.isSneaking() && !player.capabilities.allowFlying)) {
-                    player.motionY = 0;
-                }
-            } else if (ethereals.getOrDefault(player, false)) {
-                player.noClip = false;
-            }
-            ethereals.put(player, capabilities.isEthereal());
         }
 
         if (event.phase == TickEvent.Phase.END || event.player.world.isRemote) return;
