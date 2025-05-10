@@ -8,6 +8,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumAction;
@@ -34,7 +35,6 @@ public class ItemPontifexRobe extends ItemArmor implements IGoggles, IRevealer, 
 
     public ItemPontifexRobe(int j, EntityEquipmentSlot k) {
         super(MATERIAL, j, k);
-        //this.setCreativeTab(ThaumicConcilium.tabTC);
     }
 
     @SideOnly(Side.CLIENT)
@@ -118,6 +118,10 @@ public class ItemPontifexRobe extends ItemArmor implements IGoggles, IRevealer, 
             stack.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
             items.add(stack);
         }
+    }
+
+    public boolean getIsRepairable(ItemStack stack1, ItemStack stack2) {
+        return stack2.isItemEqual(new ItemStack(Items.IRON_INGOT)) || super.getIsRepairable(stack1, stack2);
     }
 
     @Override

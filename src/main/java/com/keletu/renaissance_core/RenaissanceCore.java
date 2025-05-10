@@ -44,6 +44,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.crafting.ShapelessArcaneRecipe;
@@ -255,7 +256,7 @@ public class RenaissanceCore {
                         "ingotVoid",
                         "plateVoid",
                         new ItemStack(ItemsTC.causalityCollapser),
-                        new ItemStack(ItemsTC.primalCrusher),
+                        new ItemStack(BlocksTC.logGreatwood),
                         new ItemStack(ItemsTC.causalityCollapser),
                         "plateVoid",
                         "ingotVoid",
