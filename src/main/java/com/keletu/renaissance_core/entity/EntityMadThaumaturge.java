@@ -3,7 +3,6 @@ package com.keletu.renaissance_core.entity;
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.items.ItemPontifexRobe;
 import com.keletu.renaissance_core.items.RCItems;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -173,33 +172,6 @@ public class EntityMadThaumaturge extends EntityMob {
     @Override
     public void onUpdate() {
         super.onUpdate();
-        --this.attackTime;
-
-        if (!this.world.isRemote) {
-            if (this.getRidingEntity() == null && this.getAttackTarget() != null && this.getAttackTarget().isBeingRidden() && !this.getAttackTarget().isDead && this.getDistanceSq(this.getAttackTarget()) < 4.0 && this.world.rand.nextInt(100) > 90) {
-                this.startRiding(this.getAttackTarget());
-                this.setRiding(this.getAttackTarget().getEntityId());
-            }
-            if (this.getRidingEntity() != null && !this.isDead && this.attackTime <= 0) {
-                this.attackTime = 10 + this.rand.nextInt(10);
-                this.attackEntityAsMob(this.getRidingEntity());
-                if ((double) this.rand.nextFloat() < 0.2) {
-                    this.dismountRidingEntity();
-                    this.setRiding(-1);
-                }
-            }
-
-            if (this.getRidingEntity() == null && this.getRiding() != -1) {
-                this.setRiding(-1);
-            }
-        } else if (this.getRidingEntity() == null && this.getRiding() != -1) {
-            Entity e = this.world.getEntityByID(this.getRiding());
-            if (e != null) {
-                this.startRiding(e);
-            }
-        } else if (this.getRidingEntity() != null && this.getRiding() == -1) {
-            this.dismountRidingEntity();
-        }
     }
 
     @Override
