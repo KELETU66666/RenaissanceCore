@@ -31,6 +31,7 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import thaumcraft.client.fx.FXDispatcher;
 import thaumcraft.client.fx.ParticleEngine;
 import thaumcraft.client.fx.other.FXEssentiaStream;
 import thaumcraft.client.fx.particles.FXBreakingFade;
@@ -186,5 +187,10 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void bloodinitiation(Entity player, Entity madman) {
         ParticleEngine.addEffect(player.world, new FXEssentiaStream(player.world, player.posX, player.posY + 0.5, player.posZ, madman.posX, madman.posY + 1.8, madman.posZ, 5, 0x7A1A1A, 0.1F, 0, 0.2F));
+    }
+
+    @Override
+    public void dissolvedSpark(Entity entity){
+        FXDispatcher.INSTANCE.sparkle((float) (entity.posX + (-0.5 + entity.world.rand.nextFloat())), (float) (entity.posY + (entity.world.rand.nextFloat() * 2)), (float) ((float) entity.posZ + (-0.5 + entity.world.rand.nextFloat())), 2, 0, 0);
     }
 }

@@ -1,5 +1,6 @@
 package com.keletu.renaissance_core.entity;
 
+import com.keletu.renaissance_core.RenaissanceCore;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
@@ -18,7 +19,6 @@ import thaumcraft.api.casters.FocusPackage;
 import thaumcraft.api.casters.ICaster;
 import thaumcraft.api.casters.IFocusElement;
 import thaumcraft.api.items.ItemsTC;
-import thaumcraft.client.fx.FXDispatcher;
 import thaumcraft.common.entities.monster.cult.EntityCultist;
 import thaumcraft.common.items.casters.ItemFocus;
 import thaumcraft.common.lib.SoundsTC;
@@ -78,7 +78,7 @@ public class EntityDissolved extends EntityMob {
     @Override
     public void onDeath(DamageSource p_70645_1_) {
         for (int i = 0; i < 15; i++) {
-            FXDispatcher.INSTANCE.sparkle((float) (this.posX + (-0.5 + this.world.rand.nextFloat())), (float) (this.posY + (this.world.rand.nextFloat() * 2)), (float) ((float) this.posZ + (-0.5 + this.world.rand.nextFloat())), 2, 0, 0);
+            RenaissanceCore.proxy.dissolvedSpark(this);
         }
 
         super.onDeath(p_70645_1_);

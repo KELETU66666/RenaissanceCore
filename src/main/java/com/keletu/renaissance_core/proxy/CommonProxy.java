@@ -39,4 +39,7 @@ public class CommonProxy {
 
     public void bloodinitiation(Entity player, Entity madman) {
     }
+
+    public void dissolvedSpark(Entity entity) {
+    }
 }
