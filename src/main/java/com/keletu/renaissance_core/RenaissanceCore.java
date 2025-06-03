@@ -147,7 +147,7 @@ public class RenaissanceCore {
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".Dissolved", new AspectList().add(Aspect.MAN, 4).add(Aspect.VOID, 4).add(Aspect.ELDRITCH, 4).add(Aspect.ALCHEMY, 4));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".StrayedMirror", new AspectList().add(Aspect.MAN, 4).add(Aspect.EXCHANGE, 4)/*.add(Aspect.SPATIO, 4)*/.add(Aspect.MOTION, 4));
 
-        ScanningManager.addScannableThing(new ScanEntities("SPECIAL_CREATURES", Arrays.asList(EntityOveranimated.class, EntityDissolved.class, EntityVengefulGolem.class, EntityQuicksilverElemental.class, EntityStrayedMirror.class, EntitySamurai.class)));
+        ScanningManager.addScannableThing(new ScanEntities("!SpecialCreatures", Arrays.asList(EntityOveranimated.class, EntityDissolved.class, EntityVengefulGolem.class, EntityQuicksilverElemental.class, EntityStrayedMirror.class, EntitySamurai.class)));
         ScanningManager.addScannableThing(new ScanEntity("!Thaumaturge", EntityThaumaturge.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!MadThaumaturge", EntityMadThaumaturge.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!OverAnimated", EntityOveranimated.class, true));
@@ -219,7 +219,7 @@ public class RenaissanceCore {
                 new CrucibleRecipe("CRIMSONPONTIFEX",
                         hood,
                         new ItemStack(ItemsTC.crimsonRobeHelm),
-                        new AspectList().add(IsorropiaAPI.FLESH, 400).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 400).add(Aspect.PROTECT, 1000).add(Aspect.VOID, 400).add(Aspect.LIFE, 400)));
+                        new AspectList().add(IsorropiaAPI.FLESH, 100).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 200).add(Aspect.PROTECT, 300).add(Aspect.VOID, 100).add(Aspect.LIFE, 100)));
 
         ItemStack hood1 = new ItemStack(RCItems.pontifex_robe);
         hood1.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
@@ -227,7 +227,7 @@ public class RenaissanceCore {
                 new CrucibleRecipe("CRIMSONPONTIFEX",
                         hood1,
                         new ItemStack(ItemsTC.crimsonRobeChest),
-                        new AspectList().add(IsorropiaAPI.FLESH, 400).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 400).add(Aspect.PROTECT, 1000).add(Aspect.VOID, 400).add(Aspect.LIFE, 400)));
+                        new AspectList().add(IsorropiaAPI.FLESH, 100).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 200).add(Aspect.PROTECT, 300).add(Aspect.VOID, 100).add(Aspect.LIFE, 100)));
 
         ItemStack hood2 = new ItemStack(RCItems.pontifex_legs);
         hood2.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
@@ -235,7 +235,7 @@ public class RenaissanceCore {
                 new CrucibleRecipe("CRIMSONPONTIFEX",
                         hood2,
                         new ItemStack(ItemsTC.crimsonRobeLegs),
-                        new AspectList().add(IsorropiaAPI.FLESH, 400).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 400).add(Aspect.PROTECT, 1000).add(Aspect.VOID, 400).add(Aspect.LIFE, 400)));
+                        new AspectList().add(IsorropiaAPI.FLESH, 100).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 200).add(Aspect.PROTECT, 300).add(Aspect.VOID, 100).add(Aspect.LIFE, 100)));
 
         ItemStack hood3 = new ItemStack(RCItems.pontifex_boots);
         hood3.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
@@ -243,13 +243,13 @@ public class RenaissanceCore {
                 new CrucibleRecipe("CRIMSONPONTIFEX",
                         hood3,
                         new ItemStack(ItemsTC.crimsonBoots),
-                        new AspectList().add(IsorropiaAPI.FLESH, 400).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 400).add(Aspect.PROTECT, 1000).add(Aspect.VOID, 400).add(Aspect.LIFE, 400)));
+                        new AspectList().add(IsorropiaAPI.FLESH, 100).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 200).add(Aspect.PROTECT, 300).add(Aspect.VOID, 100).add(Aspect.LIFE, 100)));
 
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:crimson_hammer"),
                 new InfusionRecipe("PONTIFEXHAMMER",
                         new ItemStack(RCItems.molot),
                         7,
-                        new AspectList().add(IsorropiaAPI.HUNGER, 30).add(Aspect.METAL, 400).add(Aspect.EXCHANGE, 30).add(IsorropiaAPI.PRIDE, 125).add(Aspect.AVERSION, 200).add(Aspect.LIFE, 200),
+                        new AspectList().add(IsorropiaAPI.HUNGER, 30).add(Aspect.METAL, 250).add(Aspect.EXCHANGE, 30).add(IsorropiaAPI.PRIDE, 125).add(Aspect.AVERSION, 200).add(Aspect.LIFE, 200),
                         new ItemStack(ItemsTC.crimsonBlade),
                         new ItemStack(TAItems.FOCUS_ANCIENT),
                         "blockGold",

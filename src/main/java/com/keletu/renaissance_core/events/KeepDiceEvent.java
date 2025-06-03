@@ -1,6 +1,5 @@
 package com.keletu.renaissance_core.events;
 
-import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.cap.IBaublesItemHandler;
 import com.keletu.renaissance_core.items.ItemDice12;
@@ -55,8 +54,8 @@ public class KeepDiceEvent
 
     public static ItemStack getBackpackStack(EntityPlayer player) {
         IBaublesItemHandler handler = BaublesApi.getBaublesHandler(player);
-        for (int x : BaubleType.TRINKET.getValidSlots()) {
-            ItemStack stack = handler.getStackInSlot(BaubleType.TRINKET.getValidSlots()[x]);
+        for (int x = 0; x < handler.getSlots(); x++) {
+            ItemStack stack = handler.getStackInSlot(x);
             if (!stack.isEmpty() && stack.getItem() instanceof ItemDice12) {
                 return stack;
             }
@@ -66,8 +65,8 @@ public class KeepDiceEvent
 
     public static int getDice12Slot(EntityPlayer player) {
         IBaublesItemHandler handler = BaublesApi.getBaublesHandler(player);
-        for (int x : BaubleType.TRINKET.getValidSlots()) {
-            ItemStack stack = handler.getStackInSlot(BaubleType.TRINKET.getValidSlots()[x]);
+        for (int x = 0; x < handler.getSlots(); x++) {
+            ItemStack stack = handler.getStackInSlot(x);
             if (!stack.isEmpty() && stack.getItem() instanceof ItemDice12) {
                 return x;
             }

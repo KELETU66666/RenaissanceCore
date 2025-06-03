@@ -40,7 +40,7 @@
       ],
       "category": "BASICS",
       "location": [
-        -13,
+        -12,
         0
       ],
       "meta": [
@@ -59,13 +59,10 @@
       "icons": [
         "renaissance_core:textures/research/r_madthaumaturge.png"
       ],
-      "parents": [
-        "!Thaumaturge"
-      ],
       "category": "BASICS",
       "location": [
         -12,
-        3
+        1
       ],
       "meta": [
         "HEX",
@@ -78,23 +75,20 @@
       ]
     },
     {
-      "key": "THAUMIC_CONCILIUM",
+      "key": "!SpecialCreatures",
       "name": "research.SpecialCreatures.title",
       "icons": [
         "renaissance_core:textures/research/r_thaumicconcilium.png"
       ],
-      "parents": [
-        "!Thaumaturge"
-      ],
       "category": "BASICS",
       "location": [
-        -14,
-        3
+        -12,
+        2
       ],
       "meta": [
-        "ROUND",
-        "SPIKY",
-        "HIDDEN"
+        "HEX",
+        "HIDDEN",
+        "SPIKY"
       ],
       "stages": [
         {
@@ -154,13 +148,13 @@
       ],
       "parents": [
         "!QuicksilverElemental",
-        "THAUMIC_CONCILIUM",
+        "!SpecialCreatures",
         "~BASEALCHEMY"
       ],
       "category": "BASICS",
       "location": [
-        -15,
-        2
+        -14,
+        1
       ],
       "stages": [
         {
@@ -169,20 +163,15 @@
       ]
     },
     {
-      "key": "CRIMSONANNALES",
+      "key": "!CrimsonAnnales",
       "name": "research.CRIMSONANNALES.title",
       "icons": [
         "renaissance_core:crimson_annales"
       ],
-      "parents": [
-        "!CrimsonAnnales",
-        "ELDRITCH_SPIRE",
-        "THAUMIC_CONCILIUM"
-      ],
       "category": "BASICS",
       "location": [
-        -15,
-        5
+        -13,
+        4
       ],
       "meta": [
         "ROUND",
@@ -204,7 +193,7 @@
       ],
       "parents": [
         "PRIMORDIAL_WISP",
-        "CRIMSONANNALES"
+        "!CrimsonAnnales"
       ],
       "siblings": [
         "CRIMSONINITIATION",
@@ -212,8 +201,8 @@
       ],
       "category": "BASICS",
       "location": [
-        -16,
-        7
+        -14,
+        6
       ],
       "meta": [
         "REVERSE"
@@ -248,8 +237,8 @@
       ],
       "category": "BASICS",
       "location": [
-        -17,
-        9
+        -15,
+        8
       ],
       "meta": [
         "REVERSE",
@@ -272,8 +261,8 @@
       ],
       "category": "BASICS",
       "location": [
-        -15,
-        9
+        -13,
+        8
       ],
       "meta": [
         "REVERSE",
