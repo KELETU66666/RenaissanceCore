@@ -78,10 +78,6 @@ tasks.injectTags.configure {
 
 repositories {
     maven {
-        name 'CleanroomMC Maven'
-        url 'https://maven.cleanroommc.com'
-    }
-    maven {
         name 'SpongePowered Maven'
         url 'https://repo.spongepowered.org/maven'
     }
@@ -96,9 +92,6 @@ repositories {
 }
 
 dependencies {
-    if (project.use_assetmover.toBoolean()) {
-        implementation 'com.cleanroommc:assetmover:2.5'
-    }
     if (project.use_mixins.toBoolean()) {
         implementation rfg.deobf("curse.maven:fermiumbooter-968474:6741950")
     }
@@ -161,11 +154,9 @@ jar {
     manifest {
         def attribute_map = [:]
         if (project.use_coremod.toBoolean()) {
-            attribute_map['FMLCorePlugin'] = project.coremod_plugin_class_name
-            if (project.include_mod.toBoolean()) {
-                attribute_map['FMLCorePluginContainsFMLMod'] = true
-                attribute_map['ForceLoadAsMod'] = project.gradle.startParameter.taskNames[0] == "build"
-            }
+            attribute_map['FMLCorePlugin'] = "com.keletu.renaissance_core.RenaissanceCorePlugin"
+            attribute_map['FMLCorePluginContainsFMLMod'] = true
+            attribute_map['ForceLoadAsMod'] = true
         }
         if (project.use_access_transformer.toBoolean()) {
             attribute_map['FMLAT'] = project.archives_base_name + '_at.cfg'
