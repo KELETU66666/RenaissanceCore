@@ -74,11 +74,16 @@ tooltip.rc_book.0=The book is filled with faded strange symbols.
 tooltip.rc_book.1=Click to study it.
 tooltip.rc_book.2=The meaning of this book remains unclear to you.
 tooltip.rc_book.3=Why do i do this.
+tooltip.rc_book.4=The meaning of this page remains unclear to you.
 
 item.dice12.name=T12
 item.arcane_lime_powder.name=Powder of Arcane Mixture
 item.pech_backpack.name=Backpack of the Pech
 item.t12_elixir.name=Elixir of the Confess
+
+item.runic_chestplate.name=Runic Body Windings
+item.runic_leggings.name=Runic Legs Windings
+item.bottle_thick_taint.name=Bottle of Thick Taint
 
 item.crimson_annales.name=Crimson Annales
 item.research_notes_crimson.name=Crimson Dogma
@@ -124,7 +129,7 @@ entity.TaintedVillager.name=Tainted Villager
 entity.TaintedCreeper.name=Tainted Creeper
 entity.TaintedSheep.name=Tainted Sheep
 
-entity.Thaumaturge.name=Thaumaturge
+entity.ThaumicConcilium.Thaumaturge.name=Thaumaturge
 entity.MadThaumaturge.name=Mad Thaumaturge
 entity.VengefulGolem.name=Vengeful Golem
 entity.CrimsonPaladin.name=Crimson Paladin
@@ -218,6 +223,36 @@ research.GOLEMBYDLO.title=Enlarged Thaumium Golem
 research.GOLEMBYDLO.title.text=Thauminator
 research.GOLEMBYDLO.stage.0=Your human experiments have borne their first fruit! And a very juicy one at that...<BR>The idea of creating a thaumic golem with the height of a mammoth, that consists of a couple of tons of iron and a pumpkin, has been terrorizing your mind for a long time, but you have never been able to realize the idea properly. Such a solid mountain of thaum-metal muscles can no longer be revived with the help of a crucible, and therefore he needs a powerful brain that will allow this monstrosity to move and perform the simplest commands.
 research.GOLEMBYDLO.stage.1=Your human experiments have borne their first fruit! And a very juicy one at that...<BR>The idea of creating a thaumic golem with the height of a mammoth, that consists of a couple of tons of iron and a pumpkin, has been terrorizing your mind for a long time, but you have never been able to realize the idea properly. Such a solid mountain of thaum-metal muscles can no longer be revived with the help of a crucible, and therefore he needs a powerful brain that will allow this monstrosity to move and perform the simplest commands.<PAGE>However, implanting the organ directly did not produce absolutely nothing, so you decided to try to go the other way and attempt to create a golem based on an already prepared organism. An ordinary zombie, alas, did not fit. The living corpse eventually rotted away, and in addition, its damaged nervous system was not enough to support the entire metal body.<PAGE>It was decided not to include ordinary healthy people in the experiment. The resistance of a mentally healthy person was too high, both physical and metaphysical. However, after some manipulations, a compromise between pliability and capacity was finally found, albeit not very favorable.<PAGE>This solution was the most successful of all. Your golem functioned perfectly, although it was not able to perform complex tasks on its own like its smaller counterparts, due to the inability to connect a core to it. But at least it has the power to transport you! The inhabitants of neighboring villages are terrified and hide in their homes when they see the enormous creature on which you have visited them. Now all that remains is to find a more utilitarian use for your golem...<BR>You are completely satisfied with your creation, even if it did cost someone's miserable life.<BR>While riding the golem, press the LMB while holding the bell on Mainhand to command the golem to dig up the area of blocks you are pointing at.<BR><BR>While riding the golem, press the LMB while holding the bell on Offhand to command the golem to attack all creatures in the immediate vicinity with its powerful arms.
+
+research.RUNICWINDINGS.title=Runic Windings
+research.RUNICWINDINGS.title.text=Thaumic Mummy
+research.RUNICWINDINGS.stage.0=In the pockets of one of the madmen who attacked you, you found a description of an exotic way to increase your rune defense.<BR>The materials used are obviously not durable or physically defensive in any way. You assume that was not the intent in the design of this, ahem, outfit. Regardless, its enchantment potential is quite impressive.<BR>You sometimes get cramps when you think of what, or who, it was meant to protect against.
+
+research.FOCUSIMPULSE.title=Focus Medium: Impulse
+research.FOCUSIMPULSE.title.text=he main thing is not to mix it up
+research.FOCUSIMPULSE.stage.0=[WIP]
+
+research.FOCUSPOSITIVEBURST.title=Focus Effect: Positive Burst
+research.FOCUSPOSITIVEBURST.title.text=Inhale this, quick
+research.FOCUSPOSITIVEBURST.stage.0=[WIP]
+
+research.FOCUSREFLECTION.title=Focus Effect: Reflection
+research.FOCUSREFLECTION.title.text=What a dusty place...
+research.FOCUSREFLECTION.stage.0=[WIP]
+
+research.BOTTLEOFTHICKTAINT.title=Bottle of Thick Taint
+research.BOTTLEOFTHICKTAINT.title.text=Do not keep in the open air
+research.BOTTLEOFTHICKTAINT.stage.0=The transformation of your entire region into a contagious cesspool is slow but sure.<BR>But something is clearly missing.<BR>Ah, of course! We need to add more toxic exhaust and poisonous fibers!
+
+research.PECHGOLEM.title=Pech Golems
+research.PECHGOLEM.title.text=So pechy
+research.PECHGOLEM.stage.0=[WIP]
+research.PECHGOLEM.stage.1=[WIP]
+
+research.GOLEMWRAP.title=Bubble Armor
+research.GOLEMWRAP.title.text=Snug Fit!
+research.GOLEMWRAP.stage.0=[WIP]
+research.GOLEMWRAP.stage.1=[WIP]
 
 #Botania
 renaissance_core.research=⚠ Requires Research.

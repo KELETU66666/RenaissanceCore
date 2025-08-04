@@ -317,6 +317,252 @@
           ]
         }
       ]
+    },
+    {
+      "key": "!RunicWindings",
+      "name": "research.RUNICWINDINGS.title",
+      "icons": [
+        "renaissance_core:runic_chestplate",
+        "renaissance_core:runic_leggings"
+      ],
+      "category": "RENAISSANCE_CONCILIUM",
+      "meta": [
+        "HIDDEN"
+      ],
+      "location": [
+        2,
+        -2
+      ],
+      "stages": [
+        {
+          "text": "research.RUNICWINDINGS.stage.0",
+          "required_knowledge": [
+            "THEORY;INFUSION;2",
+            "THEORY;ARTIFICE;1",
+            "THEORY;INFUSION;1"
+          ],
+          "required_item": [
+            "thaumcraft:celestial_notes;1;32767"
+          ],
+          "warp": 3
+        },
+        {
+          "text": "research.RUNICWINDINGS.stage.1",
+          "recipes": [
+            "trk:runic_winding_chest",
+            "trk:runic_winding_legs"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "!FocusImpulse",
+      "name": "research.FOCUSIMPULSE.title",
+      "icons": [
+        "focus:renaissance_core.IMPULSE"
+      ],
+      "category": "RENAISSANCE_CONCILIUM",
+      "meta": [
+        "HIDDEN"
+      ],
+      "location": [
+        0,
+        -2
+      ],
+      "stages": [
+        {
+          "text": "research.FOCUSIMPULSE.stage.0",
+          "required_knowledge": [
+            "OBSERVATION;AUROMANCY;2",
+            "THEORY;AUROMANCY;2"
+          ]
+        },
+        {
+          "text": "research.FOCUSIMPULSE.stage.1"
+        }
+      ]
+    },
+    {
+      "key": "!FocusPositiveBurst",
+      "name": "research.FOCUSPOSITIVEBURST.title",
+      "icons": [
+        "focus:renaissance_core.POSITIVEBURST"
+      ],
+      "category": "RENAISSANCE_CONCILIUM",
+      "parents": [
+      ],
+      "meta": [
+        "HIDDEN"
+      ],
+      "location": [
+        -2,
+        -2
+      ],
+      "stages": [
+        {
+          "text": "research.FOCUSPOSITIVEBURST.stage.0",
+          "required_knowledge": [
+            "OBSERVATION;AUROMANCY;5",
+            "THEORY;AUROMANCY;2"
+          ],
+          "required_item": [
+            "minecraft:golden_apple;2;1"
+          ]
+        },
+        {
+          "text": "research.FOCUSPOSITIVEBURST.stage.1"
+        }
+      ]
+    },
+    {
+      "key": "!FocusReflection",
+      "name": "research.FOCUSREFLECTION.title",
+      "icons": [
+        "focus:renaissance_core.REFLECTION"
+      ],
+      "category": "RENAISSANCE_CONCILIUM",
+      "meta": [
+        "HIDDEN"
+      ],
+      "location": [
+        -2,
+        0
+      ],
+      "stages": [
+        {
+          "text": "research.FOCUSREFLECTION.stage.0",
+          "required_research": [
+            "m_hellandback",
+            "m_hellandback",
+            "m_ENTERVOID"
+          ],
+          "required_knowledge": [
+            "OBSERVATION;AUROMANCY;3",
+            "OBSERVATION;ELDRITCH;3",
+            "THEORY;AUROMANCY;1",
+            "THEORY;ELDRITCH;2"
+          ],
+          "required_item": [
+            "thaumicwonders:lethe_water"
+          ],
+          "warp": 4
+        },
+        {
+          "text": "research.FOCUSREFLECTION.stage.1"
+        }
+      ]
+    },
+    {
+      "key": "!BottleThickTaint",
+      "name": "research.BOTTLEOFTHICKTAINT.title",
+      "icons": [
+        "renaissance_core:bottle_thick_taint"
+      ],
+      "category": "RENAISSANCE_CONCILIUM",
+      "meta": [
+        "HIDDEN"
+      ],
+      "location": [
+        -2,
+        2
+      ],
+      "stages": [
+        {
+          "text": "research.BOTTLEOFTHICKTAINT.stage.0",
+          "required_knowledge": [
+            "OBSERVATION;ALCHEMY;2",
+            "THEORY;ALCHEMY;1"
+          ],
+          "required_craft": [
+            "thaumcraft:bottle_taint"
+          ],
+          "warp": 2
+        },
+        {
+          "text": "research.BOTTLEOFTHICKTAINT.stage.1",
+          "recipes": [
+            "trk:bottle_of_thick_taint"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "PECHGOLEM",
+      "name": "research.PECHGOLEM.title",
+      "icons": [
+        "renaissance_core:textures/research/r_pech.png",
+        "renaissance_core:textures/research/r_pech_stalker.png",
+        "renaissance_core:textures/research/r_pech_thaum.png"
+      ],
+      "category": "RENAISSANCE_CONCILIUM",
+      "parents": [
+        "!Pech",
+        "MINDBIOTHAUMIC",
+        "SKULLAXE"
+      ],
+      "meta": [
+        "HIDDEN"
+      ],
+      "location": [
+        0,
+        2
+      ],
+      "stages": [
+        {
+          "text": "research.PECHGOLEM.stage.0",
+          "required_knowledge": [
+            "OBSERVATION;BASICS;1",
+            "OBSERVATION;GOLEMANCY;2",
+            "THEORY;GOLEMANCY;1"
+          ],
+          "required_item": [
+            "thaumcraft:brain;2;0"
+          ],
+          "warp": 1
+        },
+        {
+          "text": "research.PECHGOLEM.stage.1"
+        }
+      ]
+    },
+    {
+      "key": "GOLEMWRAP",
+      "name": "research.GOLEMWRAP.title",
+      "icons": [
+        "renaissance_core:textures/research/bubble_wrap_item.png"
+      ],
+      "category": "RENAISSANCE_CONCILIUM",
+      "parents": [
+        "SEALLUMBER",
+        "MATSTUDWOOD",
+        "MATSTUDIRON",
+        "MATSTUDCLAY",
+        "MATSTUDBRASS",
+        "MATSTUDTHAUMIUM"
+      ],
+      "meta": [
+        "HIDDEN"
+      ],
+      "location": [
+        2,
+        2
+      ],
+      "stages": [
+        {
+          "text": "research.GOLEMWRAP.stage.0",
+          "required_knowledge": [
+            "OBSERVATION;BASICS;1",
+            "OBSERVATION;GOLEMANCY;2",
+            "THEORY;GOLEMANCY;1"
+          ],
+          "required_item": [
+            "minecraft:paper;6;0"
+          ]
+        },
+        {
+          "text": "research.GOLEMWRAP.stage.1"
+        }
+      ]
     }
   ]
 }

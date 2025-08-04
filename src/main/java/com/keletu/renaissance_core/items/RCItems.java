@@ -21,6 +21,9 @@ public class RCItems {
     public static final Item molot = new ItemPontifexHammer().setRegistryName("molot").setTranslationKey("molot").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
     public static final Item crimson_annales = new ItemCrimsonAnnales().setRegistryName("crimson_annales").setTranslationKey("crimson_annales").setMaxStackSize(1).setCreativeTab(RenaissanceCore.tabRenaissanceCore);
     public static final Item research_notes_crimson = new ItemResources(rarityEric).setRegistryName("research_notes_crimson").setTranslationKey("research_notes_crimson").setMaxStackSize(1).setCreativeTab(RenaissanceCore.tabRenaissanceCore);
+    public static final Item runic_chestplate = new ItemRunicWindings(0, EntityEquipmentSlot.CHEST).setRegistryName("runic_chestplate").setTranslationKey("runic_chestplate").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
+    public static final Item runic_leggings = new ItemRunicWindings(1, EntityEquipmentSlot.LEGS).setRegistryName("runic_leggings").setTranslationKey("runic_leggings").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
+    public static final Item bottle_of_thick_taint = new ItemBottleOfThickTaint().setRegistryName("bottle_thick_taint").setTranslationKey("bottle_thick_taint").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
     public static final Item item_icon = new ItemIcon().setRegistryName("icon").setTranslationKey("icon");
 
     public static final Item pechHeadNormal = new RCItemBlocks(RCBlocks.pechHead_normal);

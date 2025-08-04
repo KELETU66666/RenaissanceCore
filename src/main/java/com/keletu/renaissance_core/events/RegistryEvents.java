@@ -108,6 +108,9 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RCItems.crimson_annales);
         event.getRegistry().registerAll(RCItems.research_notes_crimson);
         event.getRegistry().registerAll(RCItems.item_icon);
+        event.getRegistry().registerAll(RCItems.runic_chestplate);
+        event.getRegistry().registerAll(RCItems.runic_leggings);
+        event.getRegistry().registerAll(RCItems.bottle_of_thick_taint);
 
         event.getRegistry().registerAll(RCItems.pechHeadNormal);
         event.getRegistry().registerAll(RCItems.pechHeadHunter);

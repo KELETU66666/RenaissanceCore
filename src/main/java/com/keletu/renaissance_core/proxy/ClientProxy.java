@@ -5,9 +5,11 @@ import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.blocks.TileQuicksilverCrucible;
 import com.keletu.renaissance_core.client.model.ModelGolemBydlo;
 import com.keletu.renaissance_core.client.model.ModelVengefulGolem;
+import com.keletu.renaissance_core.client.particle.ParticleFlamePublic;
 import com.keletu.renaissance_core.client.render.*;
 import com.keletu.renaissance_core.client.render.layer.LayerBackpack;
 import com.keletu.renaissance_core.entity.*;
+import com.keletu.renaissance_core.items.RCItems;
 import com.keletu.renaissance_core.module.botania.PageArcaneWorkbenchRecipe;
 import com.keletu.renaissance_core.module.botania.PageCrucibleRecipe;
 import com.keletu.renaissance_core.module.botania.PageInfusionRecipe;
@@ -15,6 +17,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderPlayer;
+import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,6 +38,7 @@ import thaumcraft.client.fx.FXDispatcher;
 import thaumcraft.client.fx.ParticleEngine;
 import thaumcraft.client.fx.other.FXEssentiaStream;
 import thaumcraft.client.fx.particles.FXBreakingFade;
+import thaumcraft.client.renderers.entity.projectile.RenderNoProjectile;
 
 import java.util.List;
 import java.util.Map;
@@ -72,6 +76,9 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(EntityEtherealShackles.class, new RenderProjectileEtherealShackles());
         RenderingRegistry.registerEntityRenderingHandler(EntityMadThaumaturge.class, new RenderThaumaturge(new ModelBiped(), new ResourceLocation(RenaissanceCore.MODID + ":textures/models/entity/mad_thaumaturge.png"), 0.5f));
         RenderingRegistry.registerEntityRenderingHandler(EntityGolemBydlo.class, new RenderGolemBydlo(new ModelGolemBydlo(true)));
+        RenderingRegistry.registerEntityRenderingHandler(EntityBottleOfThickTaint.class, new RenderSnowball(Minecraft.getMinecraft().getRenderManager(), RCItems.bottle_of_thick_taint, Minecraft.getMinecraft().getRenderItem()));
+        RenderingRegistry.registerEntityRenderingHandler(EntityPositiveBurstOrb.class, new RendererPositiveBurstOrb());
+        RenderingRegistry.registerEntityRenderingHandler(EntityCompressedBlast.class, new RenderNoProjectile(Minecraft.getMinecraft().getRenderManager()));
 
         ClientRegistry.bindTileEntitySpecialRenderer(TileQuicksilverCrucible.class, new RenderTileQuicksilverCrucible());
 
@@ -192,5 +199,20 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void dissolvedSpark(Entity entity){
         FXDispatcher.INSTANCE.sparkle((float) (entity.posX + (-0.5 + entity.world.rand.nextFloat())), (float) (entity.posY + (entity.world.rand.nextFloat() * 2)), (float) ((float) entity.posZ + (-0.5 + entity.world.rand.nextFloat())), 2, 0, 0);
+    }
+
+    @Override
+    public void smeltFX(final double blockX, final double blockY, final double blockZ, final World w, final int howMany) {
+
+        for (int x = -1; x < 2; ++x) {
+            for (int y = -1; y < 2; ++y) {
+                for (int z = -1; z < 2; ++z) {
+                    for (int i = 0; i < howMany; ++i) {
+                        final ParticleFlamePublic fx = new ParticleFlamePublic(w, blockX + 0.5 + x, blockY + 0.5 + y, blockZ + 0.5 + z, (w.rand.nextDouble() - 0.5) * 0.25, (w.rand.nextDouble() - 0.5) * 0.25, (w.rand.nextDouble() - 0.5) * 0.25);
+                        FMLClientHandler.instance().getClient().effectRenderer.addEffect(fx);
+                    }
+                }
+            }
+        }
     }
 }

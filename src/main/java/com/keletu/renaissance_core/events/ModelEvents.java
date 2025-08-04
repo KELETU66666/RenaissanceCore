@@ -47,6 +47,9 @@ public class ModelEvents {
         defaultModel(RCItems.molot);
         defaultModel(RCItems.crimson_annales);
         defaultModel(RCItems.research_notes_crimson);
+        defaultModel(RCItems.runic_chestplate);
+        defaultModel(RCItems.runic_leggings);
+        defaultModel(RCItems.bottle_of_thick_taint);
         defaultModel(RCItems.item_icon);
         defaultModel(RCItems.item_icon, 1);
         defaultModel(RCItems.item_icon, 2);

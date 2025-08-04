@@ -42,4 +42,7 @@ public class CommonProxy {
 
     public void dissolvedSpark(Entity entity) {
     }
+
+    public void smeltFX(final double blockX, final double blockY, final double blockZ, final World w, final int howMany) {
+    }
 }

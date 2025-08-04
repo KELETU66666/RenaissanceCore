@@ -79,7 +79,7 @@ entity.TaintedVillager.name=Tainted Villager
 entity.TaintedCreeper.name=Tainted Creeper
 entity.TaintedSheep.name=Tainted Sheep
 
-entity.Thaumaturge.name=神秘使
+entity.ThaumicConcilium.Thaumaturge.name=神秘使
 entity.MadThaumaturge.name=疯狂神秘使
 entity.VengefulGolem.name=复仇傀儡
 entity.CrimsonPaladin.name=血腥圣骑士
