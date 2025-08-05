@@ -71,6 +71,8 @@ tooltip.pech_backpack.tip=Only opens when equipped as a bauble, default key: O.
 tooltip.t12_elixir.tip1=Give you a chance to pick off T12 once again.
 tooltip.t12_elixir.tip2=Why should i drink it ?
 
+TC.oblivion_response=It seems to you that you have forgotten something about...
+
 tooltip.rc_book.0=The book is filled with faded strange symbols.
 tooltip.rc_book.1=Click to study it.
 tooltip.rc_book.2=The meaning of this book remains unclear to you.
