@@ -259,15 +259,15 @@ research.RUNICWINDINGS.stage.0=In the pockets of one of the madmen who attacked 
 
 research.FOCUSIMPULSE.title=Focus Medium: Impulse
 research.FOCUSIMPULSE.title.text=he main thing is not to mix it up
-research.FOCUSIMPULSE.stage.0=[WIP]
+research.FOCUSIMPULSE.stage.0=This new medium allows you to cast your spells quickly and far, like fireworks. However, be careful—the projectiles you shoot are extremely unstable, which is reflected in their unpredictable range and unstable explosion timing...
 
 research.FOCUSPOSITIVEBURST.title=Focus Effect: Positive Burst
 research.FOCUSPOSITIVEBURST.title.text=Inhale this, quick
-research.FOCUSPOSITIVEBURST.stage.0=[WIP]
+research.FOCUSPOSITIVEBURST.stage.0=The healing focus can restore health, while the curse focus can apply powerful bad effects. After combining them, you have successfully developed a new focus effect that condenses life-energy into small orbs to absorb.<BR>>You can also choose to have it provide other buffs instead of just healing.<BR>>Unfortunately, the condensed focus effect has lost the ability to damage undead creatures.
 
 research.FOCUSREFLECTION.title=Focus Effect: Reflection
 research.FOCUSREFLECTION.title.text=What a dusty place...
-research.FOCUSREFLECTION.stage.0=[WIP]
+research.FOCUSREFLECTION.stage.0=You've seen a lot in your life: dark caves, the scorching heat of the Nether, terrifying monsters, how can you sleep at night after that?<BR>Your list of plans for the future clearly does not include ending up as one of those maniacs who roam among the walking corpses and throw themselves on people.<PAGE>Fortunately (or unfortunately...), one of those who have suffered such a fate, at a certain point thought about where it goes (although he did not have time to do anything about it), you can not let such a thing go to waste.<BR>With a little added element for reliability in the blueprints, you think that this device can rid you of visions of the past. You put the rod to your temple, and relax your eyes...
 
 research.BOTTLEOFTHICKTAINT.title=Bottle of Thick Taint
 research.BOTTLEOFTHICKTAINT.title.text=Do not keep in the open air
@@ -275,13 +275,13 @@ research.BOTTLEOFTHICKTAINT.stage.0=The transformation of your entire region int
 
 research.PECHGOLEM.title=Pech Golems
 research.PECHGOLEM.title.text=So pechy
-research.PECHGOLEM.stage.0=[WIP]
-research.PECHGOLEM.stage.1=[WIP]
+research.PECHGOLEM.stage.0=The Axe of the Skulltaker can be used to behead the heads of various creatures: zombies, skeletons, creepers, and even other players. Of course, perhaps pechs can be included as well. After studying magical creatures (or their heads), I discovered that the heads of pechs still retain some magical energy. Combining this with my research in golemancy, it might be possible to create some... interesting things.
+research.PECHGOLEM.stage.1=After a series of experiments, I discovered that I can use the Pech’s skull as an "alternative" golem core, installing it in place of the golem’s head. The resulting golem will obey my commands just the same, allowing me to abandon those old-fashioned cloakwork brains my companions used.<BR>>Of course, I hope the glint of greed I see in the golem’s eyes is just my imagination...
 
 research.GOLEMWRAP.title=Bubble Armor
 research.GOLEMWRAP.title.text=Snug Fit!
-research.GOLEMWRAP.stage.0=[WIP]
-research.GOLEMWRAP.stage.1=[WIP]
+research.GOLEMWRAP.stage.0=The golem is often buried by suddenly grown wood while chopping, which often results in the loss of one or more golems.. I need to find a way to prevent this from happening.
+research.GOLEMWRAP.stage.1=After a simple modification, I wrapped bubble wrap around the golems. This can prevent the golems from taking in-wall damage, although it cannot protect them from other types of damage.<BR>§9This research unlocks additional golem parts§0.
 
 #Botania
 renaissance_core.research=⚠ Requires Research.

@@ -31,11 +31,13 @@ public class ItemCrimsonAnnales extends Item implements IWarpingGear {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+        ItemStack stack = player.getHeldItem(hand);
         if (!world.isRemote) {
             if (!ThaumcraftCapabilities.knowsResearch(player, "!CrimsonAnnales")) {
                 if (ThaumcraftCapabilities.knowsResearch(player, "ELDRITCH_SPIRE") && ThaumcraftCapabilities.knowsResearch(player, "!SpecialCreatures")) {
                     ThaumcraftApi.internalMethods.completeResearch(player, "!CrimsonAnnales");
                     world.playSound(null, player.getPosition(), SoundsTC.learn, SoundCategory.PLAYERS, 0.75F, 1.0F);
+                    stack.shrink(1);
                 } else {
                     player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tooltip.rc_book.2")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
                 }

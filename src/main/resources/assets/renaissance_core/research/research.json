@@ -3,7 +3,7 @@
     {
       "key": "ARCANE_LIME_POWDER",
       "name": "ftr.research.arcane_lime_powder.title",
-      "category": "ALCHEMY",
+      "category": "RENAISSANCE_CONCILIUM",
       "icons": [
         "renaissance_core:arcane_lime_powder"
       ],
@@ -11,8 +11,8 @@
         "HEDGEALCHEMY"
       ],
       "location": [
-        -6,
-        2
+        0,
+        0
       ],
       "stages": [
         {
@@ -171,7 +171,7 @@
       "category": "RENAISSANCE_CONCILIUM",
       "location": [
         0,
-        0
+        2
       ],
       "meta": [
         "ROUND",
@@ -202,7 +202,7 @@
       "category": "RENAISSANCE_CONCILIUM",
       "location": [
         0,
-        2
+        4
       ],
       "meta": [
         "REVERSE"
@@ -238,7 +238,7 @@
       "category": "RENAISSANCE_CONCILIUM",
       "location": [
         -2,
-        4
+        6
       ],
       "meta": [
         "REVERSE",
@@ -262,7 +262,7 @@
       "category": "RENAISSANCE_CONCILIUM",
       "location": [
         2,
-        4
+        6
       ],
       "meta": [
         "REVERSE",

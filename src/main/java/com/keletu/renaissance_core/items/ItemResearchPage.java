@@ -64,6 +64,9 @@ public class ItemResearchPage extends Item {
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
         if (!world.isRemote) {
+            if (!ThaumcraftCapabilities.knowsResearch(player, "!SpecialCreatures")) {
+                player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tooltip.rc_book.4")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
+            }
             switch (stack.getItemDamage()) {
                 case 0:
                     if (!ThaumcraftCapabilities.knowsResearch(player, "!RunicWindings")) {

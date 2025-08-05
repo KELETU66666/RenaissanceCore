@@ -5,6 +5,7 @@ import com.keletu.renaissance_core.blocks.RCBlocks;
 import com.keletu.renaissance_core.blocks.TileQuicksilverCrucible;
 import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.items.RCItems;
+import fr.wind_blade.isorropia.common.IsorropiaAPI;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -29,6 +30,10 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectEventProxy;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.aspects.AspectRegistryEvent;
 import thaumcraft.api.entities.ITaintedMob;
 import thaumcraft.api.potions.PotionFluxTaint;
 import thaumcraft.common.entities.construct.EntityOwnedConstruct;
@@ -83,6 +88,7 @@ public class RegistryEvents {
             }
         }
     }
+
     @SubscribeEvent
     public static void regBlocks(RegistryEvent.Register<Block> event) {
         event.getRegistry().registerAll(RCBlocks.pechHead_normal);
@@ -117,6 +123,24 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RCItems.pechHeadHunter);
         event.getRegistry().registerAll(RCItems.pechHeadThaumaturge);
         event.getRegistry().registerAll(RCItems.quicksilverCrucible);
+    }
+
+    @SubscribeEvent
+    public static void registerAspects(AspectRegistryEvent event) {
+        AspectEventProxy proxy = event.register;
+        proxy.registerComplexObjectTag(new ItemStack(RCItems.pechHeadNormal, 1, 0), new AspectList().add(Aspect.MAN, 20).add(Aspect.DESIRE, 20).add(Aspect.TOOL, 20));
+        proxy.registerComplexObjectTag(new ItemStack(RCItems.pechHeadHunter, 1, 0), new AspectList().add(Aspect.MAN, 20).add(Aspect.DESIRE, 20).add(Aspect.AVERSION, 20));
+        proxy.registerComplexObjectTag(new ItemStack(RCItems.pechHeadThaumaturge, 1, 0), new AspectList().add(Aspect.MAN, 20).add(Aspect.DESIRE, 20).add(Aspect.MAGIC, 20));
+        proxy.registerComplexObjectTag(new ItemStack(RCItems.dice12, 1, 0), new AspectList().add(Aspect.AIR, 66).add(Aspect.WATER, 66).add(Aspect.FIRE, 66).add(Aspect.EARTH, 66).add(Aspect.ENTROPY, 66).add(Aspect.ORDER, 66));
+        proxy.registerComplexObjectTag(new ItemStack(RCItems.crimson_annales, 1, 0), new AspectList().add(Aspect.MIND, 30).add(IsorropiaAPI.HUNGER, 30).add(Aspect.ELDRITCH, 30).add(Aspect.MAN, 30));
+        proxy.registerComplexObjectTag(new ItemStack(RCItems.research_notes_crimson, 1, 0), new AspectList().add(Aspect.MIND, 66).add(Aspect.ELDRITCH, 66).add(IsorropiaAPI.WRATH, 66));
+        proxy.registerComplexObjectTag(new ItemStack(RCItems.quicksilverCrucible, 1, 0), new AspectList().add(Aspect.METAL, 100).add(Aspect.MAGIC, 100).add(Aspect.FIRE, 30).add(IsorropiaAPI.FLESH, 10));
+        proxy.registerComplexObjectTag(new ItemStack(RCItems.research_page, 1, 0), new AspectList().add(Aspect.MIND, 30));
+        proxy.registerComplexObjectTag(new ItemStack(RCItems.research_page, 1, 1), new AspectList().add(Aspect.MIND, 30));
+        proxy.registerComplexObjectTag(new ItemStack(RCItems.research_page, 1, 2), new AspectList().add(Aspect.MIND, 30));
+        proxy.registerComplexObjectTag(new ItemStack(RCItems.research_page, 1, 3), new AspectList().add(Aspect.MIND, 30));
+        proxy.registerComplexObjectTag(new ItemStack(RCItems.research_page, 1, 4), new AspectList().add(Aspect.MIND, 30));
+
     }
 
     @SubscribeEvent

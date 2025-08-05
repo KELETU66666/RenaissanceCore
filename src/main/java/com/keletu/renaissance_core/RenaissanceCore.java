@@ -74,7 +74,7 @@ import java.util.List;
 public class RenaissanceCore {
     public static final String MODID = "renaissance_core";
     public static final String NAME = "Renaissance Core";
-    public static final String VERSION = "1.10.0";
+    public static final String VERSION = "1.11.0";
     public static final String MC_VERSION = "[1.12.2]";
     public static final EnumGolemTrait GREEDY = EnumHelper.addEnum(EnumGolemTrait.class, "GREEDY", new Class[]{ResourceLocation.class}, new ResourceLocation(MODID, "textures/misc/tag_cash.png"));
     public static final EnumGolemTrait BUBBLE = EnumHelper.addEnum(EnumGolemTrait.class, "BUBBLE", new Class[]{ResourceLocation.class}, new ResourceLocation(MODID, "textures/misc/tag_bubble.png"));
@@ -328,9 +328,9 @@ public class RenaissanceCore {
                 new ItemStack(ItemsTC.morphicResonator)));
 
         ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("trk:bottle_thick_taint"), new CrucibleRecipe("!BottleThickTaint",
-                        new ItemStack(RCItems.bottle_of_thick_taint),
-                        new ItemStack(ItemsTC.bottleTaint),
-                        new AspectList().add(Aspect.FLUX, 50).add(Aspect.ALCHEMY, 50).add(Aspect.CRYSTAL, 50)));
+                new ItemStack(RCItems.bottle_of_thick_taint),
+                new ItemStack(ItemsTC.bottleTaint),
+                new AspectList().add(Aspect.FLUX, 50).add(Aspect.ALCHEMY, 50).add(Aspect.CRYSTAL, 50)));
 
         IsorropiaAPI.registerCreatureInfusionRecipe(new ResourceLocation("renaissance_core", "golem_bydlo"),
                 ((SpecieCurativeInfusionRecipe.Builder) new SpecieCurativeInfusionRecipe.Builder()
