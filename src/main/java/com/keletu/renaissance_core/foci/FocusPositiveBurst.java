@@ -19,7 +19,7 @@ import thaumcraft.common.lib.SoundsTC;
 public class FocusPositiveBurst extends FocusEffect {
 
     public String getResearch() {
-        return "FOCUSPOSITIVEBURST";
+        return "!FocusPositiveBurst";
     }
 
     public String getKey() {

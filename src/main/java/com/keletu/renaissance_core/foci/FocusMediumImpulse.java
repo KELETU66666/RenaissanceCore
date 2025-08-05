@@ -12,7 +12,7 @@ public class FocusMediumImpulse extends FocusMedium
 {
     @Override
     public String getResearch() {
-        return "FOCUSIMPULSE";
+        return "!FocusImpulse";
     }
     
     @Override

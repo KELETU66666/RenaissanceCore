@@ -142,7 +142,6 @@ public class RenaissanceCore {
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "golem_bydlo"), EntityGolemBydlo.class, "GolemBydlo", id++, MODID, 64, 3, true, 0x00FFFF, 0x555555);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "bottle_thick_taint"), EntityBottleOfThickTaint.class, "BottleOfThickTaintEntity", id++, MODID, 64, 1, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "positive_burst_orb"), EntityPositiveBurstOrb.class, "EntityPositiveBurstOrb", id++, MODID, 64, 1, true);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "bottle_thick_taint"), EntityBottleOfThickTaint.class, "BottleOfThickTaintEntity", id++, MODID, 64, 1, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "compressed_blast"), EntityCompressedBlast.class, "CompressedBlastEntity", id++, MODID, 64, 1, true);
 
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".MadThaumaturge", new AspectList().add(Aspect.MAN, 4).add(Aspect.MIND, 4).add(Aspect.ELDRITCH, 8));
@@ -182,7 +181,7 @@ public class RenaissanceCore {
                 ThaumcraftApi.registerResearchLocation(new ResourceLocation(MODID, "research/botany.json"));
             }
         }
-        ResearchCategories.registerCategory("RENAISSANCE_COCILIUM", "!SpecialCreatures", null, new ResourceLocation("renaissance_core", "textures/research/r_thaumicconcilium.png"), new ResourceLocation(RenaissanceCore.MODID, "textures/misc/tab_botany.jpg"));
+        ResearchCategories.registerCategory("RENAISSANCE_CONCILIUM", "!SpecialCreatures", null, new ResourceLocation("renaissance_core", "textures/research/r_thaumicconcilium.png"), new ResourceLocation(RenaissanceCore.MODID, "textures/misc/tab_botany.jpg"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(MODID, "research/research.json"));
 
         MinecraftForge.EVENT_BUS.register(new KeepDiceEvent());
@@ -293,8 +292,10 @@ public class RenaissanceCore {
                         "ingotVoid",
                         "blockGold"));
 
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:runic_winding_chest"), new InfusionRecipe("RUNICWINDINGS",
-                new ItemStack(RCItems.runic_chestplate),
+        ItemStack windingchest = new ItemStack(RCItems.runic_chestplate);
+        windingchest.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 100));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:runic_winding_chest"), new InfusionRecipe("!RunicWindings",
+                windingchest,
                 10, new AspectList().add(Aspect.ELDRITCH, 100).add(Aspect.PROTECT, 200).add(Aspect.MAGIC, 75).add(Aspect.ENERGY, 100).add(Aspect.MIND, 200),
                 new ItemStack(Items.PAPER),
                 new ItemStack(ItemsTC.visResonator),
@@ -308,10 +309,12 @@ public class RenaissanceCore {
                 new ItemStack(ItemsTC.celestialNotes, 1, 32767),
                 new ItemStack(ItemsTC.celestialNotes, 1, 32767),
                 new ItemStack(ItemsTC.celestialNotes, 1, 32767),
-                new ItemStack(ItemsTC.morphicResonator, 1, 6)));
+                new ItemStack(ItemsTC.morphicResonator)));
 
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:runic_winding_legs"), new InfusionRecipe("RUNICWINDINGS",
-                new ItemStack(RCItems.runic_leggings), 10, new AspectList().add(Aspect.ELDRITCH, 100).add(Aspect.PROTECT, 200).add(Aspect.MAGIC, 75).add(Aspect.ENERGY, 100).add(Aspect.MIND, 200),
+        ItemStack windinglegs = new ItemStack(RCItems.runic_leggings);
+        windinglegs.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 100));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:runic_winding_legs"), new InfusionRecipe("!RunicWindings",
+                windinglegs, 10, new AspectList().add(Aspect.ELDRITCH, 100).add(Aspect.PROTECT, 200).add(Aspect.MAGIC, 75).add(Aspect.ENERGY, 100).add(Aspect.MIND, 200),
                 new ItemStack(Items.PAPER),
                 new ItemStack(ItemsTC.visResonator),
                 "nitor",
@@ -322,9 +325,9 @@ public class RenaissanceCore {
                 new ItemStack(Items.DIAMOND),
                 new ItemStack(ItemsTC.celestialNotes, 1, 32767),
                 new ItemStack(ItemsTC.celestialNotes, 1, 32767),
-                new ItemStack(ItemsTC.morphicResonator, 1, 6)));
+                new ItemStack(ItemsTC.morphicResonator)));
 
-        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("trk:bottle_thick_taint"), new CrucibleRecipe("BOTTLEOFTHICKTAINT",
+        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("trk:bottle_thick_taint"), new CrucibleRecipe("!BottleThickTaint",
                         new ItemStack(RCItems.bottle_of_thick_taint),
                         new ItemStack(ItemsTC.bottleTaint),
                         new AspectList().add(Aspect.FLUX, 50).add(Aspect.ALCHEMY, 50).add(Aspect.CRYSTAL, 50)));
@@ -353,7 +356,7 @@ public class RenaissanceCore {
                         .build());
 
         GolemHead.register(new GolemHead("FORAGE", new String[]{"PECHGOLEM"}, new ResourceLocation(MODID, "textures/research/r_pech.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_forage.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadNormal)}, new EnumGolemTrait[]{RenaissanceCore.GREEDY}));
-        GolemHead.register(new GolemHead("STALKER", new String[]{"PECHGOLEM"}, new ResourceLocation(MODID, "textures/research/r_pech_stalker.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_stalker.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadHunter)}, new EnumGolemTrait[]{EnumGolemTrait.LIGHT}));
+        GolemHead.register(new GolemHead("STALKER", new String[]{"PECHGOLEM"}, new ResourceLocation(MODID, "textures/research/r_pech_stalker.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_stalker.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadHunter)}, new EnumGolemTrait[]{EnumGolemTrait.DEFT}));
         GolemHead.register(new GolemHead("THAUMIUM", new String[]{"PECHGOLEM"}, new ResourceLocation(MODID, "textures/research/r_pech_thaum.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_thaum.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadThaumaturge)}, new EnumGolemTrait[]{EnumGolemTrait.SMART}));
 
         GolemAddon.register(new GolemAddon("BUBBLE_ARMOR", new String[]{"GOLEMWRAP"}, new ResourceLocation(MODID, "textures/research/bubble_wrap_item.png"), new PartModelHauler(new ResourceLocation(MODID, "models/obj/bubble_wrap.obj"), new ResourceLocation(MODID, "textures/models/entity/bubble_wrap.png"), PartModel.EnumAttachPoint.BODY), new Object[]{new ItemStack(Blocks.WOOL), new ItemStack(Items.PAPER, 6)}, new EnumGolemTrait[]{RenaissanceCore.BUBBLE}));

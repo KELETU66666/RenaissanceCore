@@ -100,7 +100,7 @@ public class FocusReflection extends FocusEffect {
 
     @Override
     public String getResearch() {
-        return "FOCUSREFLECTION";
+        return "!FocusReflection";
     }
 
     protected static class CategoryEntry implements RandomItemChooser.Item {

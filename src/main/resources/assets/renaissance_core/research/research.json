@@ -168,10 +168,10 @@
       "icons": [
         "renaissance_core:crimson_annales"
       ],
-      "category": "BASICS",
+      "category": "RENAISSANCE_CONCILIUM",
       "location": [
-        -13,
-        4
+        0,
+        0
       ],
       "meta": [
         "ROUND",
@@ -199,10 +199,10 @@
         "CRIMSONINITIATION",
         "PONTIFEXHAMMER"
       ],
-      "category": "BASICS",
+      "category": "RENAISSANCE_CONCILIUM",
       "location": [
-        -14,
-        6
+        0,
+        2
       ],
       "meta": [
         "REVERSE"
@@ -235,10 +235,10 @@
       "parents": [
         "CRIMSONPONTIFEX"
       ],
-      "category": "BASICS",
+      "category": "RENAISSANCE_CONCILIUM",
       "location": [
-        -15,
-        8
+        -2,
+        4
       ],
       "meta": [
         "REVERSE",
@@ -259,10 +259,10 @@
       "parents": [
         "CRIMSONPONTIFEX"
       ],
-      "category": "BASICS",
+      "category": "RENAISSANCE_CONCILIUM",
       "location": [
-        -13,
-        8
+        2,
+        4
       ],
       "meta": [
         "REVERSE",
@@ -336,22 +336,11 @@
       "stages": [
         {
           "text": "research.RUNICWINDINGS.stage.0",
-          "required_knowledge": [
-            "THEORY;INFUSION;2",
-            "THEORY;ARTIFICE;1",
-            "THEORY;INFUSION;1"
-          ],
-          "required_item": [
-            "thaumcraft:celestial_notes;1;32767"
-          ],
-          "warp": 3
-        },
-        {
-          "text": "research.RUNICWINDINGS.stage.1",
           "recipes": [
             "trk:runic_winding_chest",
             "trk:runic_winding_legs"
-          ]
+          ],
+          "warp": 3
         }
       ]
     },
@@ -371,14 +360,7 @@
       ],
       "stages": [
         {
-          "text": "research.FOCUSIMPULSE.stage.0",
-          "required_knowledge": [
-            "OBSERVATION;AUROMANCY;2",
-            "THEORY;AUROMANCY;2"
-          ]
-        },
-        {
-          "text": "research.FOCUSIMPULSE.stage.1"
+          "text": "research.FOCUSIMPULSE.stage.0"
         }
       ]
     },
@@ -400,17 +382,7 @@
       ],
       "stages": [
         {
-          "text": "research.FOCUSPOSITIVEBURST.stage.0",
-          "required_knowledge": [
-            "OBSERVATION;AUROMANCY;5",
-            "THEORY;AUROMANCY;2"
-          ],
-          "required_item": [
-            "minecraft:golden_apple;2;1"
-          ]
-        },
-        {
-          "text": "research.FOCUSPOSITIVEBURST.stage.1"
+          "text": "research.FOCUSPOSITIVEBURST.stage.0"
         }
       ]
     },
@@ -431,24 +403,7 @@
       "stages": [
         {
           "text": "research.FOCUSREFLECTION.stage.0",
-          "required_research": [
-            "m_hellandback",
-            "m_hellandback",
-            "m_ENTERVOID"
-          ],
-          "required_knowledge": [
-            "OBSERVATION;AUROMANCY;3",
-            "OBSERVATION;ELDRITCH;3",
-            "THEORY;AUROMANCY;1",
-            "THEORY;ELDRITCH;2"
-          ],
-          "required_item": [
-            "thaumicwonders:lethe_water"
-          ],
           "warp": 4
-        },
-        {
-          "text": "research.FOCUSREFLECTION.stage.1"
         }
       ]
     },
@@ -469,20 +424,10 @@
       "stages": [
         {
           "text": "research.BOTTLEOFTHICKTAINT.stage.0",
-          "required_knowledge": [
-            "OBSERVATION;ALCHEMY;2",
-            "THEORY;ALCHEMY;1"
-          ],
-          "required_craft": [
-            "thaumcraft:bottle_taint"
+          "recipes": [
+            "trk:bottle_thick_taint"
           ],
           "warp": 2
-        },
-        {
-          "text": "research.BOTTLEOFTHICKTAINT.stage.1",
-          "recipes": [
-            "trk:bottle_of_thick_taint"
-          ]
         }
       ]
     },
@@ -504,8 +449,8 @@
         "HIDDEN"
       ],
       "location": [
-        0,
-        2
+        2,
+        0
       ],
       "stages": [
         {

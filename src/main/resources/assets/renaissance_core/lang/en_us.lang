@@ -1,4 +1,5 @@
 itemGroup.tabRenaissanceCore=Renaissance Core
+tc.research_category.RENAISSANCE_CONCILIUM=Renaissance and Concilium
 
 advancement.renaissancecore=Thaumic Renaissance
 renaissancecore.desc=World of Thaumcraft
@@ -75,6 +76,31 @@ tooltip.rc_book.1=Click to study it.
 tooltip.rc_book.2=The meaning of this book remains unclear to you.
 tooltip.rc_book.3=Why do i do this.
 tooltip.rc_book.4=The meaning of this page remains unclear to you.
+tooltip.rc_book.5=Runic Windings
+tooltip.rc_book.6=Focus Medium: Impulse
+tooltip.rc_book.7=Focus Effect: Positive Burst
+tooltip.rc_book.8=Focus Effect: Reflection
+tooltip.rc_book.9=Bottle of Thick Taint
+
+renaissance_core.IMPULSE.name=Impulse
+renaissance_core.IMPULSE.text=Launch a fireworks like beam to your target with random but long range and very fast speed. The beam may bounce between the walls.
+
+renaissance_core.POSITIVEBURST.name=Positive Burst
+renaissance_core.POSITIVEBURST.text=Spawns a small bunch of healing orb at target.
+
+rcfocus.positive_burst.count=Count
+rcfocus.positive_burst.function=Function
+rcfocus.positive_burst.common=Heal
+rcfocus.positive_burst.vitaminize=Buff
+rcfocus.positive_burst.fulfillment=Shield
+
+renaissance_core.REFLECTION.name=Reflection
+renaissance_core.REFLECTION.text=Drains target's experience to exchange temporary warps.
+
+rcfocus.reflection.power=Power
+rcfocus.reflection.function=Cost
+rcfocus.reflection.common=Experience
+rcfocus.reflection.oblivion=Research
 
 item.dice12.name=T12
 item.arcane_lime_powder.name=Powder of Arcane Mixture
@@ -84,6 +110,7 @@ item.t12_elixir.name=Elixir of the Confess
 item.runic_chestplate.name=Runic Body Windings
 item.runic_leggings.name=Runic Legs Windings
 item.bottle_thick_taint.name=Bottle of Thick Taint
+item.renaissance_core.research_page.name=Research Page
 
 item.crimson_annales.name=Crimson Annales
 item.research_notes_crimson.name=Crimson Dogma
@@ -141,7 +168,9 @@ entity.StrayedMirror.name=Strayed Mirror
 entity.Samurai.name=Paranoid Warrior
 entity.CrimsonPontifex.name=Crimson Pontifex
 entity.GolemBydlo.name=Golem Bydlo
-entity.ConcentratedWarpChargeEntity.name=Concentrated Warp Charge
+entity.BottleOfThickTaintEntity.name=Thick Taint Bottle
+entity.EntityPositiveBurstOrb.name=Positive Burst Orb
+entity.CompressedBlastEntity.name=Compressed Blast
 
 text.entity.CrimsonPontifex.name=%s %s
 

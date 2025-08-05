@@ -1,14 +1,13 @@
 package com.keletu.renaissance_core.items;
 
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
@@ -21,6 +20,7 @@ import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import thaumcraft.common.lib.SoundsTC;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemResearchPage extends Item {
 
@@ -47,6 +47,17 @@ public class ItemResearchPage extends Item {
                 return 0.0F;
             }
         });
+    }
+
+    @Override
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+        if (!isInCreativeTab(tab)) {
+            return;
+        }
+
+        for (int i = 0; i < 5; i++) {
+            items.add(new ItemStack(this, 1, i));
+        }
     }
 
     @Override
@@ -112,5 +123,28 @@ public class ItemResearchPage extends Item {
             }
         }
         return super.onItemRightClick(world, player, hand);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, World player, List<String> list, ITooltipFlag par4) {
+        super.addInformation(stack, player, list, par4);
+        switch (stack.getItemDamage()) {
+            case 0:
+                list.add(TextFormatting.GOLD + I18n.translateToLocal("tooltip.rc_book.5"));
+                break;
+            case 1:
+                list.add(TextFormatting.GOLD + I18n.translateToLocal("tooltip.rc_book.6"));
+                break;
+            case 2:
+                list.add(TextFormatting.GOLD + I18n.translateToLocal("tooltip.rc_book.7"));
+                break;
+            case 3:
+                list.add(TextFormatting.GOLD + I18n.translateToLocal("tooltip.rc_book.8"));
+                break;
+            case 4:
+                list.add(TextFormatting.GOLD + I18n.translateToLocal("tooltip.rc_book.9"));
+                break;
+        }
     }
 }

@@ -360,7 +360,7 @@ public class EntityThaumaturge extends EntityMob implements IRangedAttackMob {
         valuedItems.put(Item.getIdFromItem(Items.EXPERIENCE_BOTTLE), 3);
         valuedItems.put(Item.getIdFromItem(Items.ENCHANTED_BOOK), 5);
         valuedItems.put(Item.getIdFromItem(Items.BOOK), 2);
-        valuedItems.put(Item.getIdFromItem(ItemsTC.curio), 5);
+        valuedItems.put(Item.getIdFromItem(ItemsTC.curio), -1);
 
         //tradeInventory.add(Arrays.asList(9, new ItemStack(ItemsTC.itemManaBean)));
 

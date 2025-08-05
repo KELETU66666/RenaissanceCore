@@ -24,6 +24,7 @@ public class RCItems {
     public static final Item runic_chestplate = new ItemRunicWindings(0, EntityEquipmentSlot.CHEST).setRegistryName("runic_chestplate").setTranslationKey("runic_chestplate").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
     public static final Item runic_leggings = new ItemRunicWindings(1, EntityEquipmentSlot.LEGS).setRegistryName("runic_leggings").setTranslationKey("runic_leggings").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
     public static final Item bottle_of_thick_taint = new ItemBottleOfThickTaint().setRegistryName("bottle_thick_taint").setTranslationKey("bottle_thick_taint").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
+    public static final Item research_page = new ItemResearchPage().setRegistryName("research_page").setTranslationKey(RenaissanceCore.MODID + "." + "research_page").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
     public static final Item item_icon = new ItemIcon().setRegistryName("icon").setTranslationKey("icon");
 
     public static final Item pechHeadNormal = new RCItemBlocks(RCBlocks.pechHead_normal);

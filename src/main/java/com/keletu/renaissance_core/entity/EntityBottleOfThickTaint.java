@@ -9,6 +9,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.entities.ITaintedMob;
 import thaumcraft.api.potions.PotionFluxTaint;
@@ -67,11 +68,12 @@ public class EntityBottleOfThickTaint extends EntityThrowable {
                 int zz = (int) ((this.rand.nextFloat() - this.rand.nextFloat()) * 5.0F);
                 BlockPos p = this.getPosition().add(xx, 0, zz);
                 if (this.world.rand.nextBoolean()) {
+                    //Utils.setBiomeAt(this.world, p, TABiomes.TAINTED_LANDS);
                     if (this.world.isBlockNormalCube(p.down(), false) && this.world.getBlockState(p).getBlock().isReplaceable(this.world, p)) {
                         this.world.setBlockState(p, BlocksTC.taintFibre.getDefaultState());
                     }
                     if (this.world.isAirBlock(p.up())) {
-                        this.world.setBlockState(p, BlocksTC.fluxGoo.getDefaultState());
+                        ThaumcraftApi.internalMethods.addFlux(world, p.up(), 10.0F, true);
                     }
                 }
             }

@@ -8,6 +8,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -22,6 +23,7 @@ import thaumcraft.common.entities.monster.cult.EntityCultist;
 import thaumcraft.common.entities.monster.cult.EntityCultistCleric;
 import thaumcraft.common.entities.monster.cult.EntityCultistKnight;
 import thaumcraft.common.lib.SoundsTC;
+import thaumcraft.common.lib.utils.EntityUtils;
 
 public class EntityMadThaumaturge extends EntityMob {
 
@@ -153,7 +155,7 @@ public class EntityMadThaumaturge extends EntityMob {
                 }
             }
         }
-        return true;
+        return super.processInteract(player, hand);
     }
 
     @Override
@@ -179,9 +181,17 @@ public class EntityMadThaumaturge extends EntityMob {
         int d = this.rand.nextInt(10);
         if (d > 7) {
             int r = this.rand.nextInt(10);
-            if (r <= 3)
-                this.entityDropItem(new ItemStack(ItemsTC.curio, 1, 5), 1.5F);
-
+            if (r <= 3) {
+                EntityUtils.entityDropSpecialItem(this, new ItemStack(RCItems.research_page, 1, 3), height / 2.0f);
+            } else if (r <= 5) {
+                EntityUtils.entityDropSpecialItem(this, new ItemStack(RCItems.research_page, 1, 4), height / 2.0f);
+            } else if (r <= 7) {
+                EntityUtils.entityDropSpecialItem(this, new ItemStack(RCItems.research_page, 1, 0), height / 2.0f);
+            } else {
+                EntityUtils.entityDropSpecialItem(this, new ItemStack(Items.PAPER), height / 2.0f);
+            }
+        } else {
+            this.entityDropItem(new ItemStack(ItemsTC.curio, 1, 5), 1.5F);
         }
         super.dropFewItems(flag, i);
     }

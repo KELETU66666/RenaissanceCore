@@ -2,9 +2,11 @@ package com.keletu.renaissance_core.container;
 
 import com.keletu.renaissance_core.client.gui.InventoryThaumaturge;
 import com.keletu.renaissance_core.entity.EntityThaumaturge;
+import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.IInventoryChangedListener;
@@ -13,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.container.slot.SlotOutput;
 
 import java.util.ArrayList;
@@ -65,38 +68,38 @@ public class ContainerThaumaturge extends Container implements IInventoryChanged
     private void generateContents() {
         if (!theWorld.isRemote && !inventory.getStackInSlot(0).isEmpty() && inventory.getStackInSlot(1).isEmpty() && inventory.getStackInSlot(2).isEmpty() && inventory.getStackInSlot(3).isEmpty() && inventory.getStackInSlot(4).isEmpty() && thaumaturge.isValued(inventory.getStackInSlot(0))) {
             ItemStack offer = this.inventory.getStackInSlot(0);
-            /*if (offer.getItem() instanceof ItemResearchNotes) {
-                if (ResearchManager.getData(offer) != null) {
-                    if (ResearchManager.getData(offer).isComplete()) {
+            if (offer.getItem() == ItemsTC.salisMundus) {
+                //if (ResearchManager.getData(offer) != null) {
+                   // if (ResearchManager.getData(offer).isComplete()) {
                         ItemStack research = null;
                         int choise = this.theWorld.rand.nextInt(4);
                         switch (choise) {
                             case 0:
-                                research = ResearchManager.createNote(new ItemStack(ConfigItems.itemResearchNotes), "VISCONDUCTOR", this.theWorld);
+                                research = new ItemStack(Items.PAPER);
                                 this.mergeItemStack(research, 1, 5, false);
                                 this.inventory.decrStackSize(0, 1);
                                 break;
                             case 1:
                             case 2:
-                                research = ResearchManager.createNote(new ItemStack(ConfigItems.itemResearchNotes), "POSITIVEBURSTFOCI", this.theWorld);
+                                research = new ItemStack(RCItems.research_page, 1, 1);
                                 this.mergeItemStack(research, 1, 5, false);
                                 this.inventory.decrStackSize(0, 1);
                                 break;
                             case 3:
-                                research = ResearchManager.createNote(new ItemStack(ConfigItems.itemResearchNotes), "IMPULSEFOCI", this.theWorld);
+                                research = new ItemStack(RCItems.research_page, 1, 2);
                                 this.mergeItemStack(research, 1, 5, false);
                                 this.inventory.decrStackSize(0, 1);
                                 break;
                             default:
-                                research = ResearchManager.createNote(new ItemStack(ConfigItems.itemResearchNotes), "VISCONDUCTOR", this.theWorld);
+                                research = new ItemStack(Items.PAPER);
                                 this.mergeItemStack(research, 1, 5, false);
                                 this.inventory.decrStackSize(0, 1);
                                 break;
                         }
                         return;
-                    }
-                }
-            }*/
+                    //}
+                //}
+            }
             int value = this.thaumaturge.getValue(this.inventory.getStackInSlot(0));
             if (this.theWorld.rand.nextInt(5) == 0) {
                 value += this.theWorld.rand.nextInt(2);

@@ -50,6 +50,11 @@ public class ModelEvents {
         defaultModel(RCItems.runic_chestplate);
         defaultModel(RCItems.runic_leggings);
         defaultModel(RCItems.bottle_of_thick_taint);
+        defaultModel(RCItems.research_page);
+        defaultModel(RCItems.research_page, 1);
+        defaultModel(RCItems.research_page, 2);
+        defaultModel(RCItems.research_page, 3);
+        defaultModel(RCItems.research_page, 4);
         defaultModel(RCItems.item_icon);
         defaultModel(RCItems.item_icon, 1);
         defaultModel(RCItems.item_icon, 2);
