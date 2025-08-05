@@ -263,7 +263,7 @@ research.FOCUSIMPULSE.stage.0=This new medium allows you to cast your spells qui
 
 research.FOCUSPOSITIVEBURST.title=Focus Effect: Positive Burst
 research.FOCUSPOSITIVEBURST.title.text=Inhale this, quick
-research.FOCUSPOSITIVEBURST.stage.0=The healing focus can restore health, while the curse focus can apply powerful bad effects. After combining them, you have successfully developed a new focus effect that condenses life-energy into small orbs to absorb.<BR>>You can also choose to have it provide other buffs instead of just healing.<BR>>Unfortunately, the condensed focus effect has lost the ability to damage undead creatures.
+research.FOCUSPOSITIVEBURST.stage.0=The healing focus can restore health, while the curse focus can apply powerful bad effects. After combining them, you have successfully developed a new focus effect that condenses life-energy into small orbs to absorb.<BR>You can also choose to have it provide other buffs instead of just healing.<BR>Unfortunately, the condensed focus effect has lost the ability to damage undead creatures.
 
 research.FOCUSREFLECTION.title=Focus Effect: Reflection
 research.FOCUSREFLECTION.title.text=What a dusty place...
@@ -276,7 +276,7 @@ research.BOTTLEOFTHICKTAINT.stage.0=The transformation of your entire region int
 research.PECHGOLEM.title=Pech Golems
 research.PECHGOLEM.title.text=So pechy
 research.PECHGOLEM.stage.0=The Axe of the Skulltaker can be used to behead the heads of various creatures: zombies, skeletons, creepers, and even other players. Of course, perhaps pechs can be included as well. After studying magical creatures (or their heads), I discovered that the heads of pechs still retain some magical energy. Combining this with my research in golemancy, it might be possible to create some... interesting things.
-research.PECHGOLEM.stage.1=After a series of experiments, I discovered that I can use the Pech’s skull as an "alternative" golem core, installing it in place of the golem’s head. The resulting golem will obey my commands just the same, allowing me to abandon those old-fashioned cloakwork brains my companions used.<BR>>Of course, I hope the glint of greed I see in the golem’s eyes is just my imagination...
+research.PECHGOLEM.stage.1=After a series of experiments, I discovered that I can use the Pech’s skull as an "alternative" golem core, installing it in place of the golem’s head. The resulting golem will obey my commands just the same, allowing me to abandon those old-fashioned cloakwork brains my companions used.<BR>Of course, I hope the glint of greed I see in the golem’s eyes is just my imagination...
 
 research.GOLEMWRAP.title=Bubble Armor
 research.GOLEMWRAP.title.text=Snug Fit!
