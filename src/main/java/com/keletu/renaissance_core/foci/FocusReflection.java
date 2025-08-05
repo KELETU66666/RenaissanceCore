@@ -10,6 +10,8 @@ import net.minecraft.util.text.TextComponentString;
 import static net.minecraft.util.text.TextFormatting.DARK_PURPLE;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.capabilities.IPlayerKnowledge;
@@ -62,7 +64,7 @@ public class FocusReflection extends FocusEffect {
         return false;
     }
 
-    @Override
+    @SideOnly(Side.CLIENT)
     public void renderParticleFX(World world, double x, double y, double z, double vx, double vy, double vz) {
         final FXGeneric pp = new FXGeneric(world, x, y, z, vx, vy, vz);
         pp.setMaxAge(9);
