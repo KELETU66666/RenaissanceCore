@@ -66,63 +66,64 @@ public class ItemResearchPage extends Item {
         if (!world.isRemote) {
             if (!ThaumcraftCapabilities.knowsResearch(player, "!SpecialCreatures")) {
                 player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tooltip.rc_book.4")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
-            }
-            switch (stack.getItemDamage()) {
-                case 0:
-                    if (!ThaumcraftCapabilities.knowsResearch(player, "!RunicWindings")) {
-                        if (ThaumcraftCapabilities.knowsResearch(player, "RUNICSHIELDING") && ThaumcraftCapabilities.knowsResearch(player, "FM_CRYSTAL_SCRIBING_TOOLS")) {
-                            ThaumcraftApi.internalMethods.completeResearch(player, "!RunicWindings");
-                            world.playSound(null, player.getPosition(), SoundsTC.learn, SoundCategory.PLAYERS, 0.75F, 1.0F);
-                            stack.shrink(1);
-                        } else {
-                            player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tooltip.rc_book.4")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
+            } else {
+                switch (stack.getItemDamage()) {
+                    case 0:
+                        if (!ThaumcraftCapabilities.knowsResearch(player, "!RunicWindings")) {
+                            if (ThaumcraftCapabilities.knowsResearch(player, "RUNICSHIELDING") && ThaumcraftCapabilities.knowsResearch(player, "FM_CRYSTAL_SCRIBING_TOOLS")) {
+                                ThaumcraftApi.internalMethods.completeResearch(player, "!RunicWindings");
+                                world.playSound(null, player.getPosition(), SoundsTC.learn, SoundCategory.PLAYERS, 0.75F, 1.0F);
+                                stack.shrink(1);
+                            } else {
+                                player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tooltip.rc_book.4")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
+                            }
                         }
-                    }
-                    break;
-                case 1:
-                    if (!ThaumcraftCapabilities.knowsResearch(player, "!FocusImpulse")) {
-                        if (ThaumcraftCapabilities.knowsResearch(player, "FOCUSBOLT") && ThaumcraftCapabilities.knowsResearch(player, "FOCUSPROJECTILE")) {
-                            ThaumcraftApi.internalMethods.completeResearch(player, "!FocusImpulse");
-                            world.playSound(null, player.getPosition(), SoundsTC.learn, SoundCategory.PLAYERS, 0.75F, 1.0F);
-                            stack.shrink(1);
-                        } else {
-                            player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tooltip.rc_book.4")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
+                        break;
+                    case 1:
+                        if (!ThaumcraftCapabilities.knowsResearch(player, "!FocusImpulse")) {
+                            if (ThaumcraftCapabilities.knowsResearch(player, "FOCUSBOLT") && ThaumcraftCapabilities.knowsResearch(player, "FOCUSPROJECTILE")) {
+                                ThaumcraftApi.internalMethods.completeResearch(player, "!FocusImpulse");
+                                world.playSound(null, player.getPosition(), SoundsTC.learn, SoundCategory.PLAYERS, 0.75F, 1.0F);
+                                stack.shrink(1);
+                            } else {
+                                player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tooltip.rc_book.4")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
+                            }
                         }
-                    }
-                    break;
-                case 2:
-                    if (!ThaumcraftCapabilities.knowsResearch(player, "!FocusPositiveBurst")) {
-                        if (ThaumcraftCapabilities.knowsResearch(player, "FOCUSHEAL") && ThaumcraftCapabilities.knowsResearch(player, "FOCUSCURSE")) {
-                            ThaumcraftApi.internalMethods.completeResearch(player, "!FocusPositiveBurst");
-                            world.playSound(null, player.getPosition(), SoundsTC.learn, SoundCategory.PLAYERS, 0.75F, 1.0F);
-                            stack.shrink(1);
-                        } else {
-                            player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tooltip.rc_book.4")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
+                        break;
+                    case 2:
+                        if (!ThaumcraftCapabilities.knowsResearch(player, "!FocusPositiveBurst")) {
+                            if (ThaumcraftCapabilities.knowsResearch(player, "FOCUSHEAL") && ThaumcraftCapabilities.knowsResearch(player, "FOCUSCURSE")) {
+                                ThaumcraftApi.internalMethods.completeResearch(player, "!FocusPositiveBurst");
+                                world.playSound(null, player.getPosition(), SoundsTC.learn, SoundCategory.PLAYERS, 0.75F, 1.0F);
+                                stack.shrink(1);
+                            } else {
+                                player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tooltip.rc_book.4")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
+                            }
                         }
-                    }
-                    break;
-                case 3:
-                    if (!ThaumcraftCapabilities.knowsResearch(player, "!FocusReflection")) {
-                        if (ThaumcraftCapabilities.knowsResearch(player, "TWOND_LETHE_WATER") && ThaumcraftCapabilities.knowsResearch(player, "BASEELDRITCH")) {
-                            ThaumcraftApi.internalMethods.completeResearch(player, "!FocusReflection");
-                            world.playSound(null, player.getPosition(), SoundsTC.learn, SoundCategory.PLAYERS, 0.75F, 1.0F);
-                            stack.shrink(1);
-                        } else {
-                            player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tooltip.rc_book.4")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
+                        break;
+                    case 3:
+                        if (!ThaumcraftCapabilities.knowsResearch(player, "!FocusReflection")) {
+                            if (ThaumcraftCapabilities.knowsResearch(player, "TWOND_LETHE_WATER") && ThaumcraftCapabilities.knowsResearch(player, "BASEELDRITCH")) {
+                                ThaumcraftApi.internalMethods.completeResearch(player, "!FocusReflection");
+                                world.playSound(null, player.getPosition(), SoundsTC.learn, SoundCategory.PLAYERS, 0.75F, 1.0F);
+                                stack.shrink(1);
+                            } else {
+                                player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tooltip.rc_book.4")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
+                            }
                         }
-                    }
-                    break;
-                case 4:
-                    if (!ThaumcraftCapabilities.knowsResearch(player, "!BottleThickTaint")) {
-                        if (ThaumcraftCapabilities.knowsResearch(player, "BOTTLETAINT")) {
-                            ThaumcraftApi.internalMethods.completeResearch(player, "!BottleThickTaint");
-                            world.playSound(null, player.getPosition(), SoundsTC.learn, SoundCategory.PLAYERS, 0.75F, 1.0F);
-                            stack.shrink(1);
-                        } else {
-                            player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tooltip.rc_book.4")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
+                        break;
+                    case 4:
+                        if (!ThaumcraftCapabilities.knowsResearch(player, "!BottleThickTaint")) {
+                            if (ThaumcraftCapabilities.knowsResearch(player, "BOTTLETAINT")) {
+                                ThaumcraftApi.internalMethods.completeResearch(player, "!BottleThickTaint");
+                                world.playSound(null, player.getPosition(), SoundsTC.learn, SoundCategory.PLAYERS, 0.75F, 1.0F);
+                                stack.shrink(1);
+                            } else {
+                                player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tooltip.rc_book.4")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
+                            }
                         }
-                    }
-                    break;
+                        break;
+                }
             }
         }
         return super.onItemRightClick(world, player, hand);
