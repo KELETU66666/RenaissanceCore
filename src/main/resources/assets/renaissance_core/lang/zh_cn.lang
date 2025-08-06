@@ -188,7 +188,7 @@ research.FOCUSIMPULSE.stage.0=这个新的媒介允许你把你的法术发射�
 
 research.FOCUSPOSITIVEBURST.title=核心效果:疗愈迸发
 research.FOCUSPOSITIVEBURST.title.text=吸点这个,快
-research.FOCUSPOSITIVEBURST.stage.0=治疗核心可以恢复目标生命,而诅咒核心可以为目标施加强大的负面效果。在结合两种核心后,你成功研发了一种能将生命能量凝集成便于的小球的法术.<BR>你也可以选择让这些小球提供更多增益效果或单纯的提供治疗.<BR>不幸的是,经过修改的核心失去了伤害亡灵生物的能力.
+research.FOCUSPOSITIVEBURST.stage.0=治疗核心可以恢复目标生命,而诅咒核心可以为目标施加强大的负面效果。在结合两种核心后,你成功研发了一种能将生命能量凝集成便于的小球的法术。<BR>你也可以选择让这些小球提供更多增益效果或单纯的提供治疗。<BR>不幸的是,经过修改的核心失去了伤害亡灵生物的能力。
 
 research.FOCUSREFLECTION.title=核心效果:反思
 research.FOCUSREFLECTION.title.text=这地方灰真多......
@@ -201,7 +201,7 @@ research.BOTTLEOFTHICKTAINT.stage.0=你所在的整片区域正在变成一个�
 research.PECHGOLEM.title=岩精傀儡
 research.PECHGOLEM.title.text=看起来像岩精一样
 research.PECHGOLEM.stage.0=灼颅斧可以砍下很多生物的头颅，例如僵尸，骷髅，爬行者或其他玩家。当然，岩精也不例外。在研究过这些魔法生物 (或它们的脑袋) 后， 我发现岩精的头颅还残存着少许魔法能量。结合我对傀儡学的研究，说不定能制造一些...有趣...的产物。
-research.PECHGOLEM.stage.1=经过几次试验后， 我发现岩精的头颅可以在某种程度上"取代"傀儡的核心来安装在傀儡的头部。制造出的傀儡也一样对我言听计从， 这下可以让我抛弃那些老旧的发条核心了.<BR>当然， 我希望新傀儡眼中那一抹贪婪的目光是我的错觉...
+research.PECHGOLEM.stage.1=经过几次试验后， 我发现岩精的头颅可以在某种程度上"取代"傀儡的核心来安装在傀儡的头部。制造出的傀儡也一样对我言听计从， 这下可以让我抛弃那些老旧的发条核心了。<BR>当然， 我希望新傀儡眼中那一抹贪婪的目光是我的错觉...
 
 research.GOLEMWRAP.title=泡泡纸护甲
 research.GOLEMWRAP.title.text=严丝合缝!
