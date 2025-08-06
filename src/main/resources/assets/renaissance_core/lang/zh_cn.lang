@@ -1,3 +1,6 @@
+itemGroup.tabRenaissanceCore=复兴核心
+tc.research_category.RENAISSANCE_CONCILIUM=复兴与议会
+
 advancement.renaissancecore=神秘复兴
 renaissancecore.desc=神秘的世界
 advancement.renaissancecore:salis_mundus=异梦
@@ -67,17 +70,51 @@ item.arcane_lime_powder.name=奥术石灰粉
 item.pech_backpack.name=岩精背包
 item.t12_elixir.name=忏悔药水
 
-item.rc_coins.name.0=Coin
-item.rc_coins.name.1=Stack of Coins
-item.rc_coins.name.2=Enchanted Coin
+item.runic_chestplate.name=符文缠绕护身
+item.runic_leggings.name=符文缠绕护腿
+item.bottle_thick_taint.name=稠腐瓶
+item.renaissance_core.research_page.name=研究笔记
 
-entity.TaintedRabbit.name=Tainted Rabbit
-entity.TaintedChicken.name=Tainted Chicken
-entity.TaintedCow.name=Tainted Cow
-entity.TaintedPig.name=Tainted Pig
-entity.TaintedVillager.name=Tainted Villager
-entity.TaintedCreeper.name=Tainted Creeper
-entity.TaintedSheep.name=Tainted Sheep
+TC.oblivion_response=你似乎忘掉了什么...
+
+tooltip.rc_book.0=这本书画满了褪色的奇怪符号.
+tooltip.rc_book.1=右击以进行研究.
+tooltip.rc_book.2=这本书的含义对你来说仍然模糊.
+tooltip.rc_book.3=我为什么要这样做
+tooltip.rc_book.4=你还不足以理解这些研究.
+tooltip.rc_book.5=符文缠绕
+tooltip.rc_book.6=核心媒介：冲击
+tooltip.rc_book.7=核心效果：疗愈迸发
+tooltip.rc_book.8=核心效果：反思
+tooltip.rc_book.9=稠腐瓶
+
+renaissance_core.IMPULSE.name=冲击
+renaissance_core.IMPULSE.text=向你的目标快速射出一道烟花般长距离射线，射线有可能在墙面之间弹射.
+
+renaissance_core.POSITIVEBURST.name=疗愈迸发
+renaissance_core.POSITIVEBURST.text=在目标处散播疗愈法球.
+
+rcfocus.positive_burst.count=数量
+rcfocus.positive_burst.function=功能
+rcfocus.positive_burst.common=治疗
+rcfocus.positive_burst.vitaminize=增强
+rcfocus.positive_burst.fulfillment=护盾
+
+renaissance_core.REFLECTION.name=反思
+renaissance_core.REFLECTION.text=用目标的经验换取临时扭曲.
+
+rcfocus.reflection.power=效力
+rcfocus.reflection.function=消耗
+rcfocus.reflection.common=经验
+rcfocus.reflection.oblivion=研究进度
+
+entity.TaintedRabbit.name=腐化兔子
+entity.TaintedChicken.name=腐化鸡
+entity.TaintedCow.name=腐化牛
+entity.TaintedPig.name=腐化猪
+entity.TaintedVillager.name=腐化村民
+entity.TaintedCreeper.name=腐化爬行者
+entity.TaintedSheep.name=腐化羊
 
 entity.ThaumicConcilium.Thaumaturge.name=神秘使
 entity.MadThaumaturge.name=疯狂神秘使
@@ -91,6 +128,9 @@ entity.StrayedMirror.name=迷失镜像
 entity.Samurai.name=偏执战士
 entity.CrimsonPontifex.name=血腥教皇
 entity.ConcentratedWarpChargeEntity.name=浓缩腐化飞弹
+entity.BottleOfThickTaintEntity.name=稠腐瓶
+entity.EntityPositiveBurstOrb.name=疗愈迸发法球
+entity.CompressedBlastEntity.name=凝集飞弹
 
 text.entity.CrimsonPontifex.name=%s %s
 
@@ -138,6 +178,37 @@ research.PONTIFEXHAMMER.title=教皇战锤
 research.PONTIFEXHAMMER.title.text=真正的血腥武器
 research.PONTIFEXHAMMER.stage.1=你能够重现传奇般的血腥教皇的武器.它尺寸惊人,而且同样具有夺取他人生命的能力.<BR>按住鼠标右键即可使用此功能.
 
+research.RUNICWINDINGS.title=符文缠绕
+research.RUNICWINDINGS.title.text=神秘木乃伊
+research.RUNICWINDINGS.stage.0=在一个曾经攻击过你的疯子的口袋中,你找到了一份说明,它描述了一种能够提升你的符文防御力的奇异方法.<BR>其所用的材料很明显不太耐用,也不具有任何意义上的物理防御力.你觉得那并不是这套,呃,服装的设计初衷.不管怎样,它的附魔能力相当令人印象深刻.<BR>有时,一想到它要保护你免受什么,或者是谁的伤害,你就会抽起筋来.
+
+research.FOCUSIMPULSE.title=核心媒介:冲击
+research.FOCUSIMPULSE.title.text=最重要的是别把它俩搞混了
+research.FOCUSIMPULSE.stage.0=这个新的媒介允许你把你的法术发射的和烟花一样又快又远。然而请务必小心,这些飞弹极其的不稳定,这体现在那不确定的射程和弹药的爆炸时间...
+
+research.FOCUSPOSITIVEBURST.title=核心效果:疗愈迸发
+research.FOCUSPOSITIVEBURST.title.text=吸点这个,快
+research.FOCUSPOSITIVEBURST.stage.0=治疗核心可以恢复目标生命,而诅咒核心可以为目标施加强大的负面效果。在结合两种核心后,你成功研发了一种能将生命能量凝集成便于的小球的法术.<BR>你也可以选择让这些小球提供更多增益效果或单纯的提供治疗.<BR>不幸的是,经过修改的核心失去了伤害亡灵生物的能力.
+
+research.FOCUSREFLECTION.title=核心效果:反思
+research.FOCUSREFLECTION.title.text=这地方灰真多......
+research.FOCUSREFLECTION.stage.0=你在一生中见过许多:黑暗的洞穴,地狱灼热的温度,恐怖的怪物,经历这些后你在晚上是怎么睡得着的?<BR>你的未来计划列表中肯定不包括成为那些游荡于行尸走肉之间并扑向人们的疯子之一.<BR>幸运的是(或者不幸的是......),那些遭遇过这种命运的人之一,在某个瞬间想通了自己的去向(尽管他没有时间做任何事),你可不能让这样的东西浪费了.<BR>在图纸中稍微加入了一点可靠性元素,你认为这个装置可以为你清除过去的幻象.你将杖柄抵在太阳穴,然后放松了双眼......
+
+research.BOTTLEOFTHICKTAINT.title=浓稠腐化瓶
+research.BOTTLEOFTHICKTAINT.title.text=请勿露天存放
+research.BOTTLEOFTHICKTAINT.stage.0=你所在的整片区域正在变成一个传染性的污水池，虽然缓慢但已是必然。<BR>但肯定缺了什么东西。<BR><BR>啊，当然了!我们需要加入更多的腐蚀废气与毒性纤维!
+
+research.PECHGOLEM.title=岩精傀儡
+research.PECHGOLEM.title.text=看起来像岩精一样
+research.PECHGOLEM.stage.0=灼颅斧可以砍下很多生物的头颅，例如僵尸，骷髅，爬行者或其他玩家。当然，岩精也不例外。在研究过这些魔法生物 (或它们的脑袋) 后， 我发现岩精的头颅还残存着少许魔法能量。结合我对傀儡学的研究，说不定能制造一些...有趣...的产物。
+research.PECHGOLEM.stage.1=经过几次试验后， 我发现岩精的头颅可以在某种程度上"取代"傀儡的核心来安装在傀儡的头部。制造出的傀儡也一样对我言听计从， 这下可以让我抛弃那些老旧的发条核心了.<BR>当然， 我希望新傀儡眼中那一抹贪婪的目光是我的错觉...
+
+research.GOLEMWRAP.title=泡泡纸护甲
+research.GOLEMWRAP.title.text=严丝合缝!
+research.GOLEMWRAP.stage.0=傀儡在砍伐时经常被困在突然长出的木头之间， 这会导致原本脆弱的傀儡更加不堪重负。我要想办法解决这一问题。
+research.GOLEMWRAP.stage.1=在经过简单的改装之后，我把傀儡身上包裹了一层"泡沫纸"，这可以防止傀儡受到窒息伤害。当然， 也仅限于窒息伤害。<BR>§9这项研究解锁了新的傀儡部件§0。
+
+#植物魔法
 tc.research_category.BOTANY=植物学
 
 research.basicbotany.title=基础植物学

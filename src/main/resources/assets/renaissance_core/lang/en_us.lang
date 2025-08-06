@@ -123,10 +123,6 @@ item.pontifex_legs.name=Pontifex Leggings
 item.pontifex_boots.name=Pontifex Boots
 item.molot.name=Pontifex's Hammer
 
-item.rc_coins.name.0=Coin
-item.rc_coins.name.1=Stack of Coins
-item.rc_coins.name.2=Enchanted Coin
-
 tile.pech_skull_forage.name=Forage Pech Head
 tile.pech_skull_stalker.name=Stalker Pech Head
 tile.pech_skull_thaum.name=Mage Pech Head
@@ -170,6 +166,7 @@ entity.StrayedMirror.name=Strayed Mirror
 entity.Samurai.name=Paranoid Warrior
 entity.CrimsonPontifex.name=Crimson Pontifex
 entity.GolemBydlo.name=Golem Bydlo
+entity.ConcentratedWarpChargeEntity.name=Concentrated Warp Charge
 entity.BottleOfThickTaintEntity.name=Thick Taint Bottle
 entity.EntityPositiveBurstOrb.name=Positive Burst Orb
 entity.CompressedBlastEntity.name=Compressed Blast
@@ -182,10 +179,6 @@ key.open_backpack=Open Backpack
 key.toggle_pontifex=Toggle Pontifex Robe
 
 message.renaissance-core.botaniaaddon.manyflowers=Too many flowers, Efficiency %s%%
-
-ftr.research.rift_feed.title=Feed the Rift
-ftr.research.rift_feed.text=say goodbye to your bad-luck.
-ftr.research.rift_feed.complete.text=throw it to a rift to feed it, when rift too large it will explode and drop primordial dust.
 
 ftr.research.arcane_lime_powder.title=Arcane Lime Mixture
 ftr.research.arcane_lime_powder.text=more useful than quartz sliver.
