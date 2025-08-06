@@ -68,7 +68,7 @@ public class ContainerThaumaturge extends Container implements IInventoryChanged
     private void generateContents() {
         if (!theWorld.isRemote && !inventory.getStackInSlot(0).isEmpty() && inventory.getStackInSlot(1).isEmpty() && inventory.getStackInSlot(2).isEmpty() && inventory.getStackInSlot(3).isEmpty() && inventory.getStackInSlot(4).isEmpty() && thaumaturge.isValued(inventory.getStackInSlot(0))) {
             ItemStack offer = this.inventory.getStackInSlot(0);
-            if (offer.getItem() == ItemsTC.salisMundus) {
+            if (offer.getItem() == ItemsTC.curio) {
                 //if (ResearchManager.getData(offer) != null) {
                    // if (ResearchManager.getData(offer).isComplete()) {
                         ItemStack research = null;
