@@ -14,6 +14,7 @@ import com.keletu.renaissance_core.module.botania.SubtileRegisterOverride;
 import com.keletu.renaissance_core.packet.*;
 import com.keletu.renaissance_core.proxy.CommonProxy;
 import com.keletu.renaissance_core.tweaks.InitBotaniaRecipes;
+import com.keletu.renaissance_core.util.PolishRecipe;
 import com.keletu.renaissance_core.util.ScanEntities;
 import fr.wind_blade.isorropia.common.IsorropiaAPI;
 import fr.wind_blade.isorropia.common.research.recipes.SpecieCurativeInfusionRecipe;
@@ -46,6 +47,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
@@ -63,6 +65,7 @@ import thaumcraft.api.research.ScanEntity;
 import thaumcraft.api.research.ScanItem;
 import thaumcraft.api.research.ScanningManager;
 import thaumcraft.common.golems.client.PartModelHauler;
+import thecodex6824.thaumicaugmentation.api.TABlocks;
 import thecodex6824.thaumicaugmentation.api.TAItems;
 
 import java.util.Arrays;
@@ -226,6 +229,19 @@ public class RenaissanceCore {
                                 new ItemStack(Items.CLAY_BALL),
                                 new ItemStack(ItemsTC.tallow)}));
 
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("trk:dest_crystal"), new ShapelessArcaneRecipe(new ResourceLocation(""), "!DestCrystal", 200,
+                new AspectList().add(Aspect.ORDER, 2).add(Aspect.ENTROPY, 2).add(Aspect.FIRE, 2).add(Aspect.WATER, 2).add(Aspect.AIR, 2).add(Aspect.EARTH, 2),
+                new ItemStack(RCItems.destabilizedCrystal),
+                new Object[]{new ItemStack(ItemsTC.crystalEssence),
+                        new ItemStack(ItemsTC.crystalEssence),
+                        new ItemStack(ItemsTC.crystalEssence),
+                        new ItemStack(ItemsTC.crystalEssence),
+                        new ItemStack(ItemsTC.crystalEssence),
+                        new ItemStack(ItemsTC.crystalEssence),
+                        new ItemStack(ItemsTC.crystalEssence),
+                        new ItemStack(ItemsTC.crystalEssence),
+                        new ItemStack(ItemsTC.crystalEssence)}));
+
         ItemStack hood = new ItemStack(RCItems.pontifex_hood);
         hood.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
         ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("trk:pontifex_hood"),
@@ -332,6 +348,69 @@ public class RenaissanceCore {
                 new ItemStack(ItemsTC.bottleTaint),
                 new AspectList().add(Aspect.FLUX, 50).add(Aspect.ALCHEMY, 50).add(Aspect.CRYSTAL, 50)));
 
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:vis_conductor"), new InfusionRecipe("!VisConductor",
+                new ItemStack(RCItems.vis_conductor), 20,
+                new AspectList().add(Aspect.EXCHANGE, 100).add(Aspect.ENERGY, 100).add(Aspect.MAGIC, 200).add(Aspect.MAN, 300).add(Aspect.TOOL, 50),
+                new ItemStack(ItemsTC.resonator),
+                new ItemStack(BlocksTC.infusionMatrix),
+                new ItemStack(Items.QUARTZ),
+                new ItemStack(ItemsTC.visResonator),
+                new ItemStack(BlocksTC.rechargePedestal),
+                new ItemStack(BlocksTC.infusionMatrix),
+                new ItemStack(Items.QUARTZ),
+                new ItemStack(ItemsTC.visResonator),
+                new ItemStack(BlocksTC.rechargePedestal)));
+
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:dump_jackboots"), new InfusionRecipe("DUMPJACKBOOTS", new ItemStack(RCItems.dump_jackboots), 5,
+                new AspectList().add(Aspect.EARTH, 100).add(Aspect.PROTECT, 30).add(IsorropiaAPI.SLOTH, 100).add(Aspect.MECHANISM, 50),
+                new ItemStack(ItemsTC.travellerBoots, 1, 32767),
+                new ItemStack(Blocks.PISTON),
+                new ItemStack(ItemsTC.thaumiumShovel, 1, 32767),
+                new ItemStack(ModItems.ResourceNS, 1, 4),
+                new ItemStack(BlocksTC.crystalEarth),
+                new ItemStack(ModItems.ResourceNS, 1, 4),
+                new ItemStack(ItemsTC.thaumiumShovel, 1, 32767),
+                new ItemStack(TABlocks.ITEM_GRATE),
+                new ItemStack(ItemsTC.thaumiumShovel, 1, 32767),
+                new ItemStack(ModItems.ResourceNS, 1, 4),
+                new ItemStack(BlocksTC.crystalAir),
+                new ItemStack(ModItems.ResourceNS, 1, 4),
+                new ItemStack(ItemsTC.thaumiumShovel, 1, 32767)));
+
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:tight_belt"), new InfusionRecipe("TIGHTBELT",
+                new ItemStack(RCItems.tight_belt), 8,
+                new AspectList().add(Aspect.FLUX, 200).add(Aspect.PROTECT, 200).add(Aspect.ALCHEMY, 300).add(Aspect.MAN, 30),
+                new ItemStack(TAItems.THAUMOSTATIC_HARNESS_AUGMENT),
+                new ItemStack(RCItems.bottle_of_thick_taint),
+                new ItemStack(RCItems.bottle_of_thick_taint),
+                ThaumcraftApiHelper.makeCrystal(Aspect.FLUX),
+                new ItemStack(ItemsTC.causalityCollapser),
+                ThaumcraftApiHelper.makeCrystal(Aspect.FLUX),
+                new ItemStack(RCItems.bottle_of_thick_taint),
+                new ItemStack(RCItems.bottle_of_thick_taint),
+                new ItemStack(RCItems.bottle_of_thick_taint),
+                ThaumcraftApiHelper.makeCrystal(Aspect.FLUX),
+                new ItemStack(ItemsTC.causalityCollapser),
+                ThaumcraftApiHelper.makeCrystal(Aspect.FLUX),
+                new ItemStack(RCItems.bottle_of_thick_taint)));
+
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:burdening_amulet"), new InfusionRecipe("BURDENINGAMULET",
+                new ItemStack(RCItems.burdening_amulet), 8,
+                new AspectList().add(Aspect.PROTECT, 200).add(Aspect.SENSES, 100).add(Aspect.DEATH, 200).add(Aspect.ELDRITCH, 300).add(IsorropiaAPI.ENVY, 200),
+                new ItemStack(ItemsTC.amuletVis, 1, 0),
+                new ItemStack(TAItems.FRACTURE_LOCATOR),
+                new ItemStack(ModItems.ResourceNS, 1, 1),
+                new ItemStack(ModItems.ResourceNS, 1, 1),
+                new ItemStack(Blocks.GOLD_BLOCK),
+                new ItemStack(ModItems.ResourceNS, 1, 1),
+                new ItemStack(ModItems.ResourceNS, 1, 1),
+                new ItemStack(Items.ENDER_EYE),
+                new ItemStack(ModItems.ResourceNS, 1, 1),
+                new ItemStack(ModItems.ResourceNS, 1, 1),
+                new ItemStack(Blocks.OBSIDIAN),
+                new ItemStack(ModItems.ResourceNS, 1, 1),
+                new ItemStack(ModItems.ResourceNS, 1, 1)));
+
         IsorropiaAPI.registerCreatureInfusionRecipe(new ResourceLocation("renaissance_core", "golem_bydlo"),
                 ((SpecieCurativeInfusionRecipe.Builder) new SpecieCurativeInfusionRecipe.Builder()
                         .withAspects(new AspectList().add(Aspect.METAL, 100).add(Aspect.ENTROPY, 100).add(Aspect.ENERGY, 50).add(IsorropiaAPI.PRIDE, 50))
@@ -360,5 +439,9 @@ public class RenaissanceCore {
         GolemHead.register(new GolemHead("THAUMIUM", new String[]{"PECHGOLEM"}, new ResourceLocation(MODID, "textures/research/r_pech_thaum.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_thaum.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadThaumaturge)}, new EnumGolemTrait[]{EnumGolemTrait.SMART}));
 
         GolemAddon.register(new GolemAddon("BUBBLE_ARMOR", new String[]{"GOLEMWRAP"}, new ResourceLocation(MODID, "textures/research/bubble_wrap_item.png"), new PartModelHauler(new ResourceLocation(MODID, "models/obj/bubble_wrap.obj"), new ResourceLocation(MODID, "textures/models/entity/bubble_wrap.png"), PartModel.EnumAttachPoint.BODY), new Object[]{new ItemStack(Blocks.WOOL), new ItemStack(Items.PAPER, 6)}, new EnumGolemTrait[]{RenaissanceCore.BUBBLE}));
+
+        PolishRecipe.addPolishmentRecipe(new ItemStack(RCItems.dump_jackboots), new AspectList().add(Aspect.MOTION, 100));
+        PolishRecipe.addPolishmentRecipe(new ItemStack(RCItems.burdening_amulet), new AspectList().add(Aspect.FLIGHT, 100));
+        PolishRecipe.addPolishmentRecipe(new ItemStack(RCItems.tight_belt), new AspectList().add(Aspect.SENSES, 50));
     }
 }

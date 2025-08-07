@@ -25,10 +25,15 @@ public class RCItems {
     public static final Item runic_leggings = new ItemRunicWindings(1, EntityEquipmentSlot.LEGS).setRegistryName("runic_leggings").setTranslationKey("runic_leggings").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
     public static final Item bottle_of_thick_taint = new ItemBottleOfThickTaint().setRegistryName("bottle_thick_taint").setTranslationKey("bottle_thick_taint").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
     public static final Item research_page = new ItemResearchPage().setRegistryName("research_page").setTranslationKey(RenaissanceCore.MODID + "." + "research_page").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
+    public static final Item vis_conductor = new ItemVisConductor().setRegistryName("vis_conductor").setTranslationKey("vis_conductor").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
+    public static final Item dump_jackboots = new ItemDumpJackboots().setRegistryName("dump_jackboots").setTranslationKey("dump_jackboots").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
+    public static final Item tight_belt = new ItemTightBelt().setRegistryName("tight_belt").setTranslationKey("tight_belt").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
+    public static final Item burdening_amulet = new ItemBurdeningAmulet().setRegistryName("burdening_amulet").setTranslationKey("burdening_amulet").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
     public static final Item item_icon = new ItemIcon().setRegistryName("icon").setTranslationKey("icon");
 
     public static final Item pechHeadNormal = new RCItemBlocks(RCBlocks.pechHead_normal);
     public static final Item pechHeadHunter = new RCItemBlocks(RCBlocks.pechHead_hunter);
     public static final Item pechHeadThaumaturge = new RCItemBlocks(RCBlocks.pechHead_thaumaturge);
     public static final Item quicksilverCrucible = new RCItemBlocks(RCBlocks.quicksilver_crucible);
+    public static final Item destabilizedCrystal = new ItemBlockDestabilizedCrystal(RCBlocks.destabilized_crystal);
 }

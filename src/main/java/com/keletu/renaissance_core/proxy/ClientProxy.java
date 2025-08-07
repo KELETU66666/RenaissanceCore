@@ -2,6 +2,8 @@ package com.keletu.renaissance_core.proxy;
 
 import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
+import com.keletu.renaissance_core.blocks.RCBlocks;
+import com.keletu.renaissance_core.blocks.TileDestabilizedCrystal;
 import com.keletu.renaissance_core.blocks.TileQuicksilverCrucible;
 import com.keletu.renaissance_core.client.model.ModelGolemBydlo;
 import com.keletu.renaissance_core.client.model.ModelVengefulGolem;
@@ -22,12 +24,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.network.play.client.CPacketInput;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -81,6 +85,9 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(EntityCompressedBlast.class, new RenderNoProjectile(Minecraft.getMinecraft().getRenderManager()));
 
         ClientRegistry.bindTileEntitySpecialRenderer(TileQuicksilverCrucible.class, new RenderTileQuicksilverCrucible());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileDestabilizedCrystal.class, new RendererTileDestabilizedCrystal());
+
+        ForgeHooksClient.registerTESRItemStack(Item.getItemFromBlock(RCBlocks.destabilized_crystal), 0, TileDestabilizedCrystal.class);
 
         if (ConfigsRC.CHANGE_BOTANIA_RECIPE && Loader.isModLoaded("botania")) {
             PageArcaneWorkbenchRecipe.init();

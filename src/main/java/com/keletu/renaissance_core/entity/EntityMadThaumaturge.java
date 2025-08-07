@@ -8,7 +8,6 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -188,7 +187,7 @@ public class EntityMadThaumaturge extends EntityMob {
             } else if (r <= 7) {
                 EntityUtils.entityDropSpecialItem(this, new ItemStack(RCItems.research_page, 1, 0), height / 2.0f);
             } else {
-                EntityUtils.entityDropSpecialItem(this, new ItemStack(Items.PAPER), height / 2.0f);
+                EntityUtils.entityDropSpecialItem(this, new ItemStack(RCItems.research_page, 1, 6), height / 2.0f);
             }
         } else {
             this.entityDropItem(new ItemStack(ItemsTC.curio, 1, 5), 1.5F);

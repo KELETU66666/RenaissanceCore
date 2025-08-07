@@ -83,6 +83,8 @@ tooltip.rc_book.6=Focus Medium: Impulse
 tooltip.rc_book.7=Focus Effect: Positive Burst
 tooltip.rc_book.8=Focus Effect: Reflection
 tooltip.rc_book.9=Bottle of Thick Taint
+tooltip.rc_book.10=Resonator of Vis Conductor
+tooltip.rc_book.11=Destabilized Crystal Cluster
 
 renaissance_core.IMPULSE.name=Impulse
 renaissance_core.IMPULSE.text=Launch a fireworks like beam to your target with random but long range and very fast speed. The beam may bounce between the walls.
@@ -114,6 +116,11 @@ item.runic_leggings.name=Runic Legs Windings
 item.bottle_thick_taint.name=Bottle of Thick Taint
 item.renaissance_core.research_page.name=Research Page
 
+item.vis_conductor.name=Resonator of Vis Conductor
+item.dump_jackboots.name=Dump Jackboots
+item.tight_belt.name=Tight Belt
+item.burdening_amulet.name=Burdening Amulet
+
 item.crimson_annales.name=Crimson Annales
 item.research_notes_crimson.name=Crimson Dogma
 
@@ -129,6 +136,7 @@ tile.pech_skull_thaum.name=Mage Pech Head
 
 tile.full_crucible.name=Filled Crucible
 tile.quicksilver_crucible.name=Quicksilver Reactor
+tile.destabilized_crystal.name=Destabilized Crystal Cluster
 
 golem.head.forage=Pech Forage Head
 golem.head.text.forage=Pech Forage Head
@@ -277,6 +285,29 @@ research.GOLEMWRAP.title=Bubble Armor
 research.GOLEMWRAP.title.text=Snug Fit!
 research.GOLEMWRAP.stage.0=The golem is often buried by suddenly grown wood while chopping, which often results in the loss of one or more golems.. I need to find a way to prevent this from happening.
 research.GOLEMWRAP.stage.1=After a simple modification, I wrapped bubble wrap around the golems. This can prevent the golems from taking in-wall damage, although it cannot protect them from other types of damage.<BR>§9This research unlocks additional golem parts§0.
+
+research.VISCONDUCTOR.title=Resonator of Vis Conductor
+research.VISCONDUCTOR.title.text=FUBAR, as planned
+research.VISCONDUCTOR.stage.0=The infusion process is a well-trodden path for you. And although the possibilities of infusion are almost limitless, they seem somehow, well, one-sided, if only you could not only add something missing to the subject, but also take out something unnecessary and interfering...<BR>This thought was floating in your head for a long time, but you could not catch and formalize it, and it's good that there was more than one such obsessive person in the whole world.<PAGE>In fact, everything is simple enough, you just need to put a certain final touch, to hit the essence of unnecessary property on the object while the magical circlulations have not subsided and it is still hot, thus knocking out of it such a thing.<BR>For such a blow, this focus, which has the ability to absorb and release at the right moment the power of the essence, will help you.<BR>All you need is a suitable vessel.
+
+research.DESTCRYSTAL.title=Destabilized Crystal Cluster
+research.DESTCRYSTAL.title.text=I can't believe this is not jar!
+research.DESTCRYSTAL.stage.0=Liquid essence is a little difficult to keep ready for instant transfer. The way out is a crystallized essence that is stable enough not to melt and active enough to be quickly converted, why you didn't figure it out yourself?<BR>Press RMB with the desired essence crystal on the cluster to build it up, then start the infusion process and grab the cluster with the conductive focus.<BR>If everything goes according to plan, the collected essence will be thrown into the infused object.<BR> <IMG>renaissance_core:textures/gui/crystal_recipe.png:0:0:255:255:.5</IMG><BR> Crafting Recipe.
+
+research.DUMPJACKBOOTS.title=Dump Jackboots
+research.DUMPJACKBOOTS.title.text=Escalates quickly
+research.DUMPJACKBOOTS.stage.0=The Boots of the Traveler are very fast, but they need to be recharged constantly, and when encountering gaps that are too wide, you still need to use blocks to step on. You need to find a way to solve this problem.
+research.DUMPJACKBOOTS.stage.1=You were able to create a new milestone in the construction of columns, towers, pillars, and just plain shapeless piles.<BR>When these boots are put on your feet, they are capable of taking a block from your hands and dumping it out under you, all you have to do is bend your knees slightly.<BR>You can try to put something under you when you fall, though risky journeys and acrobatic etudes are not the specialty of these boots.
+
+research.TIGHTBELT.title=Tight Belt
+research.TIGHTBELT.title.text=Worse than hangover
+research.TIGHTBELT.stage.0=You’ve been experimenting with the thaumostatic girdle, trying to enhance its properties without losing its signature lightness. The goal was to create a device that could provide support and agility without any discomfort.
+research.TIGHTBELT.stage.1=And who would wear it? By perverting the lightweight nature of the thaumostatic girdle, you have achieved the opposite effect - instead of a slight lift, the girdle will squeeze your insides as tightly as it can.<BR>You've noticed that the clearer the genius idea in your head about taking off that damn piece of leather, the weaker the belt twists your guts.
+
+research.BURDENINGAMULET.title=Burdening Amulet
+research.BURDENINGAMULET.title.text=My eyes are up here
+research.BURDENINGAMULET.stage.0=During one of your walks through the desert of souls, a smoldering phantom appeared in front of you, and before it disintegrated into smoke, it told you a general description of a certain jewelry.<BR>There is no doubt that this artifact does not come from our world, but its true origin is still a mystery to you. You've seen nothing like that, neither on the members of the Crimson Cult, nor on the mysterious figures guarding the floating obelisks.
+research.BURDENINGAMULET.stage.1=As soon as the amulet was around your neck, you felt the back of your head fill with lead, which almost made you fall, while your vision blurred. You shifted your eyes to the insect crawling by, and it immediately fell backwards, then your head felt lighter.<BR>It looks like you might find a use for this thing before you decide to just take it off.<BR>After a few days, the harshness of your gaze penetrated everyone in your entourage - from loyal wolves to brothers in arms, each of them began to understand your orders instantly, just to avoid drawing attention to themselves unnecessarily.
 
 #Botania
 renaissance_core.research=⚠ Requires Research.

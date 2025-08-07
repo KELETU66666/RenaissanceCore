@@ -27,6 +27,18 @@
         "meta": 4
       },
       "model": "renaissance_core:item/page_purple"
+    },
+    {
+      "predicate": {
+        "meta": 5
+      },
+      "model": "renaissance_core:item/page_white"
+    },
+    {
+      "predicate": {
+        "meta": 6
+      },
+      "model": "renaissance_core:item/page_lightblue"
     }
   ]
 }

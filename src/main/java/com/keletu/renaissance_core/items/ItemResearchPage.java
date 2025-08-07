@@ -44,6 +44,12 @@ public class ItemResearchPage extends Item {
                 if (stack.getMetadata() == 4) {
                     return 4.0F;
                 }
+                if (stack.getMetadata() == 5) {
+                    return 5.0F;
+                }
+                if (stack.getMetadata() == 6) {
+                    return 6.0F;
+                }
                 return 0.0F;
             }
         });
@@ -55,7 +61,7 @@ public class ItemResearchPage extends Item {
             return;
         }
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 7; i++) {
             items.add(new ItemStack(this, 1, i));
         }
     }
@@ -123,6 +129,28 @@ public class ItemResearchPage extends Item {
                             }
                         }
                         break;
+                    case 5:
+                        if (!ThaumcraftCapabilities.knowsResearch(player, "!VisConductor")) {
+                            if (ThaumcraftCapabilities.knowsResearch(player, "!Thaumaturge") && ThaumcraftCapabilities.knowsResearch(player, "INFUSION") && ThaumcraftCapabilities.knowsResearch(player, "RECHARGEPEDESTAL") && ThaumcraftCapabilities.knowsResearch(player, "TUBES")) {
+                                ThaumcraftApi.internalMethods.completeResearch(player, "!VisConductor");
+                                world.playSound(null, player.getPosition(), SoundsTC.learn, SoundCategory.PLAYERS, 0.75F, 1.0F);
+                                stack.shrink(1);
+                            } else {
+                                player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tooltip.rc_book.4")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
+                            }
+                        }
+                        break;
+                    case 6:
+                        if (!ThaumcraftCapabilities.knowsResearch(player, "!DestCrystal")) {
+                            if (ThaumcraftCapabilities.knowsResearch(player, "!VisConductor")) {
+                                ThaumcraftApi.internalMethods.completeResearch(player, "!DestCrystal");
+                                world.playSound(null, player.getPosition(), SoundsTC.learn, SoundCategory.PLAYERS, 0.75F, 1.0F);
+                                stack.shrink(1);
+                            } else {
+                                player.sendMessage(new TextComponentTranslation(I18n.translateToLocal("tooltip.rc_book.4")).setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)));
+                            }
+                        }
+                        break;
                 }
             }
         }
@@ -148,6 +176,12 @@ public class ItemResearchPage extends Item {
                 break;
             case 4:
                 list.add(TextFormatting.GOLD + I18n.translateToLocal("tooltip.rc_book.9"));
+                break;
+            case 5:
+                list.add(TextFormatting.GOLD + I18n.translateToLocal("tooltip.rc_book.10"));
+                break;
+            case 6:
+                list.add(TextFormatting.GOLD + I18n.translateToLocal("tooltip.rc_book.11"));
                 break;
         }
     }

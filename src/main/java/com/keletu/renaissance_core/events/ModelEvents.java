@@ -55,6 +55,13 @@ public class ModelEvents {
         defaultModel(RCItems.research_page, 2);
         defaultModel(RCItems.research_page, 3);
         defaultModel(RCItems.research_page, 4);
+        defaultModel(RCItems.research_page, 5);
+        defaultModel(RCItems.research_page, 6);
+        defaultModel(RCItems.vis_conductor);
+        defaultModel(RCItems.dump_jackboots);
+        defaultModel(RCItems.tight_belt);
+        defaultModel(RCItems.burdening_amulet);
+
         defaultModel(RCItems.item_icon);
         defaultModel(RCItems.item_icon, 1);
         defaultModel(RCItems.item_icon, 2);
@@ -63,6 +70,7 @@ public class ModelEvents {
         defaultModel(RCItems.pechHeadHunter);
         defaultModel(RCItems.pechHeadThaumaturge);
         defaultModel(RCItems.quicksilverCrucible);
+        defaultModel(RCItems.destabilizedCrystal);
     }
 
     static void defaultModel(Item item) {

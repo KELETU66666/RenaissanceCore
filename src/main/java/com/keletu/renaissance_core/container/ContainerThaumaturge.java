@@ -6,7 +6,6 @@ import com.keletu.renaissance_core.items.RCItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.IInventoryChangedListener;
@@ -75,7 +74,7 @@ public class ContainerThaumaturge extends Container implements IInventoryChanged
                         int choise = this.theWorld.rand.nextInt(4);
                         switch (choise) {
                             case 0:
-                                research = new ItemStack(Items.PAPER);
+                                research = new ItemStack(RCItems.research_page, 1, 5);
                                 this.mergeItemStack(research, 1, 5, false);
                                 this.inventory.decrStackSize(0, 1);
                                 break;
@@ -91,7 +90,7 @@ public class ContainerThaumaturge extends Container implements IInventoryChanged
                                 this.inventory.decrStackSize(0, 1);
                                 break;
                             default:
-                                research = new ItemStack(Items.PAPER);
+                                research = new ItemStack(RCItems.research_page, 1, 5);
                                 this.mergeItemStack(research, 1, 5, false);
                                 this.inventory.decrStackSize(0, 1);
                                 break;

@@ -508,6 +508,166 @@
           "text": "research.GOLEMWRAP.stage.1"
         }
       ]
+    },
+    {
+      "key": "!VisConductor",
+      "name": "research.VISCONDUCTOR.title",
+      "icons": [
+        "renaissance_core:vis_conductor"
+      ],
+      "category": "RENAISSANCE_CONCILIUM",
+      "meta": [
+        "HIDDEN"
+      ],
+      "location": [
+        -4,
+        0
+      ],
+      "stages": [
+        {
+          "text": "research.VISCONDUCTOR.stage.0",
+          "recipes": [
+            "trk:vis_conductor"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "!DestCrystal",
+      "name": "research.DESTCRYSTAL.title",
+      "icons": [
+        "renaissance_core:destabilized_crystal"
+      ],
+      "category": "RENAISSANCE_CONCILIUM",
+      "meta": [
+        "HIDDEN"
+      ],
+      "location": [
+        -4,
+        -2
+      ],
+      "stages": [
+        {
+          "text": "research.DESTCRYSTAL.stage.0"
+        }
+      ]
+    },
+    {
+      "key": "DUMPJACKBOOTS",
+      "name": "research.DUMPJACKBOOTS.title",
+      "icons": [
+        "renaissance_core:dump_jackboots"
+      ],
+      "category": "RENAISSANCE_CONCILIUM",
+      "parents": [
+        "BOOTSTRAVELLER",
+        "ITEM_GRATE",
+        "!DestCrystal"
+      ],
+      "meta": [
+        "REVERSE"
+      ],
+      "location": [
+        -6,
+        -3
+      ],
+      "stages": [
+        {
+          "text": "research.DUMPJACKBOOTS.stage.0",
+          "required_knowledge": [
+            "OBSERVATION;INFUSION;1",
+            "THEORY;INFUSION;1"
+          ]
+        },
+        {
+          "text": "research.DUMPJACKBOOTS.stage.1",
+          "recipes": [
+            "trk:dump_jackboots"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "TIGHTBELT",
+      "name": "research.TIGHTBELT.title",
+      "icons": [
+        "renaissance_core:tight_belt"
+      ],
+      "category": "RENAISSANCE_CONCILIUM",
+      "parents": [
+        "!BottleThickTaint",
+        "~RIFTCLOSER",
+        "~THAUMOSTATIC_GIRDLE",
+        "~!DestCrystal"
+      ],
+      "meta": [
+        "HIDDEN",
+        "REVERSE"
+      ],
+      "location": [
+        -3,
+        4
+      ],
+      "stages": [
+        {
+          "text": "research.TIGHTBELT.stage.0",
+          "required_knowledge": [
+            "OBSERVATION;INFUSION;3",
+            "THEORY;ALCHEMY;1",
+            "THEORY;INFUSION;2"
+          ],
+          "required_item": [
+            "renaissance_core:bottle_thick_taint"
+          ],
+          "warp": 4
+        },
+        {
+          "text": "research.TIGHTBELT.stage.1",
+          "recipes": [
+            "trk:tight_belt"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "BURDENINGAMULET",
+      "name": "research.BURDENINGAMULET.title",
+      "icons": [
+        "renaissance_core:burdening_amulet"
+      ],
+      "category": "RENAISSANCE_CONCILIUM",
+      "parents": [
+        "TIGHTBELT",
+        "~FRACTURE_THEORY"
+      ],
+      "meta": [
+        "HIDDEN"
+      ],
+      "location": [
+        -4,
+        3
+      ],
+      "stages": [
+        {
+          "text": "research.BURDENINGAMULET.stage.0",
+          "required_knowledge": [
+            "OBSERVATION;INFUSION;3",
+            "OBSERVATION;ELDRITCH;3",
+            "THEORY;INFUSION;1",
+            "THEORY;ELDRITCH;1"
+          ],
+          "required_craft": [
+            "renaissance_core:tight_belt"
+          ],
+          "warp": 3
+        },
+        {
+          "text": "research.BURDENINGAMULET.stage.1",
+          "recipes": [
+            "trk:burdening_amulet"
+          ]
+        }
+      ]
     }
   ]
 }
