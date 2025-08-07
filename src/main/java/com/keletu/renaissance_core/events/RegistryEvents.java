@@ -1,6 +1,5 @@
 package com.keletu.renaissance_core.events;
 
-import baubles.common.network.PacketHandler;
 import com.keletu.renaissance_core.RenaissanceCore;
 import com.keletu.renaissance_core.blocks.RCBlocks;
 import com.keletu.renaissance_core.blocks.TileDestabilizedCrystal;
@@ -248,7 +247,7 @@ public class RegistryEvents {
                                         player.world.playSound(null, player.getPosition(), SoundsTC.shock, SoundCategory.BLOCKS, 0.8F, player.world.rand.nextFloat() * 0.1F + 0.9F);
                                         player.stopActiveHand();
                                         int rgb = Aspect.aspects.get(crystal.aspect).getColor();
-                                        PacketHandler.INSTANCE.sendToAllAround(new PacketFXLightning((float) player.posX, (float) (player.posY + 1F), (float) player.posZ, (float) iX, (float) iY, (float) iZ, rgb, 1.0F), new NetworkRegistry.TargetPoint(player.world.provider.getDimension(), player.posX, player.posY, player.posZ, 32.0));
+                                        RenaissanceCore.packetInstance.sendToAllAround(new PacketFXLightning((float) player.posX, (float) (player.posY + 1F), (float) player.posZ, (float) iX, (float) iY, (float) iZ, rgb, 1.0F), new NetworkRegistry.TargetPoint(player.world.provider.getDimension(), player.posX, player.posY, player.posZ, 32.0));
                                         return;
                                     } else {
                                        FXDispatcher.INSTANCE.burst(x, y, z, 2.0F);
