@@ -380,7 +380,7 @@ public class RenaissanceCore {
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:tight_belt"), new InfusionRecipe("TIGHTBELT",
                 new ItemStack(RCItems.tight_belt), 8,
                 new AspectList().add(Aspect.FLUX, 200).add(Aspect.PROTECT, 200).add(Aspect.ALCHEMY, 300).add(Aspect.MAN, 30),
-                new ItemStack(TAItems.THAUMOSTATIC_HARNESS_AUGMENT),
+                new ItemStack(TAItems.THAUMOSTATIC_HARNESS_AUGMENT, 1, 1),
                 new ItemStack(RCItems.bottle_of_thick_taint),
                 new ItemStack(RCItems.bottle_of_thick_taint),
                 ThaumcraftApiHelper.makeCrystal(Aspect.FLUX),
@@ -441,7 +441,7 @@ public class RenaissanceCore {
         GolemAddon.register(new GolemAddon("BUBBLE_ARMOR", new String[]{"GOLEMWRAP"}, new ResourceLocation(MODID, "textures/research/bubble_wrap_item.png"), new PartModelHauler(new ResourceLocation(MODID, "models/obj/bubble_wrap.obj"), new ResourceLocation(MODID, "textures/models/entity/bubble_wrap.png"), PartModel.EnumAttachPoint.BODY), new Object[]{new ItemStack(Blocks.WOOL), new ItemStack(Items.PAPER, 6)}, new EnumGolemTrait[]{RenaissanceCore.BUBBLE}));
 
         PolishRecipe.addPolishmentRecipe(new ItemStack(RCItems.dump_jackboots), new AspectList().add(Aspect.MOTION, 100));
-        PolishRecipe.addPolishmentRecipe(new ItemStack(RCItems.burdening_amulet), new AspectList().add(Aspect.FLIGHT, 100));
-        PolishRecipe.addPolishmentRecipe(new ItemStack(RCItems.tight_belt), new AspectList().add(Aspect.SENSES, 50));
+        PolishRecipe.addPolishmentRecipe(new ItemStack(RCItems.burdening_amulet), new AspectList().add(Aspect.SENSES, 50));
+        PolishRecipe.addPolishmentRecipe(new ItemStack(RCItems.tight_belt), new AspectList().add(Aspect.FLIGHT, 100));
     }
 }

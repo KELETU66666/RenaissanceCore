@@ -75,6 +75,11 @@ item.runic_leggings.name=符文缠绕护腿
 item.bottle_thick_taint.name=稠腐瓶
 item.renaissance_core.research_page.name=研究笔记
 
+item.vis_conductor.name=导魔谐振器
+item.dump_jackboots.name=倾卸长靴
+item.tight_belt.name=紧束腰带
+item.burdening_amulet.name=沉赘护身符
+
 TC.oblivion_response=你似乎忘掉了什么...
 
 tooltip.rc_book.0=这本书画满了褪色的奇怪符号.
@@ -87,6 +92,8 @@ tooltip.rc_book.6=核心媒介：冲击
 tooltip.rc_book.7=核心效果：疗愈迸发
 tooltip.rc_book.8=核心效果：反思
 tooltip.rc_book.9=稠腐瓶
+tooltip.rc_book.10=导魔谐振器
+tooltip.rc_book.11=不稳定晶簇
 
 renaissance_core.IMPULSE.name=冲击
 renaissance_core.IMPULSE.text=向你的目标快速射出一道烟花般长距离射线，射线有可能在墙面之间弹射.
@@ -135,6 +142,24 @@ entity.CompressedBlastEntity.name=凝集飞弹
 text.entity.CrimsonPontifex.name=%s %s
 
 tile.full_crucible.name=填满的坩埚
+tile.quicksilver_crucible.name=水银反应炉
+tile.destabilized_crystal.name=不稳定晶簇
+
+golem.head.forage=岩精强盗头颅
+golem.head.text.forage=岩精强盗头颅
+golem.head.stalker=岩精猎手头颅
+golem.head.text.stalker=岩精猎手头颅
+golem.head.thaumium=岩精法师头颅
+golem.head.text.thaumium=岩精法师头颅
+
+golem.addon.bubble_armor=泡沫纸
+golem.addon.text.bubble_armor=防止傀儡受到窒息伤害
+
+golem.trait.greedy=贪婪
+golem.trait.text.greedy=你的傀儡看上去更加贪婪.
+
+golem.trait.bubble=泡沫护甲
+golem.trait.text.bubble=防止傀儡受到窒息伤害.
 
 research.Thaumaturge.title=神秘使
 research.Thaumaturge.title.text=我们活在社会里
@@ -207,6 +232,29 @@ research.GOLEMWRAP.title=泡泡纸护甲
 research.GOLEMWRAP.title.text=严丝合缝!
 research.GOLEMWRAP.stage.0=傀儡在砍伐时经常被困在突然长出的木头之间，这会导致原本脆弱的傀儡更加不堪重负。我要想办法解决这一问题。
 research.GOLEMWRAP.stage.1=在经过简单的改装之后，我把傀儡身上包裹了一层"泡沫纸"，这可以防止傀儡受到窒息伤害。当然，也仅限于窒息伤害。<BR>§9这项研究解锁了新的傀儡部件§0。
+
+research.VISCONDUCTOR.title=导魔谐振器
+research.VISCONDUCTOR.title.text=全搞砸了,跟计划的一样
+research.VISCONDUCTOR.stage.0=注魔过程对你来说可谓是轻车熟路.然而尽管注魔有着近乎无限的可能性,但它们似乎在某种程度上是,嗯,片面的,假如说你不仅可以在实验品中补充缺少的东西,还能取出一些不必要和有干扰的东西......这个念头在你的脑海中盘旋了很久,但你却无法捕捉并把它确定下来,而全世界像你这样的执念症患者不止一个,这很不错.<PAGE>其实一切都很简单,你只需要实施画龙点睛般的一步,在魔力循环尚未消退之时趁热打铁,用不需要的要素源质冲击注魔物品,从而将它们从其中击出.<BR>对于这样一种冲击,这种能够在适当时机吸收和释放源质能量的核心可以帮你大忙.<BR>万事俱备,就差一个合适的容器了.
+
+research.DESTCRYSTAL.title=不稳定晶簇
+research.DESTCRYSTAL.title.text=谁还分得清它和罐子啊!
+research.DESTCRYSTAL.stage.0=液态源质有点难以实现即时转移.而解决方法就是一种晶化源质,它的高稳定性使它不易融化而高活性能够实现快速转化.你自己怎么没想出来呢?<BR>手持所需源质结晶对晶簇按下鼠标右键来使其蕴魔,然后开始注魔过程并对准晶簇使用引导核心.<BR>如果一切都按照计划进行,所聚集的源质就会灌注到注魔物品当中.
+
+research.DUMPJACKBOOTS.title=倾卸长靴
+research.DUMPJACKBOOTS.title.text=迅速升高
+research.DUMPJACKBOOTS.stage.0=旅行者之靴很快,但是它需要随时充能,而且在遇到太远的沟壑时仍需要用到方块来垫脚.我需要找到一种方式解决这个问题.
+research.DUMPJACKBOOTS.stage.1=你在建造圆柱,高塔,支柱还有普通的不定形柱子等结构上创造了一个新的里程碑.<BR>当你穿着这双靴子的时候,它们能从你手中拿取一个方块并把它倾卸到你的脚下,你要做的只有轻微地弯曲你的膝盖.<BR>你可以试着在坠落时在下方放置一些东西,然而危险的旅程和杂技练习并不是这双靴子的特长.
+
+research.TIGHTBELT.title=紧束腰带
+research.TIGHTBELT.title.text=比宿醉还难受
+research.TIGHTBELT.stage.0=You’ve been experimenting with the thaumostatic girdle, trying to enhance its properties without losing its signature lightness. The goal was to create a device that could provide support and agility without any discomfort.
+research.TIGHTBELT.stage.1=不是,谁愿意穿它啊?通过扭曲奥法腰带的轻质特性,你得到了相反的效果 - 腰带并不会轻微地使你浮空,而是会尽可能紧地挤压你的内脏.<BR>你注意到你脑子里把那条天杀的皮革脱掉的想法越明晰,腰带对你内脏的扭曲就会越弱.
+
+research.BURDENINGAMULET.title=沉赘护身符
+research.BURDENINGAMULET.title.text=我的眼睛在这里
+research.BURDENINGAMULET.stage.0=在一次穿越灵魂沙漠的途中,一个冒烟的幽灵出现在你面前,在它化为烟雾之前,它告诉了你某种珠宝的大致描述.<BR>毫无疑问,这件工艺品并非来自我们的世界,但它的真正来源对你来说仍然是个谜.你从未见过类似的东西,无论是在血腥教徒身上,还是在守卫漂浮方尖碑的神秘人影身上.
+research.BURDENINGAMULET.stage.1=护身符刚戴在脖子上,你就感觉后脑勺好像灌满了铅,差点摔倒,视线也变得模糊.你把目光转向旁边正在爬行的昆虫,它立刻就向后倒下,然后你的头感觉轻松了一些.<BR>看来在你决定摘下它之前,你可能发现了这东西的用处.<BR>几天过后,你目光中的严厉刺穿了同行的每个人 - 从忠诚的狼到同胞战友,每个人都开始能够立即理解你的命令,只是为了避免不必要地引起别人的注意.
 
 #植物魔法
 tc.research_category.BOTANY=植物学
