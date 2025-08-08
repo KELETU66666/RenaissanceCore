@@ -49,22 +49,23 @@ public class ItemDumpJackboots extends ItemArmor {
                         int y = MathHelper.floor(p.posY) - 1;
                         int z = MathHelper.floor(p.posZ);
                         BlockPos pos = new BlockPos(x, y, z);
-                        Block block = ((ItemBlock) stack.getItem()).getBlock();
-                        if (block.canPlaceBlockAt(p.world, pos) && p.world.getBlockState(pos).getBlock().isReplaceable(p.world, pos)) {
-                            p.motionX = 0;
-                            p.motionY = 0.5;
-                            p.motionZ = 0;
-                            p.fallDistance = 0F;
-                            if (p instanceof EntityPlayerMP) {
-                                resetFloatCounter((EntityPlayerMP) p);
-                            }
-                        }
-                        if (!p.world.isRemote) {
+                        if(!world.isOutsideBuildHeight(pos)) {
+                            Block block = ((ItemBlock) stack.getItem()).getBlock();
                             if (block.canPlaceBlockAt(p.world, pos) && p.world.getBlockState(pos).getBlock().isReplaceable(p.world, pos)) {
-                                ((ItemBlock) stack.getItem()).placeBlockAt(stack, p, world, pos, EnumFacing.UP, 0, 0, 0, block.getStateFromMeta(stack.getItemDamage()));
-                                //p.world.setBlockState(pos, block.getStateFromMeta(stack.getItemDamage()), 3);
-                                if (!p.capabilities.isCreativeMode) {
-                                    stack.shrink(1);
+                                p.motionX = 0;
+                                p.motionY = 0.5;
+                                p.motionZ = 0;
+                                p.fallDistance = 0F;
+                                if (p instanceof EntityPlayerMP) {
+                                    resetFloatCounter((EntityPlayerMP) p);
+                                }
+                            }
+                            if (!p.world.isRemote) {
+                                if (block.canPlaceBlockAt(p.world, pos) && p.world.getBlockState(pos).getBlock().isReplaceable(p.world, pos)) {
+                                    //p.world.setBlockState(pos, block.getStateFromMeta(stack.getItemDamage()), 3);
+                                    if (((ItemBlock) stack.getItem()).placeBlockAt(stack, p, world, pos, EnumFacing.UP, 0, 0, 0, block.getStateFromMeta(stack.getItemDamage()))) {
+                                        stack.shrink(1);
+                                    }
                                 }
                             }
                         }
