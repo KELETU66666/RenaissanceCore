@@ -2,7 +2,6 @@ package com.keletu.renaissance_core.util;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Tuple;
-import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 
 import java.util.ArrayList;
@@ -14,9 +13,9 @@ public class PolishRecipe {
         polishmentRecipes.add(new Tuple(item, tags));
     }
 
-    public static void removePolismentRecipe(ItemStack item, AspectList aspectList) {
+    public static void removePolismentRecipe(ItemStack item) {
         for (int i = 0; i < polishmentRecipes.size(); i++) {
-            if (ItemStack.areItemStacksEqual((ItemStack) polishmentRecipes.get(i).getFirst(), item) && aspectsToString((AspectList) polishmentRecipes.get(i).getSecond()).equals(aspectsToString(aspectList))) {
+            if (ItemStack.areItemStacksEqual((ItemStack) polishmentRecipes.get(i).getFirst(), item)) {
                 polishmentRecipes.remove(i);
                 break;
             }
@@ -40,12 +39,4 @@ public class PolishRecipe {
         return null;
     }
 
-    public static String aspectsToString(AspectList aspects) {
-        String output="";
-        for(Aspect aspect : aspects.getAspectsSortedByAmount()) {
-            if(aspect!=null)
-                output+=aspect.getName()+" "+aspects.getAmount(aspect)+",";
-        }
-        return output;
-    }
 }

@@ -11,6 +11,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.NetHandlerPlayServer;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -60,7 +61,8 @@ public class ItemDumpJackboots extends ItemArmor {
                         }
                         if (!p.world.isRemote) {
                             if (block.canPlaceBlockAt(p.world, pos) && p.world.getBlockState(pos).getBlock().isReplaceable(p.world, pos)) {
-                                p.world.setBlockState(pos, block.getStateFromMeta(stack.getItemDamage()), 3);
+                                ((ItemBlock) stack.getItem()).placeBlockAt(stack, p, world, pos, EnumFacing.UP, 0, 0, 0, block.getStateFromMeta(stack.getItemDamage()));
+                                //p.world.setBlockState(pos, block.getStateFromMeta(stack.getItemDamage()), 3);
                                 if (!p.capabilities.isCreativeMode) {
                                     stack.shrink(1);
                                 }
@@ -75,7 +77,7 @@ public class ItemDumpJackboots extends ItemArmor {
     public static void resetFloatCounter(final EntityPlayerMP player) {
         try {
             ObfuscationReflectionHelper.setPrivateValue(NetHandlerPlayServer.class, player.connection, 0, "floatingTickCount", "field_147365_f");
+        } catch (final Exception ignore) {
         }
-        catch (final Exception ignore) {}
     }
 }
