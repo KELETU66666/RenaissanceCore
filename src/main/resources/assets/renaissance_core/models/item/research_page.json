@@ -32,13 +32,13 @@
       "predicate": {
         "meta": 5
       },
-      "model": "renaissance_core:item/page_white"
+      "model": "renaissance_core:item/page_lightblue"
     },
     {
       "predicate": {
         "meta": 6
       },
-      "model": "renaissance_core:item/page_lightblue"
+      "model": "renaissance_core:item/page_white"
     }
   ]
 }

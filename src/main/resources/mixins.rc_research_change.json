@@ -4,7 +4,6 @@
   "refmap": "mixins.renaissance_core.refmap.json",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "ResearchTableContainerMixin"
   ],
   "client": [
     "MixinGuiResearchPage"
