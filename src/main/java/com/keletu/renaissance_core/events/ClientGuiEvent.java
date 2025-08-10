@@ -66,17 +66,19 @@ public class ClientGuiEvent {
         int x = (screen.width - 256) / 2 + 128;
         int y = (screen.height - 256) / 2 + 128;
 
-        AspectList list = PolishRecipe.getPolishmentRecipe((ItemStack) recipe.recipeOutput);
-        if (list != null) {
-            GL11.glPushMatrix();
-            (Minecraft.getMinecraft()).renderEngine.bindTexture(TEX_CRYSTAL);
-            GL11.glTranslatef((x - 13), (y - 124), 0.0F);
-            GL11.glScalef(0.5F, 0.5F, 1.0F);
-            GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.7F);
-            screen.drawTexturedModalRect(30, 0, 46, 45, 161, 162);
-            GL11.glPopMatrix();
+        if(recipe.recipeOutput instanceof ItemStack) {
+            AspectList list = PolishRecipe.getPolishmentRecipe((ItemStack) recipe.recipeOutput);
+            if (list != null) {
+                GL11.glPushMatrix();
+                (Minecraft.getMinecraft()).renderEngine.bindTexture(TEX_CRYSTAL);
+                GL11.glTranslatef((x - 13), (y - 124), 0.0F);
+                GL11.glScalef(0.5F, 0.5F, 1.0F);
+                GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.7F);
+                screen.drawTexturedModalRect(30, 0, 46, 45, 161, 162);
+                GL11.glPopMatrix();
 
-            UtilsFX.drawTag((x + 43), (y - 85), list.getAspects()[0], list.getAmount(list.getAspects()[0]), 0, event.getGui().zLevel);
+                UtilsFX.drawTag((x + 43), (y - 85), list.getAspects()[0], list.getAmount(list.getAspects()[0]), 0, event.getGui().zLevel);
+            }
         }
     }
 }
