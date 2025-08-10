@@ -291,23 +291,6 @@ public class RenaissanceCore {
                         "ingotVoid",
                         "blockGold"));
 
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:runic_chestplate"),
-                new InfusionRecipe("RUNICWINDINGS",
-                        new ItemStack(RCItems.molot),
-                        7,
-                        new AspectList().add(IsorropiaAPI.HUNGER, 30).add(Aspect.METAL, 250).add(Aspect.EXCHANGE, 30).add(IsorropiaAPI.PRIDE, 125).add(Aspect.AVERSION, 200).add(Aspect.LIFE, 200),
-                        new ItemStack(ItemsTC.crimsonBlade),
-                        new ItemStack(TAItems.FOCUS_ANCIENT),
-                        "blockGold",
-                        "ingotVoid",
-                        "plateVoid",
-                        new ItemStack(ItemsTC.causalityCollapser),
-                        new ItemStack(BlocksTC.logGreatwood),
-                        new ItemStack(ItemsTC.causalityCollapser),
-                        "plateVoid",
-                        "ingotVoid",
-                        "blockGold"));
-
         ItemStack windingchest = new ItemStack(RCItems.runic_chestplate);
         windingchest.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 100));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:runic_winding_chest"), new InfusionRecipe("!RunicWindings",
