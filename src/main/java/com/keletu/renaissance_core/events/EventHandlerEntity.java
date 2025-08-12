@@ -47,6 +47,8 @@ import thaumcraft.common.entities.monster.EntityGiantBrainyZombie;
 import thaumcraft.common.entities.monster.cult.EntityCultist;
 import thaumcraft.common.entities.monster.cult.EntityCultistKnight;
 import thaumcraft.common.lib.SoundsTC;
+import thecodex6824.thaumicaugmentation.api.tile.CapabilityRiftJar;
+import thecodex6824.thaumicaugmentation.api.tile.IRiftJar;
 import thecodex6824.thaumicaugmentation.common.tile.TileRiftJar;
 
 import java.util.HashMap;
@@ -132,8 +134,10 @@ public class EventHandlerEntity {
                 world.playSound(null, pos.add(0.5, 0.5, 0.5), SoundsTC.wand, SoundCategory.BLOCKS, 1.0F, 1.0F);
             }
             if (world.getTileEntity(pos) instanceof TileRiftJar && i.getItem() instanceof ICaster) {
+                TileRiftJar riftJar = (TileRiftJar) world.getTileEntity(pos);
                 TileEntity tile = world.getTileEntity(pos.add(0, -1, 0));
-                if (tile instanceof TileHexOfPredictability && ((TileHexOfPredictability) tile).isMaster && !((TileHexOfPredictability) tile).hasRift) {
+                IRiftJar jar = riftJar.getCapability(CapabilityRiftJar.RIFT_JAR, null);
+                if (jar != null && jar.hasRift() && tile instanceof TileHexOfPredictability && ((TileHexOfPredictability) tile).isMaster && !((TileHexOfPredictability) tile).hasRift) {
                     //List<EntityHexRift> peelers = world.getEntitiesWithinAABB(MaterialPeeler.class, AxisAlignedBB.getBoundingBox(tile.xCoord - 1.0, tile.yCoord, tile.zCoord - 1.0, tile.xCoord + 1.0, tile.yCoord + 4.0, tile.zCoord + 1.0));
                     //if (peelers.isEmpty()) {
                     world.setBlockToAir(pos);
