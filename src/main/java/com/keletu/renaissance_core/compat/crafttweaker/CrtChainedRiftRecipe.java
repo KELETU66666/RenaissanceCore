@@ -13,7 +13,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import thaumcraft.api.aspects.AspectList;
 
 @ZenRegister
-@ZenClass("mods.thaumicconcilium.ChainedRiftRecipe")
+@ZenClass("mods.renaissance_core.ChainedRiftRecipe")
 public class CrtChainedRiftRecipe {
 
     @ZenMethod
