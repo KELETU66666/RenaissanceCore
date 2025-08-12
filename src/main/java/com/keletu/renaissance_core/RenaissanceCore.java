@@ -1,5 +1,6 @@
 package com.keletu.renaissance_core;
 
+import com.keletu.renaissance_core.blocks.RCBlocks;
 import com.keletu.renaissance_core.capability.*;
 import com.keletu.renaissance_core.container.GUIHandler;
 import com.keletu.renaissance_core.entity.*;
@@ -14,6 +15,7 @@ import com.keletu.renaissance_core.module.botania.SubtileRegisterOverride;
 import com.keletu.renaissance_core.packet.*;
 import com.keletu.renaissance_core.proxy.CommonProxy;
 import com.keletu.renaissance_core.tweaks.InitBotaniaRecipes;
+import com.keletu.renaissance_core.util.ChainedRiftRecipe;
 import com.keletu.renaissance_core.util.PolishRecipe;
 import com.keletu.renaissance_core.util.ScanEntities;
 import fr.wind_blade.isorropia.common.IsorropiaAPI;
@@ -23,6 +25,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagByte;
@@ -52,9 +55,7 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.casters.FocusEngine;
-import thaumcraft.api.crafting.CrucibleRecipe;
-import thaumcraft.api.crafting.InfusionRecipe;
-import thaumcraft.api.crafting.ShapelessArcaneRecipe;
+import thaumcraft.api.crafting.*;
 import thaumcraft.api.golems.EnumGolemTrait;
 import thaumcraft.api.golems.parts.GolemAddon;
 import thaumcraft.api.golems.parts.GolemHead;
@@ -141,11 +142,11 @@ public class RenaissanceCore {
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "crimson_paladin"), EntityCrimsonPaladin.class, "CrimsonPaladin", id++, MODID, 64, 3, true, 0x00FFFF, 0x00008B);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "ethereal_shackles"), EntityEtherealShackles.class, "EtherealShacklesEntity", id++, MODID, 64, 1, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "mad_thaumaturge"), EntityMadThaumaturge.class, "MadThaumaturge", id++, MODID, 64, 1, true, 0x00FFFF, 0x111111);
-        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "crimson_annales"), EntityCrimsonAnnales.class, "CrimsonAnnales", id++, MODID, 64, 1, false);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "golem_bydlo"), EntityGolemBydlo.class, "GolemBydlo", id++, MODID, 64, 3, true, 0x00FFFF, 0x555555);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "bottle_thick_taint"), EntityBottleOfThickTaint.class, "BottleOfThickTaintEntity", id++, MODID, 64, 1, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "positive_burst_orb"), EntityPositiveBurstOrb.class, "EntityPositiveBurstOrb", id++, MODID, 64, 1, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "compressed_blast"), EntityCompressedBlast.class, "CompressedBlastEntity", id++, MODID, 64, 1, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID + ":" + "hex_rift"), EntityHexRift.class, "EntityHexRift", id++, MODID, 64, 1, true);
 
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".MadThaumaturge", new AspectList().add(Aspect.MAN, 4).add(Aspect.MIND, 4).add(Aspect.ELDRITCH, 8));
         ThaumcraftApi.registerEntityTag(RenaissanceCore.MODID + ".CrimsonPaladin", new AspectList().add(Aspect.MAN, 4).add(Aspect.LIFE, 4).add(Aspect.ELDRITCH, 4).add(Aspect.MAGIC, 4));
@@ -242,37 +243,6 @@ public class RenaissanceCore {
                         new ItemStack(ItemsTC.crystalEssence),
                         new ItemStack(ItemsTC.crystalEssence)}));
 
-        ItemStack hood = new ItemStack(RCItems.pontifex_hood);
-        hood.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
-        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("trk:pontifex_hood"),
-                new CrucibleRecipe("CRIMSONPONTIFEX",
-                        hood,
-                        new ItemStack(ItemsTC.crimsonRobeHelm),
-                        new AspectList().add(IsorropiaAPI.FLESH, 100).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 200).add(Aspect.PROTECT, 300).add(Aspect.VOID, 100).add(Aspect.LIFE, 100)));
-
-        ItemStack hood1 = new ItemStack(RCItems.pontifex_robe);
-        hood1.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
-        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("trk:pontifex_robe"),
-                new CrucibleRecipe("CRIMSONPONTIFEX",
-                        hood1,
-                        new ItemStack(ItemsTC.crimsonRobeChest),
-                        new AspectList().add(IsorropiaAPI.FLESH, 100).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 200).add(Aspect.PROTECT, 300).add(Aspect.VOID, 100).add(Aspect.LIFE, 100)));
-
-        ItemStack hood2 = new ItemStack(RCItems.pontifex_legs);
-        hood2.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
-        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("trk:pontifex_legs"),
-                new CrucibleRecipe("CRIMSONPONTIFEX",
-                        hood2,
-                        new ItemStack(ItemsTC.crimsonRobeLegs),
-                        new AspectList().add(IsorropiaAPI.FLESH, 100).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 200).add(Aspect.PROTECT, 300).add(Aspect.VOID, 100).add(Aspect.LIFE, 100)));
-
-        ItemStack hood3 = new ItemStack(RCItems.pontifex_boots);
-        hood3.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
-        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("trk:pontifex_boots"),
-                new CrucibleRecipe("CRIMSONPONTIFEX",
-                        hood3,
-                        new ItemStack(ItemsTC.crimsonBoots),
-                        new AspectList().add(IsorropiaAPI.FLESH, 100).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 200).add(Aspect.PROTECT, 300).add(Aspect.VOID, 100).add(Aspect.LIFE, 100)));
 
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:crimson_hammer"),
                 new InfusionRecipe("PONTIFEXHAMMER",
@@ -426,5 +396,47 @@ public class RenaissanceCore {
         PolishRecipe.addPolishmentRecipe(new ItemStack(RCItems.dump_jackboots), new AspectList().add(Aspect.MOTION, 100));
         PolishRecipe.addPolishmentRecipe(new ItemStack(RCItems.burdening_amulet), new AspectList().add(Aspect.SENSES, 50));
         PolishRecipe.addPolishmentRecipe(new ItemStack(RCItems.tight_belt), new AspectList().add(Aspect.FLIGHT, 100));
+
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("trk", "vis_condenser"), new ShapedArcaneRecipe(new ResourceLocation(""),
+                "VISCONDENSER", 200,
+                new AspectList().add(Aspect.ENTROPY, 5).add(Aspect.AIR, 3).add(Aspect.FIRE, 3).add(Aspect.ORDER, 1),
+                RCBlocks.vis_condenser,
+                "ISI",
+                "BFB",
+                "BCB",
+                'I', "ingotGold",
+                'B', "blockGold",
+                'S', new ItemStack(BlocksTC.stoneArcane),
+                'F', RCItems.vis_conductor,
+                'C', new ItemStack(BlocksTC.rechargePedestal)));
+
+        ItemStack hood = new ItemStack(RCItems.pontifex_hood);
+        hood.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
+        ChainedRiftRecipe.addRiftRecipe(new ResourceLocation("trk:pontifex_hood"), ChainedRiftRecipe.addChainedRiftRecipe("CRIMSONPONTIFEX", hood, new ItemStack(ItemsTC.crimsonRobeHelm), new AspectList().add(IsorropiaAPI.FLESH, 100).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 200).add(Aspect.PROTECT, 300).add(Aspect.VOID, 100).add(Aspect.LIFE, 100)));
+
+        ItemStack hood1 = new ItemStack(RCItems.pontifex_robe);
+        hood1.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
+        ChainedRiftRecipe.addRiftRecipe(new ResourceLocation("trk:pontifex_robe"), ChainedRiftRecipe.addChainedRiftRecipe("CRIMSONPONTIFEX", hood1, new ItemStack(ItemsTC.crimsonRobeChest), new AspectList().add(IsorropiaAPI.FLESH, 100).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 200).add(Aspect.PROTECT, 300).add(Aspect.VOID, 100).add(Aspect.LIFE, 100)));
+
+        ItemStack hood2 = new ItemStack(RCItems.pontifex_legs);
+        hood2.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
+        ChainedRiftRecipe.addRiftRecipe(new ResourceLocation("trk:pontifex_legs"), ChainedRiftRecipe.addChainedRiftRecipe("CRIMSONPONTIFEX", hood2, new ItemStack(ItemsTC.crimsonRobeLegs), new AspectList().add(IsorropiaAPI.FLESH, 100).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 200).add(Aspect.PROTECT, 300).add(Aspect.VOID, 100).add(Aspect.LIFE, 100)));
+
+        ItemStack hood3 = new ItemStack(RCItems.pontifex_boots);
+        hood3.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 5));
+        ChainedRiftRecipe.addRiftRecipe(new ResourceLocation("trk:pontifex_boots"), ChainedRiftRecipe.addChainedRiftRecipe("CRIMSONPONTIFEX", hood3, new ItemStack(ItemsTC.crimsonBoots), new AspectList().add(IsorropiaAPI.FLESH, 100).add(Aspect.EXCHANGE, 200).add(IsorropiaAPI.PRIDE, 200).add(Aspect.PROTECT, 300).add(Aspect.VOID, 100).add(Aspect.LIFE, 100)));
+
+        Part N = new Part(Blocks.BEDROCK, RCBlocks.hex_of_predictability);
+        Part O = new Part(BlocksTC.stoneAncient, Blocks.AIR);
+        Part[][][] HexOfPredictabilityPlaceHolder = {
+                {
+                        {O, O, O},
+                        {O, N, O},
+                        {O, O, O}
+                }
+        };
+
+        ThaumcraftApi.addMultiblockRecipeToCatalog(new ResourceLocation("trk", "hex_of_predictability"), new ThaumcraftApi.BluePrint("HEXOFPREDICTABILITY", new ItemStack(RCItems.hexOfPredictor), HexOfPredictabilityPlaceHolder, new ItemStack(Item.getItemFromBlock(Blocks.BEDROCK)), new ItemStack(Item.getItemFromBlock(BlocksTC.stoneAncient), 8)));
+
     }
 }

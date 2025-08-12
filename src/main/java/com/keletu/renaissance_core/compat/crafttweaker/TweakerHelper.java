@@ -1,4 +1,4 @@
-package com.keletu.renaissance_core.compat;
+package com.keletu.renaissance_core.compat.crafttweaker;
 
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;

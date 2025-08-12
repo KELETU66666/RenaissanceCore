@@ -1,6 +1,7 @@
 package com.keletu.renaissance_core.items;
 
 import com.keletu.renaissance_core.blocks.TileDestabilizedCrystal;
+import com.keletu.renaissance_core.blocks.TileVisCondenser;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,10 +34,10 @@ public class ItemBlockDestabilizedCrystal extends ItemBlock {
             try {
                 TileDestabilizedCrystal ts = (TileDestabilizedCrystal) world.getTileEntity(pos);
                 ts.orientation = (short) side.getIndex();
-                //if (world.getTileEntity(pos.add(0, -1, 0)) instanceof VisCondenserTile){
-                //    ts.draining = true;
-                //}
-            } catch (Exception var14) {
+                if (world.getTileEntity(pos.add(0, -1, 0)) instanceof TileVisCondenser) {
+                    ts.draining = true;
+                }
+            } catch (Exception ignore) {
             }
         }
         return placed;

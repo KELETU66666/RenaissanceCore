@@ -61,6 +61,7 @@ public class ModelEvents {
         defaultModel(RCItems.dump_jackboots);
         defaultModel(RCItems.tight_belt);
         defaultModel(RCItems.burdening_amulet);
+        defaultModel(RCItems.void_slag);
 
         defaultModel(RCItems.item_icon);
         defaultModel(RCItems.item_icon, 1);
@@ -71,6 +72,8 @@ public class ModelEvents {
         defaultModel(RCItems.pechHeadThaumaturge);
         defaultModel(RCItems.quicksilverCrucible);
         defaultModel(RCItems.destabilizedCrystal);
+        defaultModel(RCItems.visCondenser);
+        defaultModel(RCItems.hexOfPredictor);
     }
 
     static void defaultModel(Item item) {

@@ -151,9 +151,9 @@
         "!SpecialCreatures",
         "~BASEALCHEMY"
       ],
-      "category": "BASICS",
+      "category": "RENAISSANCE_CONCILIUM",
       "location": [
-        -14,
+        -6,
         1
       ],
       "stages": [
@@ -193,6 +193,7 @@
       ],
       "parents": [
         "PRIMORDIAL_WISP",
+        "HEXOFPREDICTABILITY",
         "!CrimsonAnnales"
       ],
       "siblings": [
@@ -216,13 +217,7 @@
           "warp": 6
         },
         {
-          "text": "research.CRIMSONPONTIFEX.stage.2",
-          "recipes": [
-            "trk:pontifex_hood",
-            "trk:pontifex_robe",
-            "trk:pontifex_legs",
-            "trk:pontifex_boots"
-          ]
+          "text": "research.CRIMSONPONTIFEX.stage.2"
         }
       ]
     },
@@ -665,6 +660,113 @@
           "text": "research.BURDENINGAMULET.stage.1",
           "recipes": [
             "trk:burdening_amulet"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "DEMATUPGRADE",
+      "name": "research.DEMATUPGRADE.title",
+      "icons": [
+        "renaissance_core:textures/misc/dematerialization.png"
+      ],
+      "category": "RENAISSANCE_CONCILIUM",
+      "parents": [
+        "RIFTCLOSER",
+        "~!VisConductor"
+      ],
+      "meta": [
+        "HIDDEN"
+      ],
+      "location": [
+        4,
+        -2
+      ],
+      "stages": [
+        {
+          "text": "research.DEMATUPGRADE.stage.0",
+          "required_knowledge": [
+            "OBSERVATION;AUROMANCY;2",
+            "THEORY;AUROMANCY;2"
+          ],
+          "required_item": [
+            "thaumcraft:void_seed"
+          ]
+        },
+        {
+          "text": "research.DEMATUPGRADE.stage.1"
+        }
+      ]
+    },
+    {
+      "key": "VISCONDENSER",
+      "name": "research.VISCONDENSER.title",
+      "icons": [
+        "renaissance_core:vis_condenser"
+      ],
+      "category": "RENAISSANCE_CONCILIUM",
+      "parents": [
+        "DEMATUPGRADE",
+        "~FRACTURE_THEORY"
+      ],
+      "meta": [
+        "HIDDEN"
+      ],
+      "location": [
+        4,
+        0
+      ],
+      "stages": [
+        {
+          "text": "research.VISCONDENSER.stage.0",
+          "required_knowledge": [
+            "OBSERVATION;ARTIFICE;2",
+            "THEORY;AUROMANCY;1",
+            "THEORY;ARTIFICE;1"
+          ],
+          "required_item": [
+            "renaissance_core:destabilized_crystal"
+          ]
+        },
+        {
+          "text": "research.VISCONDENSER.stage.1",
+          "recipes": [
+            "trk:vis_condenser"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "HEXOFPREDICTABILITY",
+      "name": "research.HEXOFPREDICTABILITY.title",
+      "icons": [
+        "renaissance_core:textures/misc/hex.png"
+      ],
+      "category": "RENAISSANCE_CONCILIUM",
+      "parents": [
+        "VISCONDENSER",
+        "~ELDRITCH_EPIPHANY"
+      ],
+      "meta": [
+        "HIDDEN"
+      ],
+      "location": [
+        4,
+        2
+      ],
+      "stages": [
+        {
+          "text": "research.HEXOFPREDICTABILITY.stage.0",
+          "required_knowledge": [
+            "OBSERVATION;ELDRITCH;2",
+            "THEORY;AUROMANCY;2",
+            "THEORY;ELDRITCH;1"
+          ]
+        },
+        {
+          "text": "research.HEXOFPREDICTABILITY.stage.1",
+          "recipes": [
+            "trk:hex_of_predictability"
           ]
         }
       ]

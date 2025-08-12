@@ -6,7 +6,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
@@ -16,7 +15,7 @@ import thaumcraft.api.aspects.Aspect;
 import java.awt.*;
 import java.util.Random;
 
-public class RendererTileDestabilizedCrystal extends TileEntitySpecialRenderer {
+public class RendererTileDestabilizedCrystal extends TileEntitySpecialRenderer<TileDestabilizedCrystal> {
     private final ModelCrystal model = new ModelCrystal();
 
     public RendererTileDestabilizedCrystal() {
@@ -76,9 +75,8 @@ public class RendererTileDestabilizedCrystal extends TileEntitySpecialRenderer {
     }
 
     @Override
-    public void render(TileEntity te, double x, double y, double z, float f, int i, float f2) {
+    public void render(TileDestabilizedCrystal tco, double x, double y, double z, float f, int i, float f2) {
         GL11.glPushMatrix();
-        TileDestabilizedCrystal tco = (TileDestabilizedCrystal) te;
         int color = tco != null && tco.aspect != null ? Aspect.aspects.get(tco.aspect).getColor() : 0xFFFFFF;
         float scaleFactor = Math.max(0.6f, Math.min(1.6f, tco == null ? 1.0F : 0.6f + tco.capacity / 512.0f));
         boolean draining = tco == null ? false : tco.draining;

@@ -1,4 +1,4 @@
-package com.keletu.renaissance_core.compat;
+package com.keletu.renaissance_core.compat.crafttweaker;
 
 import com.keletu.renaissance_core.util.PolishRecipe;
 import crafttweaker.CraftTweakerAPI;

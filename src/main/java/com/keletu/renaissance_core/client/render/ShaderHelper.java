@@ -45,6 +45,8 @@ public class ShaderHelper {
         ARBShaderObjects.glUseProgramObjectARB(shader);
         if (shader != 0) {
             int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
+            if(Minecraft.getMinecraft().getRenderViewEntity() == null)
+                return;
             ARBShaderObjects.glUniform1iARB(time, Minecraft.getMinecraft().getRenderViewEntity().ticksExisted);
             if (callback != null) {
                 callback.call(shader);

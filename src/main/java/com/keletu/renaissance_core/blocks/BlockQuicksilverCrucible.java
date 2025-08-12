@@ -1,6 +1,7 @@
 package com.keletu.renaissance_core.blocks;
 
 import com.keletu.renaissance_core.RenaissanceCore;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -14,7 +15,6 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -102,13 +102,13 @@ public class BlockQuicksilverCrucible extends BlockContainer {
     }
 
     @Override
-    public void onNeighborChange(IBlockAccess world, BlockPos pos, BlockPos neighbor) {
+    public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block, BlockPos l) {
         TileEntity te = world.getTileEntity(pos);
         if (te != null && te instanceof TileQuicksilverCrucible) {
             ((TileQuicksilverCrucible)te).getBellows();
         }
 
-        super.onNeighborChange(world, pos, neighbor);
+        super.neighborChanged(state, world, pos, block, l);
     }
 
     @Override

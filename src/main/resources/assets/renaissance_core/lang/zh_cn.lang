@@ -65,6 +65,8 @@ tooltip.dice12.holdShift=§5按住 §6Shift §5查看详细信息.
 tooltip.t12_elixir.tip1=允许你再一次摘下T12.
 tooltip.t12_elixir.tip2=为什么我要喝它？
 
+item.icon.name.3=预见之六方
+
 item.dice12.name=T12
 item.arcane_lime_powder.name=奥术石灰粉
 item.pech_backpack.name=岩精背包
@@ -79,6 +81,8 @@ item.vis_conductor.name=导魔谐振器
 item.dump_jackboots.name=倾卸长靴
 item.tight_belt.name=紧束腰带
 item.burdening_amulet.name=沉赘护身符
+
+item.void_slag.name=虚空熔渣
 
 TC.oblivion_response=你似乎忘掉了什么...
 
@@ -144,6 +148,8 @@ text.entity.CrimsonPontifex.name=%s %s
 tile.full_crucible.name=填满的坩埚
 tile.quicksilver_crucible.name=水银反应炉
 tile.destabilized_crystal.name=不稳定晶簇
+tile.vis_condenser.name=魔力电容器
+tile.hex_of_predictability.name=预见之六方
 
 golem.head.forage=岩精强盗头颅
 golem.head.text.forage=岩精强盗头颅
@@ -255,6 +261,21 @@ research.BURDENINGAMULET.title=沉赘护身符
 research.BURDENINGAMULET.title.text=我的眼睛在这里
 research.BURDENINGAMULET.stage.0=在一次穿越灵魂沙漠的途中,一个冒烟的幽灵出现在你面前,在它化为烟雾之前,它告诉了你某种珠宝的大致描述.<BR>毫无疑问,这件工艺品并非来自我们的世界,但它的真正来源对你来说仍然是个谜.你从未见过类似的东西,无论是在血腥教徒身上,还是在守卫漂浮方尖碑的神秘人影身上.
 research.BURDENINGAMULET.stage.1=护身符刚戴在脖子上,你就感觉后脑勺好像灌满了铅,差点摔倒,视线也变得模糊.你把目光转向旁边正在爬行的昆虫,它立刻就向后倒下,然后你的头感觉轻松了一些.<BR>看来在你决定摘下它之前,你可能发现了这东西的用处.<BR>几天过后,你目光中的严厉刺穿了同行的每个人 - 从忠诚的狼到同胞战友,每个人都开始能够立即理解你的命令,只是为了避免不必要地引起别人的注意.
+
+research.DEMATUPGRADE.title=去物质化
+research.DEMATUPGRADE.title.text=长期束缚,但很快就会过去
+research.DEMATUPGRADE.stage.0=经过了许多个不眠之夜,你预感到这些裂隙并不像你一开始想象的那么危险.尽管它们看起来相当壮观,又是空间本身的裂缝,但这并不会否定被毁灭的东西可以被重建的事实.
+research.DEMATUPGRADE.stage.1=经过了许多个不眠之夜,你预感到这些裂隙并不像你一开始想象的那么危险.尽管它们看起来相当壮观,又是空间本身的裂缝,但这并不会否定被毁灭的东西可以被重建的事实.在这种情况下,修复空间结构的材料可以是最纯净表现形式下的灵气.也就是说,有必要设法把大量的Auram要素引导至裂隙,在这之后空间裂隙就会开始消逝.也许魔力引导核心可以胜任这个任务.你只需要对它做出一点改进......
+
+research.VISCONDENSER.title=魔力电容器
+research.VISCONDENSER.title.text=危险交互代理
+research.VISCONDENSER.stage.0=亲手聚集,操控还有释放巨量魔力是既危险又繁琐的.为了解决这个问题,你应该尝试将空间裂隙去物质化技术应用于普通机器...
+research.VISCONDENSER.stage.1=亲手聚集,操控还有释放巨量魔力是既危险又繁琐的.为了解决这个问题,你已经能够将空间裂隙去物质化技术应用于普通机器.<BR>这个魔力电容器能够在通入红石信号的反方向立刻释放一次魔力脉冲.魔力脉冲的距离与红石信号强度呈正相关,而脉冲强度与信号强度呈负相关.<PAGE>电容器运行所需的能量由安置于其内的不稳定晶簇提供.每次使用需要消耗16份存储的魔力.
+
+research.HEXOFPREDICTABILITY.title=预见之六方
+research.HEXOFPREDICTABILITY.title.text=跨次元牵引
+research.HEXOFPREDICTABILITY.stage.0=矛盾的是,即使是迄今为止对你来说最明显的空虚也不过如此.<BR>这些异常所产生的攻击性效果一定是由某些东西造成的,也许你稍后会查明这个问题......
+research.HEXOFPREDICTABILITY.stage.1=矛盾的是,即使是迄今为止对你来说最明显的空虚也不过如此.<BR>这些异常所产生的攻击性效果一定是由某些东西造成的,也许你稍后会查明这个问题......<BR>今天你发觉自己处于这个世界的底部,躺在光秃秃的石头上,在上面刻着符文.从另一次昏迷中恢复过来后,你赶紧回了家,把你的感受写在纸上.无论这是宇宙的启示还是在如此深度缺氧窒息的后果,你都不再记得了.<PAGE>根据你最后的假设,有了这样一种结构,就可以或多或少地控制裂隙另一边的情况.与已经成型的裂隙抗衡太困难了,而且你也不想在不友善魔力的轰击下切割岩石.然而,你成功地征服了一条因缸中节点在结构中心解封而产生的新生裂隙.<BR>这条裂隙已经不再危险,是时候好好利用它了......
 
 #植物魔法
 tc.research_category.BOTANY=植物学

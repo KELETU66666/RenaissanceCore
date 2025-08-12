@@ -29,6 +29,7 @@ public class RCItems {
     public static final Item dump_jackboots = new ItemDumpJackboots().setRegistryName("dump_jackboots").setTranslationKey("dump_jackboots").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
     public static final Item tight_belt = new ItemTightBelt().setRegistryName("tight_belt").setTranslationKey("tight_belt").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
     public static final Item burdening_amulet = new ItemBurdeningAmulet().setRegistryName("burdening_amulet").setTranslationKey("burdening_amulet").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
+    public static final Item void_slag = new Item().setRegistryName("void_slag").setTranslationKey("void_slag").setCreativeTab(RenaissanceCore.tabRenaissanceCore);
     public static final Item item_icon = new ItemIcon().setRegistryName("icon").setTranslationKey("icon");
 
     public static final Item pechHeadNormal = new RCItemBlocks(RCBlocks.pechHead_normal);
@@ -36,4 +37,6 @@ public class RCItems {
     public static final Item pechHeadThaumaturge = new RCItemBlocks(RCBlocks.pechHead_thaumaturge);
     public static final Item quicksilverCrucible = new RCItemBlocks(RCBlocks.quicksilver_crucible);
     public static final Item destabilizedCrystal = new ItemBlockDestabilizedCrystal(RCBlocks.destabilized_crystal);
+    public static final Item visCondenser = new ItemBlockDestabilizedCrystal(RCBlocks.vis_condenser);
+    public static final Item hexOfPredictor = new ItemBlockDestabilizedCrystal(RCBlocks.hex_of_predictability);
 }

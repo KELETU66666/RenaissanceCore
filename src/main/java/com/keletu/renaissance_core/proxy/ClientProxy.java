@@ -2,9 +2,7 @@ package com.keletu.renaissance_core.proxy;
 
 import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
-import com.keletu.renaissance_core.blocks.RCBlocks;
-import com.keletu.renaissance_core.blocks.TileDestabilizedCrystal;
-import com.keletu.renaissance_core.blocks.TileQuicksilverCrucible;
+import com.keletu.renaissance_core.blocks.*;
 import com.keletu.renaissance_core.client.model.ModelGolemBydlo;
 import com.keletu.renaissance_core.client.model.ModelVengefulGolem;
 import com.keletu.renaissance_core.client.particle.ParticleFlamePublic;
@@ -86,8 +84,12 @@ public class ClientProxy extends CommonProxy {
 
         ClientRegistry.bindTileEntitySpecialRenderer(TileQuicksilverCrucible.class, new RenderTileQuicksilverCrucible());
         ClientRegistry.bindTileEntitySpecialRenderer(TileDestabilizedCrystal.class, new RendererTileDestabilizedCrystal());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileVisCondenser.class, new RendererTileVisCondenser());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileHexOfPredictability.class, new RendererTileHexOfPredictability());
 
         ForgeHooksClient.registerTESRItemStack(Item.getItemFromBlock(RCBlocks.destabilized_crystal), 0, TileDestabilizedCrystal.class);
+        ForgeHooksClient.registerTESRItemStack(Item.getItemFromBlock(RCBlocks.vis_condenser), 0, TileVisCondenser.class);
+        ForgeHooksClient.registerTESRItemStack(Item.getItemFromBlock(RCBlocks.hex_of_predictability), 0, TileHexOfPredictability.class);
 
         if (ConfigsRC.CHANGE_BOTANIA_RECIPE && Loader.isModLoaded("botania")) {
             PageArcaneWorkbenchRecipe.init();

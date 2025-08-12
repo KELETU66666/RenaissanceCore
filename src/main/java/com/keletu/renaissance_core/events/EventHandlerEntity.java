@@ -2,11 +2,11 @@ package com.keletu.renaissance_core.events;
 
 import com.keletu.renaissance_core.ConfigsRC;
 import com.keletu.renaissance_core.RenaissanceCore;
+import com.keletu.renaissance_core.blocks.BlockHexOfPredictability;
+import com.keletu.renaissance_core.blocks.RCBlocks;
+import com.keletu.renaissance_core.blocks.TileHexOfPredictability;
 import com.keletu.renaissance_core.capability.*;
-import com.keletu.renaissance_core.entity.EntityCrimsonPaladin;
-import com.keletu.renaissance_core.entity.EntityDissolved;
-import com.keletu.renaissance_core.entity.EntityMadThaumaturge;
-import com.keletu.renaissance_core.entity.EntityStrayedMirror;
+import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.items.ItemPontifexRobe;
 import com.keletu.renaissance_core.packet.PacketSyncCapability;
 import net.minecraft.entity.Entity;
@@ -17,26 +17,37 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import thaumcraft.api.capabilities.ThaumcraftCapabilities;
+import thaumcraft.api.casters.ICaster;
+import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.entities.monster.EntityBrainyZombie;
 import thaumcraft.common.entities.monster.EntityGiantBrainyZombie;
 import thaumcraft.common.entities.monster.cult.EntityCultist;
 import thaumcraft.common.entities.monster.cult.EntityCultistKnight;
 import thaumcraft.common.lib.SoundsTC;
+import thecodex6824.thaumicaugmentation.common.tile.TileRiftJar;
 
 import java.util.HashMap;
 import java.util.List;
@@ -49,7 +60,7 @@ public class EventHandlerEntity {
 
     @SubscribeEvent
     public static void playerUpdateEvent(LivingEvent.LivingUpdateEvent event) {
-        if(event.getEntityLiving() instanceof EntityPlayer){
+        if (event.getEntityLiving() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.getEntityLiving();
             ICapConcilium capabilities = ICapConcilium.get(player);
 
@@ -64,6 +75,74 @@ public class EventHandlerEntity {
                 player.noClip = false;
             }
             ethereals.put(player, capabilities.isEthereal());
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onPlayerInteract(PlayerInteractEvent e) {
+        ICapConcilium capabilities = ICapConcilium.get(e.getEntityPlayer());
+        if (capabilities != null) {
+            if (capabilities.getChainedTime() != 0) e.setCanceled(true);
+        }
+
+        ItemStack i = e.getEntityPlayer().getHeldItem(e.getHand());
+
+        if (i != null && !i.isEmpty()) {
+            handleCasterInteract(e.getWorld(), e.getPos(), e.getEntityPlayer(), i);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onUsingDisable(LivingEntityUseItemEvent event) {
+        if (event.getEntityLiving() instanceof EntityPlayer) {
+            ICapConcilium capabilities = ICapConcilium.get((EntityPlayer) event.getEntityLiving());
+            if (capabilities != null) {
+                if (capabilities.getChainedTime() != 0) event.setCanceled(true);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onAttackDisable(AttackEntityEvent event) {
+        ICapConcilium capabilities = ICapConcilium.get(event.getEntityPlayer());
+        if (capabilities != null) {
+            if (capabilities.getChainedTime() != 0) event.setCanceled(true);
+        }
+    }
+
+    public static void handleCasterInteract(World world, BlockPos pos, EntityPlayer player, ItemStack i) {
+        if (!world.isRemote) {
+            if (world.getBlockState(pos).getBlock() == Blocks.BEDROCK && i.getItem() == ItemsTC.salisMundus) {
+                if (!ThaumcraftCapabilities.knowsResearch(player, "HEXOFPREDICTABILITY") || !BlockHexOfPredictability.checkStructure(world, pos))
+                    return;
+                for (int xx = -1; xx <= 1; ++xx) {
+                    for (int zz = -1; zz <= 1; ++zz) {
+                        //PacketHandler.INSTANCE.sendToAllAround(new PacketFXBlockArc(pos.add(xx, 0, zz), -9999), new NetworkRegistry.TargetPoint(world.provider.getDimension(), (double) pos.getX() + xx, (double) pos.getY(), (double)pos.getZ() + zz, 32.0));
+                        if (xx == 0 && zz == 0) {
+                            TileHexOfPredictability tile = new TileHexOfPredictability();
+                            tile.isMaster = true;
+                            world.setTileEntity(pos.add(xx, 0, zz), tile);
+                            world.notifyBlockUpdate(pos.add(xx, 0, zz), world.getBlockState(pos.add(xx, 0, zz)), world.getBlockState(pos.add(xx, 0, zz)), 3);
+                            tile.markDirty();
+                        }
+                        world.setBlockState(pos.add(xx, 0, zz), RCBlocks.hex_of_predictability.getDefaultState());
+                    }
+                }
+                i.shrink(1);
+                world.playSound(null, pos.add(0.5, 0.5, 0.5), SoundsTC.wand, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            }
+            if (world.getTileEntity(pos) instanceof TileRiftJar && i.getItem() instanceof ICaster) {
+                TileEntity tile = world.getTileEntity(pos.add(0, -1, 0));
+                if (tile instanceof TileHexOfPredictability && ((TileHexOfPredictability) tile).isMaster && !((TileHexOfPredictability) tile).hasRift) {
+                    //List<EntityHexRift> peelers = world.getEntitiesWithinAABB(MaterialPeeler.class, AxisAlignedBB.getBoundingBox(tile.xCoord - 1.0, tile.yCoord, tile.zCoord - 1.0, tile.xCoord + 1.0, tile.yCoord + 4.0, tile.zCoord + 1.0));
+                    //if (peelers.isEmpty()) {
+                    world.setBlockToAir(pos);
+                    world.removeTileEntity(pos);
+                    world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
+                    EntityHexRift.constructRift(world, pos.getX(), pos.getY() + 1, pos.getZ(), 25);
+                    //}
+                }
+            }
         }
     }
 

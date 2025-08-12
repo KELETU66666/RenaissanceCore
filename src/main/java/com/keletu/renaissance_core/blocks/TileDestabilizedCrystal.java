@@ -6,14 +6,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ITickable;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.tiles.TileThaumcraft;
 
-public class TileDestabilizedCrystal extends TileThaumcraft implements IAspectContainer, ITickable {
+public class TileDestabilizedCrystal extends TileThaumcraft implements IAspectContainer {
     public short orientation;
     public String aspect;
     public int capacity;
@@ -31,8 +30,8 @@ public class TileDestabilizedCrystal extends TileThaumcraft implements IAspectCo
     }
 
     @Override
-    public void readFromNBT(NBTTagCompound nbttagcompound) {
-        super.readFromNBT(nbttagcompound);
+    public void readSyncNBT(NBTTagCompound nbttagcompound) {
+        super.readSyncNBT(nbttagcompound);
         this.orientation = nbttagcompound.getShort("orientation");
         this.capacity = nbttagcompound.getInteger("capacity");
         if (nbttagcompound.hasKey("aspect")) {
@@ -44,8 +43,8 @@ public class TileDestabilizedCrystal extends TileThaumcraft implements IAspectCo
     }
 
     @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound nbttagcompound) {
-        super.writeToNBT(nbttagcompound);
+    public NBTTagCompound writeSyncNBT(NBTTagCompound nbttagcompound) {
+        super.writeSyncNBT(nbttagcompound);
         nbttagcompound.setShort("orientation", this.orientation);
         nbttagcompound.setInteger("capacity", this.capacity);
         nbttagcompound.setBoolean("draining", this.draining);
@@ -53,11 +52,6 @@ public class TileDestabilizedCrystal extends TileThaumcraft implements IAspectCo
             nbttagcompound.setString("aspect", this.aspect);
         }
         return nbttagcompound;
-    }
-
-    public void update() {
-        if (!world.isRemote && world.getTotalWorldTime() % 20 == 0)
-            world.notifyBlockUpdate(getPos(), world.getBlockState(pos), world.getBlockState(pos), 3);
     }
 
     @Override

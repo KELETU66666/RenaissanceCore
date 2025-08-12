@@ -1,5 +1,6 @@
 package com.keletu.renaissance_core.blocks;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -109,8 +110,8 @@ public class BlockDestabilizedCrystal extends BlockContainer {
     }
 
     @Override
-    public void onNeighborChange(IBlockAccess world, BlockPos pos, BlockPos l) {
-        super.onNeighborChange(world, pos, l);
+    public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block, BlockPos l) {
+        super.neighborChanged(state, world, pos, block, l);
         TileDestabilizedCrystal tes;
         if (this.checkIfAttachedToBlock((World) world, pos)) {
             tes = (TileDestabilizedCrystal) world.getTileEntity(pos);

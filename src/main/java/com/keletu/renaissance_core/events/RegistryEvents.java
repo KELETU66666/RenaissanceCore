@@ -1,9 +1,7 @@
 package com.keletu.renaissance_core.events;
 
 import com.keletu.renaissance_core.RenaissanceCore;
-import com.keletu.renaissance_core.blocks.RCBlocks;
-import com.keletu.renaissance_core.blocks.TileDestabilizedCrystal;
-import com.keletu.renaissance_core.blocks.TileQuicksilverCrucible;
+import com.keletu.renaissance_core.blocks.*;
 import com.keletu.renaissance_core.entity.*;
 import com.keletu.renaissance_core.items.ItemVisConductor;
 import com.keletu.renaissance_core.items.RCItems;
@@ -112,9 +110,13 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RCBlocks.full_crucible);
         event.getRegistry().registerAll(RCBlocks.quicksilver_crucible);
         event.getRegistry().registerAll(RCBlocks.destabilized_crystal);
+        event.getRegistry().registerAll(RCBlocks.vis_condenser);
+        event.getRegistry().registerAll(RCBlocks.hex_of_predictability);
 
         GameRegistry.registerTileEntity(TileQuicksilverCrucible.class, new ResourceLocation(RenaissanceCore.MODID, "quicksilver_crucible"));
         GameRegistry.registerTileEntity(TileDestabilizedCrystal.class, new ResourceLocation(RenaissanceCore.MODID, "destabilized_crystal"));
+        GameRegistry.registerTileEntity(TileVisCondenser.class, new ResourceLocation(RenaissanceCore.MODID, "vis_condenser"));
+        GameRegistry.registerTileEntity(TileHexOfPredictability.class, new ResourceLocation(RenaissanceCore.MODID, "hex_of_predictability"));
     }
 
     @SubscribeEvent
@@ -138,6 +140,7 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RCItems.dump_jackboots);
         event.getRegistry().registerAll(RCItems.tight_belt);
         event.getRegistry().registerAll(RCItems.burdening_amulet);
+        event.getRegistry().registerAll(RCItems.void_slag);
 
         event.getRegistry().registerAll(RCItems.item_icon);
 
@@ -146,6 +149,8 @@ public class RegistryEvents {
         event.getRegistry().registerAll(RCItems.pechHeadThaumaturge);
         event.getRegistry().registerAll(RCItems.quicksilverCrucible);
         event.getRegistry().registerAll(RCItems.destabilizedCrystal);
+        event.getRegistry().registerAll(RCItems.visCondenser);
+        event.getRegistry().registerAll(RCItems.hexOfPredictor);
     }
 
     @SubscribeEvent
