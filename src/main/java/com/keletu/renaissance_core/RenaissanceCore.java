@@ -185,7 +185,7 @@ public class RenaissanceCore {
                 ThaumcraftApi.registerResearchLocation(new ResourceLocation(MODID, "research/botany.json"));
             }
         }
-        ResearchCategories.registerCategory("RENAISSANCE_CONCILIUM", "!SpecialCreatures", null, new ResourceLocation("renaissance_core", "textures/research/r_thaumicconcilium.png"), new ResourceLocation(RenaissanceCore.MODID, "textures/misc/tab_renaissance.jpg"));
+        ResearchCategories.registerCategory("RENAISSANCE_CONCILIUM", "!SpecialCreatures", null, new ResourceLocation("renaissance_core", "textures/research/r_renaissanceconcilium.png"), new ResourceLocation(RenaissanceCore.MODID, "textures/misc/tab_renaissance.jpg"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(MODID, "research/research.json"));
 
         MinecraftForge.EVENT_BUS.register(new KeepDiceEvent());

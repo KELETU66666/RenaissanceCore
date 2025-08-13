@@ -21,7 +21,6 @@
  */
 package com.keletu.renaissance_core.compat.jei;
 
-import com.buuz135.thaumicjei.config.ThaumicConfig;
 import com.keletu.renaissance_core.blocks.RCBlocks;
 import com.keletu.renaissance_core.util.ChainedRiftRecipe;
 import mezz.jei.api.IJeiRuntime;
@@ -30,13 +29,10 @@ import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.IRecipeWrapper;
-import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.api.crafting.IArcaneRecipe;
 import thaumcraft.api.crafting.IThaumcraftRecipe;
 
 import java.util.ArrayList;
@@ -79,14 +75,10 @@ public class RenaissanceCorePlugin implements IModPlugin {
         if(Loader.isModLoaded("thaumicjei")) {
             runtime = jeiRuntime;
 
-            CraftingManager.REGISTRY.getKeys().stream().map(CraftingManager.REGISTRY::getObject).filter(iRecipe -> iRecipe instanceof IArcaneRecipe && jeiRuntime.getRecipeRegistry().getRecipeWrapper(iRecipe, VanillaRecipeCategoryUid.CRAFTING) != null).forEach(iRecipe -> jeiRuntime.getRecipeRegistry().hideRecipe(jeiRuntime.getRecipeRegistry().getRecipeWrapper(iRecipe, VanillaRecipeCategoryUid.CRAFTING)));
-
             recipes.clear();
             for (String uuid : new String[]{riftCategory.getUid()}) {
                 jeiRuntime.getRecipeRegistry().getRecipeWrappers(jeiRuntime.getRecipeRegistry().getRecipeCategory(uuid)).forEach(o -> {
                     recipes.put((IRecipeWrapper) o, uuid);
-                    if (ThaumicConfig.hideRecipesIfMissingResearch)
-                        jeiRuntime.getRecipeRegistry().hideRecipe((IRecipeWrapper) o, uuid);
                 });
             }
         }
