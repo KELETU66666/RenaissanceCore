@@ -29,6 +29,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagByte;
+import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeProvider;
@@ -262,7 +263,7 @@ public class RenaissanceCore {
                         "blockGold"));
 
         ItemStack windingchest = new ItemStack(RCItems.runic_chestplate);
-        windingchest.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 100));
+        windingchest.setTagInfo("TC.RUNIC", new NBTTagInt(200));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:runic_winding_chest"), new InfusionRecipe("!RunicWindings",
                 windingchest,
                 10, new AspectList().add(Aspect.ELDRITCH, 100).add(Aspect.PROTECT, 200).add(Aspect.MAGIC, 75).add(Aspect.ENERGY, 100).add(Aspect.MIND, 200),
@@ -281,7 +282,7 @@ public class RenaissanceCore {
                 new ItemStack(ItemsTC.morphicResonator)));
 
         ItemStack windinglegs = new ItemStack(RCItems.runic_leggings);
-        windinglegs.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 100));
+        windinglegs.setTagInfo("TC.RUNIC", new NBTTagInt(200));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("trk:runic_winding_legs"), new InfusionRecipe("!RunicWindings",
                 windinglegs, 10, new AspectList().add(Aspect.ELDRITCH, 100).add(Aspect.PROTECT, 200).add(Aspect.MAGIC, 75).add(Aspect.ENERGY, 100).add(Aspect.MIND, 200),
                 new ItemStack(Items.PAPER),
