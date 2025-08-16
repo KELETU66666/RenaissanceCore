@@ -7,6 +7,7 @@
     "MixinCrucible",
     "MixinEntityUtils",
     "MixinPacketSyncProgressToServer",
+    "MixinPlayerEvents",
     "MixinWarpEvents"
   ],
   "client": [

@@ -11,6 +11,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagByte;
+import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -63,7 +64,7 @@ public class ItemRunicWindings extends ItemArmor implements IVisDiscountGear {
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected)
     {
         if(!stack.hasTagCompound() || (stack.getTagCompound() != null && !stack.getTagCompound().hasKey("TC.RUNIC"))){
-            stack.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 100));
+            stack.setTagInfo("TC.RUNIC", new NBTTagInt(200));
         }
     }
 
@@ -76,7 +77,7 @@ public class ItemRunicWindings extends ItemArmor implements IVisDiscountGear {
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
         if (this.isInCreativeTab(tab)) {
             ItemStack stack = new ItemStack(this);
-            stack.setTagInfo("TC.RUNIC", new NBTTagByte((byte) 100));
+            stack.setTagInfo("TC.RUNIC", new NBTTagInt(200));
             items.add(stack);
         }
     }
