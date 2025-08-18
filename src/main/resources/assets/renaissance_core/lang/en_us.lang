@@ -1,5 +1,4 @@
 itemGroup.tabRenaissanceCore=Renaissance Core
-tc.research_category.RENAISSANCE_CONCILIUM=Renaissance and Concilium
 
 advancement.renaissancecore=Thaumic Renaissance
 renaissancecore.desc=World of Thaumcraft
@@ -62,86 +61,21 @@ tooltip.dice12.tooltip11=§5- Warp will happen more often.
 tooltip.dice12.tooltip12=§5- When chunk vis lower than 80%%, you can't regenerate your health.
 tooltip.dice12.holdShift=§5The §6Shift §5shall be held.
 
-item.icon.name.0=Thaumaturge
-item.icon.name.1=Mad Thaumaturge
-item.icon.name.2=Golem Bydlo
-item.icon.name.3=Hex of Predictability
-
 tooltip.pech_backpack.tip=Only opens when equipped as a bauble, default key: O.
 
 tooltip.t12_elixir.tip1=Give you a chance to pick off T12 once again.
 tooltip.t12_elixir.tip2=Why should i drink it ?
-
-TC.oblivion_response=It seems to you that you have forgotten something about...
-
-tooltip.rc_book.0=The book is filled with faded strange symbols.
-tooltip.rc_book.1=Click to study it.
-tooltip.rc_book.2=The meaning of this book remains unclear to you.
-tooltip.rc_book.3=Why do i do this.
-tooltip.rc_book.4=The meaning of this page remains unclear to you.
-tooltip.rc_book.5=Runic Windings
-tooltip.rc_book.6=Focus Medium: Impulse
-tooltip.rc_book.7=Focus Effect: Positive Burst
-tooltip.rc_book.8=Focus Effect: Reflection
-tooltip.rc_book.9=Bottle of Thick Taint
-tooltip.rc_book.10=Resonator of Vis Conductor
-tooltip.rc_book.11=Destabilized Crystal Cluster
-
-renaissance_core.IMPULSE.name=Impulse
-renaissance_core.IMPULSE.text=Launch a fireworks like beam to your target with random but long range and very fast speed. The beam may bounce between the walls.
-
-renaissance_core.POSITIVEBURST.name=Positive Burst
-renaissance_core.POSITIVEBURST.text=Spawns a small bunch of healing orb at target.
-
-rcfocus.positive_burst.count=Count
-rcfocus.positive_burst.function=Function
-rcfocus.positive_burst.common=Heal
-rcfocus.positive_burst.vitaminize=Buff
-rcfocus.positive_burst.fulfillment=Shield
-
-renaissance_core.REFLECTION.name=Reflection
-renaissance_core.REFLECTION.text=Drains target's experience to exchange temporary warps.
-
-rcfocus.reflection.power=Power
-rcfocus.reflection.function=Cost
-rcfocus.reflection.common=Experience
-rcfocus.reflection.oblivion=Research
 
 item.dice12.name=T12
 item.arcane_lime_powder.name=Powder of Arcane Mixture
 item.pech_backpack.name=Backpack of the Pech
 item.t12_elixir.name=Elixir of the Confess
 
-item.runic_chestplate.name=Runic Body Windings
-item.runic_leggings.name=Runic Legs Windings
-item.bottle_thick_taint.name=Bottle of Thick Taint
-item.renaissance_core.research_page.name=Research Page
-
-item.vis_conductor.name=Resonator of Vis Conductor
-item.dump_jackboots.name=Dump Jackboots
-item.tight_belt.name=Tight Belt
-item.burdening_amulet.name=Burdening Amulet
-
-item.void_slag.name=Void Slag
-
-item.crimson_annales.name=Crimson Annales
-item.research_notes_crimson.name=Crimson Dogma
-
-item.pontifex_hood.name=Pontifex Cape
-item.pontifex_robe.name=Pontifex Robes
-item.pontifex_legs.name=Pontifex Leggings
-item.pontifex_boots.name=Pontifex Boots
-item.molot.name=Pontifex's Hammer
-
 tile.pech_skull_forage.name=Forage Pech Head
 tile.pech_skull_stalker.name=Stalker Pech Head
 tile.pech_skull_thaum.name=Mage Pech Head
 
 tile.full_crucible.name=Filled Crucible
-tile.quicksilver_crucible.name=Quicksilver Reactor
-tile.destabilized_crystal.name=Destabilized Crystal Cluster
-tile.vis_condenser.name=Vis Condenser
-tile.hex_of_predictability.name=Hex of Predictability
 
 golem.head.forage=Pech Forage Head
 golem.head.text.forage=Pech Forage Head
@@ -167,119 +101,15 @@ entity.TaintedVillager.name=Tainted Villager
 entity.TaintedCreeper.name=Tainted Creeper
 entity.TaintedSheep.name=Tainted Sheep
 
-entity.ThaumicConcilium.Thaumaturge.name=Thaumaturge
-entity.MadThaumaturge.name=Mad Thaumaturge
-entity.VengefulGolem.name=Vengeful Golem
-entity.CrimsonPaladin.name=Crimson Paladin
-entity.Dissolved.name=Dissolved
-entity.QuicksilverElemental.name=Quicksilver Elemental
-entity.ThaumGib.name=Alive Limb
-entity.Overanimated.name=Overanimated
-entity.StrayedMirror.name=Strayed Mirror
-entity.Samurai.name=Paranoid Warrior
-entity.CrimsonPontifex.name=Crimson Pontifex
-entity.GolemBydlo.name=Golem Bydlo
-entity.ConcentratedWarpChargeEntity.name=Concentrated Warp Charge
-entity.BottleOfThickTaintEntity.name=Thick Taint Bottle
-entity.EntityPositiveBurstOrb.name=Positive Burst Orb
-entity.CompressedBlastEntity.name=Compressed Blast
-
-text.entity.CrimsonPontifex.name=%s %s
-
 key.categories.renaissancecore=Renaissance Core
 key.zap=Zap Target
 key.open_backpack=Open Backpack
-key.toggle_pontifex=Toggle Pontifex Robe
 
 message.renaissance-core.botaniaaddon.manyflowers=Too many flowers, Efficiency %s%%
 
 ftr.research.arcane_lime_powder.title=Arcane Lime Mixture
 ftr.research.arcane_lime_powder.text=more useful than quartz sliver.
 ftr.research.arcane_lime_powder.complete.text=throw it to crucible can clear crucible without pollution.
-
-tc.thaumaturge.taunt.0=Why are you mooing? Can you even read?
-tc.thaumaturge.taunt.1=AAA! Zombie!
-tc.thaumaturge.taunt.2=You can talk when you've learned at least something.
-tc.thaumaturge.taunt.3=Oh, lovely. They've sent me a mo-ron.
-
-tc.golem.taunt.0=A golem chooses; a man obeys!
-tc.golem.taunt.1=Ding-ding!
-tc.golem.taunt.2=I spin you right 'round!
-tc.golem.taunt.3=Now bow down and worship my wandcore!
-
-research.Thaumaturge.title=Thaumaturges
-research.Thaumaturge.title.text=We live in a society
-research.Thaumaturge.stage.1=Sitting cooped up at home all day long, looking for ways to conquer the essence of things is quite exhausting.<BR>It is unlikely that the whole world is concentrated under your nose, so sharing experiences with other obsessives like you should come in handy. Offer them your ideas and they will share theirs with you.<BR>Nor will they refuse to trade occult or ancient junk from your pockets for theirs, but that's not why you've come all the way out here, is it? <IMG>renaissance_core:textures/gui/thaumaturge.png:0:0:255:255:.5</IMG>.
-
-research.MadThaumaturge.title=Mad Thaumaturges
-research.MadThaumaturge.title.text=Poor souls lost
-research.MadThaumaturge.stage.1=These ragamuffin-wearing lunatics must have lost the last link to reality.<BR>It's unlikely that you can help them; apparently the weight of forbidden knowledge has finally squeezed their brains, and they attack you as soon as they see you, probably copying the habits of the living corpses among whom they roam.<BR>That doesn't mean they're useless, however; you've seen notes from some of them that they made when they were still sane.<BR>Some of these undoubtedly delusional ideas seem curious to you nevertheless, the main thing is not to run into the tipping point that forced them to leave human society.<IMG>renaissance_core:textures/gui/mad_thaumaturge.png:0:0:255:255:.5</IMG>.
-
-research.SpecialCreatures.title=Thaumic Concilium
-research.SpecialCreatures.title.text=The Price of scientific advances
-research.SpecialCreatures.stage.1=This is not what you expected.<BR>Sure, you've already encountered representatives of the human race who have fallen to the bottom of madness before, but this.... Is this the fate that sooner or later awaits all those who have managed to live long enough, keeping thaumaturgical secrets? Despite all precautions, is your immortal soul worth the might that a practicing thaumaturge can achieve?<BR>You don't feel like giving answers to these questions. Time will reveal your choice.<BR>Still, now is not the time to forget the mundane. You may be incapable of helping these people regain their past lives, but you can still deliver them from their current, um, form of existence, at least if you find yourself in such a situation, you would like the same to be done for you.
-
-research.QuicksilverElemental.stage.1=Every alchemist wishes to put the manufacturing of his products on the stream, some wish to achieve financial solvency in this way, others wish to be recognized for their alchemical genius. It is likely that this is the result of a workplace accident. The new full-mercury body allows it to adapt to the attacker, while physical lunges simply pass through it.<BR>Good thing metals melt well at high temperatures.<PAGE> <IMG>renaissance_core:textures/gui/quicksilver.png:0:0:255:255:.5</IMG>.
-
-research.CrimsonPaladin.stage.1=You haven't come across such representatives of the Crimson Cult before. His appearance suggests a fair amount of knowledge of both magic and martial arts. Who knows what he practiced before joining the Cult, but you can expect any kind of treachery from such an adversary.<BR>Perhaps someday you'll be able to find out where the Cult is getting this kind of replenishment from...<PAGE><IMG>renaissance_core:textures/gui/crimson_paladin.png:0:0:255:255:.5</IMG>.
-
-research.Dissolved.stage.1=At first you couldn't recognize what was coming at you, but upon closer inspection, there was nothing to be seen, for there was nothing left of the body but a silhouette. Fighting the void is pointless, yet you think it is possible to make the unfortunate person collapse by somehow creating another spatial hole inside him.<PAGE> <IMG>renaissance_core:textures/gui/dissolved.png:0:0:255:255:.5</IMG>.
-
-research.OverAnimated.stage.1=Few people want to die, but even fewer are willing to take serious steps to prevent their own demise. Thaumaturgical research leads to many possibilities, and some are willing to take advantage of them to prolong their existence. Whether this result is a miscalculation or a deliberate decision is unknown, but these people no longer represent the whole person, each of their organs having a separate semblance of life.<PAGE> <IMG>renaissance_core:textures/gui/overanimated.png:0:0:255:255:.5</IMG>.
-
-research.VengefulGolem.stage.1=Golems are every thaumaturge's trusty tool, but only as long as they remain a tool. In the pursuit of maximum productivity, many engineers are willing to trample over moral norms, giving mind to stones and straw. It didn't take long for the creations to revolt, and now they possess all the magical skills of their creator, in particular - how to control another's body and dispense instructions with a bell. You hope to yourself that being captured by golems in one's sleep was painless.<IMG>renaissance_core:textures/gui/vengefulgolem.png:0:0:255:255:.5</IMG>.
-
-research.StrayedMirror.stage.1=Mirrors can transmit light, energy, also information... Just like this peculiar entity you see before you—it appears trapped within the mirror, yet not confined to mere mirror space, resembling an independent, self-aware mirrored being.<PAGE><IMG>renaissance_core:textures/gui/strayed_mirror.png:0:0:255:255:.5</IMG>.
-
-research.Samurai.stage.1=Constant danger from the outside world, multiplied by incessant paranoia does terrible things to people. In an attempt to protect themselves from real and imaginary threats, these men have invented more and more severe means of defense, of an increasingly dubious nature. Despite the constant suspicions of everyone around them, they go to cooperate with their hallucination brethren.<PAGE><IMG>renaissance_core:textures/gui/samurai.png:0:0:255:255:.5</IMG>.
-
-research.QuickSilverCrucible.title=Quicksilver Reactor
-research.QuickSilverCrucible.title.text=Alchemical Miracle
-research.QuickSilverCrucible.stage.1=To this day, no one had ever been able to create a way of merging essences. It seemed that this law of reality would never be broken.<BR>But at last that day has come.<BR>You have always believed that the will of man is boundless, and here it is, another confirmation of that. Having managed to capture one of those losers who in a past life thought they were expert alchemists, you threw him right into the boiling crucible.<BR>The active structure of his body reacted violently, instantly fusing with the walls of the crucible, giving him a new, more useful purpose in life - to assist the more adaptable thaumaturges in their alchemical experiments.<BR>For every fraction of mercury melted in this reactor, in one crucible no more than two blocks away, the first two fractions of the essence would be combined with each other.
-
-research.CRIMSONANNALES.title=Crimson Annales
-research.CRIMSONANNALES.title.text=Mysterious Disappearance
-research.CRIMSONANNALES.stage.1=If it weren't for your knowledge of the Crimson Cult, you wouldn't be wasting your time deciphering this rags.<BR>It seems that many, many years ago, the Cult had not one leader, but rather two, with the second being far more versed in the art of thaumaturgy. Some of the dates closer to the present are blotted out, after which references to the Crimson Pontifex are completely absent.<PAGE>You believe that it was the disappearance (or exile?) of the Cult's theoretical associate that led to its technological decline, and its inability to achieve the results of its rituals.<BR>In any case, this fact is of undoubted interest.<BR>You will take up the unraveling of this phenomenon in your spare time....
-
-research.CRIMSONPONTIFEX.title=Crimson Pontifex
-research.CRIMSONPONTIFEX.title.text=Family Reunion
-research.CRIMSONPONTIFEX.stage.1=With a track record of successfully summoning a living creature from the other side of the rift, you think you know where the Pontifex of the Crimson Cult has disappeared to...<BR>Of course, deliberately bringing someone clearly hostile out of oblivion is not the best idea, but you still need empirical data for your theory.<BR>Rifts are known to resonate with items, so you need something connected to the missing person. A copy of Crimson Rites would be a good fit.
-research.CRIMSONPONTIFEX.stage.2=Years spent in a phantom state have affected not only the Pontifex, but also his vestments. You know it will not be very difficult to replicate it.<BR>Wearing the full set allows you to forfeit your material wholeness at any time, at the cost of restricting your active freedom.<BR>Press H to toggle this ability.<BR>Despite the passage of time, fear of the Pontifex's mental power still permeates every member of the Cult. Wearing the full uniform, you feel confident in your ability to command the Crimson Warriors.<PAGE>Your subordinates are empowered as they fight under a Pontifex skilled in the healing arts and insatiable for blood.
-
-research.f_crimsonnotes.text=Defeat the Pontifex
-
-research.CRIMSONINITIATION.title=Crimson Initiation
-research.CRIMSONINITIATION.title.text=Sign here
-research.CRIMSONINITIATION.stage.1=Wearing the Pontifex's robe, you feel his mind control abilities filling you. Though you are not a member of the Cult, it seems the others don't think so, and are waiting for replenishment in the dwindling ranks.<BR>You are quite capable of doing so. Wearing the full vestments of the Pontifex, touch with your Crimson Dogma one of the failed to handle the thaumaturgical knowledge, to give him a new chance at life.
-
-research.PONTIFEXHAMMER.title=Pontifex's Hammer
-research.PONTIFEXHAMMER.title.text=A truly bloody weapon
-research.PONTIFEXHAMMER.stage.1=You were able to recreate the weapon of the legendary Crimson Pontifex. An impressive size, and an equally impressive ability to steal another's life.<BR>Hold down the RMB to utilize this feature.
-
-research.GOLEMBYDLO.title=Enlarged Thaumium Golem
-research.GOLEMBYDLO.title.text=Thauminator
-research.GOLEMBYDLO.stage.0=Your human experiments have borne their first fruit! And a very juicy one at that...<BR>The idea of creating a thaumic golem with the height of a mammoth, that consists of a couple of tons of iron and a pumpkin, has been terrorizing your mind for a long time, but you have never been able to realize the idea properly. Such a solid mountain of thaum-metal muscles can no longer be revived with the help of a crucible, and therefore he needs a powerful brain that will allow this monstrosity to move and perform the simplest commands.
-research.GOLEMBYDLO.stage.1=Your human experiments have borne their first fruit! And a very juicy one at that...<BR>The idea of creating a thaumic golem with the height of a mammoth, that consists of a couple of tons of iron and a pumpkin, has been terrorizing your mind for a long time, but you have never been able to realize the idea properly. Such a solid mountain of thaum-metal muscles can no longer be revived with the help of a crucible, and therefore he needs a powerful brain that will allow this monstrosity to move and perform the simplest commands.<PAGE>However, implanting the organ directly did not produce absolutely nothing, so you decided to try to go the other way and attempt to create a golem based on an already prepared organism. An ordinary zombie, alas, did not fit. The living corpse eventually rotted away, and in addition, its damaged nervous system was not enough to support the entire metal body.<PAGE>It was decided not to include ordinary healthy people in the experiment. The resistance of a mentally healthy person was too high, both physical and metaphysical. However, after some manipulations, a compromise between pliability and capacity was finally found, albeit not very favorable.<PAGE>This solution was the most successful of all. Your golem functioned perfectly, although it was not able to perform complex tasks on its own like its smaller counterparts, due to the inability to connect a core to it. But at least it has the power to transport you! The inhabitants of neighboring villages are terrified and hide in their homes when they see the enormous creature on which you have visited them. Now all that remains is to find a more utilitarian use for your golem...<BR>You are completely satisfied with your creation, even if it did cost someone's miserable life.<BR>While riding the golem, press the LMB while holding the bell on Mainhand to command the golem to dig up the area of blocks you are pointing at.<BR><BR>While riding the golem, press the LMB while holding the bell on Offhand to command the golem to attack all creatures in the immediate vicinity with its powerful arms.
-
-research.RUNICWINDINGS.title=Runic Windings
-research.RUNICWINDINGS.title.text=Thaumic Mummy
-research.RUNICWINDINGS.stage.0=In the pockets of one of the madmen who attacked you, you found a description of an exotic way to increase your rune defense.<BR>The materials used are obviously not durable or physically defensive in any way. You assume that was not the intent in the design of this, ahem, outfit. Regardless, its enchantment potential is quite impressive.<BR>You sometimes get cramps when you think of what, or who, it was meant to protect against.
-
-research.FOCUSIMPULSE.title=Focus Medium: Impulse
-research.FOCUSIMPULSE.title.text=he main thing is not to mix it up
-research.FOCUSIMPULSE.stage.0=This new medium allows you to cast your spells quickly and far, like fireworks. However, be careful—the projectiles you shoot are extremely unstable, which is reflected in their unpredictable range and unstable explosion timing...
-
-research.FOCUSPOSITIVEBURST.title=Focus Effect: Positive Burst
-research.FOCUSPOSITIVEBURST.title.text=Inhale this, quick
-research.FOCUSPOSITIVEBURST.stage.0=The healing focus can restore health, while the curse focus can apply powerful bad effects. After combining them, you have successfully developed a new focus effect that condenses life-energy into small orbs to absorb.<BR>You can also choose to have it provide other buffs instead of just healing.<BR>Unfortunately, the condensed focus effect has lost the ability to damage undead creatures.
-
-research.FOCUSREFLECTION.title=Focus Effect: Reflection
-research.FOCUSREFLECTION.title.text=What a dusty place...
-research.FOCUSREFLECTION.stage.0=You've seen a lot in your life: dark caves, the scorching heat of the Nether, terrifying monsters, how can you sleep at night after that?<BR>Your list of plans for the future clearly does not include ending up as one of those maniacs who roam among the walking corpses and throw themselves on people.<PAGE>Fortunately (or unfortunately...), one of those who have suffered such a fate, at a certain point thought about where it goes (although he did not have time to do anything about it), you can not let such a thing go to waste.<BR>With a little added element for reliability in the blueprints, you think that this device can rid you of visions of the past. You put the rod to your temple, and relax your eyes...
-
-research.BOTTLEOFTHICKTAINT.title=Bottle of Thick Taint
-research.BOTTLEOFTHICKTAINT.title.text=Do not keep in the open air
-research.BOTTLEOFTHICKTAINT.stage.0=The transformation of your entire region into a contagious cesspool is slow but sure.<BR>But something is clearly missing.<BR>Ah, of course! We need to add more toxic exhaust and poisonous fibers!
 
 research.PECHGOLEM.title=Pech Golems
 research.PECHGOLEM.title.text=So pechy
@@ -290,44 +120,6 @@ research.GOLEMWRAP.title=Bubble Armor
 research.GOLEMWRAP.title.text=Snug Fit!
 research.GOLEMWRAP.stage.0=The golem is often buried by suddenly grown wood while chopping, which often results in the loss of one or more golems.. I need to find a way to prevent this from happening.
 research.GOLEMWRAP.stage.1=After a simple modification, I wrapped bubble wrap around the golems. This can prevent the golems from taking in-wall damage, although it cannot protect them from other types of damage.<BR>§9This research unlocks additional golem parts§0.
-
-research.VISCONDUCTOR.title=Resonator of Vis Conductor
-research.VISCONDUCTOR.title.text=FUBAR, as planned
-research.VISCONDUCTOR.stage.0=The infusion process is a well-trodden path for you. And although the possibilities of infusion are almost limitless, they seem somehow, well, one-sided, if only you could not only add something missing to the subject, but also take out something unnecessary and interfering...<BR>This thought was floating in your head for a long time, but you could not catch and formalize it, and it's good that there was more than one such obsessive person in the whole world.<PAGE>In fact, everything is simple enough, you just need to put a certain final touch, to hit the essence of unnecessary property on the object while the magical circlulations have not subsided and it is still hot, thus knocking out of it such a thing.<BR>For such a blow, this focus, which has the ability to absorb and release at the right moment the power of the essence, will help you.<BR>All you need is a suitable vessel.
-
-research.DESTCRYSTAL.title=Destabilized Crystal Cluster
-research.DESTCRYSTAL.title.text=I can't believe this is not jar!
-research.DESTCRYSTAL.stage.0=Liquid essence is a little difficult to keep ready for instant transfer. The way out is a crystallized essence that is stable enough not to melt and active enough to be quickly converted, why you didn't figure it out yourself?<BR>Press RMB with the desired essence crystal on the cluster to build it up, then start the infusion process and grab the cluster with the conductive focus.<BR>If everything goes according to plan, the collected essence will be thrown into the infused object.<BR> <IMG>renaissance_core:textures/gui/crystal_recipe.png:0:0:255:255:.5</IMG><BR> Crafting Recipe.
-
-research.DUMPJACKBOOTS.title=Dump Jackboots
-research.DUMPJACKBOOTS.title.text=Escalates quickly
-research.DUMPJACKBOOTS.stage.0=The Boots of the Traveler are very fast, but they need to be recharged constantly, and when encountering gaps that are too wide, you still need to use blocks to step on. You need to find a way to solve this problem.
-research.DUMPJACKBOOTS.stage.1=You were able to create a new milestone in the construction of columns, towers, pillars, and just plain shapeless piles.<BR>When these boots are put on your feet, they are capable of taking a block from your hands and dumping it out under you, all you have to do is bend your knees slightly.<BR>You can try to put something under you when you fall, though risky journeys and acrobatic etudes are not the specialty of these boots.
-
-research.TIGHTBELT.title=Tight Belt
-research.TIGHTBELT.title.text=Worse than hangover
-research.TIGHTBELT.stage.0=You’ve been experimenting with the thaumostatic girdle, trying to enhance its properties without losing its signature lightness. The goal was to create a device that could provide support and agility without any discomfort.
-research.TIGHTBELT.stage.1=And who would wear it? By perverting the lightweight nature of the thaumostatic girdle, you have achieved the opposite effect - instead of a slight lift, the girdle will squeeze your insides as tightly as it can.<BR>You've noticed that the clearer the genius idea in your head about taking off that damn piece of leather, the weaker the belt twists your guts.
-
-research.BURDENINGAMULET.title=Burdening Amulet
-research.BURDENINGAMULET.title.text=My eyes are up here
-research.BURDENINGAMULET.stage.0=During one of your walks through the desert of souls, a smoldering phantom appeared in front of you, and before it disintegrated into smoke, it told you a general description of a certain jewelry.<BR>There is no doubt that this artifact does not come from our world, but its true origin is still a mystery to you. You've seen nothing like that, neither on the members of the Crimson Cult, nor on the mysterious figures guarding the floating obelisks.
-research.BURDENINGAMULET.stage.1=As soon as the amulet was around your neck, you felt the back of your head fill with lead, which almost made you fall, while your vision blurred. You shifted your eyes to the insect crawling by, and it immediately fell backwards, then your head felt lighter.<BR>It looks like you might find a use for this thing before you decide to just take it off.<BR>After a few days, the harshness of your gaze penetrated everyone in your entourage - from loyal wolves to brothers in arms, each of them began to understand your orders instantly, just to avoid drawing attention to themselves unnecessarily.
-
-research.DEMATUPGRADE.title=Dematerialization
-research.DEMATUPGRADE.title.text=Long harness, but quickly goes
-research.DEMATUPGRADE.stage.0=After many sleepless nights, you have a hunch that these rifts are not as dangerous as you first thought. Although they look quite impressive and are breaches in space itself, this does not negate the fact that what has been destroyed can be rebuilt.
-research.DEMATUPGRADE.stage.1=After many sleepless nights, you have a hunch that these rifts are not as dangerous as you first thought. Although they look quite impressive and are breaches in space itself, this does not negate the fact that what has been destroyed can be rebuilt.In this case, the material for restoring the fabric of space can serve as aura in its purest manifestation. That is, it is necessary to somehow direct a large amount of Auram aspect to the rift, after which the spatial rift will begin to fade. Perhaps the vis conductor's focus can handle this task. You just need to modify it a bit...
-
-research.VISCONDENSER.title=Vis-Condenser
-research.VISCONDENSER.title.text=Delegating dangerous interactions
-research.VISCONDENSER.stage.0=Accumulating, controlling, and releasing titanic amounts of vis with your own hands is dangerous and tedious. To solve this problem, you need to adapt the technology of spatial rift dematerialization, for use in ordinary machines...
-research.VISCONDENSER.stage.1=Accumulating, controlling, and releasing titanic amounts of vis with your own hands is dangerous and tedious. To solve this problem, you have been able to adapt the technology of spatial rift dematerialization, for use in ordinary machines.<BR>This vis capacitor is capable of instantly releasing a vis charge in the direction opposite to the side from which the red stone signal came. The strength of the signal is directly proportional to the distance to be discharged, and inversely proportional to the power of that discharge.<PAGE>The energy for operation is supplied to the capacitor through the destabilized crystal cluster located on it. A single use spends 16 parts of stored vis.
-
-research.HEXOFPREDICTABILITY.title=Hex of Predictability
-research.HEXOFPREDICTABILITY.title.text=Interdimensional leash
-research.HEXOFPREDICTABILITY.stage.0=Paradoxically, even what was hitherto an emptiness to you in its most obvious manifestation no longer seems so.<BR>Something must be the source of the aggressive effects generated by these anomalies, maybe you will figure it out later...
-research.HEXOFPREDICTABILITY.stage.1=Paradoxically, even what was hitherto an emptiness to you in its most obvious manifestation no longer seems so.<BR>Something must be the source of the aggressive effects generated by these anomalies, maybe you will figure it out later...<BR>Today you found yourself at the bottom of this world, sprawled on bare stones, scratching runes into them. After recovering from another stroke, you hurried home to put down on paper what you felt. Whether it was a cosmic revelation, or the consequences of asphyxiation from lack of oxygen at such a depth, you do not remember.<PAGE>According to your last assumption, with this construction, it becomes possible toVISCONDENSER more or less control what is on the other side of the rifts. It was too difficult to compete with the mature instances of them, and you couldn't be bothered with rock-cutting under the bombardment of unfriendly magic. However, you managed to conquer a young rift formed by unsealing aura nodes right in the center of the structure.<BR>This rift is no longer dangerous, it's time to make the most of it...
 
 #Botania
 renaissance_core.research=⚠ Requires Research.

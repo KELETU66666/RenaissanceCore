@@ -1,6 +1,5 @@
 package com.keletu.renaissance_core.packet;
 
-import com.keletu.renaissance_core.capability.ICapConcilium;
 import com.keletu.renaissance_core.capability.IT12Capability;
 import com.keletu.renaissance_core.capability.RCCapabilities;
 import io.netty.buffer.ByteBuf;
@@ -47,10 +46,6 @@ public class PacketSyncCapability implements IMessage {
                             IT12Capability capability = player.getCapability(RCCapabilities.PICK_OFF_T12_CAP, null);
                             if (capability != null && message.data != null && message.type == 0) {
                                 capability.deserializeNBT(message.data);
-                            }
-                            ICapConcilium capability1 = player.getCapability(RCCapabilities.CONCILIUM, null);
-                            if (capability1 != null && message.data != null && message.type == 1) {
-                                capability1.deserializeNBT(message.data);
                             }
                         }
                     }

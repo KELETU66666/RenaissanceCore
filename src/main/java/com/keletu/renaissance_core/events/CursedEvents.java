@@ -29,7 +29,6 @@ import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftApiHelper;
@@ -45,15 +44,12 @@ import thaumcraft.common.entities.monster.EntityPech;
 import thaumcraft.common.items.consumables.ItemSanitySoap;
 import thaumcraft.common.lib.potions.PotionWarpWard;
 
-import java.util.Map;
 import java.util.Random;
-import java.util.WeakHashMap;
 
 @Mod.EventBusSubscriber(modid = RenaissanceCore.MODID)
 public class CursedEvents {
     static Random rand = new Random();
     private static EntityPlayer cursedPlayer;
-    public static final Map<EntityPlayer, AxisAlignedBB> CURSED_AURA = new WeakHashMap<>();
 
     public static boolean hasThaumiumCursed(EntityPlayer player) {
         return BaublesApi.isBaubleEquipped(player, RCItems.dice12) != -1;
@@ -192,20 +188,6 @@ public class CursedEvents {
                 AuraHelper.polluteAura(player.world, player.getPosition(), ConfigsRC.cursedSleepPollution, true);
             else
                 ThaumcraftApi.internalMethods.addWarpToPlayer(player, ConfigsRC.cursedSleepWarpPoint, IPlayerWarp.EnumWarpType.TEMPORARY);
-        }
-    }
-
-    @SubscribeEvent
-    public static void tickHandler(TickEvent.PlayerTickEvent event) {
-        if (event.player.world.isRemote)
-            return;
-
-        EntityPlayer player = event.player;
-
-        if (hasThaumiumCursed(player)) {
-            CURSED_AURA.put(player, getBoundingBoxAroundEntity(player, 128));
-        } else {
-            CURSED_AURA.remove(player);
         }
     }
 
