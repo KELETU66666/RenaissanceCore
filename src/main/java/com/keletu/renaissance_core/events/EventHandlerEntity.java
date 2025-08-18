@@ -84,7 +84,8 @@ public class EventHandlerEntity {
     public static void onPlayerInteract(PlayerInteractEvent e) {
         ICapConcilium capabilities = ICapConcilium.get(e.getEntityPlayer());
         if (capabilities != null) {
-            if (capabilities.getChainedTime() != 0) e.setCanceled(true);
+            if (capabilities.getChainedTime() != 0 && e.isCancelable())
+                e.setCanceled(true);
         }
 
         ItemStack i = e.getEntityPlayer().getHeldItem(e.getHand());
