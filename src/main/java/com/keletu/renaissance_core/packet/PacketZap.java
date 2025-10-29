@@ -43,39 +43,48 @@ public class PacketZap implements IMessage {
         public IMessage onMessage(PacketZap message, MessageContext ctx) {
             EntityPlayerMP player = ctx.getServerHandler().player;
 
-            if (CursedEvents.hasThaumiumCursed(player)) {
-                double dx = player.posX + randomDouble() * 16;
-                double dy = player.posY + randomDouble() * 16;
-                double dz = player.posZ + randomDouble() * 16;
+            player.getServerWorld().addScheduledTask(() -> {
+                if (CursedEvents.hasThaumiumCursed(player)) {
+                    double dx = player.posX + randomDouble() * 16;
+                    double dy = player.posY + randomDouble() * 16;
+                    double dz = player.posZ + randomDouble() * 16;
 
-                f:
-                for (int i = 1; i <= 16; ++i) {
-                    Vec3d lookVec = player.getLookVec();
-                    double px = lookVec.x * i + player.posX;
-                    double py = lookVec.y * i + player.posY + player.getEyeHeight();
-                    double pz = lookVec.z * i + player.posZ;
-                    AxisAlignedBB aabb = new AxisAlignedBB(px - 0.5D, py - 0.5D, pz - 0.5D, px + 0.5D, py + 0.5D, pz + 0.5D);
-                    List<EntityLivingBase> mobs = player.world.getEntitiesWithinAABB(EntityLivingBase.class, aabb);
-                    for (EntityLivingBase e : mobs) {
-                        if (e == player)
-                            continue;
+                    f:
+                    for (int i = 1; i <= 16; ++i) {
+                        Vec3d lookVec = player.getLookVec();
+                        double px = lookVec.x * i + player.posX;
+                        double py = lookVec.y * i + player.posY + player.getEyeHeight();
+                        double pz = lookVec.z * i + player.posZ;
+                        AxisAlignedBB aabb = new AxisAlignedBB(px - 0.5D, py - 0.5D, pz - 0.5D, px + 0.5D, py + 0.5D, pz + 0.5D);
 
-                        if (e.isDead)
-                            continue;
+                        List<EntityLivingBase> mobs = new java.util.ArrayList<>(
+                                player.world.getEntitiesWithinAABB(EntityLivingBase.class, aabb)
+                        );
 
-                        if (e.hurtTime > 0)
-                            continue;
+                        for (EntityLivingBase e : mobs) {
+                            if (e == player)
+                                continue;
 
-                        e.attackEntityFrom(DamageSource.causePlayerDamage(player), 6);
-                        RenaissanceCore.packetInstance.sendToAllAround(new PacketZapParticle(player.posX, player.posY, player.posZ, e.posX, e.posY, e.posZ), new NetworkRegistry.TargetPoint(player.world.provider.getDimension(), player.posX, player.posY, player.posZ, 64));
+                            if (e.isDead)
+                                continue;
 
-                        player.world.playSound(player.posX, player.posY, player.posZ, SoundsTC.jacobs, SoundCategory.PLAYERS, 1, player.world.rand.nextFloat() * 2, false);
-                        player.world.playSound(e.posX, e.posY, e.posZ, SoundsTC.jacobs, SoundCategory.PLAYERS, 1, player.world.rand.nextFloat() * 2, false);
+                            if (e.hurtTime > 0)
+                                continue;
 
-                        break f;
+                            e.attackEntityFrom(DamageSource.causePlayerDamage(player), 6);
+                            RenaissanceCore.packetInstance.sendToAllAround(
+                                    new PacketZapParticle(player.posX, player.posY, player.posZ, e.posX, e.posY, e.posZ),
+                                    new NetworkRegistry.TargetPoint(player.world.provider.getDimension(), player.posX, player.posY, player.posZ, 64)
+                            );
+
+                            player.world.playSound(null, player.posX, player.posY, player.posZ, SoundsTC.jacobs, SoundCategory.PLAYERS, 1, player.world.rand.nextFloat() * 2);
+                            player.world.playSound(null, e.posX, e.posY, e.posZ, SoundsTC.jacobs, SoundCategory.PLAYERS, 1, player.world.rand.nextFloat() * 2);
+
+                            break f;
+                        }
                     }
                 }
-            }
+            });
 
             return null;
         }
