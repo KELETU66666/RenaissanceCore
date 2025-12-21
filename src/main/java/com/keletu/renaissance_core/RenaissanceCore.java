@@ -109,7 +109,7 @@ public class RenaissanceCore {
                 ThaumcraftApi.registerResearchLocation(new ResourceLocation(MODID, "research/botany.json"));
             }
         }
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation(MODID, "research/research.json"));
+        //ThaumcraftApi.registerResearchLocation(new ResourceLocation(MODID, "research/research.json"));
 
         MinecraftForge.EVENT_BUS.register(new KeepDiceEvent());
 
@@ -123,7 +123,7 @@ public class RenaissanceCore {
             InitBotaniaRecipes.replaceWithVanillaRecipes();
 
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("trk:lime_powder"),
-                new ShapelessArcaneRecipe(new ResourceLocation(""), "ARCANE_LIME_POWDER",
+                new ShapelessArcaneRecipe(new ResourceLocation(""), "HEDGEALCHEMY",
                         10,
                         new AspectList(),
                         new ItemStack(RCItems.arcane_lime_powder, 4),
@@ -133,10 +133,10 @@ public class RenaissanceCore {
                                 new ItemStack(Items.CLAY_BALL),
                                 new ItemStack(ItemsTC.tallow)}));
 
-        GolemHead.register(new GolemHead("FORAGE", new String[]{"PECHGOLEM"}, new ResourceLocation(MODID, "textures/research/r_pech.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_forage.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadNormal)}, new EnumGolemTrait[]{RenaissanceCore.GREEDY}));
-        GolemHead.register(new GolemHead("STALKER", new String[]{"PECHGOLEM"}, new ResourceLocation(MODID, "textures/research/r_pech_stalker.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_stalker.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadHunter)}, new EnumGolemTrait[]{EnumGolemTrait.DEFT}));
-        GolemHead.register(new GolemHead("THAUMIUM", new String[]{"PECHGOLEM"}, new ResourceLocation(MODID, "textures/research/r_pech_thaum.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_thaum.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadThaumaturge)}, new EnumGolemTrait[]{EnumGolemTrait.SMART}));
+        GolemHead.register(new GolemHead("FORAGE", new String[]{"BASEGOLEMANCY"}, new ResourceLocation(MODID, "textures/research/r_pech.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_forage.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadNormal)}, new EnumGolemTrait[]{RenaissanceCore.GREEDY}));
+        GolemHead.register(new GolemHead("STALKER", new String[]{"BASEGOLEMANCY"}, new ResourceLocation(MODID, "textures/research/r_pech_stalker.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_stalker.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadHunter)}, new EnumGolemTrait[]{EnumGolemTrait.DEFT}));
+        GolemHead.register(new GolemHead("THAUMIUM", new String[]{"BASEGOLEMANCY"}, new ResourceLocation(MODID, "textures/research/r_pech_thaum.png"), new PartModel(new ResourceLocation(MODID, "models/obj/pech_skull_stalker.obj"), new ResourceLocation(MODID, "textures/blocks/pech_skull_thaum.png"), PartModel.EnumAttachPoint.HEAD), new Object[]{new ItemStack(RCItems.pechHeadThaumaturge)}, new EnumGolemTrait[]{EnumGolemTrait.SMART}));
 
-        GolemAddon.register(new GolemAddon("BUBBLE_ARMOR", new String[]{"GOLEMWRAP"}, new ResourceLocation(MODID, "textures/research/bubble_wrap_item.png"), new PartModelHauler(new ResourceLocation(MODID, "models/obj/bubble_wrap.obj"), new ResourceLocation(MODID, "textures/models/entity/bubble_wrap.png"), PartModel.EnumAttachPoint.BODY), new Object[]{new ItemStack(Blocks.WOOL), new ItemStack(Items.PAPER, 6)}, new EnumGolemTrait[]{RenaissanceCore.BUBBLE}));
+        GolemAddon.register(new GolemAddon("BUBBLE_ARMOR", new String[]{"BASEGOLEMANCY"}, new ResourceLocation(MODID, "textures/research/bubble_wrap_item.png"), new PartModelHauler(new ResourceLocation(MODID, "models/obj/bubble_wrap.obj"), new ResourceLocation(MODID, "textures/models/entity/bubble_wrap.png"), PartModel.EnumAttachPoint.BODY), new Object[]{new ItemStack(Blocks.WOOL), new ItemStack(Items.PAPER, 6)}, new EnumGolemTrait[]{RenaissanceCore.BUBBLE}));
     }
 }

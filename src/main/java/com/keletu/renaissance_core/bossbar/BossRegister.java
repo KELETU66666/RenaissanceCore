@@ -26,6 +26,8 @@ public class BossRegister {
         BOSSES.add(new BossType("thaumcraft:taintaclegiant", "taintacle_giant", "bar_eldritch", 24, 8, 328, 344, 50, "bar_taintacle", 382, 6, 6));
         BOSSES.add(new BossType("thaumicaugmentation:primal_wisp", "primal_wisp", "bar_primal", 33, 4, 328, 336, 75, "bar_primalwisp", 328, 6, 6));
         BOSSES.add(new BossType("thaumicconcilium:brightest_one", "the_brightest", "bar_eldritch", 37, 18, 325, 361, 77, 329, 10, 6));
+        BOSSES.add(new BossType("thaumicconcilium:crimson_pontifex", "crimson_pontifex", "bar_eldritch", 51, 16, 326, 358, 103, 329, 10, 6));
+        BOSSES.add(new BossType("thaumicwonders:corruption_avatar", "corruption_avatar", "bar_eldritch", 30, 16, 328, 362, 59, 329, 10, 6));
         //BOSSES.add(new BossType("minecraft:ender_dragon", "ender_dragon", "pink_progress", 15, 12, 162, 186, 41));
         //BOSSES.add(new BossType("mowziesmobs:ferrous_wroughtnaut", "ferrous_wroughtnaut", "red_progress", 17, 11, 163, 190, 54));
         //BOSSES.add(new BossType("mowziesmobs:frostmaw", "frostmaw", "ice_progress", 13, 20, 150, 190, 49));

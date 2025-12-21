@@ -62,6 +62,7 @@ dependencies {
     implementation fg.deobf("curse.maven:thaumcraft-223628:2629023")
     implementation fg.deobf("curse.maven:baubles-227083:2518667")
     implementation fg.deobf("curse.maven:thaumic-augmentation-319441:4486505")
+    implementation fg.deobf("curse.maven:betterquesting-238856:2950248")
 
     implementation fg.deobf("curse.maven:jei-${jei_version}")
 
