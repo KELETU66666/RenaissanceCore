@@ -61,15 +61,15 @@ public class ImprovedBossBarRenderer extends Gui {
         return true;
     }
 
-    private void renderBar(int x, int y, int barWidth, BossInfo info, ResourceLocation textureBarForeground, ResourceLocation textureBarBackground, int healthbarLength, int healthbarWitdth, int healthbaroffset) {
+    private void renderBar(int x, int y, int barWidth, BossInfo info, ResourceLocation textureBarForeground, ResourceLocation textureBarBackground, int healthbarLength, int healthbarWidth, int healthbarOffset) {
         mc.getTextureManager().bindTexture(textureBarBackground);
-        drawScaledCustomSizeModalRect(x, y, 0, 0, healthbarLength, healthbarWitdth, barWidth, healthbaroffset, healthbarLength, healthbarWitdth);
+        drawScaledCustomSizeModalRect(x, y, 0, 0, healthbarLength, healthbarWidth, barWidth, healthbarOffset, healthbarLength, healthbarWidth);
 
-        int i = (int) Math.floor(info.getPercent() * barWidth);
+        int healthWidth = (int) Math.floor(info.getPercent() * barWidth);
 
-        if (i > 0) {
+        if (healthWidth > 0) {
             mc.getTextureManager().bindTexture(textureBarForeground);
-            drawScaledCustomSizeModalRect(x, y, 0, 0, healthbarLength, healthbarWitdth, i, healthbaroffset, healthbarLength, healthbarWitdth);
+            drawTexturedModalRect(x, y, 0, 0, healthWidth, healthbarWidth);
         }
     }
 
