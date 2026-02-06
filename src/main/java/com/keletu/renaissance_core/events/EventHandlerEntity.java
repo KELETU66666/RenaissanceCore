@@ -5,17 +5,26 @@ import com.keletu.renaissance_core.capability.IT12Capability;
 import com.keletu.renaissance_core.capability.RCCapabilities;
 import com.keletu.renaissance_core.capability.T12Capability;
 import com.keletu.renaissance_core.packet.PacketSyncCapability;
+import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
+import com.nekokittygames.thaumictinkerer.api.MobAspect;
+import com.nekokittygames.thaumictinkerer.api.MobAspects;
+import com.nekokittygames.thaumictinkerer.common.items.ItemMobAspect;
+import com.nekokittygames.thaumictinkerer.common.items.ModItems;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import thaumcraft.api.aspects.Aspect;
 
 @Mod.EventBusSubscriber(modid = RenaissanceCore.MODID)
 public class EventHandlerEntity {
@@ -92,6 +101,28 @@ public class EventHandlerEntity {
             if (capability != null) {
                 NBTTagCompound data = capability.serializeNBT();
                 RenaissanceCore.packetInstance.sendTo(new PacketSyncCapability(data, 0), (EntityPlayerMP) player);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onLivingDrops(LivingDropsEvent event) {
+        if (event.getSource() != null && event.getSource().getTrueSource() instanceof EntityPlayer && event.getSource().getTrueSource() != null) {
+            EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
+            ItemStack stack = player.getHeldItemMainhand();
+            if (stack != ItemStack.EMPTY && stack.getItem() == ModItems.ichorium_sword_adv && stack.getTagCompound() != null && stack.getTagCompound().getInteger("awaken") == 2) {
+                MobAspect mobAspect = MobAspects.getAspects().get(event.getEntity().getClass());
+                if (mobAspect != null) {
+                    event.getDrops().clear();
+                    for (Aspect aspect : mobAspect.getAspects().getAspects()) {
+                        int amount = mobAspect.getAspects().getAmount(aspect);
+                        ItemStack aspectStack = new ItemStack(ModItems.mob_aspect);
+                        ItemMobAspect.setAspectType(aspectStack, aspect);
+                        aspectStack.setCount(amount);
+                        EntityItem item = new EntityItem(event.getEntity().getEntityWorld(), event.getEntityLiving().posX, event.getEntityLiving().posY, event.getEntityLiving().posZ, aspectStack);
+                        event.getDrops().add(item);
+                    }
+                }
             }
         }
     }

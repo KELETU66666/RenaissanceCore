@@ -195,3 +195,8 @@ research.alfpylon.stage.1=You needed something more powerful. <BR>This device ca
 research.largervial.title=Bigger Packet Pls
 research.largervial.stage.0=Your aura-focusing research has reached the pinnacle of thaumaturgic knowledge.
 research.largervial.stage.1=Your aura-focusing research has reached the pinnacle of thaumaturgic knowledge. <BR>Other thaumaturges call you mad over the energies involved and tell you to stop or even flee the scene, but they just don't seem to understand. <BR>After all, tearing a big hole in the fabric of this world is EXACTLY what you want to do.
+
+#Recplace
+tip.awakensword.mutant.name0=Bismuth Mode
+tip.awakensword.mutant.name1=Hero-Scythe Mode
+tip.awakensword.mutant.name2=Soul-Hunter Mode
