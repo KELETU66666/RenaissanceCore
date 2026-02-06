@@ -15,7 +15,6 @@ public class RenaissanceCorePlugin implements IFMLLoadingPlugin {
 		//False for Vanilla/Coremod mixins, true for regular mod mixins
 		FermiumRegistryAPI.enqueueMixin(false, "mixins.rc_early.json");
 		FermiumRegistryAPI.enqueueMixin(true, "mixins.renaissance_core.json");
-		FermiumRegistryAPI.enqueueMixin(true, "mixins.rc_ttu.json", () -> Loader.isModLoaded("thaumictinkerer"));
 		FermiumRegistryAPI.enqueueMixin(true, "mixins.rc_research_change.json", () -> !Loader.isModLoaded("oldresearch"));
 	}
 

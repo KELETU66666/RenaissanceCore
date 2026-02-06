@@ -177,8 +177,3 @@ research.alfpylon.stage.1=你需要更强大的水晶.<BR>它有能力聚焦足�
 research.largervial.title=精灵玻璃烧瓶
 research.largervial.stage.0=这种异世界玻璃是一种非常优秀的药剂容器.
 research.largervial.stage.1=这种异世界玻璃是一种非常优秀的药剂容器.<BR>由于玻璃本身已高度魔法化,所以烧瓶从药剂吸收的更少,留下的药性更多.
-
-#覆写
-tip.awakensword.mutant.name0=铋剑模式
-tip.awakensword.mutant.name1=白瞳模式
-tip.awakensword.mutant.name2=咒灵模式
